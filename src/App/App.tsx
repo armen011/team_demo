@@ -1,7 +1,5 @@
-import TextInput from 'components/TextInput'
-import { useState } from 'react'
-import UTILS from 'utils'
 import './App.css'
+import AppRouter from './AppRouter'
 
 export type RegistrationInputsType={
         email:string,
@@ -10,36 +8,10 @@ export type RegistrationInputsType={
         isValid:boolean,
 }
 
-
-
 const App=()=>{
 
-    
 
-    const [inputValues,setInputValues]=useState<RegistrationInputsType>({
-        email:"",
-        username:"",
-        password:"",
-        isValid:false
-    })
-
-
-    const handleInputChange=(type:keyof typeof inputValues)=>(value:string)=>{
-        if(type==='password'){
-            setInputValues(prev=>{
-                UTILS.Validations.emailValidation(value)
-                return({...prev,[type]:value})}
-                )
-        }
-    }
-
-    console.log('inputValue', inputValues)
-
-    return <div>
-           <TextInput value={inputValues.email} onChange={handleInputChange('email')} error='hello'/>
-           <TextInput value={inputValues.username} onChange={handleInputChange('username')}/>
-           <TextInput value={inputValues.password} onChange={handleInputChange('password')}/>
-            </div>
+    return <AppRouter/>
 }
 
 export default App

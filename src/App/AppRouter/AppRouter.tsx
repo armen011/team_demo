@@ -1,11 +1,11 @@
-import { BrowserRouter,Routes } from "react-router-dom"
+import { BrowserRouter,Routes,Route} from "react-router-dom"
 import {routes} from '.'
-import Route from "./Route"
+import RouteSwich from "./RouteSwich"
 
 const AppRouter=()=>{
     return <BrowserRouter>
     <Routes>
-        {routes.map((route)=><Route {...route}/>)}
+        {routes.map(({path,...otherProps},index)=><Route key={index} path={path} element={<RouteSwich {...otherProps}/>}/>)}
     </Routes>
     </BrowserRouter>
 }
