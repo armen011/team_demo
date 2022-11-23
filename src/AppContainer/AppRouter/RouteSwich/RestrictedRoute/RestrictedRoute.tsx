@@ -1,15 +1,18 @@
-import {RoutesEnum } from "App/AppRouter"
+import { RootState } from "app"
+import {RoutesEnum } from "AppContainer/AppRouter"
 
 import type { FC, ReactElement } from "react"
+import { useSelector } from "react-redux"
 import { Navigate } from "react-router-dom"
 
 export type RestrictedRouteProps={children:ReactElement}
 
-const isAuthenticated=false
 
 
 const RestrictedRoute:FC<RestrictedRouteProps>=({children})=>{
-    if(isAuthenticated){
+    const isLogedIn=useSelector((state:RootState)=>state.user.isLogedIn)
+
+    if(isLogedIn){
         return<Navigate to={RoutesEnum.MAIN}/>
     }
     return children
