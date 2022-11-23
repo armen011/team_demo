@@ -1,5 +1,5 @@
-import AuthLayout from './AuthLayout'
+import AuthLayout from "./AuthLayout";
 
-export * from "./AuthLayout"
+export * from "./AuthLayout";
 
-export default AuthLayout
+export default AuthLayout;

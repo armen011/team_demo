@@ -1,5 +1,5 @@
-import Registration from "./Registration"
+import Registration from "./Registration";
 
-export * from "./Registration"
+export * from "./Registration";
 
-export default Registration
+export default Registration;

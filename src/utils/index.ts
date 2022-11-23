@@ -1,6 +1,5 @@
-import * as Validations from './validations'
+import * as Validations from "./validations";
 
+const UTILS = { Validations };
 
-const UTILS={Validations}
-
-export default UTILS
+export default UTILS;

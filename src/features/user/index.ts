@@ -1,5 +1,5 @@
-import userReducer from './userSlice'
+import userReducer from "./userSlice";
 
-export * from './userSlice'
+export * from "./userSlice";
 
-export default userReducer
+export default userReducer;

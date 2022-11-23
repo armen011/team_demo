@@ -1,3 +1,3 @@
-const HOOKS={}
+const HOOKS = {};
 
-export default HOOKS
+export default HOOKS;

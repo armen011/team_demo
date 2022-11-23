@@ -1,5 +1,3 @@
-export const  emailValidation=(email:string):boolean=>{
-
-
-    return false
-}
+export const emailValidation = (email: string): boolean => {
+  return false;
+};
