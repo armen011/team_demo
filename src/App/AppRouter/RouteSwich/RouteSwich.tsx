@@ -5,6 +5,7 @@ import {PrivateRoute,RestrictedRoute} from "."
 export type RouteSwichProps=Omit<RouteType,'path'>
 
 
+
 const RouteSwich:FC<RouteSwichProps>=({Component,type})=>{
     return type==='private'? (<PrivateRoute >
         <Component/>

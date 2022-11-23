@@ -2,15 +2,17 @@ import { FC } from "react"
 import Main from 'pages/Main'
 import Login from "pages/Login"
 import Registration from "pages/Registration"
+import Error from "pages/Error"
 
-export enum Routes {
+export enum RoutesEnum {
     MAIN='/',
     LOGIN='/login',
     REGISTRATION='/registration',
+    ERROR='error_page'
 }
 
 export type RouteType={
-    path:Routes,
+    path:RoutesEnum,
     Component:FC
     type:"public" |'private' |'restricted'
 
@@ -18,18 +20,23 @@ export type RouteType={
 
 export const routes:RouteType[]=[
     {
-        path:Routes.MAIN,
+        path:RoutesEnum.MAIN,
         type:"private",
         Component:Main
     },
     {
-        path:Routes.LOGIN,
+        path:RoutesEnum.LOGIN,
         type:"restricted",
         Component:Login
     },
     {
-        path:Routes.REGISTRATION,
+        path:RoutesEnum.REGISTRATION,
         type:"restricted",
         Component:Registration
     },
+    {
+        path:RoutesEnum.ERROR,
+        type:"private",
+        Component:Error
+    }
 ]
