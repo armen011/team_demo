@@ -1,5 +1,5 @@
-.footerDiv {
-  height: 134px;
+.footer_div {
+  min-height: 134px;
   display: flex;
   gap: 10px;
   justify-content: center;
@@ -11,11 +11,10 @@
   font-size: 12px;
 }
 
-.footerBottomDiv {
+.footer_bottom_div {
   margin-top: 10px;
 }
 footer {
   display: flex;
   justify-content: center;
-  margin-top: -53px;
 }

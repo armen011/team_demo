@@ -3,7 +3,7 @@ import "./footer.css";
 const Footer = () => {
   return (
     <footer>
-      <div className="footerDiv">
+      <div className="footer_div">
         <span>Meta</span>
         <span>About</span>
         <span>Blog</span>
@@ -17,8 +17,7 @@ const Footer = () => {
         <span>Locations</span>
         <span>Instagram Lite</span>
         <span>Contact Uploading & Non-Users</span>
-
-        <div className="footerBottomDiv">
+        <div className="footer_bottom_div">
           <span>English</span>
           <span>© 2022 Instagram from Meta</span>
         </div>

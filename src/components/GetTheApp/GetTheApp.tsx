@@ -1,5 +1,6 @@
 import "./GetTheApp.css";
-function GetTheApp() {
+
+const GetTheApp = () => {
   return (
     <div className="bottomDiv">
       <img
@@ -15,6 +16,6 @@ function GetTheApp() {
       />
     </div>
   );
-}
+};
 
 export default GetTheApp;
