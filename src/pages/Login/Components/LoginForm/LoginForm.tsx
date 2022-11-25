@@ -12,38 +12,32 @@ function LoginForm() {
     password: "",
   });
 
-  let errorInLogin = true   
+  let errorInLogin = true;
 
-  const handleloginValue = (value: string) => {
-    setLoginValues((prev) => ({ ...prev, login: value }));
-  };
-
-  const handlePaswordValue = (value: string) => {
-    setLoginValues((prev) => ({ ...prev, password: value }));
-  };
+  const handleInputChange =
+    (type: keyof typeof loginValues) => (value: string) => {
+      setLoginValues((prev) => ({ ...prev, [type]: value }));
+    };
 
   const handleLoginUser = () => {
-    errorInLogin = loginValidation(loginValues)
-    console.log('errorInLogin', errorInLogin)
+    errorInLogin = loginValidation(loginValues);
+    console.log("errorInLogin", errorInLogin);
   };
 
   return (
     <div className="login_form_wrapper">
       <div>
-        <img src={logoString} className="logo_img_login" />
+        <img src={logoString} className="login_logo_img" />
       </div>
-      <div className="text_input_wrapper_in_login">
+      <div className="login_text_input_wrapper">
         <TextInput
           value={loginValues.login}
-          onChange={handleloginValue}
+          onChange={handleInputChange("login")}
           placeholder="Phone number, username, or email"
         />
-      </div>
-
-      <div className="text_input_wrapper_in_login">
         <TextInput
           value={loginValues.password}
-          onChange={handlePaswordValue}
+          onChange={handleInputChange("password")}
           type="password"
           placeholder="Password"
         />
@@ -51,15 +45,13 @@ function LoginForm() {
       <div>
         <button onClick={handleLoginUser}>Log in</button>
       </div>
-
-      <div className="line_container">
-        <div className="line"></div>
-        <div>OR</div>
-        <div className="line"></div>
-      </div>
       <div>
-      {!errorInLogin && <p className="isValidError">Sorry, your password was incorrect. Please double-check your password.</p>}
-
+        {!errorInLogin && (
+          <p className="isValidError">
+            Sorry, your password was incorrect. Please double-check your
+            password.
+          </p>
+        )}
       </div>
     </div>
   );

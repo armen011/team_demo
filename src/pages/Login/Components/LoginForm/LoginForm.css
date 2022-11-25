@@ -1,5 +1,5 @@
 .login_form_wrapper {
-  height: 581px;
+  min-height: 581px;
   width: 400px;
   border: 1px solid rgb(219, 219, 219);
   display: flex;
@@ -8,34 +8,13 @@
   margin-left: 16px;
 }
 
-.logo_img_login {
+.login_logo_img {
   width: 240px;
   height: 80px;
   margin: 32px 0;
 }
-
-.text_input_wrapper_in_login {
-  width: 300px;
-  height: 40px;
-  margin-bottom: 6px;
-}
-
-.text_input_wrapper_in_login > input {
-  border: 1px solid rgb(219, 219, 219);
-  padding: 9px 0 7px 8px;
-}
-
-.line_container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
-  width: 100%;
-}
-.line {
-  width: 30%;
-  height: 0px;
-  border-bottom: 1px solid rgb(219, 219, 219);
+.login_text_input_wrapper {
+  width: calc(100% - 80px);
 }
 
 .isValidError {
