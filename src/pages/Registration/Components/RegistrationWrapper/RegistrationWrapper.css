@@ -1,0 +1,78 @@
+.logo {
+  padding-top: 25px;
+  width: 180px;
+  margin-bottom: 15px;
+}
+.signUpRecommendation {
+  text-align: center;
+}
+.signUpRecommendationText {
+  font-family: Segoe UI, serif;
+  font-size: 17px;
+  font-weight: 600;
+  text-decoration: none solid rgb(142, 142, 142);
+  text-align: center;
+  color: RGB(142, 142, 142);
+  background-color: RGBA(0, 0, 0, 0);
+}
+.line {
+  margin-top: 25px;
+  height: 1px;
+  width: 258px;
+  background-color: #dbdbdb;
+}
+
+.middleBodyText {
+  margin-top: 20px;
+  font-family: Segoe UI, serif;
+  color: RGB(142, 142, 142);
+  font-size: 12px;
+  text-align: center;
+  max-width: 258px;
+}
+.bodyDiv {
+  display: flex;
+  width: 100%;
+  height: 68%;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+  border: 1px solid hsl(210deg 8% 75%);
+}
+
+.signUpDiv {
+  width: 350px;
+  height: 865px;
+  padding-top: 10px;
+}
+
+.signUp_Button {
+  width: 268px;
+  height: 30px;
+  margin-top: 15px;
+  cursor: pointer;
+  background-color: #b2dffc; /* #0095f6 - enable color */
+  border-radius: 5px;
+  border: none;
+  font-weight: bold;
+  color: white;
+}
+
+.middle_div {
+  display: flex;
+  margin-top: 10px;
+  width: 350px;
+  height: 63px;
+  border: 1px solid hsl(210deg 8% 75%);
+  background: white;
+  justify-content: center;
+  align-items: center;
+  font-family: Segoe UI, serif;
+}
+.accountText {
+  font-family: Segoe UI, serif;
+  font-size: 14px;
+}
+.route_log_in {
+  color: #5295f6;
+}

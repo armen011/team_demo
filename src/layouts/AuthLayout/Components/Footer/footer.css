@@ -1,0 +1,21 @@
+.footerDiv {
+  height: 134px;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  max-width: 800px;
+  flex-wrap: wrap;
+  align-content: center;
+  font-family: Segoe UI, serif;
+  color: RGB(142, 142, 142);
+  font-size: 12px;
+}
+
+.footerBottomDiv {
+  margin-top: 10px;
+}
+footer {
+  display: flex;
+  justify-content: center;
+  margin-top: -53px;
+}
