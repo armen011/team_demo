@@ -16,10 +16,10 @@ const TextInput:FC<TextInputProps> = ({placeholder,error,value,onChange,type='te
     }
 
   return (
-    <div className='text_input_wrapper'>
-      <input onChange={handleInputChange} placeholder={placeholder} value={value} type={type}/>
+    <>
+      <input className='text_input_wrapper' onChange={handleInputChange} placeholder={placeholder} value={value} type={type}/>
         {error&&<p className='error_text'>{error}</p>}
-    </div>
+    </>
   )
 }
 

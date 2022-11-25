@@ -1,12 +1,11 @@
-import AuthLayout from "layouts/AuthLayout"
+import AuthLayout from "layouts/AuthLayout";
 
-const Registration=()=>{
-    
-    return<AuthLayout>
-        <div>
-        registerPage
-        </div>
+const Registration = () => {
+  return (
+    <AuthLayout>
+      <div>registerPage</div>
     </AuthLayout>
-}
+  );
+};
 
-export default Registration
+export default Registration;
