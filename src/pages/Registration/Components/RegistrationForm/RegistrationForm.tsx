@@ -1,93 +1,112 @@
 import TextInput from "components/TextInput";
-import { HTMLInputTypeAttribute, useCallback, useState } from "react";
+import {HTMLInputTypeAttribute, useState} from "react";
 import "./RegistrationForm.css";
 import UTILS from "utils";
-import { useTranslation } from "react-i18next";
+import {useTranslation} from "react-i18next";
 import SubmitButton from "components/SubmitButton";
-
-const initialState = {
-  email: "",
-  fullName: "",
-  userName: "",
-  password: "",
-};
+import {useAppDispatch} from "../../../../app";
+import {yardages} from "../../../../features/user";
 
 type RegistrationInitialStateKeys = keyof typeof initialState;
 
-const validate = (data: typeof initialState) => {
-  return true;
+const initialState = {
+    email: "",
+    fullName: "",
+    userName: "",
+    password: "",
 };
 
+
+const {emailValidation, passwordValidation, userNameValidation, fullnameValidation} =
+    UTILS.Validations;
+
+
 const inputes: {
-  key: RegistrationInitialStateKeys;
-  placholderKey: string;
-  type?: HTMLInputTypeAttribute;
+    key: RegistrationInitialStateKeys;
+    placholderKey: string;
+    type?: HTMLInputTypeAttribute;
 }[] = [
-  {
-    key: "email",
-    placholderKey: "email",
-  },
-  {
-    key: "fullName",
-    placholderKey: "",
-  },
-  {
-    key: "userName",
-    placholderKey: "",
-  },
-  {
-    key: "password",
-    placholderKey: "",
-    type: "password",
-  },
+    {
+        key: "email",
+        placholderKey: "Mobile Number or Email",
+    },
+    {
+        key: "fullName",
+        placholderKey: "Full Name",
+    },
+    {
+        key: "userName",
+        placholderKey: "Username",
+    },
+    {
+        key: "password",
+        placholderKey: "Password",
+        type: "password",
+    },
 ];
-const { emailValidation, passwordValidation, userNameValidation } =
-  UTILS.Validations;
+
+const validate = (data: typeof initialState): boolean => {
+    return emailValidation(data.email)
+        && passwordValidation(data.password)
+        && fullnameValidation(data.fullName)
+        && userNameValidation(data.userName);
+};
+
 
 const RegistrationForm = () => {
-  const { t } = useTranslation();
-  const [formData, setFormData] = useState({ ...initialState, isValid: true });
 
-  const handleInputChange =
-    (type: RegistrationInitialStateKeys) => (value: string) => {
-      setFormData((prev) => {
-        const clonedState = { ...prev, [type]: value };
+    const dispatch = useAppDispatch();
+    const {t} = useTranslation();
+    const [formData, setFormData] = useState({...initialState, isValid: false});
+    const [togglePassword, setToggle] = useState(true);
 
-        return { ...clonedState, isValid: validate(clonedState) };
-      });
+
+    const handleInputChange =
+        (type: RegistrationInitialStateKeys) => (value: string) => {
+            setFormData((prev) => {
+                const clonedState = {...prev, [type]: value};
+                return {...clonedState, isValid: validate(clonedState)};
+            });
+        };
+    const handleSubmit = () => {
+        dispatch(yardages());
     };
-  const handleSubmit = () => {
-    console.log("formData", formData);
-  };
 
-  return (
-    <div className="registration_form_wrapper">
-      {inputes.map(({ key, type, placholderKey }) => (
-        <TextInput
-          placeholder={t(placholderKey)}
-          onChange={handleInputChange(key)}
-          type={type}
-          value={formData[key]}
-          name={key}
-        />
-      ))}
+    const togglePasswordClick = () => {
+        setToggle(!togglePassword);
+    }
 
-      <p className="middleBodyText">
-        People who use our service may have uploaded your contact information to
-        Instagram. Learn More
-      </p>
-      <p className="middleBodyText">
-        By signing up, you agree to our Terms , Privacy Policy and Cookies
-        Policy.
-      </p>
+    return (
+        <div className="registration_form_wrapper">
+            {inputes.map(({key, type, placholderKey}) => (
+                <TextInput
+                    key={key}
+                    name={key}
+                    value={formData[key]}
+                    placeholder={t(placholderKey)}
+                    onChange={handleInputChange(key)}
+                    toggle={togglePasswordClick}
+                    type={(type === "password") && togglePassword ? "password" : "text"}
+                    show={type === "password" && formData.password.length ? (togglePassword ? "Show" : "Hide") : undefined}
+                />
+            ))}
 
-      <SubmitButton
-        text={t("sign_up")}
-        onClick={handleSubmit}
-        isValid={formData.isValid}
-      />
-    </div>
-  );
+            <p className="middle-body-text">
+                People who use our service may have uploaded your contact information to
+                Instagram. Learn More
+            </p>
+            <p className="middle-body-text">
+                By signing up, you agree to our Terms , Privacy Policy and Cookies
+                Policy.
+            </p>
+
+            <SubmitButton
+                text={t("sign_up")}
+                onClick={handleSubmit}
+                isValid={formData.isValid}
+            />
+        </div>
+    );
 };
 
 export default RegistrationForm;

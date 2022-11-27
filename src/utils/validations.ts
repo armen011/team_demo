@@ -8,9 +8,10 @@ export const passwordValidation = (password: string): boolean => {
 };
 
 export const userNameValidation = (userName: string): boolean => {
-  return /\d/.test(userName) && userName.length <= 30 && !!userName;
+  const condition = isNaN(+(userName[0]));
+  return /\d/.test(userName) && userName.length <= 30 && !!userName && userName.length >=8 && condition;
 };
 
-export const phoneValidation = (phone: string): boolean => {
-  return !/\d/.test(phone);
+export const fullnameValidation = (fullName: string): boolean => {
+  return !!fullName.length;
 };

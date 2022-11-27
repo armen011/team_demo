@@ -7,6 +7,8 @@ export type TextInputProps = {
   onChange: (value: string) => void;
   type?: HTMLInputTypeAttribute;
   name: string;
+  show?:string;
+  toggle?:()=>void
 };
 
 const TextInput: FC<TextInputProps> = ({
@@ -15,6 +17,8 @@ const TextInput: FC<TextInputProps> = ({
   onChange,
   type = "text",
   name,
+  show,
+  toggle
 }) => {
   const handleInputChange: ChangeEventHandler<HTMLInputElement> = ({
     target: { value },
@@ -32,6 +36,7 @@ const TextInput: FC<TextInputProps> = ({
         className={value.length > 0 ? "base_input_filled" : ""}
       />
       <label htmlFor={name}>{placeholder}</label>
+      <span onClick={toggle}>{show}</span>
     </div>
   );
 };

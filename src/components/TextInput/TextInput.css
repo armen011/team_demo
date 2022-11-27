@@ -32,3 +32,12 @@ label {
   transform: translateY(0.6rem);
   transition: 150ms cubic-bezier(0.4, 0, 0.2, 1);
 }
+.base_input_group > span{
+  position: absolute;
+  top: 7px;
+  font-weight: 500;
+  font-family: Segoe UI, serif;
+  font-size: 14px;
+  right: 10px;
+  cursor: pointer;
+}
