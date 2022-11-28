@@ -1,3 +1,16 @@
 {
-    "login": "Login"
+    "login": "Login",
+    "add_your_date_of_birth":"Add your date of birth",
+    "This_won't_be_part_of_your_public_profile.":"This won't be part of your public profile.",
+    "Why_do_I_need_to_provide_my_date_of_birth?":"Why do I need to provide my date of birth?",
+    "You_need_to_enter_the_date_you_were_born_on":"You need to enter the date you were born on",
+    "Use_your_own_date_of_birth,_even_if_this_account_is_for_a_business,_pet_or_something_else":"Use your own date of birth, even if this account is for a business, pet or something else",
+    "Next":"Next",
+    "Go_back":"Go back",
+    "Have_an_account?":"Have an account?",
+    "Log_in":"Log in",
+    "Birthdays":"Birthdays",
+    "Birthdays_on_Instagram":"Birthdays on Instagram",
+    "Providing_your_date_of_birth_improves_the_features_and_ads_that_you_see_and_helps_us_keep_the_Instagram_community_safe._You_can_find_your_date_of_birth_in_your_personal_information_account_settings.":"Providing your date of birth improves the features and ads that you see and helps us keep the Instagram community safe. You can find your date of birth in your personal information account settings.",
+    "Learn_more":"Learn more"
 }
