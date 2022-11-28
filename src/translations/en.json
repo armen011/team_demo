@@ -1,3 +1,10 @@
 {
-    "login": "Login"
+    "login": "Login",
+    "Home": "Home",
+    "Search": "Search",
+    "Messages": "Messages",
+    "Notification": "Notification",
+    "Create": "Create",
+    "Profile": "Profile",
+    "More": "More"
 }

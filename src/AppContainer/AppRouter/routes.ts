@@ -3,12 +3,16 @@ import Main from 'pages/Main'
 import Login from "pages/Login"
 import Registration from "pages/Registration"
 import Error from "pages/Error"
+import Profile from "../../layouts/MainLayout/Profile";
+import Messages from "../../layouts/MainLayout/Messages";
 
 export enum RoutesEnum {
     MAIN='/',
     LOGIN='/login',
     REGISTRATION='/registration',
-    ERROR='error_page'
+    ERROR='error_page',
+    PROFILE='/profile',
+    MESSAGES = '/messages'
 }
 
 export type RouteType={
@@ -38,5 +42,15 @@ export const routes:RouteType[]=[
         path:RoutesEnum.ERROR,
         type:"private",
         Component:Error
+    },
+    {
+        path: RoutesEnum.PROFILE,
+        type: "private",
+        Component: Profile
+    },
+    {
+        path: RoutesEnum.MESSAGES,
+        type: "private",
+        Component: Messages
     }
 ]

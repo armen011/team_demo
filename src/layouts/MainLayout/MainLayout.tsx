@@ -1,13 +1,15 @@
 import { FC, ReactElement } from "react"
 
+import MenuBar from '../../components/MenuBar'
+
 export type MainLayoutProps={
     children:ReactElement
 }
 
 const MainLayout:FC<MainLayoutProps>=({children})=>{
     return <div>
-        <div>menubar</div>
-        <div>{children}</div>
+        <MenuBar/>
+        {/*<div>{children}</div>*/}
         </div>
 }
 
