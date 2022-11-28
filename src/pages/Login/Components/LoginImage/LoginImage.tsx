@@ -3,7 +3,7 @@ import "./LoginImage.css";
 function LoginImage() {
   return (
     <div className="login_image_wrapper">
-      {/* <img src={loginPageImage} /> */}
+      <div className="change_image"></div>
     </div>
   );
 }

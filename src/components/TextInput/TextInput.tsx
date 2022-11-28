@@ -2,19 +2,19 @@ import { ChangeEventHandler, FC, HTMLInputTypeAttribute } from "react";
 import "./TextInput.css";
 
 export type TextInputProps = {
-  placeholder?: string;
-  error?: string;
+  placeholder?: string | null;
   value: string;
   onChange: (value: string) => void;
   type?: HTMLInputTypeAttribute;
+  name: string;
 };
 
 const TextInput: FC<TextInputProps> = ({
   placeholder,
-  error,
   value,
   onChange,
   type = "text",
+  name,
 }) => {
   const handleInputChange: ChangeEventHandler<HTMLInputElement> = ({
     target: { value },
@@ -23,14 +23,15 @@ const TextInput: FC<TextInputProps> = ({
   };
 
   return (
-    <div className="text_input_wrapper">
+    <div className="base_input_group">
       <input
+        id={name}
         onChange={handleInputChange}
-        placeholder={placeholder}
         value={value}
         type={type}
+        className={value.length > 0 ? "base_input_filled" : ""}
       />
-      {error && <p className="error_text">{error}</p>}
+      <label htmlFor={name}>{placeholder}</label>
     </div>
   );
 };
