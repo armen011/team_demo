@@ -4,8 +4,8 @@ import "./RegistrationForm.css";
 import UTILS from "utils";
 import {useTranslation} from "react-i18next";
 import SubmitButton from "components/SubmitButton";
-import {useAppDispatch} from "../../../../app";
-import {yardages} from "../../../../features/user";
+import {useAppDispatch, useAppSelector} from "app";
+import {getResponse} from "features/registration";
 
 type RegistrationInitialStateKeys = keyof typeof initialState;
 
@@ -55,6 +55,8 @@ const validate = (data: typeof initialState): boolean => {
 
 const RegistrationForm = () => {
 
+    const state = useAppSelector(s=>s.registration);
+
     const dispatch = useAppDispatch();
     const {t} = useTranslation();
     const [formData, setFormData] = useState({...initialState, isValid: false});
@@ -68,13 +70,21 @@ const RegistrationForm = () => {
                 return {...clonedState, isValid: validate(clonedState)};
             });
         };
-    const handleSubmit = () => {
-        dispatch(yardages());
-    };
+
 
     const togglePasswordClick = () => {
         setToggle(!togglePassword);
     }
+
+    const submitFetch = () => {
+        dispatch(getResponse({
+            email: formData.email,
+            username: formData.userName,
+            fullName:formData.fullName,
+            password:formData.password
+        }));
+    }
+
 
     return (
         <div className="registration_form_wrapper">
@@ -92,19 +102,18 @@ const RegistrationForm = () => {
             ))}
 
             <p className="middle-body-text">
-                People who use our service may have uploaded your contact information to
-                Instagram. Learn More
+                {t("people_who_use_our_service_may_have_uploaded_your_contact_information_to_instagram_learn_more")}
             </p>
             <p className="middle-body-text">
-                By signing up, you agree to our Terms , Privacy Policy and Cookies
-                Policy.
+                {t("by_signing_up,_you_agree_to_our_Terms_,_privacy_policy_and_cookies_policy.")}
             </p>
 
             <SubmitButton
                 text={t("sign_up")}
-                onClick={handleSubmit}
+                onClick={submitFetch}
                 isValid={formData.isValid}
             />
+            <h4>{t(state.errorMessage)}</h4>
         </div>
     );
 };

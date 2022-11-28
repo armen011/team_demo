@@ -4,20 +4,21 @@ import RegistrationForm from "./Components/RegistrationForm";
 import "./Registration.css";
 import {useNavigate} from "react-router-dom";
 import {useState} from "react";
+import {useAppSelector} from "../../app";
 
 const Registration = () => {
-    const [isRegistred, setRegistred] = useState<boolean>(false);
+    const isChecked = useAppSelector(s=>s.registration.isChecked);
 
     const navigate = useNavigate();
     const handleNavigate = () => {
         navigate('/login');
-    }
+    };
 
     const {t} = useTranslation();
     return (
         <AuthLayout>
             {
-                !isRegistred
+                !isChecked
                     ?
                     <div className="registration_content_wrapper">
                         <div className="registration_box">
@@ -34,12 +35,12 @@ const Registration = () => {
                             <RegistrationForm/>
                         </div>
                         <div className="route_to_login">
-                            <p>Have an account?
-                                <a href="" onClick={handleNavigate}> Log in</a>
+                            <p>{t("have_an_account")}
+                                <a href="" onClick={handleNavigate}> {t("login")}</a>
                             </p>
                         </div>
                         <div className="get_the_app">
-                            <p>Get the app.</p>
+                            <p>{t("Get the app.")}</p>
                             <div className="pictures_div">
                                 <img
                                     src="https://static.cdninstagram.com/rsrc.php/v3/yz/r/c5Rp7Ym-Klz.png"

@@ -1,5 +1,6 @@
 import { ChangeEventHandler, FC, HTMLInputTypeAttribute } from "react";
 import "./TextInput.css";
+import {useTranslation} from "react-i18next";
 
 export type TextInputProps = {
   placeholder?: string | null;
@@ -20,6 +21,7 @@ const TextInput: FC<TextInputProps> = ({
   show,
   toggle
 }) => {
+  const {t} = useTranslation();
   const handleInputChange: ChangeEventHandler<HTMLInputElement> = ({
     target: { value },
   }) => {
@@ -36,7 +38,7 @@ const TextInput: FC<TextInputProps> = ({
         className={value.length > 0 ? "base_input_filled" : ""}
       />
       <label htmlFor={name}>{placeholder}</label>
-      <span onClick={toggle}>{show}</span>
+      <span onClick={toggle}>{show && t(show)}</span>
     </div>
   );
 };
