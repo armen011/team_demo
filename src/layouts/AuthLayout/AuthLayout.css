@@ -1,0 +1,12 @@
+.auth_page_wrapper {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #fafafa;
+}
+
+.auth_content_wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: fit-content;
+}

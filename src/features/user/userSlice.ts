@@ -30,10 +30,12 @@ type Targ = {
 
 export const login = createAsyncThunk(
   "async/login",
-  async ({login,password}: Targ, thunkAPI) => {
+  async ({ login, password }: Targ, thunkAPI) => {
+    const baseUrl = process.env.REACT_APP_PUBLIC_URL;
+
     try {
       return await fetch(
-        `https://academoart.herokuapp.com/api/auth/login?login=${login}&password=${password}`,
+        `${baseUrl}api/auth/login?login=${login}&password=${password}`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -53,7 +55,9 @@ export const userSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(login.fulfilled, (state, { payload }) => {
-      return payload.email ? { ...payload, isLogedIn: true } : {...initialState,errorMessage:payload};                                                                           
+      return payload.email
+        ? { ...payload, isLogedIn: true }
+        : { ...initialState, errorMessage: payload };
     });
     builder.addCase(login.rejected, (state, action) => {
       // console.log("action.payload", action.payload);
