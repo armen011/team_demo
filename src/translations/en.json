@@ -1,5 +1,12 @@
 {
     "login": "Login",
+    "Home": "Home",
+    "Search": "Search",
+    "Messages": "Messages",
+    "Notification": "Notification",
+    "Create": "Create",
+    "Profile": "Profile",
+    "More": "More",
     "Don't_have_an_account?": "Don't have an account?",
     "Sign_up": "Sign up",
     "Phone_number_username_or_email":"Phone number, username, or email",

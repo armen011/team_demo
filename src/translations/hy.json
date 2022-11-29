@@ -1,5 +1,12 @@
 {
     "login": "Մուտք",
+    "Home": "Տուն",
+    "Search": "Որոնել",
+    "Messages": "Նամակներ",
+    "Notification": "Ծանուցում",
+    "Create": "Ստեղծել",
+    "Profile": "Անձնական էջ",
+    "More": "Ավելին",
     "Don't_have_an_account?": "Չունե՞ք օգտահաշիվ",
     "Sign_up": "Գրանցվել",
     "Phone_number_username_or_email":"Հեռախոսահամար, օգտանուն կամ էլ հասցե",
