@@ -1,24 +1,22 @@
-import React, { ChangeEvent , MouseEventHandler, useState } from "react";
-import "./BirthdayPage.css";
-import BirthdayPageHeader from "../BirthdayPageHeader";
-import BirthdayPageFooter from "../BirthdayPageFooter";
-import CheckBirthdayDate from "../CheckBirthdayDate";
-import SelectDate from "../SelectDate";
-import Popup from "../Popup";
+import { ChangeEvent, useState } from "react";
+import { useTranslation } from "react-i18next";
 import UTILS from "utils";
-import { t } from "i18next";
+import BirthdayPageFooter from "../Components/BirthdayPageFooter";
+import BirthdayPageHeader from "../Components/BirthdayPageHeader";
+import CheckBirthdayDate from "../Components/CheckBirthdayDate";
+import Popup from "../Components/Popup";
+import SelectDate from "../Components/SelectDate";
 
+const {date: { months,arrayInDays, years }} = UTILS;
 
-const {date: { months, daysInMonth, arrayInDays, years }} = UTILS;
-
-function BirthdayPage() {
+const DateForm = () => {
   const [isClicked, setIsClicked] = useState(false);
-
   const [date, setDate] = useState({
     month: months[new Date().getMonth()],
     year: new Date().getFullYear() - 1,
     day: new Date().getDate(),
   });
+  const {t}=useTranslation()
 
   
 
@@ -30,11 +28,8 @@ function BirthdayPage() {
     setIsClicked(true)
     
   }
-
-  
-
   return (
-   <>
+    <>
     {isClicked&&<div className="black"></div>}
      <div className="birthday_container">
      <div className="wrapper_b">
@@ -79,16 +74,12 @@ function BirthdayPage() {
 
         <CheckBirthdayDate date={date.year} />
       </div>
-
       <BirthdayPageFooter />
-      
     </div>
-     </div>
+    </div>
      {isClicked && <Popup handleClosePopup={handleClosePopup} />}
-    
-    
    </>
-  );
+  )
 }
 
-export default BirthdayPage;
+export default DateForm
