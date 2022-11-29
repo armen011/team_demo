@@ -41,12 +41,9 @@ export const userSlice = createSlice({
 
       return state;
     },
-    yardages:(state)=>{
-      console.log({...state});
-    }
   },
 });
 
-export const { login ,yardages} = userSlice.actions;
+export const { login } = userSlice.actions;
 
 export default userSlice.reducer;
