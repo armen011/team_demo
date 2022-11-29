@@ -6,15 +6,9 @@ import DateForm from "./DateForm";
 
 const Registration = () => {
     const isChecked = useAppSelector(s=>s.registration.isChecked);
-
     return (
         <AuthLayout>
-            {
-                !isChecked
-                    ?
-                    <MainForm/>:<DateForm/>
-
-            }
+            {!isChecked?<MainForm/>:<DateForm/>}
         </AuthLayout>
     );
 };
