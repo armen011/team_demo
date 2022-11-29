@@ -29,9 +29,11 @@ const initialState: RegistrationStateType = {
 export const getResponse = createAsyncThunk(
   "async/registration",
   async ({ email, username, password, fullName }: Targ, thunkAPI) => {
+    const baseUrl = process.env.REACT_APP_PUBLIC_URL;
+
     try {
       return await fetch(
-        `https://academoart.herokuapp.com/api/auth/check_user?email=${email}&username=${username}`,
+        `${baseUrl}api/auth/check_user?email=${email}&username=${username}`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
