@@ -1,40 +1,47 @@
-import TextInput from "components/TextInput";
 import { useState } from "react";
 import "./LoginForm.css";
 
 import { loginValidation } from "utils/loginValidation";
 
 import logoString from "assets/images/logo.png";
+import appStore from "assets/images/appStoreImg.png";
+import googlePlay from "assets/images/googlePlayImg.png";
+
+import TextInput from "components/TextInput";
 import SubmitButton from "components/SubmitButton";
+
 import { login } from "features/user";
-import { useAppDispatch } from "../../../../app/store";
 
-let isValidButton = false;
+import { useAppDispatch, useAppSelector } from "app/store";
 
+import { useTranslation } from "react-i18next";
 
 function LoginForm() {
   const [loginValues, setLoginValues] = useState({
     login: "",
     password: "",
   });
+  const [isValidButton, setIsValidButton] = useState(false);
+
   const dispatch = useAppDispatch();
 
+  const selector = useAppSelector((state) => state.user);
 
+  const { t } = useTranslation();
 
   const handleInputChange =
     (type: keyof typeof loginValues) => (value: string) => {
       setLoginValues((prev) => ({ ...prev, [type]: value }));
-      isValidButton = loginValidation(loginValues);
-      console.log("isValidButton", isValidButton);
+      setIsValidButton(loginValidation(loginValues));
     };
 
   const handleLoginUser = () => {
-    console.log("isValidButton login user", isValidButton);
     dispatch(
       login({ login: loginValues.login, password: loginValues.password })
     );
   };
 
+  console.log("selector", selector);
   return (
     <div className="login_form_wrapper">
       <div className="login_form_container">
@@ -46,30 +53,40 @@ function LoginForm() {
             name="username"
             value={loginValues.login}
             onChange={handleInputChange("login")}
-            placeholder="Phone number, username, or email"
+            placeholder={t("Phone_number_username_or_email")}
           />
           <TextInput
             name="password"
             value={loginValues.password}
             onChange={handleInputChange("password")}
             type="password"
-            placeholder="Password"
+            placeholder={t("Password")}
           />
         </div>
         <div className="button_wrapper">
           <SubmitButton
             isValid={isValidButton}
             onClick={handleLoginUser}
-            text="Log in"
+            text={t("Log_in")}
           />
+        </div>
+        <div className="error_wrapper">
+          {selector.errorMessage && <h4>{selector.errorMessage}</h4>}
         </div>
       </div>
       <div className="sign_up_wrapper">
         <p>
-          Don't have an account? <a>Sign up</a>
+          {t("Don't_have_an_account?")}{" "}
+          <a href="/registration">{t("Sign_up")}</a>
         </p>
       </div>
-      <div className="get_the_app_wrapper"></div>
+      <div className="get_the_app_wrapper">
+        <p>{t("Get_the_app")}</p>
+        <div>
+          <img src={appStore} />
+          <img src={googlePlay} />
+        </div>
+      </div>
     </div>
   );
 }

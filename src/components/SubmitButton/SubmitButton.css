@@ -5,3 +5,6 @@
   align-items: center;
   justify-content: center;
 }
+.valid_button {
+  background-color: #0095f6;
+}

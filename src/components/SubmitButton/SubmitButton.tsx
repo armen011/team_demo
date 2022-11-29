@@ -18,7 +18,7 @@ const SubmitButton: FC<SubmitButtonProps> = ({
     }
   };
   return (
-    <button className="submit_button"  onClick={handleClick}>
+    <button className={`submit_button ${isValid && 'valid_button'}`}  onClick={handleClick}>
       {text}
     </button>
   );

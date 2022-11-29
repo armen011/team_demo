@@ -9,6 +9,7 @@ export type UserStateType = {
   profilPic?: string;
   isLogedIn: boolean;
   email: string;
+  errorMessage: string;
 };
 
 const initialState: UserStateType = {
@@ -19,6 +20,7 @@ const initialState: UserStateType = {
   dateOfBirth: "",
   profilPic: "",
   isLogedIn: false,
+  errorMessage: "",
 };
 
 type Targ = {
@@ -28,14 +30,17 @@ type Targ = {
 
 export const login = createAsyncThunk(
   "async/login",
-  async (args: Targ, thunkAPI) => {
+  async ({login,password}: Targ, thunkAPI) => {
     try {
       return await fetch(
-        `https://academoart.herokuapp.com/api/auth/login?login=${args.login}&password=${args.password}`,
-        { method: "POST", headers: { "Content-Type": "application/json" } }
+        `https://academoart.herokuapp.com/api/auth/login?login=${login}&password=${password}`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+        }
       )
         .then((res) => res.json())
-        .then((res) => console.log('res', res));
+        .then((res) => res);
     } catch (e) {
       return thunkAPI.rejectWithValue(e);
     }
@@ -47,8 +52,8 @@ export const userSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(login.fulfilled, (state, action) => {
-      // console.log("action.payload", action.payload);
+    builder.addCase(login.fulfilled, (state, { payload }) => {
+      return payload.email ? { ...payload, isLogedIn: true } : {...initialState,errorMessage:payload};                                                                           
     });
     builder.addCase(login.rejected, (state, action) => {
       // console.log("action.payload", action.payload);
