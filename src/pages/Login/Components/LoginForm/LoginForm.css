@@ -1,0 +1,93 @@
+.login_form_wrapper {
+  width: 380px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 16px;
+}
+
+.login_form_container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid rgb(219, 219, 219);
+  background-color: #ffffff;
+}
+
+.login_logo_img {
+  width: 240px;
+  height: 80px;
+  margin: 32px 0;
+}
+
+.login_text_input_wrapper {
+  width: calc(100% - 100px);
+}
+
+.login_text_input_wrapper > div {
+  margin-bottom: 12px;
+}
+
+.isValidError {
+  color: red;
+}
+
+.button_wrapper {
+  width: calc(100% - 100px);
+  margin-bottom: 32px;
+}
+
+.sign_up_wrapper {
+  border: 1px solid rgb(219, 219, 219);
+  width: 100%;
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #ffffff;
+}
+.sign_up_wrapper > p > a {
+  color: #0095f6;
+  text-decoration: none;
+}
+.submit_button {
+  width: 268px;
+  height: 30px;
+  margin-top: 15px;
+  cursor: pointer;
+  background-color: #b2dffc; /* #0095f6 - enable color */
+  border-radius: 5px;
+  border: none;
+  font-weight: bold;
+  color: white;
+}
+
+.get_the_app_wrapper {
+  width: 100%;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.get_the_app_wrapper > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.get_the_app_wrapper > div > img {
+  max-width: 136px;
+  margin: 20px 3px;
+}
+
+.error_wrapper {
+  width: 100%;
+  padding: 10px 0;
+  text-align: center;
+}
+
+.error_wrapper  > h4{
+  color: red;
+}

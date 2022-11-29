@@ -1,0 +1,81 @@
+.registration_content_wrapper {
+    padding-top: 12px;
+    margin-bottom: 44px;
+  }
+  .registration_content_wrapper > .registration_box {
+    width: 350px;
+    min-height: 250px;
+    background-color: white;
+    border: 1px solid hsl(210deg 8% 75%);
+    padding: 10px 0;
+    margin-bottom: 10px;
+  }
+  .registration_content_wrapper > .registration_box > .registration_logo_wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 36px 0px 12px 0;
+  }
+  
+  .registration_content_wrapper > .registration_box > .header_title {
+    color: #958e8e;
+    text-align: center;
+    max-width: 258px;
+    margin: auto;
+    font-family: Segoe UI, serif;
+    font-size: 17px;
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+  
+  
+  .route_to_login{
+    width: 348px;
+    border: 1px solid hsl(210deg 8% 75%);
+    padding: 10px 0 ;
+    background-color: white;
+    margin-bottom: 20px;
+  }
+  
+  .route_to_login > p{
+    margin: 15px;
+    color: rgb(38,38,38);
+    text-align: center;
+    font-size: 14px;
+    font-family: Segoe UI, serif;
+  }
+  .route_to_login > p > a{
+    color: rgb(0,149,246);
+    text-decoration: none;
+  
+  }
+  .get_the_app{
+    width: 350px;
+  
+  }
+  
+  .get_the_app > p{
+    border: 0;
+    font-family: Segoe UI, serif;
+    text-align: center;
+    vertical-align: baseline;
+    font-size: 14px;
+    line-height: 18px;
+    padding: 0;
+    margin: 10px 20px;
+  
+  }
+  .pictures_div {
+    width: 350px;
+    margin: 10px 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 5px;
+  }
+  .pictures_div > img {
+    width: 134px;
+    height: 40px;
+    margin-top: 10px;
+  }
+  

@@ -1,0 +1,106 @@
+.wrapper {
+  width: 407px;
+  border-radius: 12px;
+  background-color: rgb(255, 255, 255);
+  color: rgb(38, 38, 38);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+}
+
+.birthday_text_container {
+  border-bottom: 1px solid rgb(219, 219, 219);
+  width: 100%;
+  position: relative;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 0px;
+}
+
+.birthday_text_container span {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+  text-align: center;
+  color: rgb(38, 38, 38);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+.info_container {
+  margin: 20px 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo {
+  height: 96px;
+  width: 144px;
+  background-image: url("https://static.cdninstagram.com/rsrc.php/v3/yz/r/quLU_xi5ZD1.png");
+  background-size: 553px 528px;
+  display: block;
+}
+
+.birthday_div {
+  margin-top: 4px;
+  padding: 8px;
+  width: 100%;
+  text-align: center;
+  color: rgb(38, 38, 38);
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 600;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+.info_text {
+  text-align: center;
+  padding: 12px;
+  font-size: 14px;
+  line-height: 18px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+.link_container {
+  border-top: 1px solid rgb(219, 219, 219);
+  width: 100%;
+  padding: 16px 0px;
+  display: flex;
+  justify-content: center;
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+}
+
+.link_container > a {
+  text-decoration: none;
+  color: rgb(0, 149, 246);
+}
+
+.remove_container {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+
+.remove_icon {
+  width: 28px;
+  height: 26px;
+  cursor: pointer;
+}
+
+
+
+@media screen and (max-width: 736px) {
+  .wrapper {
+    width: 260px;
+  }
+}

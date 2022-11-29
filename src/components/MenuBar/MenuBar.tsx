@@ -17,7 +17,7 @@ import menuIconBold from "../../images/menuBold.png";
 import instagramIcon from "../../images/instagram.png"
 import {useTranslation} from "react-i18next";
 import Category from "../Category";
-import React, {useState} from "react";
+import {useState} from "react";
 import CategoryMin from "../CategoryMin";
 import {useNavigate} from "react-router-dom";
 
@@ -82,9 +82,9 @@ const MenuBar = () =>{
     ]
 
     const [category, setCategory] = useState(categoryParts)
-    const [categoryMin, setCategoryMin] = useState(categoryParts)
+    const [categoryMin] = useState(categoryParts)
     const [language, setLanguage] = useState(false)
-    const {t,i18n} = useTranslation();
+    const {i18n} = useTranslation();
     const navigate = useNavigate()
 
 
