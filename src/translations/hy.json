@@ -1,5 +1,8 @@
 {
     "login": "Մուտք",
+    "Don't_have_an_account?": "Չունե՞ք օգտահաշիվ",
+    "Sign_up": "Գրանցվել",
+    "Phone_number_username_or_email":"Հեռախոսահամար, օգտանուն կամ էլ հասցե",
     "add_your_date_of_birth":"Ավելացրեք Ձեր ծննդյան ամսաթիվը",
     "This_won't_be_part_of_your_public_profile.":"Այս տեղեկությունը Ձեր անձնական էջի մաս չի հանդիսանալու",
     "Why_do_I_need_to_provide_my_date_of_birth?":"Ինչու՞ պետք է նշեմ իմ ծննդյան ամսաթիվը",

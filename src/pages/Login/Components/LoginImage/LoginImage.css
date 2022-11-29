@@ -1,0 +1,42 @@
+.login_image_wrapper {
+  background-image: url("https://static.cdninstagram.com/rsrc.php/v3/y4/r/ItTndlZM2n2.png");
+  height: 581px;
+  width: 450px;
+  position: relative;
+  background-repeat: no-repeat;
+}
+
+@keyframes changeImg {
+  0% {
+    background-image: url(../../../../assets/images/phoneImgN1.png)
+  }
+  25% {
+      background-image: url(assets/images/phoneImgN2.png)
+  }
+  50% {
+      background-image: url(assets/images/phoneImgN3.png)
+  }
+  75% {
+      background-image: url(assets/images/phoneImgN5.png)
+  }
+  100% {
+      background-image: url(assets/images/phoneImgN1.png)
+  }
+  
+}
+
+.change_image{
+  width: 250px;
+  height: 541px;
+  position: absolute;
+  top: 26px;
+  left: 158px;
+  transition: background-image 1s ease-out;
+  animation: changeImg  20s cubic-bezier(0,0,0,2) 0s infinite forwards;
+}
+
+@media screen and (max-width:760px) {
+  .login_image_wrapper{
+    display: none;
+  }
+}

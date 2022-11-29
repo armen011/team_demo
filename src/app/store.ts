@@ -1,12 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
+import registrationReducer from "features/registration";
 import userReducer from "features/user";
-import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
-import registrationReducer from '../features/registration'
+import { TypedUseSelectorHook, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
 const store = configureStore({
   reducer: {
     user: userReducer,
-    registration:registrationReducer,
+    registration: registrationReducer,
   },
 });
 

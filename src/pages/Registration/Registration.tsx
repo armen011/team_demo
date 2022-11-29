@@ -3,7 +3,6 @@ import {useAppSelector} from "app";
 import MainForm from "./MainForm";
 import DateForm from "./DateForm";
 
-
 const Registration = () => {
     const isChecked = useAppSelector(s=>s.registration.isChecked);
     return (
