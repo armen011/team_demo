@@ -1,0 +1,24 @@
+.footer_div {
+  min-height: 134px;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  max-width: 800px;
+  flex-wrap: wrap;
+  align-content: center;
+  font-family: Segoe UI, serif;
+  color: RGB(142, 142, 142);
+  font-size: 12px;
+}
+
+.footer_bottom_div {
+  margin-top: 10px;
+}
+footer {
+  display: flex;
+  justify-content: center;
+}
+
+.footer_bottom_div > span {
+  cursor: pointer;
+}

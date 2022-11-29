@@ -1,0 +1,48 @@
+.registration_form_wrapper {
+  width: 268px;
+  min-height: fit-content;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-bottom: 15px;
+}
+.registration_form_wrapper > h4 {
+  color: red;
+  text-align: center;
+}
+.submit_button_disable{
+  width: 268px;
+  height: 30px;
+  margin-top: 15px;
+  cursor: pointer;
+  padding: 5px 9px 5px 9px;
+  background-color: #b2dffc; 
+  border-radius: 5px;
+  border: 1px;
+  font-weight: bold;
+  color: white;
+  margin-bottom: 20px;
+}
+.submit_button_enable{
+  width: 268px;
+  height: 30px;
+  margin-top: 15px;
+  cursor: pointer;
+  padding: 5px 9px 5px 9px;
+  background-color: #0095f6;
+  border-radius: 5px;
+  border: 1px;
+  font-weight: bold;
+  color: white;
+  margin-bottom: 20px;
+}
+
+.middle-body-text{
+  margin-top: 20px;
+  font-family: Segoe UI, serif;
+  color: RGB(142, 142, 142);
+  font-size: 12px;
+  text-align: center;
+  max-width: 258px;
+}
