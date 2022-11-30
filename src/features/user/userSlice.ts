@@ -19,7 +19,7 @@ const initialState: UserStateType = {
   password: "",
   dateOfBirth: "",
   profilPic: "",
-  isLogedIn: false,
+  isLogedIn: true,
   errorMessage: "",
 };
 
@@ -35,7 +35,7 @@ export const login = createAsyncThunk(
 
     try {
       return await fetch(
-        `${baseUrl}api/auth/login?login=${login}&password=${password}`,
+        `https://academoart.herokuapp.com/api/auth/login?login=${login}&password=${password}`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },

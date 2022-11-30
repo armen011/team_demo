@@ -2,28 +2,23 @@ import React, {FC} from 'react';
 import {useTranslation} from "react-i18next";
 
 type TProps = {
+    text:string
     pathRoute: string;
     isItRoutable:boolean;
     imgSrc: string;
     imgSrcBold: string
     isActive: boolean;
-    onClick: (route: string) => void;
+    onClick: (route: string, text: string) => void;
     id: number;
-    handleActiveClick: (id: number) => void
+    handleActiveClick: (id: number, text: string) => void
 }
 
 
-const CategoryMin: FC<TProps> = ({imgSrc, onClick, isActive, isItRoutable, pathRoute, id,handleActiveClick, imgSrcBold}) => {
-    const {t} = useTranslation()
+const CategoryMin: FC<TProps> = ({text,imgSrc, onClick, isActive, isItRoutable, pathRoute, id,handleActiveClick, imgSrcBold}) => {
     return (
         <div className={'min-single-category'} onClick={() => {
-            handleActiveClick(id)
-            // if (text === 'Messages'){
-            //     onClick(text)
-            // }else if(text === 'Profile') {
-            //     onClick(text)
-            // }
-            isItRoutable ? onClick(pathRoute):console.log('barev')
+            handleActiveClick(id, text)
+            isItRoutable && onClick(pathRoute, text)
         }}>
             <img src={!isActive ? imgSrc : imgSrcBold} className={'min-icon'} alt="Menu Bar icon"/>
         </div>

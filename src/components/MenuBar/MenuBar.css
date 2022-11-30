@@ -65,7 +65,7 @@ body{
 /*Min Bar Part*/
 
 .min-bar{
-    display: none;
+    display: block;
     width: 70px;
     height: 100vh;
     position: fixed;
@@ -127,7 +127,7 @@ body{
 .notification-part{
     width: 400px;
     height: 100vh;
-    animation: slideInNotify 2s 1;
+    animation: slideInNotify 1s ease-in forwards;
     margin-left: -370px;
     border-top-right-radius: 15px;
     border-bottom-right-radius: 15px;
@@ -189,9 +189,9 @@ body{
 /*-------------------------------------------------------------------------------------------------------------------*/
 
 .search-part{
-    display: none;
     width: 400px;
     height: 100vh;
+    animation: slideInSearch 1s ease-in forwards;
     margin-left: 70px;
     border-top-right-radius: 15px;
     border-bottom-right-radius: 15px;
@@ -299,6 +299,18 @@ body{
     font-weight: bold;
 }
 
+@media only screen and (max-width: 1200px) {
+    .app_bar {
+        display: none;
+    }
+
+    .min-bar{
+        display: block;
+    }
+}
+
+
+
 
 @keyframes slideInNotify {
     0% {
@@ -309,13 +321,33 @@ body{
         margin-left: 70px;
     }
 }
-
-@media only screen and (max-width: 1200px) {
-    .app_bar {
-        display: none;
+@keyframes slideInSearch {
+    0% {
+        margin-left: -350px;
     }
 
-    .min-bar{
-        display: block;
+    100% {
+        margin-left: 70px;
     }
 }
+
+@keyframes slideBackInSearch {
+    0% {
+        margin-left: 70px;
+    }
+
+    100% {
+        margin-left: 350px;
+    }
+}
+
+@keyframes slideBackInNotify {
+    0% {
+        margin-left: 70px;
+    }
+
+    100% {
+        margin-left: 350px;
+    }
+}
+

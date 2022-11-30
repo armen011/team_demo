@@ -17,20 +17,21 @@ import menuIconBold from "../../images/menuBold.png";
 import instagramIcon from "../../images/instagram.png"
 import {useTranslation} from "react-i18next";
 import Category from "../Category";
-import {useState} from "react";
+import {FC, useState} from "react";
 import CategoryMin from "../CategoryMin";
 import {useNavigate} from "react-router-dom";
+type Props = {
+    routeInfo: string
+}
 
-
-const MenuBar = () =>{
-
+const MenuBar:FC<Props>=({routeInfo}) => {
     const categoryParts = [
         {
             img: homeIcon,
             imgBold: homeIconBold,
             text: "Home",
             id: 1,
-            isActive: true,
+            isActive: false,
             path:'/',
             isRoutable:true
         },
@@ -80,16 +81,56 @@ const MenuBar = () =>{
             isRoutable:true
         },
     ]
+    switch (true){
+        case routeInfo === 'Home':{
+           categoryParts.forEach(elem=> {
+                if (elem.text === 'Home'){
+                    elem.isActive = true
+                }
+            })
+            break;
+        }
+        case routeInfo === 'Messages' || routeInfo === '' :{
+           categoryParts.forEach(elem=> {
+                if (elem.text === 'Messages'){
+                    elem.isActive = true
+                }
+            })
+            break;
+        }
+        case routeInfo === 'Profile':{
+            categoryParts.forEach(elem=> {
+                if (elem.text === 'Profile'){
+                    elem.isActive = true
+                }
+            })
+            break
+        }
+    }
 
+    const [not, setNot] = useState<boolean>(false)
+    const [search, setSearch] = useState<boolean>(false)
     const [category, setCategory] = useState(categoryParts)
     const [categoryMin] = useState(categoryParts)
     const [language, setLanguage] = useState(false)
-    const {i18n} = useTranslation();
     const navigate = useNavigate()
+    const {t, i18n} = useTranslation()
 
 
 
-    const handleActiveClick = (id: number) => {
+    const handleActiveClick = (id: number, text: string) => {
+
+        if (text === 'Notification'){
+            setNot(true);
+            setSearch(false)
+        }else if(text === 'Search'){
+            setSearch(true)
+            setNot(false);
+        }else {
+            setNot(false);
+            setSearch(false);
+        }
+
         setCategory(prevState => prevState.map(elem => {
             if (elem.id === id) {
                 if (!elem.isActive){
@@ -102,46 +143,29 @@ const MenuBar = () =>{
         }))
     }
 
-    const handleRouteClick = (route: string) => {
-        navigate(route)
+    const handleRouteClick = (route: string, text: string) => {
+        navigate(route, {state: {text}})
     }
 
     return(
         <>
-            <div className={'app_bar'}>
-                           <div className={'logo-part'}>
-                               <img src={logo} alt=""/>
-                           </div>
-                           <div className={'category-part'}>
-                               {category.map(elem=> <Category
-                                                        key={elem.id} imgSrcBold={elem.imgBold} pathRoute={elem.path}
-                                                        handleActiveClick={handleActiveClick} id={elem.id}
-                                                        text={elem.text} imgSrc={elem.img} isActive={elem.isActive}
-                                                        isItRoutable={elem.isRoutable} onClick={handleRouteClick}/>)}
-                           </div>
-                            <Category
-                                text={'More'} id={7} imgSrcBold={menuIconBold} pathRoute={'/'}
-                                handleActiveClick={() => {}} imgSrc={menuIcon}
-                                isItRoutable={false} isActive={false} onClick={() => {}}/>
-                            <div>
-                                <button onClick={() => {
-                                    setLanguage(!language)
-                                    return i18n.changeLanguage(language ? 'en' : 'hy')
-                                }}>{!language ? 'Change Language Test' : 'Փոխել լեզւն'}</button>
-                            </div>
-                       </div>
-
-
-
-
-            <div className={'min-bar'}>
+            {not || search ? <div className={'min-bar'}>
                 <div className={'min-logo-part'}>
                     <img src={instagramIcon} alt="Logo"/>
                 </div>
 
                 <div className={'min-category-part'}>
                     {categoryMin.map(elem=> {
+
+                        if (elem.text !== 'Notification'){
+                            return <CategoryMin
+                                text={elem.text}
+                                key={elem.id} id={elem.id} isItRoutable={elem.isRoutable}  pathRoute={elem.path}
+                                handleActiveClick={handleActiveClick} imgSrcBold={elem.imgBold}
+                                imgSrc={elem.img} isActive={elem.isActive} onClick={handleRouteClick}/>
+                        }
                         return <CategoryMin
+                            text={elem.text}
                             key={elem.id} id={elem.id} isItRoutable={elem.isRoutable}  pathRoute={elem.path}
                             handleActiveClick={handleActiveClick} imgSrcBold={elem.imgBold}
                             imgSrc={elem.img} isActive={elem.isActive} onClick={handleRouteClick}/>
@@ -149,50 +173,115 @@ const MenuBar = () =>{
                 </div>
                 <div className={'min-menu-part'}>
                     <CategoryMin
+                        text={'More'}
                         imgSrc={menuIcon} isItRoutable={false}  pathRoute='/'
                         imgSrcBold={messageIconBold} id={71}
                         handleActiveClick={() => {}} isActive={false} onClick={() => {}}/>
                 </div>
-            </div>
+            </div> :
 
+                <div className={'app_bar'}>
+                    <div className={'logo-part'}>
+                        <img src={logo} alt=""/>
+                    </div>
+                    <div className={'category-part'}>
+                        {category.map(elem=> {
+                            if (elem.text === 'Notification'){
+                                return <Category key={elem.id} text={elem.text} imgSrc={elem.img} imgSrcBold={elem.imgBold} isActive={elem.isActive}
+                                                 isItRoutable={elem.isRoutable} onClick={handleRouteClick} pathRoute={elem.path}
+                                                 id={elem.id} handleActiveClick={handleActiveClick}/>
+                            }
+                            if (elem.text === 'Search'){
+                                return <Category key={elem.id} text={elem.text} imgSrc={elem.img} imgSrcBold={elem.imgBold} isActive={elem.isActive}
+                                                 isItRoutable={elem.isRoutable} onClick={handleRouteClick} pathRoute={elem.path}
+                                                 id={elem.id} handleActiveClick={handleActiveClick}/>
+                            }
+                            return <Category
+                                key={elem.id} imgSrcBold={elem.imgBold} pathRoute={elem.path}
+                                handleActiveClick={handleActiveClick} id={elem.id}
+                                text={elem.text} imgSrc={elem.img} isActive={elem.isActive}
+                                isItRoutable={elem.isRoutable} onClick={handleRouteClick}/>
+                        })}
+                    </div>
+                    <button onClick={() => {
+                        setLanguage(!language)
+                        return i18n.changeLanguage(language ? 'en' : 'hy')
+                    }}>{!language ? 'Change Language Test' : 'Փոխել լեզւն'}</button>
+                    <Category
+                        text={'More'} id={7} imgSrcBold={menuIconBold} pathRoute={'/'}
+                        handleActiveClick={() => {}} imgSrc={menuIcon}
+                        isItRoutable={false} isActive={false} onClick={() => {}}/>
+                    <div>
+                    </div>
+                </div>
+            }
 
+                <div className={'min-bar'}>
+                    <div className={'min-logo-part'}>
+                        <img src={instagramIcon} alt="Logo"/>
+                    </div>
 
-
+                    <div className={'min-category-part'}>
+                        {categoryMin.map(elem=> {
+                            if (elem.text !== 'Notification'){
+                                return <CategoryMin
+                                    text={elem.text}
+                                    key={elem.id} id={elem.id} isItRoutable={elem.isRoutable}  pathRoute={elem.path}
+                                    handleActiveClick={handleActiveClick} imgSrcBold={elem.imgBold}
+                                    imgSrc={elem.img} isActive={elem.isActive} onClick={handleRouteClick}/>
+                            }
+                            return <CategoryMin
+                                text={elem.text}
+                                key={elem.id} id={elem.id} isItRoutable={elem.isRoutable}  pathRoute={elem.path}
+                                handleActiveClick={handleActiveClick} imgSrcBold={elem.imgBold}
+                                imgSrc={elem.img} isActive={elem.isActive} onClick={handleRouteClick}/>
+                        })}
+                    </div>
+                    <div className={'min-menu-part'}>
+                        <button onClick={() => {
+                            setLanguage(!language)
+                            return i18n.changeLanguage(language ? 'en' : 'hy')
+                        }}>{!language ? 'Change Language Test' : 'Փոխել լեզւն'}</button>
+                        <CategoryMin
+                            text={'More'}
+                            imgSrc={menuIcon} isItRoutable={false}  pathRoute='/'
+                            imgSrcBold={messageIconBold} id={71}
+                            handleActiveClick={() => {}} isActive={false} onClick={() => {}}/>
+                    </div>
+                </div>
 
 
             {/*notification part-----------------------------------------------------------------------------------------*/}
 
-            <div className={'notification-part'}>
-                  <div className={'notification-section'}>
-                      Notifications
-                  </div>
+            {not ?  <div className={'notification-part'}>
+                <div className={'notification-section'}>
+                    {t('Notifications')}
+                </div>
                 <div className={'section-of-notifications'}>
-                  <div className={'single-notification'}>
-                      <img src={userIcon} alt="User"/>
-                      <span style={{fontWeight:'bold'}}>UserName</span>
-                      <span>started following you</span>
-                      <button className={'notify-button-following'}>Following</button>
-                  </div>
                     <div className={'single-notification'}>
                         <img src={userIcon} alt="User"/>
-                        <span style={{fontWeight:'bold'}}>UserName</span>
-                        <span>started following you</span>
-                        <button className={'notify-button-following'}>Following</button>
+                        <span style={{fontWeight:'bold'}}>{t('UserName')}</span>
+                        <span>{t("started following you")}</span>
+                        <button className={'notify-button-following'}>{t('Following')}</button>
                     </div>
                     <div className={'single-notification'}>
                         <img src={userIcon} alt="User"/>
-                        <span style={{fontWeight:'bold'}}>UserName</span>
-                        <span>liked your post</span>
-                        <button className={'notify-button-toFollow'}>Follow</button>
-
+                        <span style={{fontWeight:'bold'}}>{t('UserName')}</span>
+                        <span>{t("started following you")}</span>
+                        <button className={'notify-button-following'}>{t('Following')}</button>
+                    </div>
+                    <div className={'single-notification'}>
+                        <img src={userIcon} alt="User"/>
+                        <span style={{fontWeight:'bold'}}>{t('UserName')}</span>
+                        <span>{t("liked your post")}</span>
+                        <button className={'notify-button-toFollow'}>{t("Follow")}</button>
                     </div>
                 </div>
-            </div>
+            </div> : <></>}
 
-            {/*----------------------------------------------------------------------------------------------------*/}
+            {/*/!*----------------------------------------------------------------------------------------------------*!/*/}
 
-
-
+            {search ?
             <div className={'search-part'}>
                 <div className={'search-upper-part'}>
                     <div className={'search-section'}>Search</div>
@@ -247,10 +336,8 @@ const MenuBar = () =>{
                             </div>
                         </div>
                     </div>
-
-
                 </div>
-            </div>
+            </div> : <></>}
         </>
     )
 }
