@@ -162,32 +162,32 @@ const MenuBar = () =>{
 
             {/*notification part-----------------------------------------------------------------------------------------*/}
 
-            <div className={'notification-part'}>
-                  <div className={'notification-section'}>
-                      Notifications
-                  </div>
-                <div className={'section-of-notifications'}>
-                  <div className={'single-notification'}>
-                      <img src={userIcon} alt="User"/>
-                      <span style={{fontWeight:'bold'}}>UserName</span>
-                      <span>started following you</span>
-                      <button className={'notify-button-following'}>Following</button>
-                  </div>
-                    <div className={'single-notification'}>
-                        <img src={userIcon} alt="User"/>
-                        <span style={{fontWeight:'bold'}}>UserName</span>
-                        <span>started following you</span>
-                        <button className={'notify-button-following'}>Following</button>
-                    </div>
-                    <div className={'single-notification'}>
-                        <img src={userIcon} alt="User"/>
-                        <span style={{fontWeight:'bold'}}>UserName</span>
-                        <span>liked your post</span>
-                        <button className={'notify-button-toFollow'}>Follow</button>
+            {/*<div className={'notification-part'}>*/}
+            {/*      <div className={'notification-section'}>*/}
+            {/*          Notifications*/}
+            {/*      </div>*/}
+            {/*    <div className={'section-of-notifications'}>*/}
+            {/*      <div className={'single-notification'}>*/}
+            {/*          <img src={userIcon} alt="User"/>*/}
+            {/*          <span style={{fontWeight:'bold'}}>UserName</span>*/}
+            {/*          <span>started following you</span>*/}
+            {/*          <button className={'notify-button-following'}>Following</button>*/}
+            {/*      </div>*/}
+            {/*        <div className={'single-notification'}>*/}
+            {/*            <img src={userIcon} alt="User"/>*/}
+            {/*            <span style={{fontWeight:'bold'}}>UserName</span>*/}
+            {/*            <span>started following you</span>*/}
+            {/*            <button className={'notify-button-following'}>Following</button>*/}
+            {/*        </div>*/}
+            {/*        <div className={'single-notification'}>*/}
+            {/*            <img src={userIcon} alt="User"/>*/}
+            {/*            <span style={{fontWeight:'bold'}}>UserName</span>*/}
+            {/*            <span>liked your post</span>*/}
+            {/*            <button className={'notify-button-toFollow'}>Follow</button>*/}
 
-                    </div>
-                </div>
-            </div>
+            {/*        </div>*/}
+            {/*    </div>*/}
+            {/*</div>*/}
 
             {/*----------------------------------------------------------------------------------------------------*/}
 

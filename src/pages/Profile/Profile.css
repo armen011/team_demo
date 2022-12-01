@@ -1,0 +1,135 @@
+.my_profile{
+    width: 940px;
+    height: 100vh;
+    border: 1px  solid black;
+    position: absolute;
+    right: 11vw;
+}
+
+.upper_part{
+    width: 100%;
+    height: 30vh;
+    display: flex;
+}
+
+.my_profile_image{
+    width: 35%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+ }
+
+.my_profile_image img{
+    height: 150px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.my_profile_about{
+    width: 65%;
+    height: 100%;
+    padding-top: 3%;
+}
+
+.my_profile_about > div{
+    width: 100%;
+    height: 30%;
+    display: flex;
+    align-items: center;
+}
+
+.my_profile_name_text{
+    font-size: 30px;
+    font-weight: 100;
+    margin-right: 20px;
+}
+
+.my_profile_name_text span{
+    cursor: text;
+}
+
+.my_profile_edit_part{
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.my_profile_edit_button{
+    width:90px;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    background: white;
+    border: 1px solid rgb(202, 202, 202);
+    border-radius: 4px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.my_profile_setting_part{
+    height:100%;
+    display: flex;
+    align-items: center;
+    margin-left: 15px;
+}
+
+.my_profile_setting_part img{
+    width: 30px;
+}
+
+.my_profile_counts_part div{
+    margin-right: 25px;
+}
+
+.my_profile_counts_part span{
+    font-weight: bold;
+}
+
+.followers_count{
+    cursor: pointer;
+}
+
+.following_count{
+    cursor: pointer;
+}
+
+/* highlight part*/
+
+.my_profile_highlight_part{
+    width: 100%;
+    height: 180px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    border-bottom: 1px solid black;
+    display: inline-flex;
+}
+
+.my_profile_single_highlight{
+    width: 100px;
+    height: 150px;
+    margin: 0 0 0 55px;
+    cursor: pointer;
+    float: left;
+}
+
+.my_profile_highlight_frame{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 1px solid rgb(202,202,202);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.story_image{
+    width: 95%;
+    border-radius: 50%;
+}
+
+.my_profile_highlight_text {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}

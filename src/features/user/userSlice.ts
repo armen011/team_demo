@@ -19,7 +19,7 @@ const initialState: UserStateType = {
   password: "",
   dateOfBirth: "",
   profilPic: "",
-  isLogedIn: false,
+  isLogedIn: true,
   errorMessage: "",
 };
 
@@ -60,7 +60,6 @@ export const userSlice = createSlice({
         : { ...initialState, errorMessage: payload };
     });
     builder.addCase(login.rejected, (state, action) => {
-      // console.log("action.payload", action.payload);
     });
   },
 });
