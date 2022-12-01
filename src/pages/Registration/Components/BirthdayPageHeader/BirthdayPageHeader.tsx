@@ -7,7 +7,7 @@ function BirthdayPageHeader() {
     <div className="header_container">
       <div className="birthday_logo"></div>
       <div className="header_birthday_text" >{t('Add your date of birth')}</div>
-      <div className="header_birthday_info">{t('Add your date of birth')}</div>
+      <div className="header_birthday_info">{t("This won't be a part of your public profile.")}</div>
     </div>
   );
 }

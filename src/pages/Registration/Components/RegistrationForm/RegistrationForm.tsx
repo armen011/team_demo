@@ -56,10 +56,20 @@ const validate = (data: typeof initialState): boolean => {
 const RegistrationForm = () => {
 
     const state = useAppSelector(s=>s.registration);
+    
+        
+    
 
     const dispatch = useAppDispatch();
     const {t} = useTranslation();
-    const [formData, setFormData] = useState({...initialState, isValid: false});
+
+    const [formData, setFormData] = useState({...{
+        email: state.email,
+        fullName: state.fullName,
+        userName: state.username,
+        password: "",
+    }, isValid: false});
+
     const [togglePassword, setToggle] = useState(true);
 
 
@@ -84,7 +94,7 @@ const RegistrationForm = () => {
             password:formData.password
         }));
     }
-
+    
 
     return (
         <div className="registration_form_wrapper">

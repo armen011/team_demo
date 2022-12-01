@@ -11,7 +11,7 @@ select{
 .select_container{
     display: flex;
     justify-content: center;
-    gap: 15px;
+    gap: 9px;
     margin-top: 8px;
     margin-bottom: 8px;
 }

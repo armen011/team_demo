@@ -6,7 +6,8 @@
 
 .auth_content_wrapper {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  min-width: fit-content;
+  flex-direction: column;
+justify-content: center;  
+align-items: center;
 }
+
