@@ -20,6 +20,10 @@ import Category from "../Category";
 import {FC, useState} from "react";
 import CategoryMin from "../CategoryMin";
 import {useNavigate} from "react-router-dom";
+import SearchSideBar from "../SearchSideBar";
+import NotificationSideBar from "../NotificationSideBar";
+import MinBar from "../MinBar";
+import AppBar from "../AppBar";
 type Props = {
     routeInfo: string
 }
@@ -108,11 +112,10 @@ const MenuBar:FC<Props>=({routeInfo}) => {
         }
     }
 
+    // const [create, setCreate] = useState<boolean>(false)
     const [not, setNot] = useState<boolean>(false)
     const [search, setSearch] = useState<boolean>(false)
     const [category, setCategory] = useState(categoryParts)
-    const [categoryMin] = useState(categoryParts)
-    const [language, setLanguage] = useState(false)
     const navigate = useNavigate()
     const {t, i18n} = useTranslation()
 
@@ -130,6 +133,8 @@ const MenuBar:FC<Props>=({routeInfo}) => {
             setNot(false);
             setSearch(false);
         }
+
+
 
         setCategory(prevState => prevState.map(elem => {
             if (elem.id === id) {
@@ -149,195 +154,21 @@ const MenuBar:FC<Props>=({routeInfo}) => {
 
     return(
         <>
-            {not || search ? <div className={'min-bar'}>
-                <div className={'min-logo-part'}>
-                    <img src={instagramIcon} alt="Logo"/>
-                </div>
-
-                <div className={'min-category-part'}>
-                    {categoryMin.map(elem=> {
-
-                        if (elem.text !== 'Notification'){
-                            return <CategoryMin
-                                text={elem.text}
-                                key={elem.id} id={elem.id} isItRoutable={elem.isRoutable}  pathRoute={elem.path}
-                                handleActiveClick={handleActiveClick} imgSrcBold={elem.imgBold}
-                                imgSrc={elem.img} isActive={elem.isActive} onClick={handleRouteClick}/>
-                        }
-                        return <CategoryMin
-                            text={elem.text}
-                            key={elem.id} id={elem.id} isItRoutable={elem.isRoutable}  pathRoute={elem.path}
-                            handleActiveClick={handleActiveClick} imgSrcBold={elem.imgBold}
-                            imgSrc={elem.img} isActive={elem.isActive} onClick={handleRouteClick}/>
-                    })}
-                </div>
-                <div className={'min-menu-part'}>
-                    <CategoryMin
-                        text={'More'}
-                        imgSrc={menuIcon} isItRoutable={false}  pathRoute='/'
-                        imgSrcBold={messageIconBold} id={71}
-                        handleActiveClick={() => {}} isActive={false} onClick={() => {}}/>
-                </div>
-            </div> :
-
-                <div className={'app_bar'}>
-                    <div className={'logo-part'}>
-                        <img src={logo} alt=""/>
-                    </div>
-                    <div className={'category-part'}>
-                        {category.map(elem=> {
-                            if (elem.text === 'Notification'){
-                                return <Category key={elem.id} text={elem.text} imgSrc={elem.img} imgSrcBold={elem.imgBold} isActive={elem.isActive}
-                                                 isItRoutable={elem.isRoutable} onClick={handleRouteClick} pathRoute={elem.path}
-                                                 id={elem.id} handleActiveClick={handleActiveClick}/>
-                            }
-                            if (elem.text === 'Search'){
-                                return <Category key={elem.id} text={elem.text} imgSrc={elem.img} imgSrcBold={elem.imgBold} isActive={elem.isActive}
-                                                 isItRoutable={elem.isRoutable} onClick={handleRouteClick} pathRoute={elem.path}
-                                                 id={elem.id} handleActiveClick={handleActiveClick}/>
-                            }
-                            return <Category
-                                key={elem.id} imgSrcBold={elem.imgBold} pathRoute={elem.path}
-                                handleActiveClick={handleActiveClick} id={elem.id}
-                                text={elem.text} imgSrc={elem.img} isActive={elem.isActive}
-                                isItRoutable={elem.isRoutable} onClick={handleRouteClick}/>
-                        })}
-                    </div>
-                    <button onClick={() => {
-                        setLanguage(!language)
-                        return i18n.changeLanguage(language ? 'en' : 'hy')
-                    }}>{!language ? 'Change Language Test' : 'Փոխել լեզւն'}</button>
-                    <Category
-                        text={'More'} id={7} imgSrcBold={menuIconBold} pathRoute={'/'}
-                        handleActiveClick={() => {}} imgSrc={menuIcon}
-                        isItRoutable={false} isActive={false} onClick={() => {}}/>
-                    <div>
-                    </div>
-                </div>
+            {not || search ?
+                <MinBar handleActiveClick={handleActiveClick} handleRouteClick={handleRouteClick} category={category}/>
+                :
+                <AppBar handleActiveClick={handleActiveClick} handleRouteClick={handleRouteClick} category={category}/>
             }
 
-                <div className={'min-bar'}>
-                    <div className={'min-logo-part'}>
-                        <img src={instagramIcon} alt="Logo"/>
-                    </div>
 
-                    <div className={'min-category-part'}>
-                        {categoryMin.map(elem=> {
-                            if (elem.text !== 'Notification'){
-                                return <CategoryMin
-                                    text={elem.text}
-                                    key={elem.id} id={elem.id} isItRoutable={elem.isRoutable}  pathRoute={elem.path}
-                                    handleActiveClick={handleActiveClick} imgSrcBold={elem.imgBold}
-                                    imgSrc={elem.img} isActive={elem.isActive} onClick={handleRouteClick}/>
-                            }
-                            return <CategoryMin
-                                text={elem.text}
-                                key={elem.id} id={elem.id} isItRoutable={elem.isRoutable}  pathRoute={elem.path}
-                                handleActiveClick={handleActiveClick} imgSrcBold={elem.imgBold}
-                                imgSrc={elem.img} isActive={elem.isActive} onClick={handleRouteClick}/>
-                        })}
-                    </div>
-                    <div className={'min-menu-part'}>
-                        <button onClick={() => {
-                            setLanguage(!language)
-                            return i18n.changeLanguage(language ? 'en' : 'hy')
-                        }}>{!language ? 'Change Language Test' : 'Փոխել լեզւն'}</button>
-                        <CategoryMin
-                            text={'More'}
-                            imgSrc={menuIcon} isItRoutable={false}  pathRoute='/'
-                            imgSrcBold={messageIconBold} id={71}
-                            handleActiveClick={() => {}} isActive={false} onClick={() => {}}/>
-                    </div>
-                </div>
+            <MinBar handleActiveClick={handleActiveClick} handleRouteClick={handleRouteClick} category={category}/>
 
-
-            {/*notification part-----------------------------------------------------------------------------------------*/}
-
-            {not ?  <div className={'notification-part'}>
-                <div className={'notification-section'}>
-                    {t('Notifications')}
-                </div>
-                <div className={'section-of-notifications'}>
-                    <div className={'single-notification'}>
-                        <img src={userIcon} alt="User"/>
-                        <span style={{fontWeight:'bold'}}>{t('UserName')}</span>
-                        <span>{t("started following you")}</span>
-                        <button className={'notify-button-following'}>{t('Following')}</button>
-                    </div>
-                    <div className={'single-notification'}>
-                        <img src={userIcon} alt="User"/>
-                        <span style={{fontWeight:'bold'}}>{t('UserName')}</span>
-                        <span>{t("started following you")}</span>
-                        <button className={'notify-button-following'}>{t('Following')}</button>
-                    </div>
-                    <div className={'single-notification'}>
-                        <img src={userIcon} alt="User"/>
-                        <span style={{fontWeight:'bold'}}>{t('UserName')}</span>
-                        <span>{t("liked your post")}</span>
-                        <button className={'notify-button-toFollow'}>{t("Follow")}</button>
-                    </div>
-                </div>
-            </div> : <></>}
-
-            {/*/!*----------------------------------------------------------------------------------------------------*!/*/}
+            {not ?  <NotificationSideBar/>
+                : <></>}
 
             {search ?
-            <div className={'search-part'}>
-                <div className={'search-upper-part'}>
-                    <div className={'search-section'}>Search</div>
-                    <div className={'search-input-part'}>
-                        <input type="text" placeholder={'Search'}/>
-                    </div>
-                </div>
-
-                <div className={'search-main-part'}>
-                    <div className={'search-instruction-part'}>
-                        <span style={{fontSize:'14px'}}>Recent</span>
-                        <span className={'clear-searches-button'}>Clear all</span>
-                    </div>
-
-                    <div className={'search-singleUser-part'}>
-                        <div className={'single-search-user'}>
-                            <div className={'single-search-icon-part'}>
-                                <img src={userIcon} alt="userIcon"/>
-                            </div>
-                            <div className={'single-search-text-part'}>
-                                <div>username</div>
-                                <div>bio about username</div>
-                            </div>
-                            <div className={'single-search-delete-part'}>
-                                <span>&#10005;</span>
-                            </div>
-                        </div>
-
-                        <div className={'single-search-user'}>
-                            <div className={'single-search-icon-part'}>
-                                <img src={userIcon} alt="userIcon"/>
-                            </div>
-                            <div className={'single-search-text-part'}>
-                                <div>username</div>
-                                <div>bio about username</div>
-                            </div>
-                            <div className={'single-search-delete-part'}>
-                                <span>&#10005;</span>
-                            </div>
-                        </div>
-
-                        <div className={'single-search-user'}>
-                            <div className={'single-search-icon-part'}>
-                                <img src={userIcon} alt="userIcon"/>
-                            </div>
-                            <div className={'single-search-text-part'}>
-                                <div>username</div>
-                                <div>bio about username</div>
-                            </div>
-                            <div className={'single-search-delete-part'}>
-                                <span>&#10005;</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div> : <></>}
+                <SearchSideBar/>
+                : <></>}
         </>
     )
 }

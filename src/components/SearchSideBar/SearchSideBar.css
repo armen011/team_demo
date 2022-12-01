@@ -1,0 +1,115 @@
+.search-part{
+    width: 400px;
+    height: 100vh;
+    animation: slideInSearch .5s ease-in forwards;
+    margin-left: 70px;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    border-right: 1px solid rgb(202, 202, 202);
+    box-shadow: 0 0 4px black;
+}
+
+.search-upper-part{
+    border-bottom: 1px solid rgb(202, 202, 202);
+}
+
+.search-section{
+    height: 11vh;
+    display: flex;
+    align-items: center;
+    font-size: 23px;
+    padding-left: 20px;
+}
+
+.search-input-part{
+    height: 10vh;
+    display: flex;
+    justify-content: center;
+}
+
+
+.search-input-part input{
+    width: 88%;
+    height: 4.8vh;
+    margin-top: 1vh;
+    border: 1px solid rgb(202, 202, 202);
+    border-radius: 7px;
+    padding-left: 15px;
+    font-size: 17px;
+    background: rgba(125,125,125,0.1);
+}
+
+.search-input-part input:focus{
+    border: 1px solid rgb(202, 202, 202);
+}
+
+.search-main-part{
+    height: 76vh;
+    border-bottom-right-radius: 15px;
+}
+
+
+.search-instruction-part{
+    height: 6vh;
+    padding: 1vh 20px;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.clear-searches-button{
+    position: absolute;
+    right: 20px;
+    color: #0095f6;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+
+.search-singleUser-part{
+    height: 60vh;
+    border-bottom-right-radius: 15px;
+    overflow-y: auto;
+}
+
+.single-search-user{
+    height: 8vh;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+
+.single-search-user:hover{
+    background:rgba(202, 202, 202,0.15);
+}
+
+.single-search-icon-part{
+    width: 20%;
+    display: flex;
+    justify-content: end;
+}
+
+
+.single-search-icon-part img{
+    height: 43px;
+}
+
+.single-search-text-part{
+    width: 60%;
+    padding: 0 15px 0 10px;
+}
+
+.single-search-text-part div:first-child{
+    font-weight: bold;
+}
+
+.single-search-text-part div:last-child{
+    color: rgb(121, 121, 121);
+}
+
+.single-search-delete-part span {
+    cursor: pointer;
+    color: rgb(121, 121, 121);
+    font-weight: bold;
+}

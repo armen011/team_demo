@@ -1,315 +1,21 @@
-body{
+body {
     margin: 0;
     padding: 0;
     font-family: "arial", serif;
 }
 
 
-.app_bar{
-    width: 270px;
-    height: 100vh;
-    border-right: 1px solid rgb(202, 202, 202);
-   box-shadow: 0 0 4px black;
-    padding: 10px 20px;
-    position: fixed;
-    font-family: "arial", serif;
-    font-weight: 600;
-    font-size: 15px;
-    background-color: white;
-    z-index: 5;
-}
 
-.logo-part{
-    height: 10vh;
-    line-height: 11vh;
-}
-
-.logo-part img{
-    width: 50%;
-}
-
-.category-part{
-    height: 77vh;
-    width: 100%;
-}
-
-.single-category{
-    width: 100%;
-    height: 6.5vh;
-    line-height: 6.5vh;
-    margin: 1.5vh 0;
-    display: flex;
-    border-radius: 30px;
-    cursor: pointer;
-    background-color: white;
-}
-
-.single-category:hover{
-    background-color: rgba(230, 230, 230,0.3);
-}
-
-.single-category:hover .category-image{
-    transform: scale(1.3);
-}
-
-.category-icon{
-    padding-top: 5px;
-}
-
-.category-image{
-    width: 20px;
-    transition: all .3s ease-in-out;
-    margin: 0 15px 0 20px;
-}
-
-/*Min Bar Part*/
-
-.min-bar{
-    display: block;
-    width: 70px;
-    height: 100vh;
-    position: fixed;
-    background: white;
-    z-index: 3;
-    border-right: 1px solid rgb(202, 202, 202);
-    box-shadow: 0 0 4px black;
-}
-
-.min-logo-part{
-    width: 100%;
-    height: 5vh;
-    cursor: pointer;
-}
-
-.min-logo-part img{
-    width: 28px;
-    display: block;
-    margin:5vh auto 0;
-}
-
-.min-category-part{
-    height: 70vh;
-    width: 100%;
-    padding-top: 3vh;
-}
-
-.min-single-category{
-    width: 60%;
-    height: 4.5vh;
-    display: flex;
-    justify-content: center;
-    margin: 2.5vh auto;
-    border-radius: 50%;
-    cursor: pointer;
-}
-
-.min-single-category img{
-    height: 23px;
-    display: block;
-    margin-top: 0.9vh;
-    transition: all .3s ease-in-out
-}
-
-.min-single-category:hover{
-    background-color: rgba(230, 230, 230,0.4);
-}
-
-.min-single-category:hover .min-icon{
-    transform: scale(1.1);
-}
-
-.min-menu-part{
-    margin-top: 8vh;
-}
-
-/*nottification part-----------------------------------------------------------------------------------------*/
-
-.notification-part{
-    width: 400px;
-    height: 100vh;
-    animation: slideInNotify 1s ease-in forwards;
-    margin-left: -370px;
-    border-top-right-radius: 15px;
-    border-bottom-right-radius: 15px;
-    border-right: 1px solid rgb(202, 202, 202);
-    box-shadow: 0 0 4px black;
-}
-
-.notification-section{
-    height: 12vh;
-    line-height: 10vh;
-    padding-left: 25px;
-    font-size: 25px;
-    border-bottom: 2px solid rgb(202, 202, 202);
-}
-
-.section-of-notifications{
-    height: 88vh;
-    overflow: auto;
-}
-
-.single-notification{
-    height: 7vh;
-    display: flex;
-    position: relative;
-    align-items: center;
-    gap: 10px;
-    margin: 1vh 0;
-    border-bottom: 2px solid rgb(202, 202, 202);
-    padding: 10px;
-}
-
-.section-of-notifications span{
-    max-width: 120px;
-}
-
-.section-of-notifications img{
-    height: 43px;
-}
-
-.single-notification button{
-    width: 100px;
-    height: 4.5vh;
-    border: 1px solid rgb(202, 202, 202);
-    border-radius: 3px;
-    font-weight: bold;
-    position: absolute;
-    right: 10px;
-}
-
-.notify-button-following{
-    background: white;
-}
-
-.notify-button-toFollow{
-    background: #4b54ff;
-    color: white;
-}
-
-/*-------------------------------------------------------------------------------------------------------------------*/
-
-.search-part{
-    width: 400px;
-    height: 100vh;
-    animation: slideInSearch 1s ease-in forwards;
-    margin-left: 70px;
-    border-top-right-radius: 15px;
-    border-bottom-right-radius: 15px;
-    border-right: 1px solid rgb(202, 202, 202);
-    box-shadow: 0 0 4px black;
-}
-
-.search-upper-part{
-    border-bottom: 1px solid rgb(202, 202, 202);
-}
-
-.search-section{
-    height: 11vh;
-    display: flex;
-    align-items: center;
-    font-size: 23px;
-    padding-left: 20px;
-}
-
-.search-input-part{
-    height: 10vh;
-    display: flex;
-    justify-content: center;
-}
-
-.search-input-part input{
-    width: 88%;
-    height: 4.8vh;
-    margin-top: 1vh;
-    border: 1px solid rgb(202, 202, 202);
-    border-radius: 7px;
-    padding-left: 15px;
-    font-size: 17px;
-    background: rgba(125,125,125,0.1);
-}
-
-.search-input-part input:focus{
-    border: 1px solid rgb(202, 202, 202);
-}
-
-.search-main-part{
-    height: 76vh;
-    border-bottom-right-radius: 15px;
-}
-
-.search-instruction-part{
-    height: 6vh;
-    padding: 1vh 20px;
-    display: flex;
-    align-items: center;
-    position: relative;
-}
-
-.clear-searches-button{
-    position: absolute;
-    right: 20px;
-    color: #0095f6;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.search-singleUser-part{
-    height: 60vh;
-    border-bottom-right-radius: 15px;
-    overflow-y: auto;
-}
-
-.single-search-user{
-    height: 8vh;
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-}
-
-.single-search-user:hover{
-    background:rgba(202, 202, 202,0.15);
-}
-
-.single-search-icon-part{
-    width: 20%;
-    display: flex;
-    justify-content: end;
-}
-
-.single-search-icon-part img{
-    height: 43px;
-}
-
-.single-search-text-part{
-    width: 60%;
-    padding: 0 15px 0 10px;
-}
-
-.single-search-text-part div:first-child{
-    font-weight: bold;
-}
-
-.single-search-text-part div:last-child{
-    color: rgb(121, 121, 121);
-}
-
-.single-search-delete-part span {
-    cursor: pointer;
-    color: rgb(121, 121, 121);
-    font-weight: bold;
-}
 
 @media only screen and (max-width: 1200px) {
     .app_bar {
         display: none;
     }
 
-    .min-bar{
+    .min-bar {
         display: block;
     }
 }
-
-
 
 
 @keyframes slideInNotify {
@@ -321,6 +27,7 @@ body{
         margin-left: 70px;
     }
 }
+
 @keyframes slideInSearch {
     0% {
         margin-left: -350px;
@@ -331,23 +38,4 @@ body{
     }
 }
 
-@keyframes slideBackInSearch {
-    0% {
-        margin-left: 70px;
-    }
-
-    100% {
-        margin-left: 350px;
-    }
-}
-
-@keyframes slideBackInNotify {
-    0% {
-        margin-left: 70px;
-    }
-
-    100% {
-        margin-left: 350px;
-    }
-}
 

@@ -1,0 +1,61 @@
+.notification-part{
+    width: 400px;
+    height: 100vh;
+    animation: slideInNotify .5s ease-in forwards;
+    margin-left: -370px;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    border-right: 1px solid rgb(202, 202, 202);
+    box-shadow: 0 0 4px black;
+}
+
+.notification-section{
+    height: 12vh;
+    line-height: 10vh;
+    padding-left: 25px;
+    font-size: 25px;
+    border-bottom: 2px solid rgb(202, 202, 202);
+}
+
+.section-of-notifications{
+    height: 88vh;
+    overflow: auto;
+}
+
+.single-notification{
+    height: 7vh;
+    display: flex;
+    position: relative;
+    align-items: center;
+    gap: 10px;
+    margin: 1vh 0;
+    border-bottom: 2px solid rgb(202, 202, 202);
+    padding: 10px;
+}
+
+.section-of-notifications span{
+    max-width: 120px;
+}
+
+.section-of-notifications img{
+    height: 43px;
+}
+
+.single-notification button{
+    width: 100px;
+    height: 4.5vh;
+    border: 1px solid rgb(202, 202, 202);
+    border-radius: 3px;
+    font-weight: bold;
+    position: absolute;
+    right: 10px;
+}
+
+.notify-button-following{
+    background: white;
+}
+
+.notify-button-toFollow{
+    background: #4b54ff;
+    color: white;
+}
