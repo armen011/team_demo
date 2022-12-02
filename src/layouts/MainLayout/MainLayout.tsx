@@ -1,15 +1,21 @@
-import { FC, ReactElement } from "react"
+import {FC, ReactElement} from "react"
 import MenuBar from 'components/MenuBar'
+import "./MainLayout.css";
 
-export type MainLayoutProps={
-    children:ReactElement
+
+export type MainLayoutProps = {
+    children: ReactElement;
+    routeInfo: string
 }
 
-const MainLayout:FC<MainLayoutProps>=({children})=>{
-    return <div>
-                <MenuBar/>
-                <div>{children}</div>
-            </div>
+const MainLayout: FC<MainLayoutProps> = ({children, routeInfo}) => {
+    return <>
+        <MenuBar routeInfo={routeInfo}/>
+        <div className="right_side">
+            {children}
+        </div>
+    </>
+
 }
 
 export default MainLayout
