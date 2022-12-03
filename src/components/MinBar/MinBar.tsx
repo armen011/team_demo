@@ -1,8 +1,8 @@
 import React, {FC, useState} from 'react';
-import instagramIcon from "../../images/instagram.png";
+import instagramIcon from "../../assets/images/instagram.png";
 import CategoryMin from "../CategoryMin";
-import menuIcon from "../../images/menu.png";
-import messageIconBold from "../../images/messengerBold.png";
+import menuIcon from "../../assets/images/menu.png";
+import messageIconBold from "../../assets/images/messengerBold.png";
 import './MinBar.css'
 import {useTranslation} from "react-i18next";
 

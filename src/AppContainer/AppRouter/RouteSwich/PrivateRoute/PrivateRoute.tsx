@@ -7,9 +7,9 @@ import { Navigate } from "react-router-dom"
 export type PrivateRouteProps={children:ReactElement}
 
 const PrivateRoute:FC<PrivateRouteProps>=({children})=>{
-    const isLogedIn=useSelector((state:RootState)=>state.user.isLogedIn)
+    const isLoggedIn=useSelector((state:RootState)=>state.user.isLoggedIn)
 
-    if(!isLogedIn){
+    if(!isLoggedIn){
         return <Navigate to={RoutesEnum.LOGIN}/>
     }
 

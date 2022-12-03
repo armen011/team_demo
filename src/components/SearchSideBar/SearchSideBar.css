@@ -67,7 +67,7 @@
 
 
 .search-singleUser-part{
-    height: 60vh;
+    height: 73vh;
     border-bottom-right-radius: 15px;
     overflow-y: auto;
 }
@@ -90,11 +90,6 @@
     justify-content: end;
 }
 
-
-.single-search-icon-part img{
-    height: 43px;
-}
-
 .single-search-text-part{
     width: 60%;
     padding: 0 15px 0 10px;
@@ -112,4 +107,28 @@
     cursor: pointer;
     color: rgb(121, 121, 121);
     font-weight: bold;
+}
+.clear_search{
+    width: 10px;
+    position: absolute;
+    left: 425px;
+    top: 113px;
+    cursor: pointer;
+}
+
+.user_image_wrapper{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 2px solid rgb(213, 37, 59);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.user_image{
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    padding: 2px;
 }

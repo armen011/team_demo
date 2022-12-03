@@ -6,7 +6,7 @@ const Messages = () => {
     const {state: {text}} = useLocation()
 
     return (<MainLayout routeInfo={text}>
-        <div>Message component</div>
+        <div></div>
     </MainLayout>
   )
 }

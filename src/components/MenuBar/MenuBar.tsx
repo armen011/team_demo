@@ -1,34 +1,28 @@
 import './MenuBar.css'
-import logo from "../../images/logo.png"
-import homeIcon from "../../images/home.png"
-import homeIconBold from "../../images/homeBold.png"
-import searchIcon from "../../images/search.png";
-import searchIconBold from "../../images/searchBold.png";
-import messageIcon from "../../images/messenger.png";
-import messageIconBold from "../../images/messengerBold.png";
-import notificationIcon from "../../images/heart.png";
-import notificationIconBold from "../../images/heartBold.png";
-import createIcon from "../../images/create.png";
-import createIconBold from "../../images/createBold.png";
-import userIcon from "../../images/user.png";
-import userIconBold from "../../images/userBold.png";
-import menuIcon from "../../images/menu.png";
-import menuIconBold from "../../images/menuBold.png";
-import instagramIcon from "../../images/instagram.png"
-import {useTranslation} from "react-i18next";
-import Category from "../Category";
+import homeIcon from "../../assets/images/home.png"
+import homeIconBold from "../../assets/images/homeBold.png"
+import searchIcon from "../../assets/images/search.png";
+import searchIconBold from "../../assets/images/searchBold.png";
+import messageIcon from "../../assets/images/messenger.png";
+import messageIconBold from "../../assets/images/messengerBold.png";
+import notificationIcon from "../../assets/images/heart.png";
+import notificationIconBold from "../../assets/images/heartBold.png";
+import createIcon from "../../assets/images/create.png";
+import createIconBold from "../../assets/images/createBold.png";
+import userIcon from "../../assets/images/user.png";
+import userIconBold from "../../assets/images/userBold.png";
 import {FC, useState} from "react";
-import CategoryMin from "../CategoryMin";
 import {useNavigate} from "react-router-dom";
 import SearchSideBar from "../SearchSideBar";
 import NotificationSideBar from "../NotificationSideBar";
 import MinBar from "../MinBar";
 import AppBar from "../AppBar";
+
 type Props = {
     routeInfo: string
 }
 
-const MenuBar:FC<Props>=({routeInfo}) => {
+const MenuBar: FC<Props> = ({routeInfo}) => {
     const categoryParts = [
         {
             img: homeIcon,
@@ -36,8 +30,8 @@ const MenuBar:FC<Props>=({routeInfo}) => {
             text: "Home",
             id: 1,
             isActive: false,
-            path:'/',
-            isRoutable:true
+            path: '/',
+            isRoutable: true
         },
         {
             img: searchIcon,
@@ -45,8 +39,8 @@ const MenuBar:FC<Props>=({routeInfo}) => {
             text: "Search",
             id: 2,
             isActive: false,
-            path:'/',
-            isRoutable:false
+            path: '/',
+            isRoutable: false
         },
         {
             img: messageIcon,
@@ -54,8 +48,8 @@ const MenuBar:FC<Props>=({routeInfo}) => {
             text: "Messages",
             id: 3,
             isActive: false,
-            path:'/messages',
-            isRoutable:true
+            path: '/messages',
+            isRoutable: true
         },
         {
             img: notificationIcon,
@@ -63,8 +57,8 @@ const MenuBar:FC<Props>=({routeInfo}) => {
             text: "Notification",
             id: 4,
             isActive: false,
-            path:'/',
-            isRoutable:false
+            path: '/',
+            isRoutable: false
         },
         {
             img: createIcon,
@@ -72,8 +66,8 @@ const MenuBar:FC<Props>=({routeInfo}) => {
             text: "Create",
             id: 5,
             isActive: false,
-            path:'/',
-            isRoutable:false
+            path: '/',
+            isRoutable: false
         },
         {
             img: userIcon,
@@ -81,67 +75,62 @@ const MenuBar:FC<Props>=({routeInfo}) => {
             text: "Profile",
             id: 6,
             isActive: false,
-            path:'/profile',
-            isRoutable:true
+            path: '/profile',
+            isRoutable: true
         },
     ]
-    switch (true){
-        case routeInfo === 'Home':{
-           categoryParts.forEach(elem=> {
-                if (elem.text === 'Home'){
+    switch (true) {
+        case routeInfo === 'Home': {
+            categoryParts.forEach(elem => {
+                if (elem.text === 'Home') {
                     elem.isActive = true
                 }
             })
             break;
         }
-        case routeInfo === 'Messages' || routeInfo === '' :{
-           categoryParts.forEach(elem=> {
-                if (elem.text === 'Messages'){
+        case routeInfo === 'Messages' || routeInfo === '' : {
+            categoryParts.forEach(elem => {
+                if (elem.text === 'Messages') {
                     elem.isActive = true
                 }
             })
             break;
         }
-        case routeInfo === 'Profile':{
-            categoryParts.forEach(elem=> {
-                if (elem.text === 'Profile'){
+        case routeInfo === 'Profile': {
+            categoryParts.forEach(elem => {
+                if (elem.text === 'Profile') {
                     elem.isActive = true
                 }
             })
             break
         }
     }
-
-    // const [create, setCreate] = useState<boolean>(false)
     const [not, setNot] = useState<boolean>(false)
     const [search, setSearch] = useState<boolean>(false)
     const [category, setCategory] = useState(categoryParts)
     const navigate = useNavigate()
-    const {t, i18n} = useTranslation()
-
 
 
     const handleActiveClick = (id: number, text: string) => {
 
-        if (text === 'Notification'){
+        if (text === 'Notification') {
             setNot(true);
             setSearch(false)
-        }else if(text === 'Search'){
+        } else if (text === 'Search') {
             setSearch(true)
             setNot(false);
-        }else {
+        } else {
             setNot(false);
             setSearch(false);
         }
 
 
-
         setCategory(prevState => prevState.map(elem => {
             if (elem.id === id) {
-                if (!elem.isActive){
+                if (!elem.isActive) {
                     elem.isActive = true
                 }
-            }else {
+            } else {
                 elem.isActive = false
             }
             return elem
@@ -152,7 +141,7 @@ const MenuBar:FC<Props>=({routeInfo}) => {
         navigate(route, {state: {text}})
     }
 
-    return(
+    return (
         <>
             {not || search ?
                 <MinBar handleActiveClick={handleActiveClick} handleRouteClick={handleRouteClick} category={category}/>
@@ -160,10 +149,9 @@ const MenuBar:FC<Props>=({routeInfo}) => {
                 <AppBar handleActiveClick={handleActiveClick} handleRouteClick={handleRouteClick} category={category}/>
             }
 
-
             <MinBar handleActiveClick={handleActiveClick} handleRouteClick={handleRouteClick} category={category}/>
 
-            {not ?  <NotificationSideBar/>
+            {not ? <NotificationSideBar/>
                 : <></>}
 
             {search ?

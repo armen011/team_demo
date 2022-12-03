@@ -7,7 +7,7 @@ export type UserStateType = {
   password: string;
   dateOfBirth: string;
   profilPic?: string;
-  isLogedIn: boolean;
+  isLoggedIn: boolean;
   email: string;
   errorMessage: string;
 };
@@ -19,7 +19,7 @@ const initialState: UserStateType = {
   password: "",
   dateOfBirth: "",
   profilPic: "",
-  isLogedIn: true,
+  isLoggedIn: true,
   errorMessage: "",
 };
 
@@ -35,7 +35,7 @@ export const login = createAsyncThunk(
 
     try {
       return await fetch(
-        `https://academoart.herokuapp.com/api/auth/login?login=${login}&password=${password}`,
+        `${baseUrl}=${login}&password=${password}`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -56,7 +56,7 @@ export const userSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(login.fulfilled, (state, { payload }) => {
       return payload.email
-        ? { ...payload, isLogedIn: true }
+        ? { ...payload, isLoggedIn: true }
         : { ...initialState, errorMessage: payload };
     });
     builder.addCase(login.rejected, (state, action) => {

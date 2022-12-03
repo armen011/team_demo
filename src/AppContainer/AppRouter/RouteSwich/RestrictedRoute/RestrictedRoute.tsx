@@ -10,9 +10,9 @@ export type RestrictedRouteProps={children:ReactElement}
 
 
 const RestrictedRoute:FC<RestrictedRouteProps>=({children})=>{
-    const isLogedIn=useSelector((state:RootState)=>state.user.isLogedIn)
+    const isLoggedIn=useSelector((state:RootState)=>state.user.isLoggedIn)
 
-    if(isLogedIn){
+    if(isLoggedIn){
         return<Navigate to={RoutesEnum.MAIN}/>
     }
     return children
