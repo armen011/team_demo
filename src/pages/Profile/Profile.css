@@ -1,6 +1,12 @@
 .my_profile{
     width: 940px;
-    margin: 0 150px 0 auto;
+    margin: 0 10vw 0 auto;
+}
+
+.just{
+    width: 270px;
+    height: 100vh;
+    float: left;
 }
 
 
@@ -203,7 +209,6 @@
 }
 
 .single_post{
-    /*width: 19.5vw;*/
     height: 290px
 }
 
@@ -220,8 +225,65 @@
     cursor: pointer;
  }
 
-/*@media only screen and (min-width: 600px) {*/
-/*    .my_profile{*/
-/*        width: 800px;*/
-/*    }*/
-/*}*/
+@media only screen and (max-width: 1400px) {
+    .my_profile{
+        margin-right: 2vw;
+    }
+}
+
+@media only screen and (max-width: 1275px) {
+    .my_profile{
+        width: 850px;
+    }
+}
+
+
+@media only screen and (max-width: 1200px) {
+    .my_profile{
+        margin-right: 5vw;
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+    .my_profile{
+        width: 750px;
+        margin-right: 3vw;
+    }
+
+    .single_post{
+        height: 240px
+    }
+}
+
+@media only screen and (max-width: 860px) {
+    .my_profile{
+        width: 650px;
+        margin-right: 3vw;
+    }
+
+    .single_post{
+        height: 200px
+    }
+}
+
+@media only screen and (max-width: 760px) {
+    .my_profile{
+        width: 550px;
+        margin-right: 3vw;
+    }
+
+    .single_post{
+        height: 180px
+    }
+}
+
+@media only screen and (max-width: 660px) {
+    .my_profile{
+        width: 500px;
+        margin-right: 3vw;
+    }
+
+    .single_post{
+        height: 130px
+    }
+}

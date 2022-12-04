@@ -11,7 +11,6 @@ import PostPhoto from '../../images/posting.png'
 const Profile = () => {
   return (
     <MainLayout>
-        <div className={'just'}></div>
 
         <div className={'my_profile'}>
             <div className={'upper_part'}>
