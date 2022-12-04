@@ -1,10 +1,8 @@
 .my_profile{
     width: 940px;
-    height: 100vh;
-    border: 1px  solid black;
-    position: absolute;
-    right: 11vw;
+    margin: 0 150px 0 auto;
 }
+
 
 .upper_part{
     width: 100%;
@@ -101,21 +99,20 @@
     height: 180px;
     overflow-x: auto;
     overflow-y: hidden;
-    border-bottom: 1px solid black;
     display: inline-flex;
 }
 
 .my_profile_single_highlight{
-    width: 100px;
-    height: 150px;
+    width: 90px;
+    height: 140px;
     margin: 0 0 0 55px;
     cursor: pointer;
     float: left;
 }
 
 .my_profile_highlight_frame{
-    width: 100px;
-    height: 100px;
+    width: 90px;
+    height: 90px;
     border-radius: 50%;
     border: 1px solid rgb(202,202,202);
     display: flex;
@@ -133,3 +130,98 @@
     justify-content: center;
     margin-top: 10px;
 }
+
+.my_profile_show_category_part{
+    width: 100%;
+    height: 50px;
+    border-top: 1px solid rgb(202,202,202);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 70px;
+    font-size: 12px;
+}
+
+.my_profile_show_category_part div{
+    height: 100%;
+    width: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    margin-top: -2px;
+}
+
+.my_profile_show_category_active{
+    border-top: 1.5px solid black;
+}
+
+.my_profile_post_part{
+    width:100%;
+    height: 100%;
+    background: red;
+}
+
+.my_profile_post_dont_have{
+    width: 400px;
+    height: 250px;
+    margin: 70px auto;
+    padding-top: 5px;
+    text-align: center;
+}
+
+.my_profile_post_dont_have_image{
+    width: 70px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid black;
+    border-radius: 50%;
+    padding: 3px;
+    margin: auto;
+}
+
+.my_profile_post_dont_have_image img{
+    width:38px;
+}
+
+.my_profile_post_dont_have h4{
+    margin: 15px 0;
+    font-size: 30px;
+    font-weight: 100;
+}
+
+.my_profile_just_text{
+    font-size: 15px;
+    margin-bottom: 20px;
+}
+
+.my_profile_post_dont_have_share_button{
+    color:rgb(0, 149, 246);
+    cursor: pointer;
+}
+
+.single_post{
+    /*width: 19.5vw;*/
+    height: 290px
+}
+
+.single_post img{
+    width: 100%;
+    height: 100%;
+}
+
+.my_profile_posting_part{
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    flex: 1 1 0;
+    cursor: pointer;
+ }
+
+/*@media only screen and (min-width: 600px) {*/
+/*    .my_profile{*/
+/*        width: 800px;*/
+/*    }*/
+/*}*/

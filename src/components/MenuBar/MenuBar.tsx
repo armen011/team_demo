@@ -123,12 +123,7 @@ const MenuBar = () =>{
                                 text={'More'} id={7} imgSrcBold={menuIconBold} pathRoute={'/'}
                                 handleActiveClick={() => {}} imgSrc={menuIcon}
                                 isItRoutable={false} isActive={false} onClick={() => {}}/>
-                            <div>
-                                <button onClick={() => {
-                                    setLanguage(!language)
-                                    return i18n.changeLanguage(language ? 'en' : 'hy')
-                                }}>{!language ? 'Change Language Test' : 'Փոխել լեզւն'}</button>
-                            </div>
+
                        </div>
 
 
