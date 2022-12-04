@@ -49,7 +49,19 @@ const NotificationSideBar = () => {
             id: 6
         }
     ]
-    const [users] = useState(usersArr)
+    const [users, setUsers] = useState(usersArr)
+    const toggleFollow = (id: number) => {
+        setUsers(prevState => prevState.map(elem=> {
+            if (elem.id === id) {
+               if (elem.status === 'Follow'){
+                   elem.status = 'Following'
+               }else {
+                   elem.status = 'Follow'
+               }
+            }
+            return elem
+        }))
+    }
 
 
     return (
@@ -62,7 +74,7 @@ const NotificationSideBar = () => {
                     <img src={u.image} alt="User"/>
                         <span style={{fontWeight:'bold'}}>{t(u.userName)}</span>
                         <span>{t(u.info)}</span>
-                        <button className={u.status === 'Follow' ? 'notify-button-toFollow' : 'notify-button-following'}>{t(u.status)}</button>
+                        <button onClick={() => toggleFollow(u.id)} className={u.status === 'Follow' ? 'notify-button-toFollow' : 'notify-button-following'}>{t(u.status)}</button>
                 </div>)}
             </div>
         </div>
