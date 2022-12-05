@@ -13,6 +13,7 @@ export enum RoutesEnum {
   ERROR = "error_page",
   PROFILE = "/profile",
   MESSAGES = "/messages",
+  MESSAGESWITHCHATID = "/messages/:chatId",
 }
 
 export type RouteType = {
@@ -49,6 +50,11 @@ export const routes: RouteType[] = [
   },
   {
     path: RoutesEnum.MESSAGES,
+    type: "private",
+    Component: Messages,
+  },
+  {
+    path: RoutesEnum.MESSAGESWITHCHATID,
     type: "private",
     Component: Messages,
   },

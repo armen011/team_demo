@@ -1,7 +1,26 @@
-.message{
-    display: flex;
+.messages {
+  width: 100%;
+  max-height: 384px;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
 }
 
-.user_small_icon{
-    width: 20px;
+.main_message_wrappers {
+  width: 100%;
+  display: flex;
+}
+
+.incomming_message {
+  justify-content: flex-start;
+}
+.send_message {
+  justify-content: flex-end;
+}
+
+.base_message_style {
+  max-width: 50%;
+  background-color: rgb(141, 141, 141);
+  padding: 8px;
+  border-radius: 12px;
 }

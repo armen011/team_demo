@@ -1,19 +1,32 @@
-import React, {FC} from 'react';
-import "./Message.css"
-import user_icon from "images/i_icon/information.png"
+import { FC } from "react";
+import "./Message.css";
 
-const  Message:FC = ()=> {
+export type MessageType = {
+  date: string;
+  isNew: boolean;
+  text: string;
+  type: "send" | "receive";
+};
 
-    return (
-        <div className="message">
-            <div>
-                <img src={user_icon} alt="user_small_icon" className="user_small_icon"/>
-            </div>
-            <div>
-
-            </div>
+export type MessageProps = {
+  chatId: string;
+  messages: MessageType[];
+};
+const Message: FC<MessageProps> = ({ chatId, messages }) => {
+  return (
+    <div className="messages">
+      {messages.map(({ text, type }, index) => (
+        <div
+          className={`main_message_wrappers ${
+            type === "receive" ? "incomming_message" : "send_message"
+          }`}
+          key={index}
+        >
+          <p className="base_message_style">{text}</p>
         </div>
-    );
-}
+      ))}
+    </div>
+  );
+};
 
 export default Message;
