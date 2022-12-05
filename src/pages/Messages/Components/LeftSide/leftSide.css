@@ -1,3 +1,125 @@
 .left_side{
+    min-width: 374px;
+    display: flex;
+    flex-direction: column;
+    border: 0;
+    border-right: 1px solid rgb(219,219,219);;
+    height: 100%;
 
 }
+
+.left_side_header {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    font-weight: 600;
+    height: 60px;
+    padding: 0 20px;
+    border-bottom: 1px solid rgb(219,219,219);
+    font-size: max(10px,16px);
+}
+.left_side_header > div{
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    height: inherit;
+    justify-content: center;
+    gap: 35px;
+}
+.left_side_header > div > :nth-child(1) {
+    margin-right: 8px;
+    display: flex;
+    flex-direction: row;
+}
+.left_side_header > div > :nth-child(2) {
+    display: flex;
+    gap: 5px;
+}
+.left_side_header > div > :nth-child(3) {
+    display: flex;
+}
+.left_side_header > div > :nth-child(3) > img {
+    display: flex;
+    width: 23px;
+}
+.left_side_header > div > :nth-child(2) > :nth-child(2) {
+    display: flex;
+}
+.user_name_field{
+    color: #262626;
+}
+
+.left_side_nav{
+    align-items: stretch; border-bottom: 1px solid rgb(219,219,219);
+    display: flex;
+    flex-direction: row;
+    font: inherit;
+    vertical-align: baseline;
+    width: 100%;
+}
+
+.left_side_nav > nav{
+    width: 60%;
+    display: flex;
+    gap: 5px;
+    font-family: Segoe UI, serif,Roboto;
+}
+
+
+.left_side_nav > div{
+    width: 40%;
+}
+.nav_primary{
+    width: 50%;
+    border-bottom: 1px solid;
+}
+.nav_general{
+    width: 50%;
+}
+
+
+.nav_primary > p{
+    font-weight: 600;
+    text-transform: uppercase;
+    padding: 12px 0;
+    text-align: center;
+    height: 100%;
+}
+.nav_general > p{
+    opacity: .3;
+    color: #383838;
+    font-weight: 600;
+    text-transform: uppercase;
+    padding: 12px 0;
+    text-align: center;
+    height: 100%;
+}
+
+.messages_section{
+    height: 100%;
+}
+.messages_section > div {
+    height: 100%;
+    overflow: hidden auto;
+    padding: 8px 0 0 0 ;
+}
+
+.messages_section > div {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    /*padding-bottom: 1080px;*/
+    overflow-y: auto;
+    padding-top: 0;
+}
+
+
+
+
+
+
+
+
+
+

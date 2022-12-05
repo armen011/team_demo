@@ -11,7 +11,7 @@ export type MainLayoutProps = {
 const MainLayout: FC<MainLayoutProps> = ({children, routeInfo}) => {
     return <>
         <MenuBar routeInfo={routeInfo}/>
-        <div className="right_side">
+        <div className="main_layout_wrapper">
             {children}
         </div>
     </>

@@ -4,7 +4,7 @@
     box-sizing: border-box;
 }
 
-.right_side{
+.main_layout_wrapper{
     margin-left: 270px;
     height: 100vh;
     background-color: #fafafa;
@@ -14,23 +14,21 @@
     padding: 20px;
     display: flex;
     justify-content: center;
-    box-sizing: border-box;
     border: 0;
-    font-size: 100%;
     height: 100%;
 }
 .message_container{
     display:flex;
     border: 1px solid rgb(202,202,202);
     width: 100%;
-    max-width: 935px;
+    max-width: 945px;
     height: 100%;
     background-color: white;
 }
 
 
 @media screen and (max-width: 1200px) {
-    .right_side{
+    .main_layout_wrapper{
         margin-left: 70px;
     }
 }

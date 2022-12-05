@@ -1,0 +1,54 @@
+.message_receiver{
+    padding: 8px 20px;
+    outline: none;
+    display: flex;
+    cursor: pointer;
+}
+.message_receiver:hover{
+    background-color: rgba(219,219,219,0.2);
+}
+
+.user_icon > img{
+    width: 56px;
+    height: 56px;
+    margin: 0 12px 0 0 ;
+    border-radius: 50%;
+}
+
+.receiver_name{
+    min-width: 0;
+    min-height: 0;
+    width: 100%;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.receiver_name > :nth-child(1){
+    width: 100%;
+}
+
+.receiver_name > :nth-child(1) > div{
+    display: flex;
+    justify-content: flex-start;
+}
+
+.receiver_name > :nth-child(1) > div > h4 {
+    font-family: Segoe UI, serif,Roboto;
+    font-size: 12px;
+}
+
+.receiver_name > :nth-child(2) > div > h5 {
+    font-family: Segoe UI, serif,Roboto;
+    color: #8E8E8E;
+    font-weight: 400;
+}
+.receiver_name > :nth-child(2){
+    width: 100%;
+}
+.receiver_name > :nth-child(2) > div {
+    display: flex;
+    gap: 5px;
+}
+
