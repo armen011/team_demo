@@ -1,14 +1,57 @@
 import MainLayout from "layouts/MainLayout"
 import Footer from "../../layouts/AuthLayout/Components/Footer";
+import Highlight from "./Components/Highlight";
+import SinglePost from "./Components/SinglePost";
+import Neccessary from "./Components/Neccessary";
+import ProfileCategory from "./Components/ProfileCategory";
 
 import './Profile.css'
 
 import settingIcon from '../../images/settings.png'
 import UserIcon from '../../images/user.png'
-import CameraIcon from '../../images/camera.png'
 import PostPhoto from '../../images/posting.png'
+import {useState} from "react";
+
 
 const Profile = () => {
+
+    const categories = [
+        {
+            name:'POSTS',
+            path:'/',
+            isActive:true
+        },
+        {
+            name:'SAVED',
+            path:'/saved',
+            isActive:false
+        },
+        {
+            name:'TAGGED',
+            path:'/tagged',
+            isActive:false
+        },
+    ]
+
+    const [categoryList,setCategoryList] = useState(categories)
+
+
+    const changeCategoryActivationHandler = (name:string)=> {
+        setCategoryList(prevState => {
+            return prevState.map(elem=> {
+                if (elem.name === name){
+                    if (!elem.isActive){
+                        elem.isActive = true
+                    }
+                }else{
+                    elem.isActive = false
+                }
+                return elem
+            })
+        })
+    }
+
+
   return (
     <MainLayout>
 
@@ -44,81 +87,28 @@ const Profile = () => {
             </div>
 
             {/*Story*/}
-
             <div className={'my_profile_highlight_part'}>
-
-                <div className={'my_profile_single_highlight'}>
-
-                    <div className={'my_profile_highlight_frame'}>
-                        <img src={UserIcon} className={'story_image'}/>
-                    </div>
-
-                    <div className={'my_profile_highlight_text'}>
-                        Highlight
-                    </div>
-
-                </div>
-
-                <div className={'my_profile_single_highlight'}>
-
-                    <div className={'my_profile_highlight_frame'}>
-                        <img src={UserIcon} className={'story_image'}/>
-                    </div>
-
-                    <div className={'my_profile_highlight_text'}>
-                        Highlight
-                    </div>
-
-                </div>
-
-                <div className={'my_profile_single_highlight'}>
-
-                    <div className={'my_profile_highlight_frame'}>
-                        <img src={UserIcon} className={'story_image'}/>
-                    </div>
-
-                    <div className={'my_profile_highlight_text'}>
-                        Highlight
-                    </div>
-
-                </div>
+                <Highlight text={'Haylo'} image={UserIcon}/>
 
             </div>
 
             <div className={'my_profile_show_category_part'}>
-                <div className={'my_profile_show_category_active'}> POSTS </div>
-                <div>SAVED</div>
-                <div>TAGGED</div>
+                {categoryList.map((elem,index)=>{
+                    return <ProfileCategory isActive={elem.isActive} setActivation={() => changeCategoryActivationHandler(elem.name)}
+                                            name={elem.name} path={elem.path} key={index * Math.random()}/>
+                })}
             </div>
             {/* dont have image-------------------------------------- */}
-            {/*<div className={'my_profile_post_dont_have'}>*/}
-            {/*    <div className={'my_profile_post_dont_have_image'}>*/}
-            {/*        <img src={CameraIcon} alt="camera icon"/>*/}
-            {/*    </div>*/}
-
-            {/*    <h4>Share Photos</h4>*/}
-
-            {/*    <div className={'my_profile_just_text'}>*/}
-            {/*        When you share photos, they will appear on your profile.*/}
-            {/*    </div>*/}
-
-            {/*    <span className={'my_profile_post_dont_have_share_button'}>Share Your first Photo</span>*/}
-
-            {/*</div>*/}
+            {/*    <Neccessary/>*/}
 
 
             <div className={'my_profile_posting_part'}>
-                <div className={'single_post'}>
-                    <img src={PostPhoto} alt=""/>
-                </div>
 
-                <div className={'single_post'}>
-                    <img src={PostPhoto} alt=""/>
-                </div>
+                <SinglePost image={PostPhoto}/>
+                {/*<SinglePost image={PostPhoto}/>*/}
+                {/*<SinglePost image={PostPhoto}/>*/}
 
-                <div className={'single_post'}>
-                    <img src={PostPhoto} alt=""/>
-                </div>
+
             </div>
 
 
