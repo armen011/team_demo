@@ -39,13 +39,7 @@ const Profile = () => {
     const changeCategoryActivationHandler = (name:string)=> {
         setCategoryList(prevState => {
             return prevState.map(elem=> {
-                if (elem.name === name){
-                    if (!elem.isActive){
-                        elem.isActive = true
-                    }
-                }else{
-                    elem.isActive = false
-                }
+                elem.isActive = elem.name === name && !elem.isActive;
                 return elem
             })
         })
