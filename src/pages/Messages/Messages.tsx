@@ -5,7 +5,7 @@ import {useLocation} from "react-router-dom";
 const Messages = () => {
     const {state: {text}} = useLocation()
 
-    return (<MainLayout routeInfo={text}>
+    return (<MainLayout>
         <div></div>
     </MainLayout>
   )

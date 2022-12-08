@@ -13,8 +13,8 @@ import userIcon from "../../assets/images/user.png";
 import userIconBold from "../../assets/images/userBold.png";
 import {FC, useState} from "react";
 import {useNavigate} from "react-router-dom";
-import SearchSideBar from "../SearchSideBar";
 import NotificationSideBar from "../NotificationSideBar";
+import SearchSideBar from "../SearchSideBar";
 import MinBar from "../MinBar";
 import AppBar from "../AppBar";
 
@@ -151,12 +151,9 @@ const MenuBar: FC<Props> = ({routeInfo}) => {
 
             <MinBar handleActiveClick={handleActiveClick} handleRouteClick={handleRouteClick} category={category}/>
 
-            {not ? <NotificationSideBar/>
-                : <></>}
+            {not && <NotificationSideBar/>}
 
-            {search ?
-                <SearchSideBar/>
-                : <></>}
+            {search && <SearchSideBar/>}
         </>
     )
 }

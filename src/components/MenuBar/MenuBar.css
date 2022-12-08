@@ -1,41 +1,14 @@
-body {
+body{
     margin: 0;
     padding: 0;
     font-family: "arial", serif;
 }
-
-
-
-
 @media only screen and (max-width: 1200px) {
     .app_bar {
         display: none;
     }
 
-    .min-bar {
+    .min-bar{
         display: block;
     }
 }
-
-
-@keyframes slideInNotify {
-    0% {
-        margin-left: -350px;
-    }
-
-    100% {
-        margin-left: 70px;
-    }
-}
-
-@keyframes slideInSearch {
-    0% {
-        margin-left: -350px;
-    }
-
-    100% {
-        margin-left: 70px;
-    }
-}
-
-

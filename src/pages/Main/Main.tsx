@@ -1,7 +1,7 @@
 import MainLayout from "layouts/MainLayout"
 
 const Main =()=>{
-    return <MainLayout routeInfo={"Home"}>
+    return <MainLayout>
         <div></div>
     </MainLayout>
 }

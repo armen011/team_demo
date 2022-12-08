@@ -139,3 +139,13 @@
     top: 215px;
     left: 420px;
 }
+
+@keyframes slideInSearch {
+    0% {
+        margin-left: -350px;
+    }
+
+    100% {
+        margin-left: 70px;
+    }
+}

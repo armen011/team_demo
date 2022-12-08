@@ -59,3 +59,13 @@
     background: #4b54ff;
     color: white;
 }
+@keyframes slideInNotify {
+    0% {
+        margin-left: -350px;
+    }
+
+    100% {
+        margin-left: 70px;
+    }
+}
+

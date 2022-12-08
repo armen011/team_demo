@@ -10,7 +10,6 @@ type TData = {
     img: string,
     username: string
 }
-
 const SearchSideBar = () => {
     const [inputValue, setInputValue] = useState('')
     const [recent, setRecent] = useState<TData[]>([]);
@@ -57,9 +56,7 @@ const SearchSideBar = () => {
     const handleDeleteRecent = (id: string) => {
         setRecent(prevState => prevState.filter(elem=> elem.id !== id))
     }
-    const placeholder = t('Search')
-
-
+    const placeholder = t('Search');
 
 
     return (
@@ -125,7 +122,6 @@ const SearchSideBar = () => {
                             </div>)}
                         </div>
                     }
-
                 </div>
             </div>
         </div>

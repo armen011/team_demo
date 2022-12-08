@@ -4,7 +4,7 @@ import MenuBar from "components/MenuBar";
 
 const EachUserProfile = () => {
     return (
-        <MainLayout routeInfo='Home'>
+        <MainLayout>
             <MenuBar routeInfo='Home'/>
         </MainLayout>
     );
