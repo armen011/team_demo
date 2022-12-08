@@ -5,6 +5,7 @@ import Registration from "pages/Registration";
 import Error from "pages/Error";
 import Messages from "pages/Messages";
 import Profile from "pages/Profile";
+import EachUserProfile from "../../pages/EachUserProfile";
 
 export enum RoutesEnum {
   MAIN = "/",
@@ -13,6 +14,7 @@ export enum RoutesEnum {
   ERROR = "error_page",
   PROFILE = "/profile",
   MESSAGES = "/messages",
+  EACH_USER_PROFILE = "/users/:username"
 }
 
 export type RouteType = {
@@ -52,4 +54,9 @@ export const routes: RouteType[] = [
     type: "private",
     Component: Messages,
   },
+  {
+    path: RoutesEnum.EACH_USER_PROFILE,
+    type: "private",
+    Component: EachUserProfile
+  }
 ];

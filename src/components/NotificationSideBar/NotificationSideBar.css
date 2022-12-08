@@ -1,7 +1,7 @@
 .notification-part{
     width: 400px;
     height: 100vh;
-    animation: slideInNotify .5s ease-in forwards;
+    animation: slideInNotify .3s ease-in forwards;
     margin-left: -370px;
     border-top-right-radius: 15px;
     border-bottom-right-radius: 15px;

@@ -1,5 +1,4 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import type { PayloadAction } from "@reduxjs/toolkit";
 
 export type UserStateType = {
   userName: string;
@@ -19,7 +18,7 @@ const initialState: UserStateType = {
   password: "",
   dateOfBirth: "",
   profilPic: "",
-  isLoggedIn: true,
+  isLoggedIn: false,
   errorMessage: "",
 };
 
@@ -35,7 +34,7 @@ export const login = createAsyncThunk(
 
     try {
       return await fetch(
-        `${baseUrl}=${login}&password=${password}`,
+          `${baseUrl}api/auth/login?login=${login}&password=${password}`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -60,7 +59,6 @@ export const userSlice = createSlice({
         : { ...initialState, errorMessage: payload };
     });
     builder.addCase(login.rejected, (state, action) => {
-      // console.log("action.payload", action.payload);
     });
   },
 });

@@ -1,7 +1,7 @@
 .search-part{
     width: 400px;
     height: 100vh;
-    animation: slideInSearch .5s ease-in forwards;
+    animation: slideInSearch .3s ease-in forwards;
     margin-left: 70px;
     border-top-right-radius: 15px;
     border-bottom-right-radius: 15px;
@@ -112,15 +112,15 @@
     width: 10px;
     position: absolute;
     left: 425px;
-    top: 113px;
+    top: 98px;
     cursor: pointer;
 }
 
 .user_image_wrapper{
     width: 50px;
     height: 50px;
-    border-radius: 50%;
-    border: 2px solid rgb(213, 37, 59);
+    border-image: linear-gradient(to left,red,blue,red) 1;
+    border-image-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -131,4 +131,11 @@
     height: 48px;
     border-radius: 50%;
     padding: 2px;
+}
+
+.deleteRecent{
+    position: relative;
+    width: 14px;
+    top: 215px;
+    left: 420px;
 }
