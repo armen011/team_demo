@@ -9,6 +9,7 @@ export type UserStateType = {
   isLoggedIn: boolean;
   email: string;
   errorMessage: string;
+  _id: string | undefined;
 };
 
 const initialState: UserStateType = {
@@ -20,6 +21,7 @@ const initialState: UserStateType = {
   profilPic: "",
   isLoggedIn: true,
   errorMessage: "",
+  _id: undefined,
 };
 
 type Targ = {
@@ -54,6 +56,8 @@ export const userSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(login.fulfilled, (state, { payload }) => {
+      console.log(payload, "payload");
+
       return payload.email
         ? { ...payload, isLoggedIn: true }
         : { ...initialState, errorMessage: payload };

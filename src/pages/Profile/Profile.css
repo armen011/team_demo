@@ -57,6 +57,7 @@
     display: flex;
     align-items: center;
     height: 100%;
+    gap: 7px;
 }
 
 .my_profile_edit_button{
@@ -69,6 +70,7 @@
     border-radius: 4px;
     font-size: 13px;
     font-weight: bold;
+    cursor: pointer;
 }
 
 .my_profile_setting_part{

@@ -13,7 +13,6 @@ import {useState} from "react";
 
 
 const Profile = () => {
-
     const categories = [
         {
             name:'POSTS',
@@ -43,7 +42,6 @@ const Profile = () => {
             })
         })
     }
-
 
   return (
     <MainLayout>

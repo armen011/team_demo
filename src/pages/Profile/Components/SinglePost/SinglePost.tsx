@@ -1,5 +1,4 @@
 import './SinglePost.css'
-import PostPhoto from "../../../../images/posting.png";
 import {FC} from "react";
 
 export type SinglePostType={

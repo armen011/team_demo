@@ -1,25 +1,31 @@
-import React, {useEffect, useState} from 'react';
+import React, {Dispatch, FC, SetStateAction, useEffect, useState} from 'react';
 import deleteIcon from "assets/images/delete.png";
 import userIcon from "assets/images/user.png";
 import './SearchSideBar.css'
 import {useTranslation} from "react-i18next";
 import {useNavigate} from "react-router";
-type TData = {
+
+export type TData = {
     fullName: string,
     id: string,
     img: string,
     username: string
 }
-const SearchSideBar = () => {
+
+type TProps = {
+    handleRecentFunc: Dispatch<SetStateAction<TData[]>>
+    recent: TData[]
+}
+
+const SearchSideBar:FC<TProps> = ({recent, handleRecentFunc}) => {
     const [inputValue, setInputValue] = useState('')
-    const [recent, setRecent] = useState<TData[]>([]);
     const handleInputChange = (e: { target: HTMLInputElement }) => {
         setInputValue(e.target.value)
     }
     const [users, setUsers] = useState<TData[]>([])
     const useDeBounce = (inputVal: string) => {
         useEffect(() => {
-            const bounceFunc = setTimeout(() => {
+            const bounceDelay = setTimeout(() => {
                 fetch(
                     `http://localhost:8800/api/users?query=${inputVal}`,
                     {
@@ -27,15 +33,15 @@ const SearchSideBar = () => {
                         headers: {"Content-Type": "application/json"},
                     })
                     .then((res) => res.json()).then(res => {
-                        if (inputVal.trim()){
-                            setUsers(res)
-                        }else {
-                            setUsers([])
-                        }
+                    if (inputVal.trim()) {
+                        setUsers(res)
+                    } else {
+                        setUsers([])
+                    }
                 })
             }, 400)
             return () => {
-                clearInterval(bounceFunc)
+                clearInterval(bounceDelay)
             }
         }, [inputVal])
     }
@@ -43,21 +49,23 @@ const SearchSideBar = () => {
     const {t} = useTranslation()
     const navigate = useNavigate()
     const addingRecent = (recentUser: TData) => {
-        setRecent(prevState => {
-            return [...prevState, recentUser]
-        })
+        handleRecentFunc(prevState => [...prevState, recentUser])
     }
+
+    console.log(recent)
+
     const handleUserRedirect = (route: string) => {
+        setTimeout(() => {
             navigate(`/users/${route}`)
+        }, 0)
     }
     const clearAllRecent = () => {
-        setRecent([])
+        handleRecentFunc([])
     }
     const handleDeleteRecent = (id: string) => {
-        setRecent(prevState => prevState.filter(elem=> elem.id !== id))
+        handleRecentFunc(prevState => prevState.filter(elem=> elem.id !== id))
     }
     const placeholder = t('Search');
-
 
     return (
         <div className={'search-part'}>
@@ -81,9 +89,9 @@ const SearchSideBar = () => {
                         <div>
                             {users.length ? users.map(u => <div onClick={() => {
                                 addingRecent(u)
-                                handleUserRedirect(u.fullName)
+                                handleUserRedirect(u.id)
                             }}
-                                key={u.id} className='single-search-user'>
+                                                                key={u.id} className='single-search-user'>
                                 <div className={'single-search-icon-part'}>
                                     <div className='user_image_wrapper'>
                                         <img className='user_image' src={u.img ? u.img : userIcon} alt="userIcon"/>
@@ -97,29 +105,31 @@ const SearchSideBar = () => {
                         </div>
                         :
                         <div>
-                            {recent?.map(recU => <div
+                            {recent ? recent.map(recU => <div
                                 key={recU.id} className='single-search-user'>
                                 <div className={'single-search-icon-part'} onClick={() => {
                                     addingRecent(recU)
-                                    handleUserRedirect(recU.fullName)
+                                    handleUserRedirect(recU.id)
                                 }
                                 }>
                                     <div className='user_image_wrapper'>
-                                        <img className='user_image' src={recU.img ? recU.img : userIcon} alt="userIcon"/>
+                                        <img className='user_image' src={recU.img ? recU.img : userIcon}
+                                             alt="userIcon"/>
                                     </div>
                                 </div>
                                 <div className={'single-search-text-part'} onClick={() => {
                                     addingRecent(recU)
-                                    handleUserRedirect(recU.fullName)
+                                    handleUserRedirect(recU.id)
                                 }
                                 }>
                                     <div>{recU.username}</div>
                                     <div>{recU.fullName}</div>
                                 </div>
                                 <div className='single-search-delete-part'>
-                                    <img style={{width: '15px'}} onClick={() => handleDeleteRecent(recU.id)} src={deleteIcon} alt=""/>
+                                    <img style={{width: '15px'}} onClick={() => handleDeleteRecent(recU.id)}
+                                         src={deleteIcon} alt=""/>
                                 </div>
-                            </div>)}
+                            </div>) : null}
                         </div>
                     }
                 </div>

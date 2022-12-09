@@ -1,4 +1,7 @@
 .notification-part{
+    z-index: 6;
+    background-color: white;
+    position: absolute;
     width: 400px;
     height: 100vh;
     animation: slideInNotify .3s ease-in forwards;

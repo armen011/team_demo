@@ -37,13 +37,13 @@
   "Username is already used": "Username is already used",
   "Email is already used": "Email is already used",
   "Show": "Show",
+  "Recent": "Recent",
+  "Clear all": "Clear all",
   "Hide": "Hide",
   "Notifications": "Notifications",
   "UserName": "UserName",
   "Following": "Following",
   "Follow" : "Follow",
   "started following you": "started following you",
-  "liked your post" : "liked your post",
-  "Recent": "Recent",
-  "Clear all": "Clear all"
+  "liked your post" : "liked your post"
 }

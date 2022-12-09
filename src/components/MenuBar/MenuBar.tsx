@@ -17,12 +17,14 @@ import NotificationSideBar from "../NotificationSideBar";
 import SearchSideBar from "../SearchSideBar";
 import MinBar from "../MinBar";
 import AppBar from "../AppBar";
+import {TData} from "../SearchSideBar/SearchSideBar";
 
 type Props = {
     routeInfo: string
 }
 
 const MenuBar: FC<Props> = ({routeInfo}) => {
+    const [recent, setRecent] = useState<TData[]>([]);
     const categoryParts = [
         {
             img: homeIcon,
@@ -141,6 +143,9 @@ const MenuBar: FC<Props> = ({routeInfo}) => {
         navigate(route, {state: {text}})
     }
 
+
+
+
     return (
         <>
             {not || search ?
@@ -153,7 +158,7 @@ const MenuBar: FC<Props> = ({routeInfo}) => {
 
             {not && <NotificationSideBar/>}
 
-            {search && <SearchSideBar/>}
+            {search && <SearchSideBar handleRecentFunc={setRecent} recent={recent}/>}
         </>
     )
 }

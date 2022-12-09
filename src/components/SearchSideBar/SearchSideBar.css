@@ -1,4 +1,7 @@
 .search-part{
+    z-index: 6;
+    position: absolute;
+    background-color: white;
     width: 400px;
     height: 100vh;
     animation: slideInSearch .3s ease-in forwards;

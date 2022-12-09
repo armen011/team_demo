@@ -1,4 +1,4 @@
-import {Component, FC, ReactChildren, ReactComponentElement, ReactElement, ReactNode} from "react"
+import {FC, ReactElement, ReactNode} from "react"
 import MenuBar from 'components/MenuBar'
 
 export type MainLayoutProps={
