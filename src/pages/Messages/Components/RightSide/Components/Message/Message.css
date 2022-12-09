@@ -1,6 +1,6 @@
 .messages {
   width: 100%;
-  max-height: 384px;
+  height: 100%;
   display: flex;
   flex-direction: column;
   overflow-y: auto;
@@ -14,13 +14,42 @@
 .incomming_message {
   justify-content: flex-start;
 }
-.send_message {
+.send1_message {
   justify-content: flex-end;
+  padding-right: 15px;
+
 }
 
-.base_message_style {
-  max-width: 50%;
-  background-color: rgb(141, 141, 141);
-  padding: 8px;
-  border-radius: 12px;
+.send1_message > div {
+  background-color: rgb(239,239,239)!important;
+  border:1px solid rgb(239,239,239);
+  margin-bottom: 10px;
 }
+.incomming_message > div{
+  background-color: white!important;
+  border:1px solid rgb(239,239,239);
+  margin-bottom: 10px;
+}
+
+
+
+.namak{
+  max-width: 50%;
+  border-radius: 24px;
+  min-height: 44px;
+}
+
+.namak > p{
+  font-size: 14px;
+  font-family: Poppins,sans-serif;
+  font-weight: 200;
+  color: #262626;
+  width: 100%;
+  line-height: 18px;
+  padding: 12px;
+  overflow: visible;
+  border-radius: 12px;
+  word-break: break-word;
+}
+
+

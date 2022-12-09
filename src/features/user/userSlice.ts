@@ -56,8 +56,6 @@ export const userSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(login.fulfilled, (state, { payload }) => {
-      console.log(payload, "payload");
-
       return payload.email
         ? { ...payload, isLogedIn: true }
         : { ...initialState, errorMessage: payload };
