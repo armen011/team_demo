@@ -1,14 +1,15 @@
-import { configureStore } from "@reduxjs/toolkit";
+import {configureStore} from "@reduxjs/toolkit";
 import registrationReducer from "features/registration";
 import userReducer from "features/user";
-import { TypedUseSelectorHook, useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
+import {TypedUseSelectorHook, useDispatch, useSelector} from "react-redux";
+import messageReducer from 'features/messages';
 
 const store = configureStore({
-  reducer: {
-    user: userReducer,
-    registration: registrationReducer,
-  },
+    reducer: {
+        user: userReducer,
+        registration: registrationReducer,
+        messages:messageReducer
+    },
 });
 
 // Infer the `RootState` and `AppDispatch` types from the store itself
