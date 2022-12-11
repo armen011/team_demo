@@ -19,7 +19,7 @@ const initialState: UserStateType = {
   password: "",
   dateOfBirth: "",
   profilPic: "",
-  isLoggedIn: true,
+  isLoggedIn: false,
   errorMessage: "",
   _id: undefined,
 };

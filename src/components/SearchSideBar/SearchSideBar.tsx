@@ -51,9 +51,7 @@ const SearchSideBar:FC<TProps> = ({recent, handleRecentFunc}) => {
     const addingRecent = (recentUser: TData) => {
         handleRecentFunc(prevState => [...prevState, recentUser])
     }
-
-    console.log(recent)
-
+    
     const handleUserRedirect = (route: string) => {
         setTimeout(() => {
             navigate(`/users/${route}`)
