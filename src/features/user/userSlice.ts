@@ -12,7 +12,10 @@ export type UserStateType = {
   _id: string | undefined;
 };
 
-const initialState: UserStateType = {
+const localState:UserStateType | null = JSON.parse(localStorage.getItem('user')!);
+
+
+const initialState: UserStateType = !localState ? {
   userName: "",
   fullName: "",
   email: "",
@@ -22,7 +25,7 @@ const initialState: UserStateType = {
   isLogedIn: false,
   errorMessage: "",
   _id: undefined,
-};
+} : localState;
 
 type Targ = {
   login: string;
@@ -56,12 +59,15 @@ export const userSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(login.fulfilled, (state, { payload }) => {
+      if(payload.email){
+        localStorage.setItem("user",JSON.stringify({...payload,isLogedIn:true}));
+      }
       return payload.email
         ? { ...payload, isLogedIn: true }
         : { ...initialState, errorMessage: payload };
     });
     builder.addCase(login.rejected, (state, action) => {
-      // console.log("action.payload", action.payload);
+      console.error("Something was wrong");
     });
   },
 });

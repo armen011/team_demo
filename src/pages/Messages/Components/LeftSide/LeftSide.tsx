@@ -1,29 +1,30 @@
 import "./leftSide.css";
 import down_icon from "images/down_icon/down-chevron-svgrepo-com.svg";
 import EachMessage from "./Components/EachMessage";
-import {FC, useEffect} from "react";
+import {FC, useEffect, useState} from "react";
 import {useAppDispatch, useAppSelector} from "app";
 import {getChats} from "features/messages";
+import LoadingComponent from "./Components/LoadingComponent";
 
 export type ChatType = {
     id: string;
     picture: string;
     title: string;
-    userId?:string
+    userId?: string
 };
 
 const LeftSide: FC = () => {
     const userId = useAppSelector((state) => state.user._id);
+    const [isLoading, setLoading] = useState<boolean>(true);
 
     const dispatch = useAppDispatch();
     const chats = useAppSelector(s => s.messages);
 
 
     useEffect(() => {
-        dispatch(getChats({userId}));
+        dispatch(getChats({userId, isLoading, setLoading}));
     }, [userId]);
 
-    console.log(chats);
 
 
     return (
@@ -60,9 +61,8 @@ const LeftSide: FC = () => {
             </div>
             <div className="messages_section">
                 <div>
-                    {chats.map(({title, picture, id,userId}, index) => {
-                        return (
-                            <EachMessage
+                    { !isLoading ? chats.map(({title, picture, id, userId}, index) => {
+                        return <EachMessage
                                 receiverName={title}
                                 message="asdsaasd"
                                 userId={userId}
@@ -70,8 +70,7 @@ const LeftSide: FC = () => {
                                 key={index}
                                 id={id}
                             />
-                        )
-                    })}
+                    }) : [1,2,3].map((a,index)=><LoadingComponent key={index}/>)}
                 </div>
             </div>
         </div>
