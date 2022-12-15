@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { FC, useState } from "react";
 import "./CreateModal.css";
 import Upload from "./Upload";
 import Resize from "./Resize";
@@ -15,7 +15,11 @@ const Components = {
 type ComponentsKeyType = keyof typeof Components;
 export type ChangeStepFunctionType = (step: ComponentsKeyType) => void;
 
-const CreateModal = () => {
+export type CreateModalProps = {
+  handleCloseModal: () => void;
+};
+
+const CreateModal: FC<CreateModalProps> = ({ handleCloseModal }) => {
   const [step, setStep] = useState<ComponentsKeyType>("upload");
 
   const changeStep: ChangeStepFunctionType = (step) => {
@@ -25,13 +29,16 @@ const CreateModal = () => {
   const Component = Components[step];
 
   return (
-    <div className="create_file_wrapper">
+    <div className="create_file_wrapper" onClick={handleCloseModal}>
       <div
         className={
           step === "upload" || step === "resize"
             ? "create_file_content"
             : "opened_poppup_filters"
         }
+        onClick={(e) => {
+          e.stopPropagation();
+        }}
       >
         <Component {...{ changeStep }} />
       </div>

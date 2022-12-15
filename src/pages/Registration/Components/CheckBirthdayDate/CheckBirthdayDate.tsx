@@ -6,7 +6,6 @@ import { useAppDispatch, useAppSelector } from "app";
 import { handleGoBack } from "features/registration";
 import { sendResponse } from "features/registration";
 import UTILS from "utils";
-import { stat } from "fs";
 import { useNavigate } from "react-router-dom";
 
 const {
