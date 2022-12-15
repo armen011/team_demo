@@ -13,6 +13,7 @@ import userIcon from "../../assets/images/user.png";
 import userIconBold from "../../assets/images/userBold.png";
 import {FC, useState} from "react";
 import {useNavigate} from "react-router-dom";
+import CreateModal from 'components/CreateModal';
 import NotificationSideBar from "../NotificationSideBar";
 import SearchSideBar from "../SearchSideBar";
 import MinBar from "../MinBar";
@@ -141,7 +142,6 @@ const MenuBar: FC<Props> = ({routeInfo}) => {
     const handleRouteClick = (route: string, text: string) => {
         navigate(route, {state: {text}})
     }
-
 
 
 

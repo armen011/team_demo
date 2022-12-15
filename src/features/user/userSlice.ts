@@ -5,27 +5,28 @@ export type UserStateType = {
   fullName: string;
   password: string;
   dateOfBirth: string;
-  profilPic?: string;
+  profilePicture?: string;
   isLogedIn: boolean;
   email: string;
   errorMessage: string;
   _id: string | undefined;
+  followers: string[];
+  followings: string[];
 };
 
-const localState:UserStateType | null = JSON.parse(localStorage.getItem('user')!);
-
-
-const initialState: UserStateType = !localState ? {
+const initialState: UserStateType = {
   username: "",
   fullName: "",
   email: "",
   password: "",
   dateOfBirth: "",
-  profilPic: "",
+  profilePicture: "",
   isLogedIn: false,
   errorMessage: "",
   _id: undefined,
-} : localState;
+  followers: [],
+  followings: [],
+};
 
 type Targ = {
   login: string;
@@ -56,20 +57,36 @@ export const login = createAsyncThunk(
 export const userSlice = createSlice({
   name: "user",
   initialState,
-  reducers: {},
+  reducers: {
+    tryToLogin: (state) => {
+      const json = localStorage.getItem("user");
+      if (json) {
+        const user = JSON.parse(json) as UserStateType;
+        console.log("user", user);
+        return {
+          ...user,
+          isLogedIn: true,
+          profilePicture: "",
+        };
+      }
+      return initialState;
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(login.fulfilled, (state, { payload }) => {
-      if(payload.email){
-        // localStorage.setItem("user",JSON.stringify({...payload,isLogedIn:true}));
+      console.log(payload, "payload");
+      if (payload.email) {
+        localStorage.setItem("user", JSON.stringify(payload));
+        return { ...payload, isLogedIn: true };
       }
-      return payload.email
-        ? { ...payload, isLogedIn: true }
-        : { ...initialState, errorMessage: payload };
+      return { ...initialState, errorMessage: payload };
     });
     builder.addCase(login.rejected, (state, action) => {
       console.error("Something was wrong");
     });
   },
 });
+const { tryToLogin } = userSlice.actions;
 
+export { tryToLogin };
 export default userSlice.reducer;
