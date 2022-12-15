@@ -15,7 +15,9 @@ const CheckBirthdayDate:FC<Tdata> = ({date})=> {
         {isValid && <div className="birthday_text">{t("You need to enter the date you were born on")}</div>}
         <div className="birthday_text text">{t("Use your own date of birth, even if this account is for a business, pet or something else")}</div>
         <div className="button_container">
-            <SubmitButton isValid={isValid} onClick={()=>{}} text={t("Next")}/>
+            <SubmitButton isValid={isValid} onClick={()=>{
+                console.log(15)
+            }} text={t("Next")}/>
         </div>
         <div className="previus_button">{t("Go back")}</div>
     </div>  

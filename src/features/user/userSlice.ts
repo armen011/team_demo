@@ -1,8 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import type { PayloadAction } from "@reduxjs/toolkit";
 
 export type UserStateType = {
-  userName: string;
+  username: string;
   fullName: string;
   password: string;
   dateOfBirth: string;
@@ -10,11 +9,14 @@ export type UserStateType = {
   isLogedIn: boolean;
   email: string;
   errorMessage: string;
-  _id:string | undefined
+  _id: string | undefined;
 };
 
-const initialState: UserStateType = {
-  userName: "",
+const localState:UserStateType | null = JSON.parse(localStorage.getItem('user')!);
+
+
+const initialState: UserStateType = !localState ? {
+  username: "",
   fullName: "",
   email: "",
   password: "",
@@ -22,8 +24,8 @@ const initialState: UserStateType = {
   profilPic: "",
   isLogedIn: false,
   errorMessage: "",
-  _id:undefined
-};
+  _id: undefined,
+} : localState;
 
 type Targ = {
   login: string;
@@ -57,14 +59,15 @@ export const userSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(login.fulfilled, (state, { payload }) => {
-      console.log(payload,"payload");
-      
+      if(payload.email){
+        // localStorage.setItem("user",JSON.stringify({...payload,isLogedIn:true}));
+      }
       return payload.email
         ? { ...payload, isLogedIn: true }
         : { ...initialState, errorMessage: payload };
     });
     builder.addCase(login.rejected, (state, action) => {
-      // console.log("action.payload", action.payload);
+      console.error("Something was wrong");
     });
   },
 });

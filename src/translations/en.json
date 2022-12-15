@@ -33,9 +33,16 @@
   "Full Name": "Full Name",
   "Username": "Username",
   "Password": "Password",
-  "Get the app.": "Get the app.",
   "Username is already used": "Username is already used",
   "Email is already used": "Email is already used",
   "Show": "Show",
-  "Hide": "Hide"
+  "Recent": "Recent",
+  "Clear all": "Clear all",
+  "Hide": "Hide",
+  "Notifications": "Notifications",
+  "UserName": "UserName",
+  "Following": "Following",
+  "Follow" : "Follow",
+  "started following you": "started following you",
+  "liked your post" : "liked your post"
 }
