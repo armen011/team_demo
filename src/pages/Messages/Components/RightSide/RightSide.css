@@ -1,0 +1,68 @@
+.right_side{
+    width: 60%;
+}
+
+.right_side > div{
+    padding: 24px;
+    height: 100%;
+}
+.right_side_context{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.right_side_context > div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+.send_message > div > button{
+    padding: 4px;
+    background: none;
+    border: none;
+    box-sizing: border-box;
+    cursor: pointer;
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    pointer-events: auto;
+    text-align: center;
+    text-overflow: ellipsis;
+    text-transform: inherit;
+    -webkit-user-select: none;
+    width: auto;
+    color: white;
+    font-family: Segoe UI, serif,Roboto;
+}
+.send_message > div {
+    padding: 5px 9px;
+}
+
+.send_message{
+    margin: 24px 0 0 0 ;
+    background-color: #0095f6;
+    border-radius: 4px;
+}
+.your_message{
+
+    margin: 16px 0 0 0 ;
+}
+.your_message > h2 {
+    margin: -4px 0 -5px 0;
+    font-family: Segoe UI, serif,Roboto;
+    font-weight: 300;
+    text-align: center;
+}
+
+.send_private{
+    margin: 16px 0 0 0 ;
+    text-align: center;
+}
+.send_private > div {
+    margin: -3px 0 -4px 0;
+    font-family: Segoe UI, serif,Roboto;
+    font-weight: 300;
+}

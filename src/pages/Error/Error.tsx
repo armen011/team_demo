@@ -1,8 +1,9 @@
+import MenuBar from "../../components/MenuBar";
 
 const Error = () => {
   return (
     <div>
-      Error page
+      <MenuBar routeInfo={'Error'}/>
     </div>
   )
 }

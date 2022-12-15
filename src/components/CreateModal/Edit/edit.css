@@ -1,0 +1,35 @@
+.edit_post_wrapper {
+  width: 100%;
+  height: 100%;
+}
+
+.edit_content_wrapper {
+  width: 100%;
+  height: calc(100% - 42px);
+  display: flex;
+}
+
+.edit_slider_wrapper {
+  width: 400px;
+}
+
+.filter_divs_wrapper {
+  flex-grow: 1;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 5px;
+  overflow: hidden;
+}
+
+.filter_div {
+  width: 90px;
+  height: 90px;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+
+}
+

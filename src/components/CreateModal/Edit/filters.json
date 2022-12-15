@@ -1,0 +1,38 @@
+[
+  {
+    "style": "",
+    "name": "Original"
+  },
+  {
+    "style": "sepia(100%)",
+    "name": "Moon"
+  },
+  {
+    "style": "brightness(250%)",
+    "name": "Gingham"
+  },
+  {
+    "style": "contrast(180%)",
+    "name": "Lark"
+  },
+  {
+    "style": "grayscale(100%)",
+    "name": "Black"
+  },
+  {
+    "style": "hue-rotate(180deg)",
+    "name": "Crema"
+  },
+  {
+    "style": "invert(100%)",
+    "name": "Perpetua"
+  },
+  {
+    "style": "opacity(50%)",
+    "name": "Reyes"
+  },
+  {
+    "style": "saturate(7)",
+    "name": "Aden"
+  }
+]

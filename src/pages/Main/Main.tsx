@@ -1,8 +1,9 @@
 import MainLayout from "layouts/MainLayout"
 
 const Main =()=>{
+
     return <MainLayout>
-        <div>hello</div>
+        <div></div>
     </MainLayout>
 }
 

@@ -35,7 +35,7 @@
   animation: changeImg  20s cubic-bezier(0,0,0,2) 0s infinite forwards;
 }
 
-@media screen and (max-width:760px) {
+@media screen and (max-width:880px) {
   .login_image_wrapper{
     display: none;
   }

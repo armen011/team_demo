@@ -31,7 +31,7 @@ const MainForm = () => {
                             </p>
                         </div>
                         <div className="get_the_app">
-                            <p>{t("Get the app.")}</p>
+                            <p>{t("Get_the_app")}</p>
                             <div className="pictures_div">
                                 <img
                                     src="https://static.cdninstagram.com/rsrc.php/v3/yz/r/c5Rp7Ym-Klz.png"
