@@ -1,0 +1,35 @@
+.icon_container{
+    margin-top: 4px;
+    padding: 0px 12px;
+    display: flex;
+    justify-content: space-between;
+}
+.icon_container img{
+    width: 24px;
+    height: 24px;
+}
+.icons_bar{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.icons_bar>div{
+    padding: 8px;
+    cursor: pointer;
+}
+
+.heart{
+    padding: 8px 8px 8px 0px !important; 
+}
+
+
+
+
+.icon_container img:not(.red_heart , .black_save):hover{
+    opacity: 0.5;
+}
+
+.save_icon_container{
+    cursor: pointer;
+}

@@ -9,6 +9,15 @@ export type RegistrationStateType = {
   isChecked: boolean;
   errorMessage: string;
 };
+
+type TsendResponse = {
+  email: string;
+  username: string;
+  password: string;
+  fullName: string;
+  dateOfBirth: string | number;
+  nav?: () => void;
+};
 type Targ = {
   email: string;
   username: string;
@@ -25,6 +34,31 @@ const initialState: RegistrationStateType = {
   isChecked: false,
   errorMessage: "",
 };
+
+export const sendResponse = createAsyncThunk(
+  "async/sendResponse",
+  async (
+    { email, username, password, fullName, dateOfBirth, nav }: TsendResponse,
+    thunkAPI
+  ) => {
+    const baseUrl = process.env.REACT_APP_PUBLIC_URL;
+    try {
+      return await fetch(
+        `${baseUrl}api/auth/register?email=${email}&username=${username}&password=${password}&dateOfBirth=${dateOfBirth}&fullName=${fullName}`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+        }
+      )
+        .then((res) => res.json())
+        .then((r) => {
+          nav && nav();
+        });
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e);
+    }
+  }
+);
 
 export const getResponse = createAsyncThunk(
   "async/registration",
@@ -71,7 +105,12 @@ export const getResponse = createAsyncThunk(
 export const registrationSlice = createSlice({
   name: "registration",
   initialState,
-  reducers: {},
+  reducers: {
+    handleGoBack: (state: RegistrationStateType) => {
+      state.isChecked = false;
+      state.password = "";
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(getResponse.fulfilled, (state, { payload }) => {
@@ -80,7 +119,11 @@ export const registrationSlice = createSlice({
       .addCase(getResponse.rejected, (state, action) => {
         console.error("Something was wrong");
       });
+    builder.addCase(sendResponse.rejected, (state, action) => {
+      console.error("Something was wrong");
+    });
   },
 });
 
 export default registrationSlice.reducer;
+export const { handleGoBack } = registrationSlice.actions;

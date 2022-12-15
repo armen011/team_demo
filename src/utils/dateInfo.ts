@@ -28,11 +28,20 @@ const years = ():string[]=>{
 
 }
 
+const fullDate = (days:number|string,months:number|string,year:number|string):string=>{
+    let day = +days>9? `${days}`:0+`${days}`
+    let month = +months>9? `${months}`:0+`${months}`
+
+    return `${day}/${month}/${year}`
+
+}
+
 const date = {
     months,
     daysInMonth,
     arrayInDays,
-    years
+    years,
+    fullDate
 }
 
 export default date
