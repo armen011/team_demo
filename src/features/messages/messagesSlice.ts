@@ -1,10 +1,13 @@
 import {createAsyncThunk, createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {ChatType} from "pages/Messages/Components/LeftSide";
+import {Dispatch, SetStateAction} from "react";
 
 
-type Targs = {
+type TArgs = {
     userId?: string;
     chatId?: string;
+    isLoading:boolean;
+    setLoading:Dispatch<SetStateAction<boolean>>
 }
 
 const initialState: ChatType[] = [];
@@ -12,7 +15,7 @@ const initialState: ChatType[] = [];
 
 export const getChats = createAsyncThunk(
     "async/chats",
-    async ({userId}: Targs, thunkAPI) => {
+    async ({userId,isLoading,setLoading}: TArgs, thunkAPI) => {
         const baseUrl = process.env.REACT_APP_PUBLIC_URL;
         try {
             if (userId) {
@@ -22,7 +25,10 @@ export const getChats = createAsyncThunk(
                 headers: {"Content-Type": "application/json"},
             })
                 .then((res) => res.json())
-                .then((res: ChatType[]) => res);
+                .then((res: ChatType[]) => {
+                    setLoading(false);
+                    return res
+                })
         } catch (e) {
             return thunkAPI.rejectWithValue(e);
         }
@@ -33,7 +39,7 @@ export const getChats = createAsyncThunk(
 export const messageReducer = createSlice({
     name: "registration",
     initialState,
-    reducers: {},
+    reducers:{},
     extraReducers: (builder) => {
         builder
             .addCase(getChats.fulfilled, (state, action: PayloadAction<ChatType[]>) => {

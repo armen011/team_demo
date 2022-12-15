@@ -8,7 +8,7 @@ export type PrivateRouteProps={children:ReactElement}
 
 const PrivateRoute:FC<PrivateRouteProps>=({children})=>{
 
-    const isLogedInRedux=useSelector((state:RootState)=>state.user.isLoggedIn);
+    const isLogedInRedux=useSelector((state:RootState)=>state.user.isLogedIn);
 
 
 

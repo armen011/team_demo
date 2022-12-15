@@ -23,7 +23,7 @@ const Messages: FC = () => {
           {params?.chatId ? (
             <EachUserMessage
               chatId={params?.chatId}
-              memberId="638e5d9c5363dc9bd2f02de7"
+              memberId={memberId}
             />
           ) : (
             <RightSide />

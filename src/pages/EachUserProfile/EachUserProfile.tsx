@@ -8,6 +8,8 @@ import PostPhoto from "../../images/posting.png";
 import Footer from "../../layouts/AuthLayout/Components/Footer";
 import '../Profile/Profile.css'
 import {useParams} from "react-router-dom";
+import {useAppSelector} from "../../app";
+import {useNavigate} from "react-router";
 
 type TUserState = {
     coverPicture: string,
@@ -26,6 +28,7 @@ type TUserState = {
 const EachUserProfile = () => {
     const [data, setData] = useState<TUserState>()
     const {userId} = useParams()
+    const creatorId = useAppSelector(state => state.user._id)
 
     useEffect(() => {
         fetch(
@@ -62,6 +65,40 @@ const EachUserProfile = () => {
             })
         })
     }
+    const navigate = useNavigate()
+
+    const handleMessageClick = () => {
+        if (creatorId !== userId) {
+            fetch(
+                'http://localhost:8800/api/chat',
+                {
+                    method: "POST",
+                    headers: {"Content-Type": "application/json"},
+                    body: JSON.stringify({creatorId, memberId: userId})
+                }
+            )
+                .then((res) => res.json()).then(res => {
+                navigate(`/messages/${userId}`)
+            })
+        }else {
+            navigate(`messages/${userId}`)
+        }
+    }
+
+    const handleFollowToggle = () => {
+        // fetch(
+        //     `http://localhost:8800/api/:id/follow`,
+        //     {
+        //         method: "POST",
+        //         headers: { "Content-Type": "application/json" },
+        //         body:JSON.stringify({userId})
+        //     }
+        // )
+        //     .then((res) => res.json()).then(res=>{
+        //     console.log(res, "FOLLOWING")
+        // })
+
+    }
 
     return (
         <MainLayout>
@@ -78,8 +115,8 @@ const EachUserProfile = () => {
                             <div className={'my_profile_name_text'}><span>{data?.username}</span></div>
 
                             <div className={'my_profile_edit_part'}>
-                                <div className={'my_profile_edit_button'}>Following</div>
-                                <div className={'my_profile_edit_button'}>Message</div>
+                                <div onClick={handleFollowToggle} className={'my_profile_edit_button'}>Following</div>
+                                <div onClick={handleMessageClick} className={'my_profile_edit_button'}>Message</div>
                             </div>
 
                             <div className={'my_profile_setting_part'}>

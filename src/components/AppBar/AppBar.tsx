@@ -13,7 +13,7 @@ type TCategoryPart = {
     id: number,
     isActive: boolean,
     path: string,
-    isRoutable: boolean
+    isRoutable: boolean,
 }
 
 type TAppBar = {

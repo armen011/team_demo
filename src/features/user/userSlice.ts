@@ -1,28 +1,31 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 export type UserStateType = {
-  userName: string;
+  username: string;
   fullName: string;
   password: string;
   dateOfBirth: string;
   profilPic?: string;
-  isLoggedIn: boolean;
+  isLogedIn: boolean;
   email: string;
   errorMessage: string;
   _id: string | undefined;
 };
 
-const initialState: UserStateType = {
-  userName: "",
+const localState:UserStateType | null = JSON.parse(localStorage.getItem('user')!);
+
+
+const initialState: UserStateType = !localState ? {
+  username: "",
   fullName: "",
   email: "",
   password: "",
   dateOfBirth: "",
   profilPic: "",
-  isLoggedIn: false,
+  isLogedIn: false,
   errorMessage: "",
   _id: undefined,
-};
+} : localState;
 
 type Targ = {
   login: string;
@@ -36,7 +39,7 @@ export const login = createAsyncThunk(
 
     try {
       return await fetch(
-          `${baseUrl}api/auth/login?login=${login}&password=${password}`,
+        `${baseUrl}api/auth/login?login=${login}&password=${password}`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -56,11 +59,15 @@ export const userSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(login.fulfilled, (state, { payload }) => {
+      if(payload.email){
+        // localStorage.setItem("user",JSON.stringify({...payload,isLogedIn:true}));
+      }
       return payload.email
-        ? { ...payload, isLoggedIn: true }
+        ? { ...payload, isLogedIn: true }
         : { ...initialState, errorMessage: payload };
     });
     builder.addCase(login.rejected, (state, action) => {
+      console.error("Something was wrong");
     });
   },
 });

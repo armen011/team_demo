@@ -52,4 +52,9 @@
   word-break: break-word;
 }
 
+.send_image{
+  height: 340px;
+  min-width: 156px;
+  border-radius: 22px;
+}
 

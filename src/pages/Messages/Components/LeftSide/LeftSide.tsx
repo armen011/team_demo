@@ -1,30 +1,30 @@
 import "./leftSide.css";
 import down_icon from "images/down_icon/down-chevron-svgrepo-com.svg";
 import EachMessage from "./Components/EachMessage";
-import {FC, useEffect} from "react";
+import {FC, useEffect, useState} from "react";
 import {useAppDispatch, useAppSelector} from "app";
 import {getChats} from "features/messages";
+import LoadingComponent from "./Components/LoadingComponent";
+import {useNavigate} from "react-router";
 
 export type ChatType = {
     id: string;
     picture: string;
     title: string;
-    userId?:string
+    userId?: string
 };
 
 const LeftSide: FC = () => {
-    const userId = useAppSelector((state) => state.user._id);
-
+    const user = useAppSelector((state) => state.user);
+    const [isLoading, setLoading] = useState<boolean>(true);
     const dispatch = useAppDispatch();
     const chats = useAppSelector(s => s.messages);
 
-
     useEffect(() => {
-        dispatch(getChats({userId}));
-    }, [userId]);
+        dispatch(getChats({userId: user._id, isLoading, setLoading}));
+    }, [user._id]);
 
-    console.log(chats);
-
+    const navigate = useNavigate();
 
     return (
         <div className="left_side">
@@ -33,7 +33,7 @@ const LeftSide: FC = () => {
                     <div></div>
                     <div>
                         <div>
-                            <div className="user_name_field">hovhannisyan0010</div>
+                            <div className="user_name_field">{user.username}</div>
                         </div>
                         <div>
                             <img src={down_icon} alt="down_icon"/>
@@ -60,9 +60,11 @@ const LeftSide: FC = () => {
             </div>
             <div className="messages_section">
                 <div>
-                    {chats.map(({title, picture, id,userId}, index) => {
-                        return (
-                            <EachMessage
+                    { !isLoading ? chats.map(({title, picture, id, userId}, index) => {
+                        if (id === userId){
+                            navigate(`messages/${id}`)
+                        }
+                        return <EachMessage
                                 receiverName={title}
                                 message="asdsaasd"
                                 userId={userId}
@@ -70,8 +72,7 @@ const LeftSide: FC = () => {
                                 key={index}
                                 id={id}
                             />
-                        )
-                    })}
+                    }) : [1,2,3].map((a,index)=><LoadingComponent key={index}/>)}
                 </div>
             </div>
         </div>

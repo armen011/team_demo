@@ -1,9 +1,10 @@
-import React, {Dispatch, FC, SetStateAction, useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import deleteIcon from "assets/images/delete.png";
 import userIcon from "assets/images/user.png";
 import './SearchSideBar.css'
 import {useTranslation} from "react-i18next";
 import {useNavigate} from "react-router";
+import {useAppSelector} from "../../app";
 
 export type TData = {
     fullName: string,
@@ -11,13 +12,9 @@ export type TData = {
     img: string,
     username: string
 }
-
-type TProps = {
-    handleRecentFunc: Dispatch<SetStateAction<TData[]>>
-    recent: TData[]
-}
-
-const SearchSideBar:FC<TProps> = ({recent, handleRecentFunc}) => {
+const SearchSideBar = () => {
+    const state = useAppSelector(state => state.user)
+    const [recent, setRecent] = useState<TData[]>([]);
     const [inputValue, setInputValue] = useState('')
     const handleInputChange = (e: { target: HTMLInputElement }) => {
         setInputValue(e.target.value)
@@ -49,7 +46,10 @@ const SearchSideBar:FC<TProps> = ({recent, handleRecentFunc}) => {
     const {t} = useTranslation()
     const navigate = useNavigate()
     const addingRecent = (recentUser: TData) => {
-        handleRecentFunc(prevState => [...prevState, recentUser])
+        setRecent(prevState => [...prevState, recentUser])
+        if (recent.length){
+            localStorage.setItem('recent_users', JSON.stringify(recent))
+        }
     }
     
     const handleUserRedirect = (route: string) => {
@@ -58,10 +58,10 @@ const SearchSideBar:FC<TProps> = ({recent, handleRecentFunc}) => {
         }, 0)
     }
     const clearAllRecent = () => {
-        handleRecentFunc([])
+        setRecent([])
     }
     const handleDeleteRecent = (id: string) => {
-        handleRecentFunc(prevState => prevState.filter(elem=> elem.id !== id))
+        setRecent(prevState => prevState.filter(elem=> elem.id !== id))
     }
     const placeholder = t('Search');
 
