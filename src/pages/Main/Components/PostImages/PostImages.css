@@ -1,0 +1,8 @@
+.image_container{
+    width: 100%;
+}
+
+.image_container >img{
+    width: 100%;
+    cursor: pointer;
+}

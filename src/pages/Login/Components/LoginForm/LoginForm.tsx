@@ -66,7 +66,7 @@ function LoginForm() {
           <SubmitButton
             isValid={isValidButton}
             onClick={handleLoginUser}
-            text={t("Log_in")}
+            text={t("Log in")}
           />
         </div>
         <div className="error_wrapper">
@@ -80,7 +80,7 @@ function LoginForm() {
         </p>
       </div>
       <div className="get_the_app_wrapper">
-        <p>{t("Get_the_app")}</p>
+        <p>{t("Get the app")}</p>
         <div>
           <img src={appStore} />
           <img src={googlePlay} />

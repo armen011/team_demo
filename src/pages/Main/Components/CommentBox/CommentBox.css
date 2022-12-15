@@ -1,0 +1,36 @@
+.comment_container{
+    padding: 4px 16px 4px 12px;
+    width: 100%;
+    border-top: 1px solid rgb(219, 219, 219);
+    font: inherit;
+}
+
+.comment_wrapper{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 11px 0px;
+}
+
+.comment_container input{
+    border: none;
+    font: 14px;
+    color: rgb(38, 38, 38);
+    width:100%
+}
+
+.post_button button {
+    border: none;
+    background-color:transparent ;
+    color: #0095F6;
+    font-weight: 600;
+}
+
+.comment_wrapper >.aa{
+    width: 100%;
+}
+
+.post_button button:disabled{
+    opacity: 0.3;
+    cursor: auto;
+}

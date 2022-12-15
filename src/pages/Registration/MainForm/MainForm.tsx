@@ -26,7 +26,7 @@ const MainForm = () => {
                             <RegistrationForm/>
                         </div>
                         <div className="route_to_login">
-                            <p>{t("have_an_account")}
+                            <p>{t("Have an account?")}
                                 <a href="" onClick={handleNavigate}> {t("login")}</a>
                             </p>
                         </div>
