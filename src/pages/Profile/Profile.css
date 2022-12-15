@@ -1,0 +1,211 @@
+.my_profile{
+    width: 940px;
+    margin: 0 10vw 0 auto;
+}
+
+.just{
+    width: 270px;
+    height: 100vh;
+    float: left;
+}
+
+
+.upper_part{
+    width: 100%;
+    height: 30vh;
+    display: flex;
+}
+
+.my_profile_image{
+    width: 35%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+ }
+
+.my_profile_image img{
+    height: 150px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.my_profile_about{
+    width: 65%;
+    height: 100%;
+    padding-top: 3%;
+}
+
+.my_profile_about > div{
+    width: 100%;
+    height: 30%;
+    display: flex;
+    align-items: center;
+}
+
+.my_profile_name_text{
+    font-size: 30px;
+    font-weight: 100;
+    margin-right: 20px;
+}
+
+.my_profile_name_text span{
+    cursor: text;
+}
+
+.my_profile_edit_part{
+    display: flex;
+    align-items: center;
+    height: 100%;
+    gap: 7px;
+}
+
+.my_profile_edit_button{
+    width:90px;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    background: white;
+    border: 1px solid rgb(202, 202, 202);
+    border-radius: 4px;
+    font-size: 13px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.my_profile_setting_part{
+    height:100%;
+    display: flex;
+    align-items: center;
+    margin-left: 15px;
+}
+
+.my_profile_setting_part img{
+    width: 30px;
+}
+
+.my_profile_counts_part div{
+    margin-right: 25px;
+}
+
+.my_profile_counts_part span{
+    font-weight: bold;
+}
+
+.followers_count{
+    cursor: pointer;
+}
+
+.following_count{
+    cursor: pointer;
+}
+
+.my_profile_show_category_part{
+    width: 100%;
+    height: 50px;
+    border-top: 1px solid rgb(202,202,202);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 70px;
+    font-size: 12px;
+}
+
+.my_profile_show_category_part div{
+    height: 100%;
+    width: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    margin-top: -2px;
+}
+
+
+
+.my_profile_post_part{
+    width:100%;
+    height: 100%;
+    background: red;
+}
+
+
+.my_profile_just_text{
+    font-size: 15px;
+    margin-bottom: 20px;
+}
+
+.my_profile_post_dont_have_share_button{
+    color:rgb(0, 149, 246);
+    cursor: pointer;
+}
+
+.my_profile_posting_part{
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    flex: 1 1 0;
+ }
+
+@media only screen and (max-width: 1400px) {
+    .my_profile{
+        margin-right: 2vw;
+    }
+}
+
+@media only screen and (max-width: 1275px) {
+    .my_profile{
+        width: 850px;
+    }
+}
+
+
+@media only screen and (max-width: 1200px) {
+    .my_profile{
+        margin-right: 5vw;
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+    .my_profile{
+        width: 750px;
+        margin-right: 3vw;
+    }
+
+    .single_post{
+        height: 240px
+    }
+}
+
+@media only screen and (max-width: 860px) {
+    .my_profile{
+        width: 650px;
+        margin-right: 3vw;
+    }
+
+    .single_post{
+        height: 200px
+    }
+}
+
+@media only screen and (max-width: 760px) {
+    .my_profile{
+        width: 550px;
+        margin-right: 3vw;
+    }
+
+    .single_post{
+        height: 180px
+    }
+}
+
+@media only screen and (max-width: 660px) {
+    .my_profile{
+        width: 500px;
+        margin-right: 3vw;
+    }
+
+    .single_post{
+        height: 130px
+    }
+}

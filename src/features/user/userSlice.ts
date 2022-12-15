@@ -1,5 +1,4 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import type { PayloadAction } from "@reduxjs/toolkit";
 
 export type UserStateType = {
   username: string;
@@ -83,7 +82,7 @@ export const userSlice = createSlice({
       return { ...initialState, errorMessage: payload };
     });
     builder.addCase(login.rejected, (state, action) => {
-      // console.log("action.payload", action.payload);
+      console.error("Something was wrong");
     });
   },
 });

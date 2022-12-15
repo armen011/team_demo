@@ -32,9 +32,17 @@
     "Full Name": "Անուն Ազգանուն",
     "Username": "Օգտանուն",
     "Password": "Գաղտնաբառ",
-    "Get the app.": "Ներբեռնել հավելվածը",
+    "Get_the_app": "Ներբեռնել հավելվածը",
     "Username is already used": "Օգտանունը արդեն օգտագործված է",
     "Email is already used": "Էլ․ հասցեն արդեն օգտագործված է",
     "Show": "Տեսնել",
-    "Hide": "Թաքցնել"
+    "Hide": "Թաքցնել",
+    "Notifications" : "Նորություններ",
+    "UserName": "Օգտանուն",
+    "Following": "Հետևում եք",
+    "Follow" : "Հետևել",
+    "started following you": "սկսել Է Հետևել ձեզ",
+    "liked your post" : "հավանել Է ձեր post-ը",
+    "Recent": "Վերջերս",
+    "Clear all": "Մաքրել բոլորը"
 }

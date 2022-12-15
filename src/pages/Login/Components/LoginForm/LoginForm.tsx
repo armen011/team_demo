@@ -41,7 +41,6 @@ function LoginForm() {
     );
   };
 
-  console.log("selector", selector);
   return (
     <div className="login_form_wrapper">
       <div className="login_form_container">

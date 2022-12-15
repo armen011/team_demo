@@ -7,9 +7,11 @@ import Socket from "socket";
 const App = () => {
   return (
     <Provider store={store}>
-      <Socket.Provider>
-        <AppRouter />
-      </Socket.Provider>
+      <div>
+        <Socket.Provider>
+          <AppRouter />
+        </Socket.Provider>
+      </div>
     </Provider>
   );
 };

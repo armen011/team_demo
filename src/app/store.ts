@@ -1,14 +1,15 @@
 import { configureStore } from "@reduxjs/toolkit";
-import postReducer from "features/post";
 import registrationReducer from "features/registration";
 import userReducer from "features/user";
-import { TypedUseSelectorHook, useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
+import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
+import messageReducer from "features/messages";
+import postReducer from "features/post";
 
 const store = configureStore({
   reducer: {
     user: userReducer,
     registration: registrationReducer,
+    messages: messageReducer,
     post: postReducer,
   },
 });
