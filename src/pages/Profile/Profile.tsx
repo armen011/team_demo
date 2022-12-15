@@ -2,19 +2,17 @@ import MainLayout from "layouts/MainLayout"
 import Footer from "../../layouts/AuthLayout/Components/Footer";
 import Highlight from "./Components/Highlight";
 import SinglePost from "./Components/SinglePost";
-import Neccessary from "./Components/Neccessary";
 import ProfileCategory from "./Components/ProfileCategory";
 
 import './Profile.css'
 
 import settingIcon from '../../images/settings.png'
-import UserIcon from '../../images/user.png'
+import UserIcon from '../../assets/images/user.png'
 import PostPhoto from '../../images/posting.png'
 import {useState} from "react";
 
 
 const Profile = () => {
-
     const categories = [
         {
             name:'POSTS',
@@ -44,7 +42,6 @@ const Profile = () => {
             })
         })
     }
-
 
   return (
     <MainLayout>

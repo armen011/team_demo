@@ -19,7 +19,6 @@ const ProfileCategory:FC<CategoryType> = ({name,path,isActive,setActivation}) =>
         {/*//      onClick={()=>{*/}
         {/*//          setActivation(name)*/}
         {/*//      }}>{name}</div>*/}
-            {console.log(name,isActive)}
         <div className={isActive ? 'my_profile_show_category_active' : ''}
                          onClick={()=>setActivation(name)}>{name}</div>
         </>

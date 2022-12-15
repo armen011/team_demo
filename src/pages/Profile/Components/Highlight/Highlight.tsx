@@ -1,7 +1,5 @@
 import './Highlight.css'
 import {FC} from "react";
-import UserIcon from "../../../../images/user.png";
-
 export type HighlightType={
     text:string
     image:string

@@ -1,21 +1,23 @@
-*{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
-button{
-    cursor: pointer;
+button {
+  cursor: pointer;
 }
 
-button, textarea:focus, input:focus{
-    outline: none;
+button,
+textarea:focus,
+input:focus {
+  outline: none;
 }
 
-ul{
-    text-decoration: none;
+ul {
+  text-decoration: none;
 }
 
-img{
-    user-select: none;
+img {
+  user-select: none;
 }

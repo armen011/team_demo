@@ -1,4 +1,4 @@
-import {Component, FC, ReactChildren, ReactComponentElement, ReactElement, ReactNode} from "react"
+import {FC, ReactElement, ReactNode} from "react"
 import MenuBar from 'components/MenuBar'
 
 export type MainLayoutProps={
@@ -7,8 +7,8 @@ export type MainLayoutProps={
 
 const MainLayout:FC<MainLayoutProps>=({children})=>{
     return <div>
-                <MenuBar/>
-                <div>{children}</div>
+                <MenuBar routeInfo={'Home'}/>
+                <div className='main_layout_wrapper'>{children}</div>
             </div>
 }
 
