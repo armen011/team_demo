@@ -15,3 +15,7 @@ button, textarea:focus, input:focus{
 ul{
     text-decoration: none;
 }
+
+img{
+    user-select: none;
+}

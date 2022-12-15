@@ -69,6 +69,8 @@
     border-radius: 4px;
     font-size: 13px;
     font-weight: bold;
+    cursor: pointer;
+    user-select: none;
 }
 
 .my_profile_setting_part{
