@@ -1,40 +1,39 @@
-import "./CreateModal.css";
 import { useState } from "react";
+import "./CreateModal.css";
+import Upload from "./Upload";
+import Resize from "./Resize";
+import Edit from "./Edit";
+import Post from "./Post";
+
+const Components = {
+  resize: Resize,
+  edit: Edit,
+  post: Post,
+  upload: Upload,
+};
+
+type ComponentsKeyType = keyof typeof Components;
+export type ChangeStepFunctionType = (step: ComponentsKeyType) => void;
 
 const CreateModal = () => {
-  const [file, setFile] = useState<File>();
+  const [step, setStep] = useState<ComponentsKeyType>("upload");
 
-  const handleUploadFile = (event: React.FormEvent) => {
-    const files = (event.target as HTMLInputElement).files;
-
-    if (files && files.length > 0) {
-      // @ts-ignore
-      const images = [...files];
-
-      // @ts-ignore
-      setFile(() => {
-        return images.map((el) => URL.createObjectURL(el));
-      });
-    }
+  const changeStep: ChangeStepFunctionType = (step) => {
+    setStep(step);
   };
-  // @ts-ignore
-  // {file && file.map((el) => <img src={el} style={{width:"200px"}} />)}
 
-  console.log('file', file)
+  const Component = Components[step];
+
   return (
     <div className="create_file_wrapper">
-      <div className="create_file_content">
-        {!file ? (
-          <div className="input_file_wrapper">
-            Click here
-            <input type="file" multiple onChange={handleUploadFile} />
-          </div>
-        ) : (
-          <div style={{width:"100%", height:"100%"}}> 
-          {/* @ts-ignore */}
-            <img src={file && file[0]} style={{width:"100%", height:"100%"}} /> 
-          </div>
-        )}
+      <div
+        className={
+          step === "upload" || step === "resize"
+            ? "create_file_content"
+            : "opened_poppup_filters"
+        }
+      >
+        <Component {...{ changeStep }} />
       </div>
     </div>
   );

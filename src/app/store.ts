@@ -1,4 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
+import postReducer from "features/post";
 import registrationReducer from "features/registration";
 import userReducer from "features/user";
 import { TypedUseSelectorHook, useDispatch } from "react-redux";
@@ -8,6 +9,7 @@ const store = configureStore({
   reducer: {
     user: userReducer,
     registration: registrationReducer,
+    post: postReducer,
   },
 });
 

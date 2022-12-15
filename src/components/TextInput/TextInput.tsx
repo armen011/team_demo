@@ -1,6 +1,6 @@
 import { ChangeEventHandler, FC, HTMLInputTypeAttribute } from "react";
 import "./TextInput.css";
-import {useTranslation} from "react-i18next";
+import { useTranslation } from "react-i18next";
 
 export type TextInputProps = {
   placeholder?: string | null;
@@ -8,8 +8,8 @@ export type TextInputProps = {
   onChange: (value: string) => void;
   type?: HTMLInputTypeAttribute;
   name: string;
-  show?:string;
-  toggle?:()=>void
+  show?: string;
+  toggle?: () => void;
 };
 
 const TextInput: FC<TextInputProps> = ({
@@ -19,9 +19,9 @@ const TextInput: FC<TextInputProps> = ({
   type = "text",
   name,
   show,
-  toggle
+  toggle,
 }) => {
-  const {t} = useTranslation();
+  const { t } = useTranslation();
   const handleInputChange: ChangeEventHandler<HTMLInputElement> = ({
     target: { value },
   }) => {

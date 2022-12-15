@@ -20,6 +20,7 @@ import Category from "../Category";
 import {useState} from "react";
 import CategoryMin from "../CategoryMin";
 import {useNavigate} from "react-router-dom";
+import CreateModal from 'components/CreateModal';
 
 
 const MenuBar = () =>{
@@ -108,6 +109,7 @@ const MenuBar = () =>{
 
     return(
         <>
+        <CreateModal/>
             <div className={'app_bar'}>
                            <div className={'logo-part'}>
                                <img src={logo} alt=""/>

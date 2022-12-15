@@ -8,7 +8,7 @@ const App = () => {
   return (
     <Provider store={store}>
       <Socket.Provider>
-      <AppRouter />
+        <AppRouter />
       </Socket.Provider>
     </Provider>
   );
