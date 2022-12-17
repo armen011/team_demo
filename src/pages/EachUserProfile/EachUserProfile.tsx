@@ -27,8 +27,8 @@ type TUserState = {
 }
 const EachUserProfile = () => {
     const [data, setData] = useState<TUserState>()
-    const {userId} = useParams()
-    const creatorId = useAppSelector(state => state.user._id)
+    const {userId} = useParams();
+    const creatorId = useAppSelector(state => state.user._id);
 
     useEffect(() => {
         fetch(
@@ -74,14 +74,14 @@ const EachUserProfile = () => {
                 {
                     method: "POST",
                     headers: {"Content-Type": "application/json"},
-                    body: JSON.stringify({creatorId, memberId: userId})
+                    body: JSON.stringify({creatorId:creatorId, memberId: userId})
                 }
             )
-                .then((res) => res.json()).then(res => {
-                navigate(`/messages/${userId}`)
-            })
+                .then((res) => res.json()).then((chat) => {
+                navigate(`/messages/${chat.id}`);
+            }).catch(err=> console.log(err))
         }else {
-            navigate(`messages/${userId}`)
+            navigate(`messages/${userId}`);
         }
     }
 

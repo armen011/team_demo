@@ -1,5 +1,5 @@
-import {FC, ReactElement, ReactNode} from "react"
-import MenuBar from 'components/MenuBar'
+import {FC, ReactElement, ReactNode,useState} from "react"
+import MenuBar from 'components/MenuBar';
 
 export type MainLayoutProps={
     children:ReactElement | ReactNode

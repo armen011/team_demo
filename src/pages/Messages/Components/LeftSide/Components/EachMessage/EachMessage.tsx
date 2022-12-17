@@ -7,6 +7,7 @@ export type EachMessageProps = {
     receiverName: string;
     message: string;
     userId?:string;
+    popUpHide?:()=>void
     img: string;
     id: string;
 };
@@ -15,13 +16,14 @@ const EachMessage: FC<EachMessageProps> = ({
                                                receiverName,
                                                message,
                                                img,
-                                               userId,
+                                               popUpHide,
                                                id,
                                            }) => {
     const navigate = useNavigate();
 
     const handleChatSelect = () => {
         navigate(`/messages/${id}`);
+         popUpHide && popUpHide();
     };
 
     return (

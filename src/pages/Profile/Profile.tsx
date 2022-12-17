@@ -46,30 +46,30 @@ const Profile = () => {
   return (
     <MainLayout>
 
-        <div className={'my_profile'}>
-            <div className={'upper_part'}>
-                <div className={'my_profile_image'}>
-                    <img src={UserIcon} alt={'Change image'}/>
+        <div className='my_profile'>
+            <div className='upper_part'>
+                <div className='my_profile_image'>
+                    <img src={UserIcon} alt='Change image'/>
                 </div>
 
-                <div className={'my_profile_about'}>
+                <div className='my_profile_about'>
 
-                    <div className={'my_profile_name_part'}>
-                        <div className={'my_profile_name_text'}><span>abayvazyan</span></div>
+                    <div className='my_profile_name_part'>
+                        <div className='my_profile_name_text'><span>abayvazyan</span></div>
 
-                        <div className={'my_profile_edit_part'}>
-                           <div className={'my_profile_edit_button'}>Edit profile</div>
+                        <div className='my_profile_edit_part'>
+                           <div className='my_profile_edit_button'>Edit profile</div>
                         </div>
 
-                        <div className={'my_profile_setting_part'}>
+                        <div className='my_profile_setting_part'>
                             <img src={settingIcon} alt="Settings"/>
                         </div>
                     </div>
 
-                    <div className={'my_profile_counts_part'}>
+                    <div className='my_profile_counts_part'>
                         <div><span>3</span>  post</div>
-                        <div className={'followers_count'}><span>333</span> followers</div>
-                        <div className={'following_count'}><span>333</span>  following</div>
+                        <div className='followers_count'><span>333</span> followers</div>
+                        <div className='following_count'><span>333</span>  following</div>
                     </div>
 
 
@@ -78,12 +78,12 @@ const Profile = () => {
             </div>
 
             {/*Story*/}
-            <div className={'my_profile_highlight_part'}>
-                <Highlight text={'Haylo'} image={UserIcon}/>
+            <div className='my_profile_highlight_part'>
+                <Highlight text='Haylo' image={UserIcon}/>
 
             </div>
 
-            <div className={'my_profile_show_category_part'}>
+            <div className='my_profile_show_category_part'>
                 {categoryList.map((elem,index)=>{
                     return <ProfileCategory isActive={elem.isActive} setActivation={() => changeCategoryActivationHandler(elem.name)}
                                             name={elem.name} path={elem.path} key={index * Math.random()}/>
@@ -93,7 +93,7 @@ const Profile = () => {
             {/*    <Neccessary/>*/}
 
 
-            <div className={'my_profile_posting_part'}>
+            <div className='my_profile_posting_part'>
 
                 <SinglePost image={PostPhoto}/>
                 {/*<SinglePost image={PostPhoto}/>*/}

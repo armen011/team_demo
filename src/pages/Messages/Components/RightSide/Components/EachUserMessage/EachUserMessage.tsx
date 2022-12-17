@@ -41,24 +41,22 @@ const EachUserMessage: FC<EachUserMessageProps> = ({chatId, memberId}) => {
     }, [chatId, userId]);
 
     const handleSendMessage = useCallback(() => {
-        console.log(f);
         send("sendMessage", {
             to: memberId,
             from: userId,
             chatId,
             text: inputVal,
-            src: f
         });
         setMessages((prev) => {
-            if(f){
+            if (f) {
                 return [
                     ...prev,
-                    {date: "now", isNew: false, text: inputVal, type: "send", src: f},
+                    {date: "now", isNew: false, text: inputVal, type: "send",},
                 ]
             }
-            return  [
+            return [
                 ...prev,
-                {date: "now", isNew: false, text: inputVal, type: "send", src: ''},
+                {date: "now", isNew: false, text: inputVal, type: "send",},
             ]
         });
         setVal("");
@@ -66,33 +64,19 @@ const EachUserMessage: FC<EachUserMessageProps> = ({chatId, memberId}) => {
     }, [inputVal, memberId, userId, chatId, send]);
 
 
-
-
-
-
-
-
     const handleFormMessage = (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault()
-        handleSendMessage();
-    }
-
-
-
-    const handleFile = (e: ChangeEvent<HTMLInputElement>): void => {
-        if(e.target.files){
-            s(URL.createObjectURL(e.target.files[0]));
+        e.preventDefault();
+        if (inputVal.trim()) {
+            handleSendMessage();
         }
     }
 
-    // useEffect(()=>{
-    //     if(f){
-    //         handleSendMessage();
-    //     }
-    // },[f])
-    //
-    // console.log(messages);
 
+    const handleFile = (e: ChangeEvent<HTMLInputElement>): void => {
+        if (e.target.files) {
+            s(URL.createObjectURL(e.target.files[0]));
+        }
+    }
 
     return (
         <section className="each_user_message">
