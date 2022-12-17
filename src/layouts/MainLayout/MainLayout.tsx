@@ -7,7 +7,7 @@ export type MainLayoutProps={
 
 const MainLayout:FC<MainLayoutProps>=({children})=>{
     return <div>
-                <MenuBar routeInfo={'Home'}/>
+                <MenuBar/>
                 <div className='main_layout_wrapper'>{children}</div>
             </div>
 }

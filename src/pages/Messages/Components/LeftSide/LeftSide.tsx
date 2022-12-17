@@ -67,7 +67,6 @@ const LeftSide: FC<{popUpShow:()=>void}> = ({popUpShow}) => {
                         }
                         return <EachMessage
                                 receiverName={title}
-                                message="asdsaasd"
                                 userId={userId}
                                 img={picture}
                                 key={index}

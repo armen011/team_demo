@@ -5,7 +5,6 @@ import {useNavigate} from "react-router";
 
 export type EachMessageProps = {
     receiverName: string;
-    message: string;
     userId?:string;
     popUpHide?:()=>void
     img: string;
@@ -14,7 +13,6 @@ export type EachMessageProps = {
 
 const EachMessage: FC<EachMessageProps> = ({
                                                receiverName,
-                                               message,
                                                img,
                                                popUpHide,
                                                id,
@@ -40,8 +38,6 @@ const EachMessage: FC<EachMessageProps> = ({
                     </div>
                     <div>
                         <div>
-                            <h5>{message}</h5>
-                            <h5>15h</h5>
                         </div>
                     </div>
                 </div>

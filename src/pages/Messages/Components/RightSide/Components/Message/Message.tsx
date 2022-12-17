@@ -27,8 +27,7 @@ const Message: FC<MessageProps> = ({messages}) => {
     return (
         <div ref={messageAnchorRef} className="messages">
             {messages.map(({text, type}, index) => {
-                // const c2 = !text && src;
-                // const c3 = text && !src;
+
 
 
                 return (

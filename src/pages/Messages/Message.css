@@ -89,20 +89,10 @@
     font-family: "Segoe UI",sans-serif;
 }
 
-.next_message > button{
-    border: none;
-    background-color: transparent;
+.next_message{
     width: 55px;
     height: 55px;
-    font-weight: 500;
-    font-size: 15px;
-    margin-right: 5px;
-    color: #aac9ff; /*#3578E5*/
 }
-
-
-
-
 
 
 .search_to_message{
@@ -153,9 +143,11 @@
 .suggested_wrapper{
     display: flex;
     flex-direction: column;
+    overflow-y: auto;
+    width: 100%;
 }
 .suggested{
-    margin: 7px;
+    padding: 5px;
     width: 100%;
 }
 
@@ -164,9 +156,7 @@
 
 }
 
-
 .suggested > h4{
     font-weight: 450;
     font-family: "Segoe UI",sans-serif;
 }
-

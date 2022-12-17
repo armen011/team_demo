@@ -20,7 +20,6 @@ const EachUserMessage: FC<EachUserMessageProps> = ({chatId, memberId}) => {
     const {send, listen} = useSocket();
     const userId = useAppSelector((state) => state.user._id);
     const [messages, setMessages] = useState<MessageType[]>([]);
-    const [f, s] = useState<string>('');
 
 
     const chats = useAppSelector(s => s.messages);
@@ -48,19 +47,12 @@ const EachUserMessage: FC<EachUserMessageProps> = ({chatId, memberId}) => {
             text: inputVal,
         });
         setMessages((prev) => {
-            if (f) {
-                return [
-                    ...prev,
-                    {date: "now", isNew: false, text: inputVal, type: "send",},
-                ]
-            }
             return [
                 ...prev,
                 {date: "now", isNew: false, text: inputVal, type: "send",},
             ]
         });
         setVal("");
-        s('');
     }, [inputVal, memberId, userId, chatId, send]);
 
 
@@ -72,11 +64,7 @@ const EachUserMessage: FC<EachUserMessageProps> = ({chatId, memberId}) => {
     }
 
 
-    const handleFile = (e: ChangeEvent<HTMLInputElement>): void => {
-        if (e.target.files) {
-            s(URL.createObjectURL(e.target.files[0]));
-        }
-    }
+
 
     return (
         <section className="each_user_message">
@@ -129,10 +117,6 @@ const EachUserMessage: FC<EachUserMessageProps> = ({chatId, memberId}) => {
                                         alt="picture_icon"
                                         className="picture_icon"
                                     />
-                                    <input
-                                        onChange={handleFile}
-                                        type="file"
-                                        className="send_picture"/>
                                 </div> : <p onClick={handleSendMessage}>Send</p>}
                             </div>
                         </div>
