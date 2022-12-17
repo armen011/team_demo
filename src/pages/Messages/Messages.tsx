@@ -1,14 +1,12 @@
-import MainLayout from "layouts/MainLayout";
-import {useParams} from "react-router-dom";
-import "./Message.css";
-import LeftSide, {ChatType} from "./Components/LeftSide";
-import RightSide from "./Components/RightSide";
 import EachUserMessage from "./Components/RightSide/Components/EachUserMessage";
+import LeftSide, {ChatType} from "./Components/LeftSide";
 import React, {FC, useEffect, useState} from "react";
-import { useAppSelector} from "app";
-import EachMessage from "./Components/LeftSide/Components/EachMessage";
-import {useNavigate} from "react-router";
+import RightSide from "./Components/RightSide";
 import SendPopUp from "./Components/SendPopUp";
+import {useParams} from "react-router-dom";
+import MainLayout from "layouts/MainLayout";
+import { useAppSelector} from "app";
+import "./Message.css";
 
 const Messages: FC = () => {
     const params = useParams();

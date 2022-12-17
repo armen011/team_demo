@@ -2,6 +2,7 @@ import EachMessage from "../LeftSide/Components/EachMessage";
 import React, {Dispatch, FC, SetStateAction, useState} from "react";
 import {useNavigate} from "react-router";
 import {ChatType} from "../LeftSide";
+import "./SendPopUp.css"
 
 
 type TSendPopUpProps = {
@@ -55,7 +56,9 @@ const SendPopUp: FC<TSendPopUpProps> = ({isPopUp, popUpHide, chats, setChats, me
                 </div>
             </div>
             <div className="suggested_wrapper">
-                <div className="suggested"><h4>Suggested</h4></div>
+                <div className="suggested">
+                    <h4>Suggested</h4>
+                </div>
                 <div className="chats">
                     {chats.map(({title, picture, id, userId}, index) => {
                         if (id === userId) {
