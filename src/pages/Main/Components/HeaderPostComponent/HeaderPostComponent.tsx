@@ -8,7 +8,6 @@ const HeaderPostComponent: FC = () => {
 
   const handleClosePopup = ()=>{
     document.body.classList.remove("no_scroll")
-    document.body.classList.remove("block")
     setStyle("")
   }
   return (
@@ -31,7 +30,6 @@ const HeaderPostComponent: FC = () => {
         </div>
         <div className="information" onClick={() => {
           document.body.classList.add("no_scroll")
-          document.body.classList.add("block")
           setStyle("block")
           
         }}>

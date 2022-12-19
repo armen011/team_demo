@@ -9,3 +9,12 @@
 .aa{
     font-weight: 600;
 }
+
+.view_all , .more{
+    color: rgb(142, 142, 142);
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+    cursor: pointer;
+    margin: 10px 0px;
+}

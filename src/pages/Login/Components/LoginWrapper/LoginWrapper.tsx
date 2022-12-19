@@ -9,8 +9,9 @@ import './LoginWrapper.css'
 function LoginWraper() {
   return (
     <div className="login_wrapper">
-      <LoginImage />
-      <LoginForm />
+      <PostComponent/>
+      {/* <LoginImage />
+      <LoginForm /> */}
       
     </div>
   );
