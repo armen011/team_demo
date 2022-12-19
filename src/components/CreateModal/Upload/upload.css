@@ -29,6 +29,7 @@
 }
 .upload_content h2 {
   margin: 16px 0;
+  text-align: center;
 }
 
 .upload_content div:nth-child(1) {

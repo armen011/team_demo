@@ -1,5 +1,5 @@
-import registrationReducer from './postSlice';
+import postReducer from './postSlice';
 
 export * from "./postSlice";
 
-export default registrationReducer;
+export default postReducer;

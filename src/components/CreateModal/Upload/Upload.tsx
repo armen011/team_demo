@@ -5,12 +5,14 @@ import "./upload.css";
 import { addImages } from "features/post";
 import { ReactComponent as UploadIcon } from "assets/icon/upload_icon.svg";
 import UTILS from "utils";
+import { useTranslation } from "react-i18next";
 
 export type UploadType = {
   changeStep: ChangeStepFunctionType;
 };
 
 const Upload: FC<UploadType> = ({ changeStep }) => {
+  const {t} = useTranslation()
   const dispatch = useAppDispatch();
   const handleUploadFile = (event: React.FormEvent) => {
     const files = (event.target as HTMLInputElement).files;
@@ -32,11 +34,11 @@ const Upload: FC<UploadType> = ({ changeStep }) => {
 
   return (
     <div className="upload_content">
-      <div>Create new post</div>
+      <div>{t("Create_new_post")}</div>
       <UploadIcon />
-      <h2>Drag photos and videos here</h2>
+      <h2>{t("Drag_photos_and_videos_here")}</h2>
       <button className="input_file_wrapper">
-        Select from computer
+        {t("Select_from_computer")}
         <input type="file" multiple onChange={handleUploadFile} />
       </button>
     </div>

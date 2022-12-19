@@ -6,6 +6,7 @@ import ImageSlider from "../Components/ImageSlider/index";
 import { useAppSelector } from "app";
 import { useAppDispatch } from 'app/store';
 import { createPost } from 'features/post/postSlice';
+import { useTranslation } from "react-i18next";
 
 export type PostType = {
   changeStep: ChangeStepFunctionType;
@@ -16,6 +17,7 @@ const Post: FC<PostType> = ({ changeStep }) => {
   const images = useAppSelector((state) => state.post.images);
 
   const { username, profilePicture } = useAppSelector((s) => s.user);
+  const {t} = useTranslation()
 
   const dispatch = useAppDispatch()
   const post = useAppSelector(s => s.post)
@@ -32,13 +34,15 @@ const Post: FC<PostType> = ({ changeStep }) => {
   const handleShare = () => {
     dispatch(createPost({...post, content }))
   };
+
+  const a = t("Write_a_caption...")
   return (
     <div className="post_share_main_wrapper">
       <PostModalHeader
         {...{
           leftButton: { onClick: handleGoBack },
           rightButton: { title: "Share", onClick: handleShare },
-          title: "Create new post",
+          title: "Create_new_post",
         }}
       />
       <div className="post_share_content_wrapper">
@@ -56,7 +60,7 @@ const Post: FC<PostType> = ({ changeStep }) => {
               rows={10}
               onChange={handleContent}
               value={content}
-              placeholder="Write a caption..."
+              placeholder={a}
             />
           </div>
         </div>

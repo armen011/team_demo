@@ -113,6 +113,7 @@ const MenuBar: FC<Props> = ({ routeInfo }) => {
   const navigate = useNavigate();
   const handleCloseModal = () => {
     setIsCreateModalOpened(false);
+    
   };
 
   const handleActiveClick = (id: number, text: string) => {

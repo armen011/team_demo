@@ -35,7 +35,7 @@ export const createPost = createAsyncThunk(
 );
 
 export const postSlice = createSlice({
-  name: "registration",
+  name: "post",
   initialState,
   reducers: {
     addImages: (state, action: PayloadAction<PostImageType[]>) => {
@@ -50,16 +50,13 @@ export const postSlice = createSlice({
     },
     resetPostState: (state) => {
       state = initialState;
-      console.log("state", state);
+      console.log("statesakjksajkfbasjkfbjsk", state);
     },
   },
   extraReducers: (builder) =>  {
     builder.addCase(createPost.fulfilled, (state ) => {
       console.log("fulfiled");
     } ) 
-     
-      
-    
   },
 });
 
