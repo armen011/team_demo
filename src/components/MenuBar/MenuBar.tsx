@@ -12,18 +12,15 @@ import createIconBold from "assets/images/createBold.png";
 import userIcon from "assets/images/user.png";
 import userIconBold from "assets/images/userBold.png";
 import { FC, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import CreateModal from "components/CreateModal";
 import NotificationSideBar from "../NotificationSideBar";
 import SearchSideBar from "../SearchSideBar";
 import MinBar from "../MinBar";
 import AppBar from "../AppBar";
 
-type Props = {
-  routeInfo: string;
-};
 
-const MenuBar: FC<Props> = ({ routeInfo }) => {
+const MenuBar = () => {
   const categoryParts = [
     {
       img: homeIcon,
@@ -81,7 +78,7 @@ const MenuBar: FC<Props> = ({ routeInfo }) => {
     },
   ];
   switch (true) {
-    case routeInfo === "Home": {
+    case window.location.pathname === '/' : {
       categoryParts.forEach((elem) => {
         if (elem.text === "Home") {
           elem.isActive = true;
@@ -89,7 +86,7 @@ const MenuBar: FC<Props> = ({ routeInfo }) => {
       });
       break;
     }
-    case routeInfo === "Messages" || routeInfo === "": {
+    case window.location.pathname === '/messages': {
       categoryParts.forEach((elem) => {
         if (elem.text === "Messages") {
           elem.isActive = true;
@@ -97,7 +94,7 @@ const MenuBar: FC<Props> = ({ routeInfo }) => {
       });
       break;
     }
-    case routeInfo === "Profile": {
+    case window.location.pathname === "/profile": {
       categoryParts.forEach((elem) => {
         if (elem.text === "Profile") {
           elem.isActive = true;
@@ -123,7 +120,6 @@ const MenuBar: FC<Props> = ({ routeInfo }) => {
       setSearch(true);
       setNot(false);
     } else if (text === "Create") {
-      console.log("text", text);
       setIsCreateModalOpened(true);
       setSearch(false);
       setNot(false);

@@ -41,3 +41,8 @@ label {
   right: 10px;
   cursor: pointer;
 }
+.input_error_message{
+  color: red;
+  font-size: 12px;
+  margin-left: 5px;
+}

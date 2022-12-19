@@ -53,6 +53,9 @@ const AppBar:FC<TAppBar> = ({handleActiveClick, handleRouteClick, category}) =>{
                 })}
             </div>
             <button onClick={() => {
+                localStorage.clear()
+            }}>Logout</button>
+            <button onClick={() => {
                 setLanguage(!language)
                 return i18n.changeLanguage(language ? 'en' : 'hy')
             }}>{!language ? 'Change Language Test' : 'Փոխել լեզւն'}</button>

@@ -1,10 +1,11 @@
 import MainLayout from "layouts/MainLayout"
+import StoryComponent from "components/StoryComponent";
 
-const Main =()=>{
 
+const Main = () =>{
     return <MainLayout>
-        <div></div>
+        <StoryComponent/>
     </MainLayout>
 }
+export default Main;
 
-export default Main

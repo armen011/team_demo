@@ -10,6 +10,12 @@ export type TextInputProps = {
   name: string;
   show?: string;
   toggle?: () => void;
+  inputError?: {
+    email: boolean,
+    fullName: boolean,
+    userName: boolean,
+    password: boolean
+  }
 };
 
 const TextInput: FC<TextInputProps> = ({
@@ -20,6 +26,7 @@ const TextInput: FC<TextInputProps> = ({
   name,
   show,
   toggle,
+  inputError,
 }) => {
   const { t } = useTranslation();
   const handleInputChange: ChangeEventHandler<HTMLInputElement> = ({
@@ -27,19 +34,27 @@ const TextInput: FC<TextInputProps> = ({
   }) => {
     onChange(value);
   };
+  let errorCondition: boolean = false;
+  if (inputError){
+    errorCondition = inputError[name as keyof typeof inputError]
+  }
+
 
   return (
+      <>
     <div className="base_input_group">
       <input
-        id={name}
-        onChange={handleInputChange}
-        value={value}
-        type={type}
-        className={value.length > 0 ? "base_input_filled" : ""}
+          id={name}
+          onChange={handleInputChange}
+          value={value}
+          type={type}
+          className={value.length > 0 ? "base_input_filled" : ""}
       />
       <label htmlFor={name}>{placeholder}</label>
       <span onClick={toggle}>{show && t(show)}</span>
     </div>
+        {errorCondition && <div className='input_error_message'>{`${name} is wrong`}</div>}
+      </>
   );
 };
 

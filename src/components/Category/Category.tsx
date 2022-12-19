@@ -1,5 +1,6 @@
 import React, { FC } from "react";
 import { useTranslation } from "react-i18next";
+import {NavLink} from "react-router-dom";
 
 type TProps = {
   text: string;
@@ -33,8 +34,7 @@ const Category: FC<TProps> = ({
         handleActiveClick(id, text);
         isItRoutable && onClick(pathRoute, text);
       }}
-    >
-      <div className={"category-icon"}>
+    ><div className={"category-icon"}>
         <img
           src={!isActive ? imgSrc : imgSrcBold}
           className={"category-image"}

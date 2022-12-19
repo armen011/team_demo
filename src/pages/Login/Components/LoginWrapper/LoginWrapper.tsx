@@ -11,7 +11,6 @@ function LoginWraper() {
     <div className="login_wrapper">
       <LoginImage />
       <LoginForm />
-      
     </div>
   );
 }

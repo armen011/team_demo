@@ -1,0 +1,26 @@
+.story_wrapper{
+    width: 100vw;
+    height: 100vh;
+    background-color: #262626;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+}
+
+.story_logo{
+    position: fixed;
+    left: 0;
+    top: 0;
+    margin: 10px;
+    height: 60px;
+    width: 60px;
+}
+
+.story_video{
+    margin-top: 10px;
+}
+.video{
+    height: 95vh;
+    border-radius: 8px;
+}

@@ -68,7 +68,6 @@ const EachUserProfile = () => {
     const navigate = useNavigate()
 
     const handleMessageClick = () => {
-        if (creatorId !== userId) {
             fetch(
                 'http://localhost:8800/api/chat',
                 {
@@ -78,11 +77,8 @@ const EachUserProfile = () => {
                 }
             )
                 .then((res) => res.json()).then(res => {
-                navigate(`/messages/${userId}`)
+                navigate(`/messages/${res.id}`)
             })
-        }else {
-            navigate(`messages/${userId}`)
-        }
     }
 
     const handleFollowToggle = () => {

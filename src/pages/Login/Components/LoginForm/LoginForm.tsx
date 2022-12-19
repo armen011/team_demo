@@ -16,7 +16,7 @@ import { useAppDispatch, useAppSelector } from "app/store";
 
 import { useTranslation } from "react-i18next";
 
-function LoginForm() {
+const LoginForm = () => {
   const [loginValues, setLoginValues] = useState({
     login: "",
     password: "",

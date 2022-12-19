@@ -10,6 +10,7 @@ import settingIcon from '../../images/settings.png'
 import UserIcon from '../../assets/images/user.png'
 import PostPhoto from '../../images/posting.png'
 import {useState} from "react";
+import {useAppSelector} from "../../app";
 
 
 const Profile = () => {
@@ -42,10 +43,10 @@ const Profile = () => {
             })
         })
     }
+    const user = useAppSelector(state => state.user)
 
   return (
     <MainLayout>
-
         <div className={'my_profile'}>
             <div className={'upper_part'}>
                 <div className={'my_profile_image'}>
@@ -55,7 +56,7 @@ const Profile = () => {
                 <div className={'my_profile_about'}>
 
                     <div className={'my_profile_name_part'}>
-                        <div className={'my_profile_name_text'}><span>abayvazyan</span></div>
+                        <div className={'my_profile_name_text'}><span>{user.username}</span></div>
 
                         <div className={'my_profile_edit_part'}>
                            <div className={'my_profile_edit_button'}>Edit profile</div>
@@ -67,13 +68,13 @@ const Profile = () => {
                     </div>
 
                     <div className={'my_profile_counts_part'}>
-                        <div><span>3</span>  post</div>
-                        <div className={'followers_count'}><span>333</span> followers</div>
-                        <div className={'following_count'}><span>333</span>  following</div>
+                        <div><span>???</span>  post</div>
+                        <div className={'followers_count'}><span>{user.followers.length}</span> followers</div>
+                        <div className={'following_count'}><span>{user.followings.length}</span>  following</div>
                     </div>
 
 
-                    <div>Bio About Me</div>
+                    <div>{user.fullName}</div>
                 </div>
             </div>
 

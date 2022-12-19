@@ -1,6 +1,6 @@
 .search-part{
     z-index: 6;
-    position: absolute;
+    position: fixed;
     background-color: white;
     width: 400px;
     height: 100vh;
