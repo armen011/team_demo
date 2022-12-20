@@ -148,6 +148,12 @@ const MenuBar = () => {
 
   return (
     <>
+      <div className='close_search_notification' onClick={() => {
+        setNot(false)
+        setSearch(false)
+      }}>
+
+      </div>
       {not || search ? (
         <MinBar
           handleActiveClick={handleActiveClick}

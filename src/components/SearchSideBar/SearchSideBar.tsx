@@ -51,11 +51,13 @@ const SearchSideBar = () => {
             localStorage.setItem('recent_users', JSON.stringify(recent))
         }
     }
-    
+
     const handleUserRedirect = (route: string) => {
-        setTimeout(() => {
+        if (route === state._id){
+            navigate('/profile')
+        }else{
             navigate(`/users/${route}`)
-        }, 0)
+        }
     }
     const clearAllRecent = () => {
         setRecent([])

@@ -29,6 +29,7 @@ const EachUserProfile = () => {
     const [data, setData] = useState<TUserState>()
     const {userId} = useParams()
     const creatorId = useAppSelector(state => state.user._id)
+    const [follow, setFollow] = useState<boolean>(false)
 
     useEffect(() => {
         fetch(
@@ -80,20 +81,17 @@ const EachUserProfile = () => {
                 navigate(`/messages/${res.id}`)
             })
     }
+    const baseUrl = process.env.REACT_APP_PUBLIC_URL;
 
     const handleFollowToggle = () => {
-        // fetch(
-        //     `http://localhost:8800/api/:id/follow`,
-        //     {
-        //         method: "POST",
-        //         headers: { "Content-Type": "application/json" },
-        //         body:JSON.stringify({userId})
-        //     }
-        // )
-        //     .then((res) => res.json()).then(res=>{
-        //     console.log(res, "FOLLOWING")
-        // })
-
+        setFollow(!follow)
+        fetch(`${baseUrl}api/users/${creatorId}/${follow ? 'unfollow' : 'follow'}`, {
+              method: "PUT",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                userId
+              })
+        }).then(res=> res.json()).then(res=> console.log(res, 'FOLLOW RES'))
     }
 
     return (
@@ -111,7 +109,10 @@ const EachUserProfile = () => {
                             <div className={'my_profile_name_text'}><span>{data?.username}</span></div>
 
                             <div className={'my_profile_edit_part'}>
-                                <div onClick={handleFollowToggle} className={'my_profile_edit_button'}>Following</div>
+                                {!follow ? <div onClick={handleFollowToggle} className='follow_not_active'>Follow</div>
+                                    :
+                                    <div onClick={handleFollowToggle} className='my_profile_edit_button'>Following</div>
+                                }
                                 <div onClick={handleMessageClick} className={'my_profile_edit_button'}>Message</div>
                             </div>
 

@@ -144,6 +144,21 @@
   flex: 1 1 0;
 }
 
+.follow_not_active{
+  width: 90px;
+  height: 30px;
+  text-align: center;
+  line-height: 30px;
+  background: #0095f6;
+  color: white;
+  border: 1px solid rgb(202, 202, 202);
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: bold;
+  cursor: pointer;
+  user-select: none;
+}
+
 @media only screen and (max-width: 1400px) {
   .my_profile {
     margin-right: 2vw;
