@@ -55,10 +55,6 @@ const MinBar:FC<TMinBar> = ({handleActiveClick, handleRouteClick, category}) =>{
                 <button onClick={() => {
                     localStorage.clear()
                 }}>Logout</button>
-                <button onClick={() => {
-                    setLanguage(!language)
-                    return i18n.changeLanguage(language ? 'en' : 'hy')
-                }}>{!language ? 'Change Language Test' : 'Փոխել լեզւն'}</button>
                 <CategoryMin
                     text={'More'}
                     imgSrc={menuIcon} isItRoutable={false}  pathRoute='/'
