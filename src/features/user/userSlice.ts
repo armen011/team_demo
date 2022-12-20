@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import {createAsyncThunk, createSlice, PayloadAction} from "@reduxjs/toolkit";
 
 export type UserStateType = {
   username: string;
@@ -71,7 +71,15 @@ export const userSlice = createSlice({
       }
       return initialState;
     },
+
+    addImage:(state, action:PayloadAction<{src:string}>)=>{
+     const {src} = action.payload
+      state.profilePicture = src
+    },
   },
+
+
+
   extraReducers: (builder) => {
     builder.addCase(login.fulfilled, (state, { payload }) => {
       console.log(payload, "payload");
@@ -86,7 +94,7 @@ export const userSlice = createSlice({
     });
   },
 });
-const { tryToLogin } = userSlice.actions;
+const { tryToLogin,addImage } = userSlice.actions;
 
-export { tryToLogin };
+export { tryToLogin ,addImage};
 export default userSlice.reducer;
