@@ -30,6 +30,7 @@ const EachUserProfile = () => {
     const {userId} = useParams()
     const creatorId = useAppSelector(state => state.user._id)
     const [follow, setFollow] = useState<boolean>(false)
+    const [followersCount, setFollowersCount] = useState<number>(0)
 
     useEffect(() => {
         fetch(
@@ -37,8 +38,15 @@ const EachUserProfile = () => {
             {
                 method: "GET",
                 headers: { "Content-Type": "application/json" }})
-            .then((res) => res.json()).then(res=> setData(res))
+            .then((res) => res.json()).then(res=> {
+                const condition = res.followings.some((value: string) => value === creatorId)
+                setFollow(condition)
+                setFollowersCount(res.followings.length)
+                setData(res)
+            })
+
     }, [])
+
     const category = [
         {
             name:'POSTS',
@@ -82,16 +90,21 @@ const EachUserProfile = () => {
             })
     }
     const baseUrl = process.env.REACT_APP_PUBLIC_URL;
-
     const handleFollowToggle = () => {
         setFollow(!follow)
+        if (follow && followersCount) {
+            setFollowersCount(followersCount - 1)
+        }
+        if (!follow){
+            setFollowersCount(followersCount + 1)
+        }
         fetch(`${baseUrl}api/users/${creatorId}/${follow ? 'unfollow' : 'follow'}`, {
               method: "PUT",
               headers: { "Content-Type": "application/json" },
               body: JSON.stringify({
                 userId
               })
-        }).then(res=> res.json()).then(res=> console.log(res, 'FOLLOW RES'))
+        }).then(res=> res.json()).then(res=>res).catch(error=> console.log(error))
     }
 
     return (
@@ -123,8 +136,8 @@ const EachUserProfile = () => {
 
                         <div className={'my_profile_counts_part'}>
                             <div style={{cursor: "pointer"}}><span>???</span> post</div>
-                            <div className={'followers_count'}><span>{data?.followers.length}</span> followers</div>
-                            <div className={'following_count'}><span>{data?.followings.length}</span> following</div>
+                            <div className={'followers_count'}><span>{followersCount}</span> followers</div>
+                            <div className={'following_count'}><span>{data?.followers.length}</span> following </div>
                         </div>
 
                         <p style={{fontSize: '17px', fontWeight: 'bold'}}>{data?.fullName}</p>

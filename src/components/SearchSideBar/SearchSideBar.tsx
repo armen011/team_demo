@@ -5,6 +5,8 @@ import './SearchSideBar.css'
 import {useTranslation} from "react-i18next";
 import {useNavigate} from "react-router";
 import {useAppSelector} from "../../app";
+import follow from "../Recommendation/Follow";
+import {Navigate} from "react-router-dom";
 
 export type TData = {
     fullName: string,
@@ -46,10 +48,10 @@ const SearchSideBar = () => {
     const navigate = useNavigate()
 
     const handleUserRedirect = (route: string) => {
-        if (route === state._id){
-            navigate('/profile')
+        if (route !== state._id){
+            navigate('/loading', {state: route})
         }else{
-            navigate(`/users/${route}`)
+            navigate('/profile',{ replace: true })
         }
     }
     const placeholder = t('Search');

@@ -15,14 +15,14 @@
     overflow-y: scroll;
     overflow-x: scroll;
     display: flex;
-    gap: 6px;
+    gap: 5px;
 }
 
 .each_story{
     border: 2px solid red;
-    height: 66px;
-    min-width: 66px;
-    max-width: 66px;
+    height: 64px;
+    min-width: 64px;
+    max-width: 64px;
     border-radius: 50%;
     display: flex;
     justify-content: center;
@@ -37,8 +37,8 @@
 }
 
 .story_picture{
-    width: 59px;
-    height: 59px;
+    width: 57px;
+    height: 57px;
     border-radius: 50%;
 }
 .story_name{

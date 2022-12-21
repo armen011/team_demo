@@ -69,8 +69,8 @@ const Profile = () => {
 
                     <div className={'my_profile_counts_part'}>
                         <div><span>???</span>  post</div>
-                        <div className={'followers_count'}><span>{user.followers.length}</span> followers</div>
-                        <div className={'following_count'}><span>{user.followings.length}</span>  following</div>
+                        <div className={'following_count'}><span>{user.followings.length}</span> followers </div>
+                        <div className={'followers_count'}><span>{user.followers.length}</span> following</div>
                     </div>
 
 

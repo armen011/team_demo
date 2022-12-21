@@ -7,6 +7,7 @@ import Messages from "pages/Messages";
 import Profile from "pages/Profile";
 import EachUserProfile from "pages/EachUserProfile";
 import Story from "pages/Story";
+import Loading from "components/Loading";
 
 export enum RoutesEnum {
   MAIN = "/",
@@ -17,7 +18,8 @@ export enum RoutesEnum {
   MESSAGES = "/messages",
   EACH_USER_PROFILE = "/users/:userId",
   MESSAGES_WITH_CHAT_ID = "/messages/:chatId",
-  STORIES = "/stories/:storyId"
+  STORIES = "/stories/:storyId",
+  LOADING = "/loading"
 }
 
 export type RouteType = {
@@ -71,5 +73,10 @@ export const routes: RouteType[] = [
     path: RoutesEnum.STORIES,
     type: "private",
     Component: Story
+  },
+  {
+    path: RoutesEnum.LOADING,
+    type: "private",
+    Component: Loading
   }
 ];
