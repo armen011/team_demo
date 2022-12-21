@@ -41,7 +41,6 @@ const EachUserMessage: FC<EachUserMessageProps> = ({chatId, memberId}) => {
     }, [chatId, userId]);
 
     const handleSendMessage = useCallback(() => {
-        console.log(f);
         send("sendMessage", {
             to: memberId,
             from: userId,
@@ -91,7 +90,6 @@ const EachUserMessage: FC<EachUserMessageProps> = ({chatId, memberId}) => {
     //     }
     // },[f])
     //
-    // console.log(messages);
 
 
     return (

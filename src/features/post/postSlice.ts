@@ -50,13 +50,11 @@ export const postSlice = createSlice({
     },
     resetPostState: (state) => {
       state = initialState;
-      console.log("state", state);
     },
   },
   extraReducers: (builder) =>  {
     builder.addCase(createPost.fulfilled, (state ) => {
-      console.log("fulfiled");
-    } ) 
+    } )
      
       
     

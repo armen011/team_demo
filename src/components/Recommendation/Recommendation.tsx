@@ -1,16 +1,30 @@
 import './Recommendation.css'
-import userIcon from  'assets/images/user.png'
+import userIcon from 'assets/images/user.png'
 import {useAppSelector} from "../../app";
 import MiniFooter from "../MiniFooter";
 import React, {useEffect, useState} from "react";
 import {TData} from "../SearchSideBar/SearchSideBar";
 import Follow from "./Follow";
 import {useTranslation} from "react-i18next";
+import {useNavigate} from "react-router";
 
 const Recommendation = () => {
     const user = useAppSelector(state => state.user)
+    const {t} = useTranslation()
+    const navigate = useNavigate()
     const [allUsers, setAllUsers] = useState<TData[]>([])
     const [language, setLanguage] = useState(false)
+    const creatorId = useAppSelector(state => state.user._id)
+    const [followersArray, setFollowersArray] = useState([])
+    useEffect(() => {
+        fetch(
+            `http://localhost:8800/api/users/${creatorId}`,
+            {
+                method: "GET",
+                headers: {"Content-Type": "application/json"}
+            })
+            .then((res) => res.json()).then(res => setFollowersArray(res.followers))
+    }, [])
 
     useEffect(() => {
         fetch(
@@ -18,24 +32,30 @@ const Recommendation = () => {
             {
                 method: "GET",
                 headers: {"Content-Type": "application/json"},
-            }).then(res=> res.json()).then(res=> setAllUsers(res))
+            }).then(res => res.json()).then(res => setAllUsers(res))
     }, [])
 
     const randomizer = (arr: TData[]): TData[] => {
         const newArr = arr.sort(() => Math.random() - 0.5)
+        followersArray.forEach(elem => {
+            const index = newArr.findIndex(val => val?.id === elem)
+            newArr.splice(index, 1)
+        })
         const resultArr: TData[] = []
-        for (let i = 0; i < 5; i++){
-            resultArr.push(newArr[i])
+        if (newArr.length) {
+            for (let i = 0; i < 6; i++) {
+                if (newArr[i]?.id !== creatorId) {
+                    resultArr.push(newArr[i])
+                }
+            }
         }
         return resultArr;
     }
-    const {t, i18n} = useTranslation()
-
 
 
     return (
         <div className='recommendation_wrapper'>
-            <div className='recommendation_profile'>
+            <div className='recommendation_profile' onClick={() => navigate('/profile')}>
                 <img className='recommendation_profile_image' src={userIcon} alt=""/>
                 <div className='recommendation_profile_info'>
                     <p style={{fontWeight: 600, fontSize: '14px'}}>{user.username}</p>
@@ -50,7 +70,7 @@ const Recommendation = () => {
             {allUsers && randomizer(allUsers).map(elem => {
                 if (elem) {
                     return <div key={Math.random()} style={{display: "flex"}}>
-                        <div className='recommendation_users'>
+                        <div className='recommendation_users' onClick={() => navigate(`/users/${elem.id}`)}>
                             <img className='recommendation_users_image' src={elem.img ? elem.img : userIcon} alt=""/>
                             <div>
                                 <p style={{

@@ -3,14 +3,13 @@ import Footer from "../../layouts/AuthLayout/Components/Footer";
 import Highlight from "./Components/Highlight";
 import SinglePost from "./Components/SinglePost";
 import ProfileCategory from "./Components/ProfileCategory";
-
 import './Profile.css'
-
-import settingIcon from '../../images/settings.png'
-import UserIcon from '../../assets/images/user.png'
-import PostPhoto from '../../images/posting.png'
-import {useState} from "react";
-import {useAppSelector} from "../../app";
+import settingIcon from 'images/settings.png'
+import UserIcon from 'assets/images/user.png'
+import PostPhoto from 'images/posting.png'
+import {useEffect, useState} from "react";
+import { useAppSelector } from "app";
+import {TUserState} from "../EachUserProfile/EachUserProfile";
 
 
 const Profile = () => {
@@ -31,9 +30,18 @@ const Profile = () => {
             isActive:false
         },
     ]
+    const creatorId = useAppSelector(state => state.user._id)
+    const [ownInfo, setOwnInfo] = useState<TUserState>()
+        useEffect(() => {
+            fetch(
+                `http://localhost:8800/api/users/${creatorId}`,
+                {
+                    method: "GET",
+                    headers: { "Content-Type": "application/json" }})
+                .then((res) => res.json()).then(res => setOwnInfo(res))
+        }, [])
 
     const [categoryList,setCategoryList] = useState(categories)
-
 
     const changeCategoryActivationHandler = (name:string)=> {
         setCategoryList(prevState => {
@@ -69,8 +77,8 @@ const Profile = () => {
 
                     <div className={'my_profile_counts_part'}>
                         <div><span>???</span>  post</div>
-                        <div className={'following_count'}><span>{user.followings.length}</span> followers </div>
-                        <div className={'followers_count'}><span>{user.followers.length}</span> following</div>
+                        <div className={'following_count'}><span>{ownInfo?.followings.length}</span> followers </div>
+                        <div className={'followers_count'}><span>{ownInfo?.followers.length}</span> following</div>
                     </div>
 
 

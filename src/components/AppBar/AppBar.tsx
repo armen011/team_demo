@@ -5,6 +5,10 @@ import menuIconBold from "../../assets/images/menuBold.png";
 import menuIcon from "../../assets/images/menu.png";
 import './AppBar.css';
 import {useTranslation} from "react-i18next";
+import {useAppDispatch, useAppSelector} from "../../app";
+import {useNavigate} from "react-router";
+import {refreshPage} from "features/user";
+import {useSelector} from "react-redux";
 
 type TCategoryPart = {
     img: string,
@@ -24,9 +28,7 @@ type TAppBar = {
 
 const AppBar:FC<TAppBar> = ({handleActiveClick, handleRouteClick, category}) =>{
 
-    const [language, setLanguage] = useState(false)
-    const {i18n} = useTranslation()
-
+    const dispatch = useAppDispatch()
 
     return (
         <div className={'app_bar'}>
@@ -54,6 +56,7 @@ const AppBar:FC<TAppBar> = ({handleActiveClick, handleRouteClick, category}) =>{
             </div>
             <button onClick={() => {
                 localStorage.clear()
+                dispatch(refreshPage())
             }}>Logout</button>
             <Category
                 text={'More'} id={7} imgSrcBold={menuIconBold} pathRoute={'/'}

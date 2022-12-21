@@ -11,7 +11,7 @@ import {useParams} from "react-router-dom";
 import {useAppSelector} from "../../app";
 import {useNavigate} from "react-router";
 
-type TUserState = {
+export type TUserState = {
     coverPicture: string,
     createdAt: string,
     dateOfBirth: string,

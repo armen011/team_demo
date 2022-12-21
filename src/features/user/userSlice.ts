@@ -70,6 +70,9 @@ export const userSlice = createSlice({
       }
       return initialState;
     },
+    refreshPage: (state) => {
+       state.isLogedIn = false;
+    }
   },
   extraReducers: (builder) => {
     builder.addCase(login.fulfilled, (state, { payload }) => {
@@ -84,7 +87,7 @@ export const userSlice = createSlice({
     });
   },
 });
-const { tryToLogin } = userSlice.actions;
+const { tryToLogin,refreshPage } = userSlice.actions;
 
-export { tryToLogin };
+export { tryToLogin, refreshPage };
 export default userSlice.reducer;

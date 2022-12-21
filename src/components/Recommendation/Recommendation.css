@@ -56,6 +56,19 @@
     border: none;
     height: 12px;
 }
+.following_from_recommendation{
+    color: black;
+    font-size: 12px;
+    font-weight: bold;
+    margin-top: 10px;
+    cursor: pointer;
+    background: #fafafa;
+    border: none;
+    height: 12px;
+}
+.following_from_recommendation:hover{
+    color: grey;
+}
 
 .follow_from_recommendation:hover {
     color: black;

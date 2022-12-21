@@ -25,7 +25,7 @@ const Follow:FC<TFollow> = ({id}) => {
         <>
             {!follow ? <button className='follow_from_recommendation' onClick={handleFollowToggle}> Follow </button>
                 :
-                <button className='follow_from_recommendation' onClick={handleFollowToggle}> Following </button>
+                <button className='following_from_recommendation' onClick={handleFollowToggle}> Following </button>
             }
         </>
     )

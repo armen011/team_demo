@@ -18,7 +18,6 @@ const Edit: FC<EditProps> = ({ changeStep }) => {
   const [clonedStyles, setClonedStyles] = useState(
     images.map(({ style }) => style)
   );
-  console.log("clonedStyles", clonedStyles);
   const dispatch = useAppDispatch();
   const currentSlideStyle = clonedStyles[activeIndex];
 
@@ -45,7 +44,6 @@ const Edit: FC<EditProps> = ({ changeStep }) => {
     setClonedStyles([]);
   };
 
-  console.log("currentSlideStyle", currentSlideStyle);
 
   return (
     <div className="edit_post_wrapper">
