@@ -7,7 +7,6 @@ import BirthdayPageHeader from "../Components/BirthdayPageHeader";
 import CheckBirthdayDate from "../Components/CheckBirthdayDate";
 import Popup from "../Components/Popup";
 import SelectDate from "../Components/SelectDate";
-import { useAppSelector } from "app";
 
 const {
   date: { months, arrayInDays, years , fullDate },

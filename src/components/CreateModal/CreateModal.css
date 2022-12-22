@@ -1,5 +1,5 @@
 .create_file_wrapper {
-  position: absolute;
+  position: fixed;
   z-index: 10;
   width: 100%;
   height: 100%;

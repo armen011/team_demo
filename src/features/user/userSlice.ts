@@ -62,7 +62,6 @@ export const userSlice = createSlice({
       const json = localStorage.getItem("user");
       if (json) {
         const user = JSON.parse(json) as UserStateType;
-        console.log("user", user);
         return {
           ...user,
           isLogedIn: true,

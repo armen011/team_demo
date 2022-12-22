@@ -4,6 +4,7 @@ import userReducer from "features/user";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import messageReducer from "features/messages";
 import postReducer from "features/post";
+import getPostsReducer from "features/getPost";
 
 const store = configureStore({
   reducer: {
@@ -11,6 +12,7 @@ const store = configureStore({
     registration: registrationReducer,
     messages: messageReducer,
     post: postReducer,
+    getPosts:getPostsReducer
   },
 });
 
