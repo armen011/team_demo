@@ -1,14 +1,14 @@
 import MainLayout from "layouts/MainLayout"
-import Footer from "../../layouts/AuthLayout/Components/Footer";
-import Highlight from "./Components/Highlight";
-import SinglePost from "./Components/SinglePost";
+import Footer from "layouts/AuthLayout/Components/Footer";
 import ProfileCategory from "./Components/ProfileCategory";
 import './Profile.css'
+import UTILS from "../../utils";
+import {addImage, userSlice} from "../../features/user";
+import {useAppDispatch, useAppSelector} from "../../app";
 import settingIcon from 'images/settings.png'
 import UserIcon from 'assets/images/user.png'
 import PostPhoto from 'images/posting.png'
 import {useEffect, useState} from "react";
-import { useAppSelector } from "app";
 import {TUserState} from "../EachUserProfile/EachUserProfile";
 import Neccessary from "./Components/Neccessary";
 
@@ -38,6 +38,11 @@ const Profile = () => {
         }, [])
 
     const [categoryList,setCategoryList] = useState(categories)
+    const [imageSrc,setImageSrc] = useState<string>()
+
+    const {addImage} = userSlice.actions
+
+    const {username,fullName,followers,followings} = useAppSelector(s=>s.user)
 
     const changeCategoryActivationHandler = (name:string)=> {
         setCategoryList(prevState => {
@@ -48,13 +53,68 @@ const Profile = () => {
         })
     }
     const user = useAppSelector(state => state.user)
+    const  dispatch = useAppDispatch()
+
+
+
+
+    function getImageHandler(e:React.ChangeEvent<HTMLInputElement>){
+        if (e.target.files) {
+            let file = e.target.files[0];
+
+        if (['image/png','image/jpeg'].includes(file.type)){
+            UTILS.encodeImageFileAsURL(file).then(response =>{
+                setImageSrc(response)
+                dispatch(addImage({src:response}))
+            } )
+        }else{
+            alert('You can only add PNG or JPEG')
+        }
+        }
+    }
+
+
+    function onDragEnterHandler(e:React.DragEvent) {
+        e.preventDefault()
+    }
+
+    function onDragOverHandler(e:React.DragEvent) {
+        e.preventDefault()
+    }
+
+    function onDragLeaveHandler(e:React.DragEvent) {
+        e.preventDefault()
+    }
+
+    function onDragDropHandler(e:React.DragEvent<HTMLLabelElement>) {
+        e.preventDefault()
+
+
+        let file = e.dataTransfer.files[0];
+
+        if (['image/png','image/jpeg'].includes(file.type)){
+            UTILS.encodeImageFileAsURL(file).then(r => setImageSrc(r))
+        }else{
+            alert('You can only add PNG or JPEG')
+        }
+    }
 
   return (
     <MainLayout>
+
         <div className={'my_profile'}>
             <div className={'upper_part'}>
                 <div className={'my_profile_image'}>
-                    <img src={UserIcon} alt={'Change image'}/>
+                    <img src={imageSrc ? imageSrc : UserIcon} alt={'Change image'}/>
+                    <div className={'label_part'}>
+                        <label className={'file_input_label'}
+                        onDragEnter={onDragEnterHandler}
+                        onDragOver={onDragOverHandler}
+                        onDragLeave={onDragLeaveHandler}
+                        onDrop={onDragDropHandler} >
+                            <input type="file" onChange={(e)=>getImageHandler(e)} hidden/>
+                        </label>
+                    </div>
                 </div>
 
                 <div className={'my_profile_about'}>
@@ -92,11 +152,6 @@ const Profile = () => {
 
                 <Neccessary/>
 
-
-            <div className={'my_profile_posting_part'}>
-
-
-            </div>
 
 
                 <Footer/>
