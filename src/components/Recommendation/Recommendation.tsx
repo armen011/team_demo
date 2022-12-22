@@ -2,7 +2,7 @@ import './Recommendation.css'
 import userIcon from 'assets/images/user.png'
 import {useAppSelector} from "../../app";
 import MiniFooter from "../MiniFooter";
-import React, {useEffect, useState} from "react";
+import React, {useCallback, useEffect, useMemo, useState} from "react";
 import {TData} from "../SearchSideBar/SearchSideBar";
 import Follow from "./Follow";
 import {useTranslation} from "react-i18next";
@@ -32,11 +32,12 @@ const Recommendation = () => {
             {
                 method: "GET",
                 headers: {"Content-Type": "application/json"},
-            }).then(res => res.json()).then(res => setAllUsers(res))
+            }).then(res => res.json()).then(res =>setAllUsers(res))
     }, [])
 
-    const randomizer = (arr: TData[]): TData[] => {
-        const newArr = arr.sort(() => Math.random() - 0.5)
+    const randomizer = useCallback((arr: TData[]): TData[] => {
+        const copyArr = [...arr];
+        const newArr = copyArr.sort(() => Math.random() - 0.5)
         followersArray.forEach(elem => {
             const index = newArr.findIndex(val => val?.id === elem)
             newArr.splice(index, 1)
@@ -50,7 +51,10 @@ const Recommendation = () => {
             }
         }
         return resultArr;
-    }
+    }, [followersArray])
+
+
+
 
 
     return (
