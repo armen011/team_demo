@@ -31,7 +31,9 @@ const CategoryMin: FC<TProps> = ({text,imgSrc, onClick, isActive, isItRoutable, 
         <>
             {!menuDropdown ?
         <div className={ 'min-single-category'} onClick={() => {
-            setMenuDropdown(!menuDropdown)
+            if (text === 'More'){
+                setMenuDropdown(!menuDropdown)
+            }
             handleActiveClick(id, text)
             isItRoutable && onClick(pathRoute, text)
         }}>

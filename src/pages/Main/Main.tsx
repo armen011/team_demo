@@ -5,7 +5,7 @@ import Recommendation from "components/Recommendation";
 
 const Main = () =>{
     return <MainLayout>
-            <StoryComponent/>
+            {/*<StoryComponent/>*/}
             <Recommendation/>
 
     </MainLayout>

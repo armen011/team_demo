@@ -67,7 +67,7 @@ const LoginForm = () => {
             toggle={togglePasswordClick}
             onChange={handleInputChange("password")}
             type={togglePassword ? "password" : "text"}
-            show={(togglePassword ? "Show" : "Hide")}
+            show={loginValues.password.trim() ? (togglePassword ? "Show" : "Hide") : undefined}
             placeholder={t("Password")}
           />
         </div>

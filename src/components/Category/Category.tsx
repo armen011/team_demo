@@ -42,7 +42,9 @@ const Category: FC<TProps> = ({
             <div
                 className={"single-category"}
                 onClick={() => {
+                  if (text === 'More'){
                   setMenuDropdown(!menuDropdown)
+                  }
                   handleActiveClick(id, text);
                   isItRoutable && onClick(pathRoute, text);
                 }}
