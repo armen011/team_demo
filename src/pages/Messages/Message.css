@@ -6,7 +6,7 @@
 
 .main_layout_wrapper{
     margin-left: 270px;
-    height: 100vh;
+    min-height: 100vh;
     background-color: #fafafa;
     display: flex;
     justify-content: center;
