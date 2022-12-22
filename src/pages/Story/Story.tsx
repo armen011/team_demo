@@ -9,7 +9,7 @@ const Story = () => {
         <div className='story_wrapper'>
             <img className='story_logo' src={instagram} alt="" onClick={() => navigate('/')}/>
             <div className='story_video'>
-                <video controls autoPlay loop muted>
+                <video className='video' controls autoPlay loop>
                 <source src={testVideo}/>
                 </video>
             </div>

@@ -16,19 +16,14 @@ const Profile = () => {
     const categories = [
         {
             name:'POSTS',
-            path:'/',
+            path:'/profile',
             isActive:true
         },
         {
             name:'SAVED',
-            path:'/saved',
+            path:'/profile/saved',
             isActive:false
-        },
-        {
-            name:'TAGGED',
-            path:'/tagged',
-            isActive:false
-        },
+        }
     ]
     const creatorId = useAppSelector(state => state.user._id)
     const [ownInfo, setOwnInfo] = useState<TUserState>()

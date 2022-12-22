@@ -8,8 +8,7 @@
     margin-left: -370px;
     border-top-right-radius: 15px;
     border-bottom-right-radius: 15px;
-    border-right: 1px solid rgb(202, 202, 202);
-    box-shadow: 0 0 4px black;
+    border-right: 1px solid lightgrey;
 }
 
 .notification-section{
@@ -32,7 +31,6 @@
     align-items: center;
     gap: 10px;
     margin: 1vh 0;
-    border-bottom: 2px solid rgb(202, 202, 202);
     padding: 10px;
 }
 
@@ -54,14 +52,16 @@
     right: 10px;
 }
 
-.notify-button-following{
-    background: white;
-}
-
-.notify-button-toFollow{
-    background: #4b54ff;
+.notification_to_follow{
+    background-color: #0095f6;
     color: white;
 }
+
+.notification_following{
+    background-color: #efefef;
+}
+
+
 @keyframes slideInNotify {
     0% {
         margin-left: -350px;

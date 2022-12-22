@@ -12,16 +12,13 @@ export type CategoryType={
 const ProfileCategory:FC<CategoryType> = ({name,path,isActive,setActivation}) =>{
 
     const navigate = useNavigate()
-
     return(
-        <>
-        {/*// <div className={isActive?'my_profile_show_category_active':''}*/}
-        {/*//      onClick={()=>{*/}
-        {/*//          setActivation(name)*/}
-        {/*//      }}>{name}</div>*/}
+
         <div className={isActive ? 'my_profile_show_category_active' : ''}
-                         onClick={()=>setActivation(name)}>{name}</div>
-        </>
+                         onClick={()=>{
+                             navigate('/loading', {state: path})
+                             setActivation(name)
+                         }}>{name}</div>
     )
 }
 

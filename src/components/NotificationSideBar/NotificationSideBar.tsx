@@ -74,7 +74,7 @@ const NotificationSideBar = () => {
                     <img src={u.image} alt="User"/>
                         <span style={{fontWeight:'bold'}}>{t(u.userName)}</span>
                         <span>{t(u.info)}</span>
-                        <button onClick={() => toggleFollow(u.id)} className={u.status === 'Follow' ? 'notify-button-toFollow' : 'notify-button-following'}>{t(u.status)}</button>
+                        <button onClick={() => toggleFollow(u.id)} className={u.status === 'Follow' ? 'notification_to_follow' : 'notification_following'}>{t(u.status)}</button>
                 </div>)}
             </div>
         </div>

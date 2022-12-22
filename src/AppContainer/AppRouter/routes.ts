@@ -8,6 +8,8 @@ import Profile from "pages/Profile";
 import EachUserProfile from "pages/EachUserProfile";
 import Story from "pages/Story";
 import Loading from "components/Loading";
+import ProfileSaved from "pages/Profile/ProfileSaved";
+import Settings from "pages/Settings";
 
 export enum RoutesEnum {
   MAIN = "/",
@@ -19,7 +21,9 @@ export enum RoutesEnum {
   EACH_USER_PROFILE = "/users/:userId",
   MESSAGES_WITH_CHAT_ID = "/messages/:chatId",
   STORIES = "/stories/:storyId",
-  LOADING = "/loading"
+  LOADING = "/loading",
+  SAVED = "/profile/saved",
+  SETTINGS = "/settings"
 }
 
 export type RouteType = {
@@ -78,5 +82,15 @@ export const routes: RouteType[] = [
     path: RoutesEnum.LOADING,
     type: "private",
     Component: Loading
+  },
+  {
+    path: RoutesEnum.SAVED,
+    type: "private",
+    Component: ProfileSaved,
+  },
+  {
+    path: RoutesEnum.SETTINGS,
+    type: "private",
+    Component: Settings,
   }
 ];

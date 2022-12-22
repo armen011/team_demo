@@ -64,13 +64,17 @@
   height: 30px;
   text-align: center;
   line-height: 30px;
-  background: white;
-  border: 1px solid rgb(202, 202, 202);
+  background-color: rgb(239 239 239);
+  border: none;
   border-radius: 4px;
   font-size: 13px;
   font-weight: bold;
   cursor: pointer;
   user-select: none;
+}
+
+.my_profile_edit_button:hover{
+  background-color: #C7C7C7;
 }
 
 .my_profile_setting_part {

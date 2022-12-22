@@ -7,7 +7,13 @@ const Loading = () => {
     const location = useLocation()
     const navigate = useNavigate();
     useEffect(() => {
-        navigate(`/users/${location.state}`)
+        if (location.state === '/profile'){
+            navigate('/profile')
+        }else if (location.state === '/profile/saved'){
+            navigate('/profile/saved')
+        }else{
+            navigate(`/users/${location.state}`)
+        }
     },[])
     return (
         <div>

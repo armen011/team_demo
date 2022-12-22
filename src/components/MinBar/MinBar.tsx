@@ -1,14 +1,9 @@
-import React, {FC, useState} from 'react';
+import React, {FC} from 'react';
 import instagramIcon from "../../assets/images/instagram.png";
 import CategoryMin from "../CategoryMin";
 import menuIcon from "../../assets/images/menu.png";
 import messageIconBold from "../../assets/images/messengerBold.png";
 import './MinBar.css'
-import {useTranslation} from "react-i18next";
-import {flatten} from "@reduxjs/toolkit/dist/query/utils";
-import {useAppDispatch, useAppSelector} from "../../app";
-import {useNavigate} from "react-router";
-import {refreshPage} from "../../features/user";
 
 
 
@@ -29,7 +24,6 @@ type TMinBar = {
 }
 
 const MinBar:FC<TMinBar> = ({handleActiveClick, handleRouteClick, category}) =>{
-    const dispatch = useAppDispatch()
     return (
         <div className={'min-bar'}>
             <div className={'min-logo-part'}>
@@ -53,10 +47,6 @@ const MinBar:FC<TMinBar> = ({handleActiveClick, handleRouteClick, category}) =>{
                 })}
             </div>
             <div className={'min-menu-part'}>
-                <button onClick={() => {
-                    localStorage.clear()
-                    dispatch(refreshPage())
-                }}>Logout</button>
                 <CategoryMin
                     text={'More'}
                     imgSrc={menuIcon} isItRoutable={false}  pathRoute='/'

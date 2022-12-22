@@ -2,7 +2,7 @@ import './Recommendation.css'
 import userIcon from 'assets/images/user.png'
 import {useAppSelector} from "../../app";
 import MiniFooter from "../MiniFooter";
-import React, {useCallback, useEffect, useMemo, useState} from "react";
+import React, {useCallback, useEffect, useState} from "react";
 import {TData} from "../SearchSideBar/SearchSideBar";
 import Follow from "./Follow";
 import {useTranslation} from "react-i18next";
@@ -36,7 +36,7 @@ const Recommendation = () => {
     }, [])
 
     const randomizer = useCallback((arr: TData[]): TData[] => {
-        const copyArr = [...arr];
+        const copyArr = Array.from(arr)
         const newArr = copyArr.sort(() => Math.random() - 0.5)
         followersArray.forEach(elem => {
             const index = newArr.findIndex(val => val?.id === elem)
@@ -52,9 +52,6 @@ const Recommendation = () => {
         }
         return resultArr;
     }, [followersArray])
-
-
-
 
 
     return (

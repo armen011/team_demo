@@ -53,3 +53,22 @@
     transition: all .3s ease-in-out;
     margin: 0 15px 0 20px;
 }
+
+.dropdown_app_bar{
+    position: absolute;
+    bottom: 100px;
+    left: 10px;
+    width: 270px;
+    max-height: fit-content;
+    border: 1px solid lightgrey;
+    border-radius: 8px;
+    background: white;
+}
+
+.close_dropdown{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100%;
+}

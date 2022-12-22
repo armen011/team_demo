@@ -9,8 +9,6 @@ type TMiniFooterProps = {
 
 const MiniFooter:FC<TMiniFooterProps> = ({language, setLanguage}) => {
     const {t, i18n} = useTranslation()
-
-
     return (
         <div className='mini_footer_wrapper'>
             <div className='mini_footer_wrapper'>
@@ -32,7 +30,7 @@ const MiniFooter:FC<TMiniFooterProps> = ({language, setLanguage}) => {
                 <div className='dot'></div>
                 <span className='mini_footer_text' onClick={() => {
                     setLanguage(!language)
-                    i18n.changeLanguage(language ? 'en' : 'hy')
+                    return i18n.changeLanguage(language ? 'en' : 'hy')
                 }}>{!language ? 'Հայերեն' : 'English'}</span>
             </div>
             <span className='mini_footer_text_logo'>{t('© 2022 INSTAGRAM FROM HONEY')}</span>

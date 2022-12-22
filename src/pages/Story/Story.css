@@ -15,6 +15,7 @@
     margin: 10px;
     height: 60px;
     width: 60px;
+    cursor: pointer;
 }
 
 .story_video{
@@ -23,4 +24,5 @@
 .video{
     height: 95vh;
     border-radius: 8px;
+    cursor: grabbing;
 }
