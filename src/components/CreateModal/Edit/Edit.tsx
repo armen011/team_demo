@@ -4,7 +4,7 @@ import PostModalHeader from "../Components/PostModalHeader";
 import filters from "./filters.json";
 import filterImg from "assets/images/filterImg.jpg";
 import "./edit.css";
-import { ChangeEventHandler, FC, useCallback, useState } from "react";
+import {  FC, useCallback, useState } from "react";
 import { ChangeStepFunctionType } from "../CreateModal";
 import { updateStyles } from "features/post";
 
@@ -25,7 +25,7 @@ const Edit: FC<EditProps> = ({ changeStep }) => {
     (property: string) => () => {
       setClonedStyles((prev) =>
         prev.map((style, index) =>
-          index == activeIndex ? { ...style, filter: property } : style
+          index === activeIndex ? { ...style, filter: property } : style
         )
       );
     },

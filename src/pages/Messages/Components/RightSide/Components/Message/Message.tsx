@@ -6,7 +6,6 @@ export type MessageType = {
     isNew: boolean;
     text: string;
     type: "send" | "receive";
-    src: string
 };
 
 export type MessageProps = {
@@ -27,9 +26,8 @@ const Message: FC<MessageProps> = ({messages}) => {
 
     return (
         <div ref={messageAnchorRef} className="messages">
-            {messages.map(({text, type, src}, index) => {
-                // const c2 = !text && src;
-                // const c3 = text && !src;
+            {messages.map(({text, type}, index) => {
+
 
 
                 return (

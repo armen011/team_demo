@@ -1,8 +1,8 @@
 import React, {FC, useState} from 'react';
-import logo from "../../assets/images/logo.png";
+import logo from "assets/images/logo.png";
 import Category from "../Category";
-import menuIconBold from "../../assets/images/menuBold.png";
-import menuIcon from "../../assets/images/menu.png";
+import menuIconBold from "assets/images/menuBold.png";
+import menuIcon from "assets/images/menu.png";
 import './AppBar.css';
 
 type TCategoryPart = {

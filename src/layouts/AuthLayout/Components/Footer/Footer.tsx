@@ -5,7 +5,7 @@ import {useState} from "react";
 const Footer = () => {
   const [language,setLanguage] = useState<boolean>(false);
 
-  const {t,i18n} = useTranslation();
+  const {i18n} = useTranslation();
   return (
     <footer>
       <div className="footer_div">

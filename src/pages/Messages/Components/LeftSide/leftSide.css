@@ -65,7 +65,9 @@
     gap: 5px;
     font-family: Segoe UI, serif,Roboto;
 }
-
+.down_icon{
+    cursor: pointer;
+}
 
 .left_side_nav > div{
     width: 40%;
@@ -98,6 +100,7 @@
 
 .messages_section{
     height: 100%;
+    overflow-y: auto;
 }
 .messages_section > div {
     height: 100%;
