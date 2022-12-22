@@ -134,6 +134,8 @@ const Profile = () => {
                     </div>
 
 
+
+                    
                     <div>About:{fullName}</div>
                 </div>
             </div>
