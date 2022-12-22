@@ -28,7 +28,7 @@ const Resize: FC<ResizeType> = ({ changeStep }) => {
     ({ target: { value } }) => {
       setClonedStyles((prev) =>
         prev.map((style, index) =>
-          index == activeIndex ? { ...style, scale: value } : style
+          index === activeIndex ? { ...style, scale: value } : style
         )
       );
     },

@@ -1,7 +1,7 @@
 import "./EachUserMessage.css";
 import Message, {MessageType} from "../Message";
 import smile from "images/smile/smile.png";
-import {ChangeEvent, FC, useCallback, useEffect, useState} from "react";
+import { FC, useCallback, useEffect, useState} from "react";
 import i_icon from "images/i_icon/information.png";
 import user from "images/user_icon/man 1 (Traced).svg";
 import picture_icon from "images/picture_icon/image.png";
@@ -63,11 +63,17 @@ const EachUserMessage: FC<EachUserMessageProps> = ({chatId, memberId}) => {
         }
     }
 
+    // const [chosenEmoji, setChosenEmoji] = useState<PointerEvent>();
+    //
+    // const onEmojiClick = (event:any, emojiObject:any) => {
+    //     setChosenEmoji(emojiObject);
+    // };
 
 
 
     return (
         <section className="each_user_message">
+
             <div>
                 <div>
                     <img
@@ -77,6 +83,7 @@ const EachUserMessage: FC<EachUserMessageProps> = ({chatId, memberId}) => {
                     />
                     <h5>{chats[index]?.title}</h5>
                 </div>
+
                 <div>
                     <img
                         className="i_icon"
@@ -123,6 +130,8 @@ const EachUserMessage: FC<EachUserMessageProps> = ({chatId, memberId}) => {
                     </div>
                 </form>
             </div>
+
+            {/*<Picker onEmojiClick={onEmojiClick} />*/}
         </section>
     );
 };

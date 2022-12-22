@@ -1,6 +1,5 @@
 import './ProfileCategory.css'
 import {FC} from "react";
-import {useNavigate} from "react-router-dom";
 
 export type CategoryType={
     name:string;
@@ -10,8 +9,6 @@ export type CategoryType={
 }
 
 const ProfileCategory:FC<CategoryType> = ({name,path,isActive,setActivation}) =>{
-
-    const navigate = useNavigate()
 
     return(
         <>

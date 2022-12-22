@@ -4,7 +4,6 @@ import userIcon from "assets/images/user.png";
 import './SearchSideBar.css'
 import {useTranslation} from "react-i18next";
 import {useNavigate} from "react-router";
-import {useAppSelector} from "../../app";
 
 export type TData = {
     fullName: string,
@@ -13,7 +12,6 @@ export type TData = {
     username: string
 }
 const SearchSideBar = () => {
-    const state = useAppSelector(state => state.user)
     const [recent, setRecent] = useState<TData[]>([]);
     const [inputValue, setInputValue] = useState('')
     const handleInputChange = (e: { target: HTMLInputElement }) => {

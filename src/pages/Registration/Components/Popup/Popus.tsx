@@ -1,4 +1,4 @@
-import React, { FC , MouseEventHandler, useEffect } from "react";
+import React, { FC  } from "react";
 import "./Popup.css";
 import remove from "./icons/remove.png"
 import { t } from "i18next";

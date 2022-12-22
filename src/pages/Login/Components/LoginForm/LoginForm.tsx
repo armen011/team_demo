@@ -15,8 +15,6 @@ import { login } from "features/user";
 import { useAppDispatch, useAppSelector } from "app/store";
 
 import { useTranslation } from "react-i18next";
-import {Simulate} from "react-dom/test-utils";
-import input = Simulate.input;
 
 function LoginForm() {
   const [loginValues, setLoginValues] = useState({
@@ -54,7 +52,7 @@ function LoginForm() {
     <div className="login_form_wrapper">
       <div className="login_form_container">
         <div>
-          <img src={logoString} className="login_logo_img" />
+          <img src={logoString} className="login_logo_img" alt="login_logo"/>
         </div>
         <div className="login_text_input_wrapper">
           <TextInput
