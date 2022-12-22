@@ -10,6 +10,7 @@ import PostPhoto from 'images/posting.png'
 import {useEffect, useState} from "react";
 import { useAppSelector } from "app";
 import {TUserState} from "../../EachUserProfile/EachUserProfile";
+import Neccessary from "../Components/Neccessary";
 
 
 const ProfileSaved = () => {
@@ -82,30 +83,13 @@ const ProfileSaved = () => {
                     </div>
                 </div>
 
-                {/*Story*/}
-                <div className={'my_profile_highlight_part'}>
-                    <Highlight text={'Haylo'} image={UserIcon}/>
-
-                </div>
-
                 <div className={'my_profile_show_category_part'}>
                     {categoryList.map((elem,index)=>{
                         return <ProfileCategory isActive={elem.isActive} setActivation={() => changeCategoryActivationHandler(elem.name)}
                                                 name={elem.name} path={elem.path} key={index * Math.random()}/>
                     })}
                 </div>
-                {/* dont have image-------------------------------------- */}
-                {/*    <Neccessary/>*/}
-
-
-                <div className={'my_profile_posting_part'}>
-
-                    <SinglePost image={PostPhoto}/>
-                    {/*<SinglePost image={PostPhoto}/>*/}
-                    {/*<SinglePost image={PostPhoto}/>*/}
-
-
-                </div>
+                    <Neccessary/>
 
 
                 <Footer/>

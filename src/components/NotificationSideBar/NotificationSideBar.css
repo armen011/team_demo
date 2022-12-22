@@ -56,11 +56,17 @@
     background-color: #0095f6;
     color: white;
 }
+.notification_to_follow:hover{
+    background-color: #8E8E8E;
+}
 
 .notification_following{
     background-color: #efefef;
 }
 
+.notification_following:hover{
+    background-color: #958e8e;
+}
 
 @keyframes slideInNotify {
     0% {

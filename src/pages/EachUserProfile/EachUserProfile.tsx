@@ -47,24 +47,19 @@ const EachUserProfile = () => {
 
     }, [])
 
-    const category = [
+    const categories = [
         {
             name:'POSTS',
-            path:'/',
+            path:'/profile',
             isActive:true
         },
         {
             name:'SAVED',
-            path:'/saved',
+            path:'/profile/saved',
             isActive:false
-        },
-        {
-            name:'TAGGED',
-            path:'/tagged',
-            isActive:false
-        },
+        }
     ]
-    const [categoryList,setCategoryList] = useState(category)
+    const [categoryList,setCategoryList] = useState(categories)
 
     const changeCategoryActivationHandler = (name:string)=> {
         setCategoryList(prevState => {
@@ -144,12 +139,6 @@ const EachUserProfile = () => {
                     </div>
                 </div>
 
-                {/*/!*Story*!  here should be stories*/}
-                <div className={'my_profile_highlight_part'}>
-                    {/*<Highlight text={'Haylo'} image={UserIcon}/>*/}
-
-                </div>
-
                 <div className={'my_profile_show_category_part'}>
                     {categoryList.map((elem,index)=>{
                         return <ProfileCategory isActive={elem.isActive}
@@ -158,14 +147,7 @@ const EachUserProfile = () => {
                     })}
                 </div>
 
-                {/* dont have image-------------------------------------- */}
-                {/*    <Neccessary/>*/}
-
                 <div className={'my_profile_posting_part'}>
-
-                    <SinglePost image={PostPhoto}/>
-                    {/*<SinglePost image={PostPhoto}/>*/}
-                    {/*<SinglePost image={PostPhoto}/>*/}
                 </div>
 
                 <Footer/>
