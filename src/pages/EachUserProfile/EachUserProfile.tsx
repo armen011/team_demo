@@ -86,17 +86,7 @@ const EachUserProfile = () => {
     }
 
     const handleFollowToggle = () => {
-        // fetch(
-        //     `http://localhost:8800/api/:id/follow`,
-        //     {
-        //         method: "POST",
-        //         headers: { "Content-Type": "application/json" },
-        //         body:JSON.stringify({userId})
-        //     }
-        // )
-        //     .then((res) => res.json()).then(res=>{
-        //     console.log(res, "FOLLOWING")
-        // })
+       
 
     }
 

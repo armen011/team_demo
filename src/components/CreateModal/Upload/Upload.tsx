@@ -12,7 +12,7 @@ export type UploadType = {
 };
 
 const Upload: FC<UploadType> = ({ changeStep }) => {
-  const {t} = useTranslation()
+  const { t } = useTranslation();
   const dispatch = useAppDispatch();
   const handleUploadFile = (event: React.FormEvent) => {
     const files = (event.target as HTMLInputElement).files;

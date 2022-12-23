@@ -124,7 +124,6 @@ const MenuBar: FC<Props> = ({ routeInfo }) => {
       setSearch(true);
       setNot(false);
     } else if (text === "Create") {
-      console.log("text", text);
       setIsCreateModalOpened(true);
       setSearch(false);
       setNot(false);

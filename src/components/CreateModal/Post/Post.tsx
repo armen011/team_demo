@@ -4,23 +4,26 @@ import { ChangeStepFunctionType } from "../CreateModal";
 import "./post.css";
 import ImageSlider from "../Components/ImageSlider/index";
 import { useAppSelector } from "app";
-import { useAppDispatch } from 'app/store';
-import { createPost } from 'features/post/postSlice';
+import { useAppDispatch } from "app/store";
+import { createPost } from "features/post/postSlice";
 import { useTranslation } from "react-i18next";
+import user from "assets/images/user.png"
 
 export type PostType = {
   changeStep: ChangeStepFunctionType;
+  handleCloseModal:()=>void
 };
 
-const Post: FC<PostType> = ({ changeStep }) => {
+const Post: FC<PostType> = ({ changeStep, handleCloseModal }) => {
   const [content, setContent] = useState("");
   const images = useAppSelector((state) => state.post.images);
+  const userId = useAppSelector((state) => state.user._id) || "";
 
   const { username, profilePicture } = useAppSelector((s) => s.user);
-  const {t} = useTranslation()
+  const { t } = useTranslation();
 
-  const dispatch = useAppDispatch()
-  const post = useAppSelector(s => s.post)
+  const dispatch = useAppDispatch();
+  const post = useAppSelector((s) => s.post);
 
   const handleContent: ChangeEventHandler<HTMLTextAreaElement> | undefined = ({
     target: { value },
@@ -32,10 +35,11 @@ const Post: FC<PostType> = ({ changeStep }) => {
     changeStep("edit");
   };
   const handleShare = () => {
-    dispatch(createPost({...post, content }))
+    dispatch(createPost({ post: { ...post, content }, userId }));
+    handleCloseModal()
   };
 
-  const a = t("Write_a_caption...")
+  const a = t("Write_a_caption...");
   return (
     <div className="post_share_main_wrapper">
       <PostModalHeader
@@ -51,7 +55,7 @@ const Post: FC<PostType> = ({ changeStep }) => {
         </div>
         <div className="post_title_wrapper">
           <div className="post_user_info_wrapper">
-            <img src={profilePicture} />
+            <img src={profilePicture || user} />
             <h3>{username}</h3>
           </div>
           <div className="post_content_wrapper">

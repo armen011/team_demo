@@ -10,7 +10,6 @@ const AppRouter = () => {
   const dispath = useAppDispatch();
   useEffect(() => {
     dispath(tryToLogin());
-    console.log("okok");
   }, []);
   return (
     <BrowserRouter>

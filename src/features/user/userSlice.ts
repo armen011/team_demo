@@ -74,7 +74,6 @@ export const userSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(login.fulfilled, (state, { payload }) => {
-      console.log(payload, "payload");
       if (payload.email) {
         localStorage.setItem("user", JSON.stringify(payload));
         return { ...payload, isLogedIn: true };
