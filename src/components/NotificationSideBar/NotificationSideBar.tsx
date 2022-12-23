@@ -71,10 +71,25 @@ const NotificationSideBar = () => {
             </div>
             <div className={'section-of-notifications'}>
                 {users.map(u => <div key={u.id} className='single-notification'>
-                    <img src={u.image} alt="User"/>
-                        <span style={{fontWeight:'bold'}}>{t(u.userName)}</span>
-                        <span>{t(u.info)}</span>
-                        <button onClick={() => toggleFollow(u.id)} className={u.status === 'Follow' ? 'notification_to_follow' : 'notification_following'}>{t(u.status)}</button>
+                    <div className='single_notification_container'>
+                        <img src={u.image} alt="User"/>
+                        <div className='single_notification_text'>
+                            <span style={{fontWeight: 'bold'}}>{t(u.userName)}</span>
+                            <span>{t(u.info)}</span>
+                        </div>
+                    </div>
+
+                    <div onClick={() => toggleFollow(u.id)}
+                         className={u.status === 'Follow' ? 'notification_to_follow' : 'notification_following'}>
+                        {t(u.status)}</div>
+
+                    {/*<div className='notification_user_info'>*/}
+                    {/*    <img src={u.image} alt="User"/>*/}
+                    {/*    <span className='single_notification_name'>{t(u.userName)}</span>*/}
+                    {/*    <span style={{marginLeft:'10px'}}>{t(u.info)}</span>*/}
+                    {/*</div>*/}
+
+
                 </div>)}
             </div>
         </div>

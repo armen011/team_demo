@@ -1,6 +1,5 @@
 import {createAsyncThunk, createSlice, PayloadAction} from "@reduxjs/toolkit";
-import { PostStateType } from "features/post";
-import { Tpost , onePost } from "pages/Main/PostComponent/PostComponent";
+import { Tpost } from "pages/Main/PostComponent/PostComponent";
 
 const initialState:Tpost = []
 
@@ -33,7 +32,6 @@ export const getPostsReducer = createSlice({
                 for(let i = 0;i<action.payload.length;i++){
                     state[i]={images:action.payload[i].images , _doc:action.payload[i]._doc}
                 }
-                
             })
             .addCase(getPosts.rejected, () => {
                 console.error("Something was wrong");
