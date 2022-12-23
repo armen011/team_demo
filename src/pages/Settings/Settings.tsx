@@ -54,7 +54,6 @@ const Settings = () => {
                             <button className='reset_password_submit'>Submit</button>
                         </div>
                     </div>
-x
                     <div className='delete_account'>
                         <button onClick={() => {
                             setDeletePopUp(true)

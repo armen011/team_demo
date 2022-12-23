@@ -48,13 +48,8 @@ const EachUserProfile = () => {
     const categories = [
         {
             name:'POSTS',
-            path:'/profile',
+            path:userId,
             isActive:true
-        },
-        {
-            name:'SAVED',
-            path:'/profile/saved',
-            isActive:false
         }
     ]
     const [categoryList,setCategoryList] = useState(categories)

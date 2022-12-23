@@ -18,11 +18,6 @@ const Profile = () => {
             name:'POSTS',
             path:'/profile',
             isActive:true
-        },
-        {
-            name:'SAVED',
-            path:'/profile/saved',
-            isActive:false
         }
     ]
     const creatorId = useAppSelector(state => state.user._id)

@@ -51,7 +51,6 @@ const PostComponent:FC<{post:onePost}>= ({post}) => {
       <ReactionBar redHeartB={redHeartB} handleChangeHeart={handleChangeHeart}/>
       <ContentBox doc={post._doc}/>
       <CommentBox/>
-      
     </div>
   );
 };

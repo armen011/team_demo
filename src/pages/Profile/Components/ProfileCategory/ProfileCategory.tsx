@@ -4,7 +4,7 @@ import {useNavigate} from "react-router-dom";
 
 export type CategoryType={
     name:string;
-    path:string;
+    path:string | undefined;
     isActive:boolean;
     setActivation:(name: string)=>void
 }

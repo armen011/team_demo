@@ -36,7 +36,6 @@ export const getPostsReducer = createSlice({
             .addCase(getPosts.rejected, () => {
                 console.error("Something was wrong");
             });
-
     },
 })
 
