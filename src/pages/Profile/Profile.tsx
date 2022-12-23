@@ -3,11 +3,10 @@ import Footer from "layouts/AuthLayout/Components/Footer";
 import ProfileCategory from "./Components/ProfileCategory";
 import './Profile.css'
 import UTILS from "../../utils";
-import {addImage, userSlice} from "../../features/user";
+import {userSlice} from "../../features/user";
 import {useAppDispatch, useAppSelector} from "../../app";
 import settingIcon from 'images/settings.png'
 import UserIcon from 'assets/images/user.png'
-import PostPhoto from 'images/posting.png'
 import {useEffect, useState} from "react";
 import {TUserState} from "../EachUserProfile/EachUserProfile";
 import Neccessary from "./Components/Neccessary";
@@ -42,7 +41,6 @@ const Profile = () => {
 
     const {addImage} = userSlice.actions
 
-    const {username,fullName,followers,followings} = useAppSelector(s=>s.user)
 
     const changeCategoryActivationHandler = (name:string)=> {
         setCategoryList(prevState => {
@@ -149,10 +147,7 @@ const Profile = () => {
                 })}
             </div>
 
-
                 <Neccessary/>
-
-
 
                 <Footer/>
 
