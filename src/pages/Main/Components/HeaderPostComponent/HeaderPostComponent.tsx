@@ -3,12 +3,11 @@ import "./HeaderPostComponent.css";
 import information from "../ReactionBar/icons/more.png";
 import UserPopup from "../UserPopup";
 
-const HeaderPostComponent: FC = () => {
+const HeaderPostComponent: FC<{userId:string}> = ({userId}) => {
   const [style, setStyle] = useState("");
 
   const handleClosePopup = ()=>{
     document.body.classList.remove("no_scroll")
-    document.body.classList.remove("block")
     setStyle("")
   }
   return (
@@ -26,18 +25,17 @@ const HeaderPostComponent: FC = () => {
           <div className="user_name">
             userName
           </div>
-          {/* <HoverPopup/> */}
+          
           
         </div>
         <div className="information" onClick={() => {
           document.body.classList.add("no_scroll")
-          document.body.classList.add("block")
           setStyle("block")
           
         }}>
           <img src={information} alt="information" />
         </div>
-        <UserPopup style={style} handleClosePopup={handleClosePopup} />
+        <UserPopup userId={userId} style={style} handleClosePopup={handleClosePopup} />
         
       </div>
     </>

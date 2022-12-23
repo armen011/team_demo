@@ -64,7 +64,6 @@
   "started following you": "սկսել Է Հետևել ձեզ",
   "liked your post": "հավանել Է ձեր post-ը",
   "Recent": "Վերջերս",
-  "Clear all": "Մաքրել բոլորը",
   "About": "Մասին",
   "Help": "Ոգնուտյոյն",
   "Press": "Մամուլ",
@@ -75,5 +74,8 @@
   "Location": "Գտնվելու վայրը",
   "© 2022 INSTAGRAM FROM HONEY": "© 2022 INSTAGRAM ՄԵՂՐԻՑ",
   "Suggestions For You": "Առաջարկություններ Ձեզ համար",
-  "See All": "Տեսնել Բոլորը"
+  "See All": "Տեսնել Բոլորը",
+  "Clear all": "Մաքրել բոլորը",
+  "View all":"Տեսնել բոլոր",
+  "comments":"մեկնաբանությունները"
 }

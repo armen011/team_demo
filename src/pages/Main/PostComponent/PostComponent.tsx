@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react";
+import { FC, useState } from "react";
 import CommentBox from "../Components/CommentBox";
 import ContentBox from "../Components/ContentBox";
 import HeaderPostComponent from "../Components/HeaderPostComponent";
@@ -6,13 +6,33 @@ import PostImages from "../Components/PostImages";
 import ReactionBar from "../Components/ReactionBar";
 import "./PostComponent.css";
 
-type Tstate = {
-  redHeartB:boolean,
-  setRedHeartB:()=>void
+
+
+export type Timages = {file:string,style:{filter?:string,scale?:string}}[]
+export type T_doc = {
+  createdAt:string,
+  desc:string,
+  img:string[]
+  likes:[]
+  updatedAt:string,
+  userId:string
+  __v:number
+  _id:string
+
 }
 
-const PostComponent: FC = () => {
+export type Tpost = Array<{
+  images:Timages,
+  _doc:T_doc
+}>
 
+export type onePost = {
+  images:Timages,
+  _doc:T_doc
+}
+
+const PostComponent:FC<{post:onePost}>= ({post}) => {
+  
   const [redHeartB,setRedHeartB] = useState(false)
 
   const handleDoubleClick = ()=>{
@@ -26,10 +46,10 @@ const PostComponent: FC = () => {
 
   return (
     <div className="post_component_wrapper">
-      <HeaderPostComponent/>
-      <PostImages handleDoubleClick={handleDoubleClick}/>
+      <HeaderPostComponent userId={post._doc.userId}/>
+      <PostImages handleDoubleClick={handleDoubleClick} images={post.images} />
       <ReactionBar redHeartB={redHeartB} handleChangeHeart={handleChangeHeart}/>
-      <ContentBox/>
+      <ContentBox doc={post._doc}/>
       <CommentBox/>
       
     </div>

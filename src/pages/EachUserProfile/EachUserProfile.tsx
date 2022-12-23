@@ -3,8 +3,6 @@ import MainLayout from "layouts/MainLayout";
 import UserIcon from "../../assets/images/user.png";
 import settingIcon from "../../images/settings.png";
 import ProfileCategory from "../Profile/Components/ProfileCategory";
-import SinglePost from "../Profile/Components/SinglePost";
-import PostPhoto from "../../images/posting.png";
 import Footer from "../../layouts/AuthLayout/Components/Footer";
 import '../Profile/Profile.css'
 import {useParams} from "react-router-dom";
@@ -105,7 +103,8 @@ const EachUserProfile = () => {
     return (
         <MainLayout>
 
-            <div className={'my_profile'}>
+            <div className='my_profile_wrapper'>
+                <div className={'my_profile'}>
                 <div className={'upper_part'}>
                     <div className={'my_profile_image'}>
                         <img src={data?.profilePicture ? data?.profilePicture : UserIcon} alt={'Change image'}/>
@@ -146,16 +145,11 @@ const EachUserProfile = () => {
                                                 name={elem.name} path={elem.path} key={index * Math.random()}/>
                     })}
                 </div>
-
                 <div className={'my_profile_posting_part'}>
                 </div>
-
-                <Footer/>
-
             </div>
-
-
-
+                <Footer/>
+            </div>
         </MainLayout>
     )
 }

@@ -1,8 +1,17 @@
+.my_profile_wrapper{
+  margin-left: 270px;
+  width: calc(100% - 270px);
+  height: 100vh;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+}
+
 .my_profile {
   width: 940px;
   display: flex;
   flex-wrap: wrap;
-  margin: auto;
 }
 
 .just {

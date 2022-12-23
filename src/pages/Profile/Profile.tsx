@@ -100,7 +100,8 @@ const Profile = () => {
   return (
     <MainLayout>
 
-        <div className={'my_profile'}>
+        <div className='my_profile_wrapper'>
+            <div className={'my_profile'}>
             <div className={'upper_part'}>
                 <div className={'my_profile_image'}>
                     <img src={imageSrc ? imageSrc : UserIcon} alt={'Change image'}/>
@@ -149,11 +150,10 @@ const Profile = () => {
 
                 <Neccessary/>
 
-                <Footer/>
-
         </div>
 
-
+            <Footer/>
+        </div>
 
     </MainLayout>
   )

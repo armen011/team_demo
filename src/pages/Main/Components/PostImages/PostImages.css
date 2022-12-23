@@ -1,8 +1,13 @@
 .image_container{
     width: 100%;
+    position: relative;
 }
 
-.image_container >img{
+.image_container .my_swiper .slide_wrapper img{
     width: 100%;
     cursor: pointer;
+    height: 600px;
+    
 }
+
+
