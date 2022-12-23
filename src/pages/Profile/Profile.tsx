@@ -3,7 +3,7 @@ import Footer from "layouts/AuthLayout/Components/Footer";
 import ProfileCategory from "./Components/ProfileCategory";
 import './Profile.css'
 import UTILS from "../../utils";
-import {userSlice} from "../../features/user";
+import {refreshPage, userSlice} from "../../features/user";
 import {useAppDispatch, useAppSelector} from "../../app";
 import settingIcon from 'images/settings.png'
 import UserIcon from 'assets/images/user.png'
@@ -97,6 +97,10 @@ const Profile = () => {
         }
     }
 
+
+
+
+
   return (
     <MainLayout>
 
@@ -151,7 +155,6 @@ const Profile = () => {
                 <Neccessary/>
 
         </div>
-
             <Footer/>
         </div>
 

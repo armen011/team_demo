@@ -29,13 +29,13 @@ const Main=()=>{
 
 
     return <MainLayout>
-            <Recommendation/>
         <div className="user_post_container">
 
             {usersPosts.map((post:onePost)=>{
                 return <PostComponent key={Math.random()} post={post}/>
             })}
         </div>
+        <Recommendation/>
     </MainLayout>
 }
 

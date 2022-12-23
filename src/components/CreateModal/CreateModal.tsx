@@ -40,7 +40,7 @@ const CreateModal: FC<CreateModalProps> = ({ handleCloseModal }) => {
           e.stopPropagation();
         }}
       >
-        <Component {...{ changeStep }} />
+        <Component {...{ changeStep }} handleCloseModal={handleCloseModal} />
       </div>
     </div>
   );

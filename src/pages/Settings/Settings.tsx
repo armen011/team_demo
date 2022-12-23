@@ -1,6 +1,6 @@
 import './Settings.css'
 import MenuBar from "components/MenuBar";
-import {useAppDispatch} from "app";
+import {useAppDispatch, useAppSelector} from "app";
 import {refreshPage} from "features/user";
 import {useState} from "react";
 import {useNavigate} from "react-router";
@@ -10,6 +10,24 @@ const Settings = () => {
     const dispatch = useAppDispatch()
     const [deletePopUp, setDeletePopUp] = useState<boolean>(false)
     const navigate = useNavigate()
+    const deleteUser = useAppSelector(state => state.user)
+
+    const deleteUserFunc = () =>{
+        fetch(
+            `http://localhost:8800/api/users/${deleteUser._id}`,
+            {
+                method: "DELETE",
+                body: JSON.stringify({
+                    userId: deleteUser._id
+                }),
+                headers: { "Content-Type": "application/json" }},
+        )
+            .then((res) => res.json()).then(res=>{
+            console.log("RES",res)
+        })
+        dispatch(refreshPage())
+    }
+
 
     return (
         <div className='settings_wrapper'>
@@ -36,9 +54,12 @@ const Settings = () => {
                             <button className='reset_password_submit'>Submit</button>
                         </div>
                     </div>
-
+x
                     <div className='delete_account'>
-                        <button onClick={() => setDeletePopUp(true)} className='delete_account_button'>Delete Account</button>
+                        <button onClick={() => {
+                            setDeletePopUp(true)
+                            deleteUserFunc()
+                        }} className='delete_account_button'>Delete Account</button>
                     </div>
 
                     <div className='delete_account'>

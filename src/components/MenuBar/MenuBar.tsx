@@ -110,6 +110,7 @@ const MenuBar = () => {
   const navigate = useNavigate();
   const handleCloseModal = () => {
     setIsCreateModalOpened(false);
+    
   };
 
   const handleActiveClick = (id: number, text: string) => {

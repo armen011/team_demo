@@ -32,7 +32,6 @@
   "Full Name": "Անուն Ազգանուն",
   "Username": "Օգտանուն",
   "Password": "Գաղտնաբառ",
-  "Get_the_app": "Ներբեռնել",
   "Username is already used": "Օգտանունը արդեն օգտագործված է",
   "Email is already used": "Էլ․ հասցեն արդեն օգտագործված է",
   "Show": "Տեսնել",
@@ -57,6 +56,7 @@
   "Birthdays_on_Instagram": "Ծննդյան տոները Instagram-ում",
   "Providing_your_date_of_birth_improves_the_features_and_ads_that_you_see_and_helps_us_keep_the_Instagram_community_safe._You_can_find_your_date_of_birth_in_your_personal_information_account_settings.": "Ձեր ծննդյան ամսաթիվը տրամադրելը բարելավում է ձեր տեսած գործառույթներն ու գովազդները և օգնում է մեզ անվտանգ պահել Instagram համայնքը: Դուք կարող եք գտնել ձեր ծննդյան ամսաթիվը ձեր անձնական տվյալների հաշվի կարգավորումներում:",
   "Learn_more": "Իմանալ ավելին",
+  "Get_the_app": "Ներբեռնել հավելվածը",
   "Notifications": "Նորություններ",
   "UserName": "Օգտանուն",
   "Following": "Հետևում եք",
@@ -75,7 +75,14 @@
   "© 2022 INSTAGRAM FROM HONEY": "© 2022 INSTAGRAM ՄԵՂՐԻՑ",
   "Suggestions For You": "Առաջարկություններ Ձեզ համար",
   "See All": "Տեսնել Բոլորը",
-  "Clear all": "Մաքրել բոլորը",
   "View all":"Տեսնել բոլոր",
-  "comments":"մեկնաբանությունները"
+  "comments":"մեկնաբանությունները",
+  "Clear all": "Մաքրել բոլորը",
+  "Drag_photos_and_videos_here": "Քաշեք լուսանկարներն ու տեսանյութերը այստեղ",
+  "Create_new_post": "Ստեղծել նոր գրառում",
+  "Select_from_computer": "Ընտրել համակարգչից",
+  "Crop": "Բազմություն",
+  "Edit": "Փոփոխել",
+  "Share": "Կիսվել",
+  "Write_a_caption...": "Գրել վեռնագիր..."
 }
