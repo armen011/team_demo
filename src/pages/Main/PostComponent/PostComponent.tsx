@@ -1,5 +1,4 @@
 import { FC, useState } from "react";
-import CommentBox from "../Components/CommentBox";
 import ContentBox from "../Components/ContentBox";
 import HeaderPostComponent from "../Components/HeaderPostComponent";
 import PostImages from "../Components/PostImages";
@@ -50,7 +49,6 @@ const PostComponent:FC<{post:onePost}>= ({post}) => {
       <PostImages handleDoubleClick={handleDoubleClick} images={post.images} />
       <ReactionBar redHeartB={redHeartB} handleChangeHeart={handleChangeHeart}/>
       <ContentBox doc={post._doc}/>
-      <CommentBox/>
     </div>
   );
 };
