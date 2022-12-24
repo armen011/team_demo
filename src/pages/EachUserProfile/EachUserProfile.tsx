@@ -42,10 +42,12 @@ const EachUserProfile = () => {
                 method: "GET",
                 headers: { "Content-Type": "application/json" }})
             .then((res) => res.json()).then(res=> {
-                const condition = res.followings.some((value: string) => value === creatorId)
-                setFollow(condition)
-                setFollowersCount(res.followings.length)
-                setData(res)
+                if (res){
+                    const condition = res.followings.some((value: string) => value === creatorId)
+                    setFollow(condition)
+                    setFollowersCount(res.followings.length)
+                    setData(res)
+                }
             })
 
 

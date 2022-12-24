@@ -2,12 +2,12 @@ import './Recommendation.css'
 import userIcon from 'assets/images/user.png'
 import {useAppSelector} from "../../app";
 import MiniFooter from "../MiniFooter";
-import React, {useCallback, useEffect, useState} from "react";
+import React, {useCallback, useContext, useEffect, useState} from "react";
 import {TData} from "../SearchSideBar/SearchSideBar";
 import Follow from "./Follow";
 import {useTranslation} from "react-i18next";
 import {useNavigate} from "react-router";
-
+import {context} from "../../pages/Main/Main";
 const Recommendation = () => {
     const user = useAppSelector(state => state.user)
     const {t} = useTranslation()
@@ -53,6 +53,8 @@ const Recommendation = () => {
         return resultArr;
     }, [followersArray])
 
+
+    const createPopupContext = useContext(context)
 
     return (
         <div className='recommendation_wrapper'>

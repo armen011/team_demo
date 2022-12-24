@@ -37,6 +37,7 @@ const Post: FC<PostType> = ({ changeStep, handleCloseModal }) => {
   const handleShare = () => {
     dispatch(createPost({ post: { ...post, content }, userId }));
     handleCloseModal()
+    window.location.reload()
   };
 
   const a = t("Write_a_caption...");

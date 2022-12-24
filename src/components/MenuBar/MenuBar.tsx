@@ -11,13 +11,14 @@ import createIcon from "assets/images/create.png";
 import createIconBold from "assets/images/createBold.png";
 import userIcon from "assets/images/user.png";
 import userIconBold from "assets/images/userBold.png";
-import { FC, useState } from "react";
+import {FC, useContext, useState} from "react";
 import {useNavigate, useParams} from "react-router-dom";
 import CreateModal from "components/CreateModal";
 import NotificationSideBar from "../NotificationSideBar";
 import SearchSideBar from "../SearchSideBar";
 import MinBar from "../MinBar";
 import AppBar from "../AppBar";
+import {context} from "../../pages/Main/Main";
 
 
 const MenuBar = () => {
@@ -106,11 +107,10 @@ const MenuBar = () => {
   const [not, setNot] = useState<boolean>(false);
   const [search, setSearch] = useState<boolean>(false);
   const [category, setCategory] = useState(categoryParts);
-  const [isCreateModalOpened, setIsCreateModalOpened] = useState(false);
   const navigate = useNavigate();
+  const createPopUpContext = useContext(context)
   const handleCloseModal = () => {
-    setIsCreateModalOpened(false);
-    
+    createPopUpContext?.setIsCreateModalOpened(false);
   };
 
   const handleActiveClick = (id: number, text: string) => {
@@ -121,7 +121,7 @@ const MenuBar = () => {
       setSearch(true);
       setNot(false);
     } else if (text === "Create") {
-      setIsCreateModalOpened(true);
+      createPopUpContext?.setIsCreateModalOpened(true);
       setSearch(false);
       setNot(false);
     } else {
@@ -176,7 +176,7 @@ const MenuBar = () => {
         category={category}
       />
       {not && <NotificationSideBar />}
-      {isCreateModalOpened && (
+      {createPopUpContext?.isCreateModalOpened && (
         <CreateModal handleCloseModal={handleCloseModal} />
       )}
       {search && <SearchSideBar />}
