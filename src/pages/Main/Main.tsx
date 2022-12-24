@@ -35,7 +35,7 @@ const Main=()=>{
         <div className="user_post_container">
 
             {usersPosts.length ? usersPosts.map((post:onePost)=>{
-                return <PostComponent key={Math.random()} post={post}/>
+                return <PostComponent key={Math.random()} post={post} postId={post._doc._id}/>
             }) : <div className='first_post_component_wrapper'>
                 <div className='first_post_header_div'>
                     <div style={{display:"flex", alignItems: "center"}}>

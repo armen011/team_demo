@@ -1,16 +1,36 @@
-import React, { FC, useState } from "react";
+import React, {FC, useCallback, useState} from "react";
 import "./HeaderPostComponent.css";
 import information from "../ReactionBar/icons/more.png";
 import UserPopup from "../UserPopup";
-import userImage from "assets/images/user.png"
+import {useAppSelector} from "../../../../app";
 
-const HeaderPostComponent: FC<{userId:string, fullName: string | undefined, avatarUrl: string | undefined}> = ({userId,fullName,avatarUrl}) => {
+const HeaderPostComponent: FC<{userId:string,postId:string}> = ({userId,postId}) => {
   const [style, setStyle] = useState("");
+
+  const ownId = useAppSelector(s=>s.user._id);
 
   const handleClosePopup = ()=>{
     document.body.classList.remove("no_scroll")
     setStyle("")
   }
+
+
+  const deletePost = useCallback(():void => {
+    fetch(`http://localhost:8800/api/posts/${postId}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        userId:ownId
+      })
+    }).then(r => r.json()).then((r) => {
+      console.log(r);
+      handleClosePopup();
+      window.location.reload();
+    }).catch((e) => console.log(e));
+  },[postId]);
+
   return (
     <>
       {style && <div onClick={handleClosePopup} className="grey"></div>}
@@ -18,13 +38,13 @@ const HeaderPostComponent: FC<{userId:string, fullName: string | undefined, avat
         <div className="avatar_wrapper">
           <div className="avatar">
             <img
-              src={avatarUrl||userImage }
+              src="https://assets-fr.imgfoot.com/media/cache/1200x1200/cristiano-ronaldo-enerve.jpg"
               alt="avatar"
             />
             
           </div>
           <div className="user_name">
-            {fullName}
+            userName
           </div>
           
           
@@ -36,7 +56,7 @@ const HeaderPostComponent: FC<{userId:string, fullName: string | undefined, avat
         }}>
           <img src={information} alt="information" />
         </div>
-        <UserPopup userId={userId} style={style} handleClosePopup={handleClosePopup} />
+        <UserPopup userId={userId} ownId={ownId} style={style} handleClosePopup={handleClosePopup} deletePost={deletePost} />
         
       </div>
     </>
