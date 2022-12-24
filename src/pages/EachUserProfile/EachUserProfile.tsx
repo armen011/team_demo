@@ -10,6 +10,7 @@ import {useAppSelector} from "../../app";
 import {useNavigate} from "react-router";
 import {Tpost} from "../Main/PostComponent/PostComponent";
 import Neccessary from "../Profile/Components/Neccessary";
+import CameraIcon from "../../images/camera.png";
 
 export type TUserState = {
     coverPicture: string,
@@ -53,17 +54,9 @@ const EachUserProfile = () => {
                     setData(res)
                 }
             })
-
-
-
     }, [])
 
-
-    const filtered = allPosts.filter(elem => {
-        if (elem._doc.userId === userId){
-            return elem
-        }
-    })
+    const filtered = allPosts.filter(elem => elem._doc.userId === userId)
 
 
     useMemo(() => {
@@ -80,7 +73,6 @@ const EachUserProfile = () => {
         }
     ]
     const [categoryList,setCategoryList] = useState(categories)
-
     const changeCategoryActivationHandler = (name:string)=> {
         setCategoryList(prevState => {
             return prevState.map(elem=> {
@@ -151,7 +143,7 @@ const EachUserProfile = () => {
                         </div>
 
                         <div className={'my_profile_counts_part'}>
-                            <div style={{cursor: "pointer"}}><span>???</span> post</div>
+                            <div style={{cursor: "pointer"}}><span>{eachUserPost?.length}</span> post</div>
                             <div className={'followers_count'}><span>{followersCount}</span> followers</div>
                             <div className={'following_count'}><span>{data?.followers.length}</span> following </div>
                         </div>
@@ -170,18 +162,41 @@ const EachUserProfile = () => {
                 <div className={'my_profile_posting_part'}>
                 </div>
 
+                    {follow ?
+                        <div>
+                            {!eachUserPost ?
+                                <div className='no_posts'>
+                                    <div className={'my_profile_post_dont_have'}>
+                                        <div className={'my_profile_post_dont_have_image'}>
+                                            <img src={CameraIcon} alt="camera icon"/>
+                                        </div>
 
-                    {!eachUserPost ?
-                        <Neccessary/>
-                        :
-                        eachUserPost.map(elem => {
-                            return <div key={Math.random()} className='post_wrapper'>
-                                {elem.images.map(val => {
-                                    return <img key={Math.random()} className='post_img' style={val.style} src={val.file} alt=""/>
-                                })}
+                                        <h4>No Posts Yet</h4>
+
+
+                                    </div>
+                                </div>
+                                :
+                                eachUserPost.map(elem => {
+                                    return <div key={Math.random()} className='post_wrapper'>
+                                        {elem.images.map(val => {
+                                            return <img key={Math.random()} className='post_img' style={val.style} src={val.file} alt=""/>
+                                        })}
+                                    </div>
+                                })
+                            }
+                        </div>
+                     : <div className='not_followed'>
+                            <div className='not_followed_text'>
+                                <p>
+                                    This Account is Private
+
+                                </p>
+                                <p style={{maxWidth: '200px', textAlign: 'center', lineHeight: '30px', marginTop: '10px'}}>
+                                    Follow to see their photos and videos.
+                                </p>
                             </div>
-                        })
-                    }
+                        </div>}
             </div>
                 <Footer/>
             </div>

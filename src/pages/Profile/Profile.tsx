@@ -31,9 +31,6 @@ const Profile = () => {
         }
     }, [])
 
-    const deletePost = () => {
-
-    }
 
     const categories = [
         {
@@ -148,7 +145,7 @@ const Profile = () => {
                     </div>
 
                             <div className={'my_profile_counts_part'}>
-                                <div><span>???</span> post</div>
+                                <div><span>{myPosts?.length}</span> post</div>
                                 <div className={'following_count'}><span>{ownInfo?.followings.length}</span> followers
                                 </div>
                                 <div className={'followers_count'}><span>{ownInfo?.followers.length}</span> following
