@@ -23,7 +23,7 @@ const Settings = () => {
 
     const dispatch = useAppDispatch();
     const [passwordValues, setPasswordValues] = useState<TpasswordValues>(initialState);
-    const [updateMessage, setupdateMessage] = useState<string>('');
+    const [updateMessage, setUpdateMessage] = useState<string>('');
     const [isClicked, setClick] = useState<boolean>(false);
     const [deletePopUp, setDeletePopUp] = useState<boolean>(false)
     const navigate = useNavigate();
@@ -72,12 +72,12 @@ const Settings = () => {
                 },
             )
                 .then((res) => res.json()).then(res => {
-                setupdateMessage(res);
+                setUpdateMessage(res);
                 setPasswordValues((prev) => ({...prev, newPassword: '', resetNewPassword: ''}));
                 setClick(true);
             })
         } else {
-            setupdateMessage('');
+            setUpdateMessage('');
             setClick(true);
         }
     }
