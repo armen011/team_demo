@@ -30,9 +30,8 @@ const Main=()=>{
 
     return <MainLayout>
         <div className="user_post_container">
-
             {usersPosts.map((post:onePost)=>{
-                return <PostComponent key={Math.random()} post={post}/>
+                return <PostComponent key={Math.random()} post={post} postId={post._doc._id}/>
             })}
         </div>
         <Recommendation/>
