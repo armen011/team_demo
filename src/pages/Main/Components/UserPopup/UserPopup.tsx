@@ -16,6 +16,7 @@ const UserPopup: FC<TPopup> = ({style, handleClosePopup, userId, deletePost, own
 
     const {t} = useTranslation()
 
+
     const navigate = useNavigate()
     const location = useLocation()
     return (
@@ -31,7 +32,8 @@ const UserPopup: FC<TPopup> = ({style, handleClosePopup, userId, deletePost, own
             </div>
             <div className="popup_button">
                 <button onClick={() => {
-                    navigate(`/user/${userId}`)
+                    navigate(`/users/${userId}`)
+                    document.body.classList.remove("no_scroll");
                 }}>{t("Go to post")}</button>
             </div>
             {ownId === userId && <div className="popup_button red_text">
