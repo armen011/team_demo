@@ -4,6 +4,7 @@ import CategoryMin from "../CategoryMin";
 import menuIcon from "../../assets/images/menu.png";
 import messageIconBold from "../../assets/images/messengerBold.png";
 import './MinBar.css'
+import {useNavigate} from "react-router";
 
 
 
@@ -24,10 +25,12 @@ type TMinBar = {
 }
 
 const MinBar:FC<TMinBar> = ({handleActiveClick, handleRouteClick, category}) =>{
+
+    const navigate = useNavigate()
     return (
         <div className={'min-bar'}>
             <div className={'min-logo-part'}>
-                <img src={instagramIcon} alt="Logo"/>
+                <img src={instagramIcon} alt="Logo" style={{cursor: "pointer"}} onClick={() => navigate('/')}/>
             </div>
 
             <div className={'min-category-part'}>

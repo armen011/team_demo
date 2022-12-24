@@ -4,6 +4,7 @@ import Category from "../Category";
 import menuIconBold from "assets/images/menuBold.png";
 import menuIcon from "assets/images/menu.png";
 import './AppBar.css';
+import {useNavigate} from "react-router";
 
 type TCategoryPart = {
     img: string,
@@ -23,13 +24,13 @@ type TAppBar = {
 
 const AppBar:FC<TAppBar> = ({handleActiveClick, handleRouteClick, category}) =>{
 
-
+    const navigate = useNavigate()
 
 
     return (
         <div className={'app_bar'}>
             <div className={'logo-part'}>
-                <img src={logo} alt=""/>
+                <img style={{cursor: "pointer"}} src={logo} alt="" onClick={() => navigate('/')}/>
             </div>
             <div className={'category-part'}>
                 {category.map(elem=> {

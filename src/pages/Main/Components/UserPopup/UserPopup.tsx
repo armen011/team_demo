@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next"
 import {CopyToClipboard} from 'react-copy-to-clipboard';
 import "./UserPopup.css" 
 import { useLocation  , useNavigate } from "react-router-dom";
+import {log} from "util";
 
 type TPopup = {
     style:string
@@ -15,9 +16,9 @@ const UserPopup:FC<TPopup> =({style , handleClosePopup , userId})=>{
     const {t} = useTranslation()
 
     const navigate = useNavigate()
-    const location  = useLocation ()    
+    const location  = useLocation ()
+    console.log(userId, 'userId')
     return (
-
     <div onClick={(e:React.MouseEvent<HTMLDivElement>)=>{
         
 

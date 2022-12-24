@@ -3,16 +3,40 @@ import Footer from "layouts/AuthLayout/Components/Footer";
 import ProfileCategory from "./Components/ProfileCategory";
 import './Profile.css'
 import UTILS from "../../utils";
-import {refreshPage, userSlice} from "../../features/user";
+import {userSlice} from "../../features/user";
 import {useAppDispatch, useAppSelector} from "../../app";
 import settingIcon from 'images/settings.png'
 import UserIcon from 'assets/images/user.png'
-import {useEffect, useState} from "react";
+import {useEffect, useMemo, useState} from "react";
 import {TUserState} from "../EachUserProfile/EachUserProfile";
 import Neccessary from "./Components/Neccessary";
+import {Tpost} from "../Main/PostComponent/PostComponent";
 
 
 const Profile = () => {
+
+    const creatorId = useAppSelector(state => state.user._id)
+    const baseUrl = process.env.REACT_APP_PUBLIC_URL;
+    const allPosts = useAppSelector(state => state.getPosts)
+    const [myPosts, setMyPosts] = useState<Tpost>()
+
+    const filtered = allPosts.filter(elem => {
+            if (elem._doc.userId === creatorId){
+                return elem
+            }
+        })
+
+    useMemo(() => {
+        if (filtered.length){
+            setMyPosts(filtered)
+        }
+    }, [])
+
+    const deletePost = () => {
+
+}
+
+
     const categories = [
         {
             name:'POSTS',
@@ -20,7 +44,6 @@ const Profile = () => {
             isActive:true
         }
     ]
-    const creatorId = useAppSelector(state => state.user._id)
     const [ownInfo, setOwnInfo] = useState<TUserState>()
         useEffect(() => {
             fetch(
@@ -147,7 +170,18 @@ const Profile = () => {
                 })}
             </div>
 
-                <Neccessary/>
+                {!myPosts ?
+                    <Neccessary/>
+                    :
+                    myPosts.map(elem => {
+                       return <div key={Math.random()} className='post_wrapper'>
+                           {elem.images.map(val => {
+                               return <img key={Math.random()} className='post_img' style={val.style} src={val.file} alt=""/>
+                           })}
+                       </div>
+                    })
+                }
+
 
         </div>
             <Footer/>

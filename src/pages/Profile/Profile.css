@@ -239,6 +239,23 @@
   }
 }
 
+.post_wrapper{
+  display: flex;
+  gap: 10px;
+}
+
+.post_img{
+  width: 293px;
+  height: 293px;
+}
+
+
+
+
+
+
+
+
 @media only screen and (max-width: 660px) {
   .my_profile {
     width: 500px;
