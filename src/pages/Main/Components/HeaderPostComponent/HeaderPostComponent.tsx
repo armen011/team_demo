@@ -2,8 +2,9 @@ import React, { FC, useState } from "react";
 import "./HeaderPostComponent.css";
 import information from "../ReactionBar/icons/more.png";
 import UserPopup from "../UserPopup";
+import userImage from "assets/images/user.png"
 
-const HeaderPostComponent: FC<{userId:string}> = ({userId}) => {
+const HeaderPostComponent: FC<{userId:string, fullName: string | undefined, avatarUrl: string | undefined}> = ({userId,fullName,avatarUrl}) => {
   const [style, setStyle] = useState("");
 
   const handleClosePopup = ()=>{
@@ -17,13 +18,13 @@ const HeaderPostComponent: FC<{userId:string}> = ({userId}) => {
         <div className="avatar_wrapper">
           <div className="avatar">
             <img
-              src="https://assets-fr.imgfoot.com/media/cache/1200x1200/cristiano-ronaldo-enerve.jpg"
+              src={avatarUrl||userImage }
               alt="avatar"
             />
             
           </div>
           <div className="user_name">
-            userName
+            {fullName}
           </div>
           
           

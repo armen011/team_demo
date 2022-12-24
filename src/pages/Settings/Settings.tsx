@@ -138,7 +138,7 @@ const Settings = () => {
                         <div className='reset_password_buttons'>
                             <button
                                 className='reset_password_cancel'
-                                onClick={() => navigate('/')}>Cancel
+                                onClick={() => navigate(-1)}>Cancel
                             </button>
                             <button
                                 className='reset_password_submit'

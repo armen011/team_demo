@@ -4,6 +4,7 @@ import {CopyToClipboard} from 'react-copy-to-clipboard';
 import "./UserPopup.css" 
 import { useLocation  , useNavigate } from "react-router-dom";
 import {log} from "util";
+import {useAppSelector} from "../../../../app";
 
 type TPopup = {
     style:string
@@ -14,19 +15,32 @@ type TPopup = {
 const UserPopup:FC<TPopup> =({style , handleClosePopup , userId})=>{
 
     const {t} = useTranslation()
+    const baseUrl = process.env.REACT_APP_PUBLIC_URL;
+    const creatorId = useAppSelector(s=>s.user._id);
+
+
+    const handleUnfollow = ():void=>{
+        fetch(`${baseUrl}api/users/${creatorId}/unfollow`, {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                userId
+            })
+        }).then(res=> res.json()).then(res=>{
+            handleClosePopup();
+            return res
+        }).catch(error=> console.log(error))
+    }
 
     const navigate = useNavigate()
     const location  = useLocation ()
-    console.log(userId, 'userId')
     return (
     <div onClick={(e:React.MouseEvent<HTMLDivElement>)=>{
-        
-
     }} className={`popup_container ${style}`}>
-        <div className="red_text popup_button"><button>{t("Unfollow")}</button></div>
+        <div className="red_text popup_button"><button onClick={handleUnfollow}>{t("Unfollow")}</button></div>
         <div className="popup_button"><button>{t("Add to favorites")}</button></div>
         <div className="popup_button"><button onClick={()=>{
-            navigate(`/user/${userId}`)
+            navigate(`/users/${userId}`)
         }} >{t("Go to post")}</button></div>
         <div className="popup_button"><button>{t("Share to...")}</button></div>
         <CopyToClipboard text={`${location.pathname}user/${userId}`}>

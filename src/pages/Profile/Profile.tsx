@@ -11,6 +11,7 @@ import {useEffect, useMemo, useState} from "react";
 import {TUserState} from "../EachUserProfile/EachUserProfile";
 import Neccessary from "./Components/Neccessary";
 import {Tpost} from "../Main/PostComponent/PostComponent";
+import {useNavigate} from "react-router";
 
 
 const Profile = () => {
@@ -35,7 +36,6 @@ const Profile = () => {
     const deletePost = () => {
 
 }
-
 
     const categories = [
         {
@@ -115,6 +115,8 @@ const Profile = () => {
         }
     }
 
+    const navigate = useNavigate()
+
 
 
 
@@ -148,7 +150,7 @@ const Profile = () => {
                         </div>
 
                         <div className={'my_profile_setting_part'}>
-                            <img src={settingIcon} alt="Settings"/>
+                            <img src={settingIcon} style={{cursor: 'pointer'}} alt="Settings" onClick={() => navigate('/settings')}/>
                         </div>
                     </div>
 
