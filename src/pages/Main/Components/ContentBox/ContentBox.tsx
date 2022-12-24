@@ -5,20 +5,22 @@ import handleCutText from "utils/cutText"
 import "./ContentBox.css"
 
 
-const ContentBox:FC<{doc:T_doc}> =({doc:{desc , likes}})=>{
+const ContentBox:FC<{doc:T_doc, likesLength?: number}> =({doc,likesLength})=>{
 
+    const {likes, desc} = doc;
     const [fullText,setFullText] = useState(false)
 
     const changeTextLength = ()=>{
         setFullText(true)
     }
 
+
     const {t} = useTranslation()
     return (
 
         <div className="content_container">
             <div className="likes">
-                <span className="aa">{likes.length} {t("likes")}</span>
+                <span className="aa">{likesLength && likesLength > 0 && likesLength} {t("likes")}</span>
             </div>
             <div className="conetent">
                 <div className="post_title">

@@ -7,7 +7,7 @@ import {TData} from "../SearchSideBar/SearchSideBar";
 import Follow from "./Follow";
 import {useTranslation} from "react-i18next";
 import {useNavigate} from "react-router";
-import {context} from "../../pages/Main/Main";
+import {context} from "../../AppContainer/App";
 const Recommendation = () => {
     const user = useAppSelector(state => state.user)
     const {t} = useTranslation()

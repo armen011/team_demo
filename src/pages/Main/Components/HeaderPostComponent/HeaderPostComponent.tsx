@@ -26,7 +26,6 @@ const HeaderPostComponent: FC<{userId:string,postId:string}> = ({userId,postId})
           .then((res) => res.json()).then(res=> setPostInfo(res))
     }, [])
 
-  console.log(postInfo)
   const navigate = useNavigate()
 
   const deletePost = useCallback(():void => {
@@ -39,7 +38,6 @@ const HeaderPostComponent: FC<{userId:string,postId:string}> = ({userId,postId})
         userId:ownId
       })
     }).then(r => r.json()).then((r) => {
-      console.log(r);
       handleClosePopup();
       window.location.reload();
     }).catch((e) => console.log(e));

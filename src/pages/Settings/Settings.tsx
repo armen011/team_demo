@@ -50,7 +50,6 @@ const Settings = () => {
             },
         )
             .then((res) => res.json()).then(res => {
-            console.log("RES", res)
         })
         dispatch(refreshPage())
     }

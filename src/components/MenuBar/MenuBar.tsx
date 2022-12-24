@@ -18,8 +18,7 @@ import NotificationSideBar from "../NotificationSideBar";
 import SearchSideBar from "../SearchSideBar";
 import MinBar from "../MinBar";
 import AppBar from "../AppBar";
-import {context} from "../../pages/Main/Main";
-
+import {context} from "../../AppContainer/App";
 
 const MenuBar = () => {
   const categoryParts = [
