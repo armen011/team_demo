@@ -20,7 +20,7 @@ const ContentBox:FC<{doc:T_doc, likesLength?: number}> =({doc,likesLength})=>{
 
         <div className="content_container">
             <div className="likes">
-                <span className="aa">{ likesLength && (likesLength > 0 ? likesLength : 0)} {t("likes")}</span>
+                <span className="aa">{ likesLength ? (likesLength > 0 ? likesLength : 0) : 0} {t("likes")}</span>
             </div>
             <div className="conetent">
                 <div className="post_title">

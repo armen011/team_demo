@@ -4,22 +4,20 @@ import React, { FC } from "react";
 
 import "./PostImages.css";
 
-type ThandleDoubleClick = {
-  handleDoubleClick: () => void;
-};
+
 
 
 
 type Tprops = {
-  handleDoubleClick:() => void,
+  handleChangeHeart:() => void,
   images:Timages
 }
 
 
 
-const PostImages: FC<Tprops> = ({ handleDoubleClick , images}) => {
+const PostImages: FC<Tprops> = ({ handleChangeHeart , images}) => {
   return (
-    <div className="image_container" onDoubleClick={handleDoubleClick}>
+    <div className="image_container" onDoubleClick={handleChangeHeart}>
       <ImageSlider images={images} />
     </div>
   );
