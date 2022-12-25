@@ -34,9 +34,8 @@ const PostComponent: FC<{ post: onePost, postId: string }> = ({post, postId}) =>
 
     const [redHeartB, setRedHeartB] = useState(false);
     const userId = useAppSelector(s => s.user._id);
-    let count:string | number | null = localStorage.getItem('likeCount')
-    count = count ? +count : 0;
-    const [likesCount, setLikesCount] = useState<number>(count);
+    const [likesCount, setLikesCount] = useState<number>();
+
     const handleLikeToggle = useCallback(() => {
         fetch(`http://localhost:8800/api/posts/${postId}/like`, {
             method: 'PUT',
@@ -52,9 +51,14 @@ const PostComponent: FC<{ post: onePost, postId: string }> = ({post, postId}) =>
                 console.log(r);
             })
             .catch((e) => console.log(e));
-
-        redHeartB ? setLikesCount(-1) : setLikesCount(+1)
-    },[redHeartB,postId])
+        if (likesCount && redHeartB) {
+            localStorage.setItem('likeCount', `${likesCount - 1}`);
+            console.log(localStorage.getItem('likeCount'))
+        } else if (likesCount && !redHeartB) {
+            localStorage.setItem('likeCount', `${likesCount + 1}`);
+            console.log(localStorage.getItem('likeCount'))
+        }
+    }, [redHeartB, postId,likesCount])
 
 
     const handleDoubleClick = () => {
@@ -62,9 +66,14 @@ const PostComponent: FC<{ post: onePost, postId: string }> = ({post, postId}) =>
             setRedHeartB(true)
         }
     }
+    console.log(likesCount,'likesCount')
+
     const handleChangeHeart = () => {
-        setRedHeartB(!redHeartB)
         handleLikeToggle()
+        let copyCount = !!localStorage.getItem('likeCount') ? localStorage.getItem('likeCount') : 0;
+        let count = copyCount ? +copyCount : 0;
+        setLikesCount(count);
+        setRedHeartB(!redHeartB)
     }
 
     useEffect(() => {
@@ -74,13 +83,14 @@ const PostComponent: FC<{ post: onePost, postId: string }> = ({post, postId}) =>
                 'Content-Type': 'application/json'
             }
         }).then(res => res.json()).then(res => {
-            localStorage.setItem('likeCount',res.likes.length)
-            setLikesCount(res.likes.length)
+            localStorage.setItem('likeCount', res.likes.length)
         })
-        const likeArr = post?._doc.likes.some(elem => elem === userId);
-        if (likeArr) {
-            setRedHeartB(true)
-        }
+        const likeArr = post?._doc.likes.some(elem => elem === userId)
+        likeArr && setRedHeartB(likeArr);
+
+        let copyCount = !!localStorage.getItem('likeCount') ? localStorage.getItem('likeCount') : 0;
+        let count = copyCount ? +copyCount : 0;
+        setLikesCount(count);
     }, [])
 
 
@@ -94,4 +104,4 @@ const PostComponent: FC<{ post: onePost, postId: string }> = ({post, postId}) =>
     );
 };
 
-export default   PostComponent;
+export default PostComponent;
