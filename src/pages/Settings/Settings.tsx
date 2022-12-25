@@ -93,12 +93,14 @@ const Settings = () => {
                         <button style={{marginTop: "10px"}} className='reset_password_submit'
                                 onClick={() =>{
                                     setDeletePopUp(false)
-                                    deleteUserFunc()
-                                    localStorage.clear()
                                 }
                                 }>Cancel
                         </button>
-                        <button className='reset_password_submit_deleting'>Submit</button>
+                        <button className='reset_password_submit_deleting' onClick={() => {
+                            localStorage.clear()
+                            deleteUserFunc()
+                        }
+                        }>Delete</button>
                     </div>
                 </div>
             </div>}
