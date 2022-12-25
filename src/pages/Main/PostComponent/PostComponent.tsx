@@ -4,7 +4,7 @@ import HeaderPostComponent from "../Components/HeaderPostComponent";
 import PostImages from "../Components/PostImages";
 import ReactionBar from "../Components/ReactionBar";
 import "./PostComponent.css";
-import {useAppSelector} from "../../../app";
+import {useAppSelector} from "app";
 
 
 export type Timages = { file: string, style: { filter?: string, scale?: string } }[]
@@ -33,11 +33,13 @@ export type onePost = {
 const PostComponent: FC<{ post: onePost, postId: string }> = ({post, postId}) => {
 
     const [redHeartB, setRedHeartB] = useState(false);
-    const userId = useAppSelector(s => s.user._id);
     const [likesCount, setLikesCount] = useState<number>();
+    const userId = useAppSelector(s => s.user._id);
+
+    const baseUrl = process.env.REACT_APP_PUBLIC_URL;
 
     const handleLikeToggle = useCallback(() => {
-        fetch(`http://localhost:8800/api/posts/${postId}/like`, {
+        fetch(`${baseUrl}api/posts/${postId}/like`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
@@ -47,28 +49,19 @@ const PostComponent: FC<{ post: onePost, postId: string }> = ({post, postId}) =>
             })
         })
             .then(r => r.json())
-            .then((r) => {
-                console.log(r);
-            })
-            .catch((e) => console.log(e));
+            .then(r => r)
+            .catch(e => console.log(e));
         if (likesCount && redHeartB) {
             localStorage.setItem('likeCount', `${likesCount - 1}`);
-            console.log(localStorage.getItem('likeCount'))
         } else if (likesCount && !redHeartB) {
             localStorage.setItem('likeCount', `${likesCount + 1}`);
-            console.log(localStorage.getItem('likeCount'))
+        }else if(!likesCount){
+            localStorage.setItem('likeCount', `${1}`);
         }
     }, [redHeartB, postId,likesCount])
 
 
-    const handleDoubleClick = () => {
-        if (!redHeartB) {
-            setRedHeartB(true)
-        }
-    }
-    console.log(likesCount,'likesCount')
-
-    const handleChangeHeart = () => {
+    const handleChangeHeart = ():void => {
         handleLikeToggle()
         let copyCount = !!localStorage.getItem('likeCount') ? localStorage.getItem('likeCount') : 0;
         let count = copyCount ? +copyCount : 0;
@@ -76,8 +69,13 @@ const PostComponent: FC<{ post: onePost, postId: string }> = ({post, postId}) =>
         setRedHeartB(!redHeartB)
     }
 
+    const handleDoubleClick = ():void => {
+        handleChangeHeart();
+    }
+
+
     useEffect(() => {
-        fetch(`http://localhost:8800/api/posts/${postId}`, {
+        fetch(`${baseUrl}api/posts/${postId}`, {
             method: "GET",
             headers: {
                 'Content-Type': 'application/json'
