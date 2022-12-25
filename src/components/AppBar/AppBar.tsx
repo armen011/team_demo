@@ -1,10 +1,10 @@
 import React, {FC, useState} from 'react';
-import logo from "../../assets/images/logo.png";
+import logo from "assets/images/logo.png";
 import Category from "../Category";
-import menuIconBold from "../../assets/images/menuBold.png";
-import menuIcon from "../../assets/images/menu.png";
+import menuIconBold from "assets/images/menuBold.png";
+import menuIcon from "assets/images/menu.png";
 import './AppBar.css';
-import {useTranslation} from "react-i18next";
+import {useNavigate} from "react-router";
 
 type TCategoryPart = {
     img: string,
@@ -24,14 +24,13 @@ type TAppBar = {
 
 const AppBar:FC<TAppBar> = ({handleActiveClick, handleRouteClick, category}) =>{
 
-    const [language, setLanguage] = useState(false)
-    const {i18n} = useTranslation()
+    const navigate = useNavigate()
 
 
     return (
         <div className={'app_bar'}>
             <div className={'logo-part'}>
-                <img src={logo} alt=""/>
+                <img style={{cursor: "pointer"}} src={logo} alt="" onClick={() => navigate('/')}/>
             </div>
             <div className={'category-part'}>
                 {category.map(elem=> {
@@ -52,10 +51,6 @@ const AppBar:FC<TAppBar> = ({handleActiveClick, handleRouteClick, category}) =>{
                         isItRoutable={elem.isRoutable} onClick={handleRouteClick}/>
                 })}
             </div>
-            <button onClick={() => {
-                setLanguage(!language)
-                return i18n.changeLanguage(language ? 'en' : 'hy')
-            }}>{!language ? 'Change Language Test' : 'Փոխել լեզւն'}</button>
             <Category
                 text={'More'} id={7} imgSrcBold={menuIconBold} pathRoute={'/'}
                 handleActiveClick={() => {}} imgSrc={menuIcon}

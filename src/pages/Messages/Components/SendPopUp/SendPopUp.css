@@ -1,0 +1,119 @@
+.pop_up_wrapper{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    background-color: rgba(55,55,55,0.85);
+    z-index: 6;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.message_pop_up{
+    background-color: rgb(255,255,255);
+    height: 64%;
+    width: 430px;
+    border-radius: 3%;
+    display: flex;
+    flex-direction: column;
+}
+
+.pop_up_header{
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid rgb(219,219,219);
+    width: 100%;
+}
+.X > button{
+    border: none;
+    background-color: transparent;
+    width: 55px;
+    height: 55px;
+    font-weight: 500;
+    font-size: 25px;
+}
+
+.new_message{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.new_message > h3{
+    font-weight: 400;
+    font-family: "Segoe UI",sans-serif;
+}
+
+.next_message{
+    width: 55px;
+    height: 55px;
+}
+
+
+.search_to_message{
+    display: flex;
+    border-bottom: 1px solid rgb(219,219,219);
+    margin: 8px 0;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.To{
+    display: flex;
+    width: 55px;
+    height: 55px;
+    justify-content: center;
+}
+.To>h4{
+    font-weight: 500;
+    font-family: "Segoe UI",sans-serif;
+    padding-top: 14px;
+}
+.search_chat{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.search_chat > input {
+    width: 90%;
+    height: 55px;
+    border: none;
+    line-height: 30px;
+    padding: 4px 8px;
+    background: transparent;
+    font-size: 14px;
+    color: #383838;
+}
+
+.search_chat > input::placeholder{
+    color: rgba(180, 166, 166, 0.62);
+    font-family: "Segoe UI",sans-serif;
+
+}
+
+
+.suggested_wrapper{
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    width: 100%;
+}
+.suggested{
+    padding: 5px;
+    width: 100%;
+}
+
+.chats{
+    overflow-y: auto;
+
+}
+
+.suggested > h4{
+    font-weight: 450;
+    font-family: "Segoe UI",sans-serif;
+}

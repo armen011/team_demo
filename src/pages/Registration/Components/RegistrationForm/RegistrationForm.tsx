@@ -1,5 +1,5 @@
 import TextInput from "components/TextInput";
-import {HTMLInputTypeAttribute, useState} from "react";
+import {HTMLInputTypeAttribute, useEffect, useState} from "react";
 import "./RegistrationForm.css";
 import UTILS from "utils";
 import {useTranslation} from "react-i18next";
@@ -8,6 +8,11 @@ import {useAppDispatch, useAppSelector} from "app";
 import {getResponse} from "features/registration";
 
 type RegistrationInitialStateKeys = keyof typeof initialState;
+type TInputs = {
+    key: RegistrationInitialStateKeys;
+    placeholderKey: string;
+    type?: HTMLInputTypeAttribute;
+}
 
 const initialState = {
     email: "",
@@ -21,26 +26,22 @@ const {emailValidation, passwordValidation, userNameValidation, fullnameValidati
     UTILS.Validations;
 
 
-const inputes: {
-    key: RegistrationInitialStateKeys;
-    placholderKey: string;
-    type?: HTMLInputTypeAttribute;
-}[] = [
+const inputs: TInputs[] = [
     {
         key: "email",
-        placholderKey: "Mobile Number or Email",
+        placeholderKey: "Mobile Number or Email",
     },
     {
         key: "fullName",
-        placholderKey: "Full Name",
+        placeholderKey: "Full Name",
     },
     {
         key: "userName",
-        placholderKey: "Username",
+        placeholderKey: "Username",
     },
     {
         key: "password",
-        placholderKey: "Password",
+        placeholderKey: "Password",
         type: "password",
     },
 ];
@@ -54,13 +55,17 @@ const validate = (data: typeof initialState): boolean => {
 
 
 const RegistrationForm = () => {
-
     const state = useAppSelector(s=>s.registration);
-
     const dispatch = useAppDispatch();
     const {t} = useTranslation();
     const [formData, setFormData] = useState({...initialState, isValid: false});
     const [togglePassword, setToggle] = useState(true);
+    const [inputError, setInputError] = useState({
+        email: false,
+        fullName: false,
+        userName: false,
+        password: false
+    })
 
 
     const handleInputChange =
@@ -85,15 +90,47 @@ const RegistrationForm = () => {
         }));
     }
 
+    const useValidationDeBounce = (data: typeof initialState, delay: number) => {
+        useEffect(() => {
+            const deBouncer = setTimeout( () => {
+                if (data.email.length > 3 && !emailValidation(data.email)) {
+                    setInputError(prevState => ({...prevState, email: true}))
+                }else{
+                    setInputError(prevState => ({...prevState, email: false}))
+                }
+                if (data.password.length > 3 &&  !passwordValidation(data.password)) {
+                    setInputError(prevState => ({...prevState, password: true}))
+                }else{
+                    setInputError(prevState => ({...prevState, password: false}))
+                }
+                if (data.fullName.length > 3 && !fullnameValidation(data.fullName)) {
+                    setInputError(prevState => ({...prevState, fullName: true}))
+                }else{
+                    setInputError(prevState => ({...prevState, fullName: false}))
+                }
+                if (data.userName.length > 3 && !userNameValidation(data.userName)) {
+                    setInputError(prevState => ({...prevState, userName: true}))
+                }else {
+                    setInputError(prevState => ({...prevState, userName: false}))
+                }
+            }, delay)
+            return () => {
+                clearTimeout(deBouncer)
+            }
+        }, [data, delay])
+    }
+
+    useValidationDeBounce(formData, 1000)
 
     return (
         <div className="registration_form_wrapper">
-            {inputes.map(({key, type, placholderKey}) => (
+            {inputs.map(({key, type, placeholderKey}) => (
                 <TextInput
+                    inputError={inputError}
                     key={key}
                     name={key}
                     value={formData[key]}
-                    placeholder={t(placholderKey)}
+                    placeholder={t(placeholderKey)}
                     onChange={handleInputChange(key)}
                     toggle={togglePasswordClick}
                     type={(type === "password") && togglePassword ? "password" : "text"}

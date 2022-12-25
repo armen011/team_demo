@@ -9,13 +9,8 @@ import blackSave from "./icons/black-save.svg"
 
 const ReactionBar: FC<{handleChangeHeart:()=>void , redHeartB:boolean}> = ({handleChangeHeart , redHeartB }) => {
 
-  const [isBlackSave,setIsBlackSave] = useState(false)
 
-  
 
-  const handleChangeSaveIconColor = ()=>{
-    setIsBlackSave(!isBlackSave)
-  }
   return (
     <div className="icon_container">
       <div className="icons_bar">
@@ -28,9 +23,6 @@ const ReactionBar: FC<{handleChangeHeart:()=>void , redHeartB:boolean}> = ({hand
         <div>
           <img src={group} alt="group" />
         </div>
-      </div>
-      <div className="save_icon_container" onClick={handleChangeSaveIconColor}>
-        {!isBlackSave ? <img src={save} alt="save" /> : <img className="black_save" src={blackSave} alt="save" /> }
       </div>
     </div>
   );

@@ -4,7 +4,7 @@ import PostModalHeader from "../Components/PostModalHeader";
 import filters from "./filters.json";
 import filterImg from "assets/images/filterImg.jpg";
 import "./edit.css";
-import { ChangeEventHandler, FC, useCallback, useState } from "react";
+import {  FC, useCallback, useState } from "react";
 import { ChangeStepFunctionType } from "../CreateModal";
 import { updateStyles } from "features/post";
 
@@ -18,7 +18,6 @@ const Edit: FC<EditProps> = ({ changeStep }) => {
   const [clonedStyles, setClonedStyles] = useState(
     images.map(({ style }) => style)
   );
-  console.log("clonedStyles", clonedStyles);
   const dispatch = useAppDispatch();
   const currentSlideStyle = clonedStyles[activeIndex];
 
@@ -26,7 +25,7 @@ const Edit: FC<EditProps> = ({ changeStep }) => {
     (property: string) => () => {
       setClonedStyles((prev) =>
         prev.map((style, index) =>
-          index == activeIndex ? { ...style, filter: property } : style
+          index === activeIndex ? { ...style, filter: property } : style
         )
       );
     },
@@ -45,7 +44,6 @@ const Edit: FC<EditProps> = ({ changeStep }) => {
     setClonedStyles([]);
   };
 
-  console.log("currentSlideStyle", currentSlideStyle);
 
   return (
     <div className="edit_post_wrapper">

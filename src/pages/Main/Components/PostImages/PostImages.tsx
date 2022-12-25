@@ -1,16 +1,26 @@
+import ImageSlider from "components/CreateModal/Components/ImageSlider";
+import { TImages } from "pages/Main/PostComponent/PostComponent";
 import React, { FC } from "react";
+
 import "./PostImages.css";
 
-type ThandleDoubleClick = {
-  handleDoubleClick:()=>void
+
+
+
+
+type Tprops = {
+  handleChangeHeart:() => void,
+  images:TImages
 }
 
-const PostImages: FC<ThandleDoubleClick> = ({handleDoubleClick}) => {
+
+
+const PostImages: FC<Tprops> = ({ handleChangeHeart , images}) => {
   return (
-    <div className="image_container" onDoubleClick={handleDoubleClick}>
-        <img src="https://assets.telegraphindia.com/telegraph/2021/Jul/1625947754_cristiano-ronaldo-1.jpg" alt="" />
+    <div className="image_container" onDoubleClick={handleChangeHeart}>
+      <ImageSlider images={images} />
     </div>
-  )
+  );
 };
 
 export default PostImages;

@@ -1,10 +1,10 @@
-import React, {FC, useState} from 'react';
+import React, {FC} from 'react';
 import instagramIcon from "../../assets/images/instagram.png";
 import CategoryMin from "../CategoryMin";
 import menuIcon from "../../assets/images/menu.png";
 import messageIconBold from "../../assets/images/messengerBold.png";
 import './MinBar.css'
-import {useTranslation} from "react-i18next";
+import {useNavigate} from "react-router";
 
 
 
@@ -26,13 +26,11 @@ type TMinBar = {
 
 const MinBar:FC<TMinBar> = ({handleActiveClick, handleRouteClick, category}) =>{
 
-    const [language, setLanguage] = useState(false)
-    const {i18n} = useTranslation()
-
+    const navigate = useNavigate()
     return (
         <div className={'min-bar'}>
             <div className={'min-logo-part'}>
-                <img src={instagramIcon} alt="Logo"/>
+                <img src={instagramIcon} alt="Logo" style={{cursor: "pointer"}} onClick={() => navigate('/')}/>
             </div>
 
             <div className={'min-category-part'}>
@@ -52,10 +50,6 @@ const MinBar:FC<TMinBar> = ({handleActiveClick, handleRouteClick, category}) =>{
                 })}
             </div>
             <div className={'min-menu-part'}>
-                <button onClick={() => {
-                    setLanguage(!language)
-                    return i18n.changeLanguage(language ? 'en' : 'hy')
-                }}>{!language ? 'Change Language Test' : 'Փոխել լեզւն'}</button>
                 <CategoryMin
                     text={'More'}
                     imgSrc={menuIcon} isItRoutable={false}  pathRoute='/'

@@ -1,8 +1,7 @@
 .app_bar {
     width: 270px;
     height: 100vh;
-    border-right: 1px solid rgb(202, 202, 202);
-    box-shadow: 0 0 4px black;
+    border: 1px solid lightgrey;
     padding: 10px 20px;
     position: fixed;
     font-family: "arial", serif;
@@ -53,4 +52,23 @@
     width: 20px;
     transition: all .3s ease-in-out;
     margin: 0 15px 0 20px;
+}
+
+.dropdown_app_bar{
+    position: absolute;
+    bottom: 100px;
+    left: 10px;
+    width: 270px;
+    max-height: fit-content;
+    border: 1px solid lightgrey;
+    border-radius: 8px;
+    background: white;
+}
+
+.close_dropdown{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100%;
 }

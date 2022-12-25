@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./LoginForm.css";
 
-import { loginValidation } from "utils/loginValidation";
+import {emailValidation, passwordValidation, userNameValidation} from "utils/validations";
 
 import logoString from "assets/images/logo.png";
 import appStore from "assets/images/appStoreImg.png";
@@ -16,7 +16,7 @@ import { useAppDispatch, useAppSelector } from "app/store";
 
 import { useTranslation } from "react-i18next";
 
-function LoginForm() {
+const LoginForm = () => {
   const [loginValues, setLoginValues] = useState({
     login: "",
     password: "",
@@ -27,12 +27,15 @@ function LoginForm() {
 
   const selector = useAppSelector((state) => state.user);
 
+  const [togglePassword, setToggle] = useState(true);
+
+
   const { t } = useTranslation();
 
   const handleInputChange =
     (type: keyof typeof loginValues) => (value: string) => {
       setLoginValues((prev) => ({ ...prev, [type]: value }));
-      setIsValidButton(loginValidation(loginValues));
+      setIsValidButton(passwordValidation(loginValues.password) && (userNameValidation(loginValues.login) || emailValidation(loginValues.login)))
     };
 
   const handleLoginUser = () => {
@@ -41,11 +44,15 @@ function LoginForm() {
     );
   };
 
+  const togglePasswordClick = () => {
+    setToggle(!togglePassword);
+  }
+
   return (
     <div className="login_form_wrapper">
       <div className="login_form_container">
         <div>
-          <img src={logoString} className="login_logo_img" />
+          <img src={logoString} className="login_logo_img" alt="login_logo"/>
         </div>
         <div className="login_text_input_wrapper">
           <TextInput
@@ -57,8 +64,10 @@ function LoginForm() {
           <TextInput
             name="password"
             value={loginValues.password}
+            toggle={togglePasswordClick}
             onChange={handleInputChange("password")}
-            type="password"
+            type={togglePassword ? "password" : "text"}
+            show={loginValues.password.trim() ? (togglePassword ? "Show" : "Hide") : undefined}
             placeholder={t("Password")}
           />
         </div>
@@ -82,8 +91,8 @@ function LoginForm() {
       <div className="get_the_app_wrapper">
         <p>{t("Get the app")}</p>
         <div>
-          <img src={appStore} />
-          <img src={googlePlay} />
+          <img src={appStore} alt="app_store"/>
+          <img src={googlePlay} alt="google_play"/>
         </div>
       </div>
     </div>

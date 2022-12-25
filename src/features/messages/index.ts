@@ -1,5 +1,5 @@
-import messageReducer from './messagesSlice';
+import messagesReducer from './messagesSlice';
 
 export * from "./messagesSlice";
 
-export default messageReducer;
+export default messagesReducer;

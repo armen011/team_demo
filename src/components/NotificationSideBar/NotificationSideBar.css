@@ -1,15 +1,14 @@
 .notification-part{
     z-index: 6;
     background-color: white;
-    position: absolute;
+    position: fixed;
     width: 400px;
     height: 100vh;
     animation: slideInNotify .3s ease-in forwards;
     margin-left: -370px;
     border-top-right-radius: 15px;
     border-bottom-right-radius: 15px;
-    border-right: 1px solid rgb(202, 202, 202);
-    box-shadow: 0 0 4px black;
+    border-right: 1px solid lightgrey;
 }
 
 .notification-section{
@@ -26,15 +25,34 @@
 }
 
 .single-notification{
-    height: 7vh;
+    width: 396px;
+    height: 81px;
+    border-radius: 8px;
+    padding: 8px 24px;
     display: flex;
-    position: relative;
     align-items: center;
-    gap: 10px;
-    margin: 1vh 0;
-    border-bottom: 2px solid rgb(202, 202, 202);
-    padding: 10px;
+    justify-content: space-between;
 }
+
+.single_notification_text{
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+}
+
+.single-notification:hover{
+    background-color: #fafafa;
+}
+
+.single_notification_container{
+    display: flex;
+}
+
+.notification_user_info{
+    display: flex;
+    justify-content: center;
+}
+
 
 .section-of-notifications span{
     max-width: 120px;
@@ -54,14 +72,34 @@
     right: 10px;
 }
 
-.notify-button-following{
-    background: white;
+.notification_to_follow{
+    background-color: #0095f6;
+    color: white;
+    width: 110px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+}
+.notification_to_follow:hover{
+    background-color: #1977f2;
 }
 
-.notify-button-toFollow{
-    background: #4b54ff;
-    color: white;
+.notification_following{
+    background-color: #efefef;
+    width: 110px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
 }
+
+.notification_following:hover{
+    background-color: #dbdbdb;
+}
+
 @keyframes slideInNotify {
     0% {
         margin-left: -350px;

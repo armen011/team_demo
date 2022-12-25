@@ -6,6 +6,7 @@ import {useAppDispatch, useAppSelector} from "app";
 import {getChats} from "features/messages";
 import LoadingComponent from "./Components/LoadingComponent";
 import {useNavigate} from "react-router";
+import {useTranslation} from "react-i18next";
 
 export type ChatType = {
     id: string;
@@ -14,7 +15,7 @@ export type ChatType = {
     userId?: string
 };
 
-const LeftSide: FC = () => {
+const LeftSide: FC<{popUpShow:()=>void}> = ({popUpShow}) => {
     const user = useAppSelector((state) => state.user);
     const [isLoading, setLoading] = useState<boolean>(true);
     const dispatch = useAppDispatch();
@@ -23,8 +24,8 @@ const LeftSide: FC = () => {
     useEffect(() => {
         dispatch(getChats({userId: user._id, isLoading, setLoading}));
     }, [user._id]);
-
     const navigate = useNavigate();
+    const {t} = useTranslation()
 
     return (
         <div className="left_side">
@@ -36,13 +37,15 @@ const LeftSide: FC = () => {
                             <div className="user_name_field">{user.username}</div>
                         </div>
                         <div>
-                            <img src={down_icon} alt="down_icon"/>
+                            <img src={down_icon} alt="down_icon" />
                         </div>
                     </div>
                     <div>
                         <img
-                            src="https://cdn.discordapp.com/attachments/1039560433381670961/1048325769312604221/pngegg.png"
                             alt="edit"
+                            onClick={popUpShow}
+                            className="down_icon"
+                            src="https://cdn.discordapp.com/attachments/1039560433381670961/1048325769312604221/pngegg.png"
                         />
                     </div>
                 </div>
@@ -50,10 +53,10 @@ const LeftSide: FC = () => {
             <div className="left_side_nav">
                 <nav>
                     <div className="nav_primary">
-                        <p>Primary</p>
+                        <p>{t('Primary')}</p>
                     </div>
                     <div className="nav_general">
-                        <p>General</p>
+                        <p>{t('General')}</p>
                     </div>
                 </nav>
                 <div></div>
@@ -66,7 +69,6 @@ const LeftSide: FC = () => {
                         }
                         return <EachMessage
                                 receiverName={title}
-                                message="asdsaasd"
                                 userId={userId}
                                 img={picture}
                                 key={index}

@@ -1,17 +1,18 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useMemo, useState} from 'react';
 import MainLayout from "layouts/MainLayout";
 import UserIcon from "../../assets/images/user.png";
 import settingIcon from "../../images/settings.png";
 import ProfileCategory from "../Profile/Components/ProfileCategory";
-import SinglePost from "../Profile/Components/SinglePost";
-import PostPhoto from "../../images/posting.png";
 import Footer from "../../layouts/AuthLayout/Components/Footer";
 import '../Profile/Profile.css'
 import {useParams} from "react-router-dom";
 import {useAppSelector} from "../../app";
 import {useNavigate} from "react-router";
+import {Tpost} from "../Main/PostComponent/PostComponent";
+import CameraIcon from "../../images/camera.png";
+import {useTranslation} from "react-i18next";
 
-type TUserState = {
+export type TUserState = {
     coverPicture: string,
     createdAt: string,
     dateOfBirth: string,
@@ -26,9 +27,14 @@ type TUserState = {
     _id: string,
 }
 const EachUserProfile = () => {
+
+    const [eachUserPost, setEachUserPost] = useState<Tpost>()
     const [data, setData] = useState<TUserState>()
     const {userId} = useParams()
     const creatorId = useAppSelector(state => state.user._id)
+    const allPosts = useAppSelector(state => state.getPosts)
+    const [follow, setFollow] = useState<boolean>(false)
+    const [followersCount, setFollowersCount] = useState<number>(0)
 
     useEffect(() => {
         fetch(
@@ -36,27 +42,31 @@ const EachUserProfile = () => {
             {
                 method: "GET",
                 headers: { "Content-Type": "application/json" }})
-            .then((res) => res.json()).then(res=> setData(res))
+            .then((res) => res.json()).then(res=> {
+                const condition = res.followers.some((value: string) => value === creatorId);
+                setFollow(condition)
+                setFollowersCount(res.followers.length)
+                setData(res)
+            })
     }, [])
-    const category = [
+
+    const filtered = allPosts.filter(elem => elem._doc.userId === userId)
+
+
+    useMemo(() => {
+        if (filtered.length){
+            setEachUserPost(filtered)
+        }
+    }, [])
+
+    const categories = [
         {
             name:'POSTS',
-            path:'/',
+            path:userId,
             isActive:true
-        },
-        {
-            name:'SAVED',
-            path:'/saved',
-            isActive:false
-        },
-        {
-            name:'TAGGED',
-            path:'/tagged',
-            isActive:false
-        },
+        }
     ]
-    const [categoryList,setCategoryList] = useState(category)
-
+    const [categoryList,setCategoryList] = useState(categories)
     const changeCategoryActivationHandler = (name:string)=> {
         setCategoryList(prevState => {
             return prevState.map(elem=> {
@@ -68,7 +78,6 @@ const EachUserProfile = () => {
     const navigate = useNavigate()
 
     const handleMessageClick = () => {
-        if (creatorId !== userId) {
             fetch(
                 'http://localhost:8800/api/chat',
                 {
@@ -78,32 +87,34 @@ const EachUserProfile = () => {
                 }
             )
                 .then((res) => res.json()).then(res => {
-                navigate(`/messages/${userId}`)
+                navigate(`/messages/${res.id}`)
             })
-        }else {
-            navigate(`messages/${userId}`)
-        }
     }
-
+    const baseUrl = process.env.REACT_APP_PUBLIC_URL;
     const handleFollowToggle = () => {
-        // fetch(
-        //     `http://localhost:8800/api/:id/follow`,
-        //     {
-        //         method: "POST",
-        //         headers: { "Content-Type": "application/json" },
-        //         body:JSON.stringify({userId})
-        //     }
-        // )
-        //     .then((res) => res.json()).then(res=>{
-        //     console.log(res, "FOLLOWING")
-        // })
-
+        setFollow(!follow)
+        if (follow && followersCount) {
+            setFollowersCount(followersCount - 1)
+        }
+        if (!follow){
+            setFollowersCount(followersCount + 1)
+        }
+        fetch(`${baseUrl}api/users/${userId}/${follow ? 'unfollow' : 'follow'}`, {
+              method: "PUT",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                userId: creatorId
+              })
+        }).then(res=> res.json()).then(res=>res).catch(error=> console.log(error))
     }
+
+    const {t} = useTranslation()
 
     return (
         <MainLayout>
 
-            <div className={'my_profile'}>
+            <div className='my_profile_wrapper'>
+                <div className={'my_profile'}>
                 <div className={'upper_part'}>
                     <div className={'my_profile_image'}>
                         <img src={data?.profilePicture ? data?.profilePicture : UserIcon} alt={'Change image'}/>
@@ -115,8 +126,11 @@ const EachUserProfile = () => {
                             <div className={'my_profile_name_text'}><span>{data?.username}</span></div>
 
                             <div className={'my_profile_edit_part'}>
-                                <div onClick={handleFollowToggle} className={'my_profile_edit_button'}>Following</div>
-                                <div onClick={handleMessageClick} className={'my_profile_edit_button'}>Message</div>
+                                {!follow ? <div onClick={handleFollowToggle} className='follow_not_active'>{t('Follow')}</div>
+                                    :
+                                    <div onClick={handleFollowToggle} className='my_profile_edit_button'>{t('Following')}</div>
+                                }
+                                <div onClick={handleMessageClick} className={'my_profile_edit_button'}>{t('Message')}</div>
                             </div>
 
                             <div className={'my_profile_setting_part'}>
@@ -125,19 +139,13 @@ const EachUserProfile = () => {
                         </div>
 
                         <div className={'my_profile_counts_part'}>
-                            <div style={{cursor: "pointer"}}><span>???</span> post</div>
-                            <div className={'followers_count'}><span>{data?.followers.length}</span> followers</div>
-                            <div className={'following_count'}><span>{data?.followings.length}</span> following</div>
+                            <div style={{cursor: "pointer"}}><span>{eachUserPost?.length}</span> {t('Post')}</div>
+                            <div className={'followers_count'}><span>{followersCount}</span> {t('followers')}</div>
+                            <div className={'following_count'}><span>{data?.followings.length}</span> {t('following')} </div>
                         </div>
 
                         <p style={{fontSize: '17px', fontWeight: 'bold'}}>{data?.fullName}</p>
                     </div>
-                </div>
-
-                {/*/!*Story*!  here should be stories*/}
-                <div className={'my_profile_highlight_part'}>
-                    {/*<Highlight text={'Haylo'} image={UserIcon}/>*/}
-
                 </div>
 
                 <div className={'my_profile_show_category_part'}>
@@ -147,23 +155,47 @@ const EachUserProfile = () => {
                                                 name={elem.name} path={elem.path} key={index * Math.random()}/>
                     })}
                 </div>
-
-                {/* dont have image-------------------------------------- */}
-                {/*    <Neccessary/>*/}
-
                 <div className={'my_profile_posting_part'}>
-
-                    <SinglePost image={PostPhoto}/>
-                    {/*<SinglePost image={PostPhoto}/>*/}
-                    {/*<SinglePost image={PostPhoto}/>*/}
                 </div>
 
-                <Footer/>
+                    {follow ?
+                        <div>
+                            {!eachUserPost ?
+                                <div className='no_posts'>
+                                    <div className={'my_profile_post_dont_have'}>
+                                        <div className={'my_profile_post_dont_have_image'}>
+                                            <img src={CameraIcon} alt="camera icon"/>
+                                        </div>
 
+                                        <h4>{t('No Posts Yet')}</h4>
+
+
+                                    </div>
+                                </div>
+                                :
+                                eachUserPost.map(elem =>
+                                    <div key={Math.random()} className='post_wrapper'>
+                                        {elem.images.map(val =>
+                                             <img key={Math.random()} className='post_img' style={val.style} src={val.file} alt=""/>
+                                        )}
+                                    </div>
+                                )
+                            }
+                        </div>
+                     : <div className='not_followed'>
+                            <div className='not_followed_text'>
+                                <p>
+                                    {t('This Account is Private')}
+
+                                </p>
+                                <p style={{maxWidth: '200px', textAlign: 'center', lineHeight: '30px', marginTop: '10px'}}>
+                                    {t('Follow to see their photos and videos.')}
+                                </p>
+                            </div>
+                        </div>}
             </div>
-
-
-
+                <Footer/>
+            </div>
         </MainLayout>
     )
 }

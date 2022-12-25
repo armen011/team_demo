@@ -1,5 +1,3 @@
-import UserPopup from "pages/Main/Components/UserPopup";
-import PostComponent from "pages/Main/PostComponent";
 import LoginForm from "../LoginForm";
 import LoginImage from "../LoginImage";
 
@@ -11,7 +9,6 @@ function LoginWraper() {
     <div className="login_wrapper">
       <LoginImage />
       <LoginForm />
-      
     </div>
   );
 }

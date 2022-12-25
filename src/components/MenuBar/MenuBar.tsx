@@ -11,19 +11,16 @@ import createIcon from "assets/images/create.png";
 import createIconBold from "assets/images/createBold.png";
 import userIcon from "assets/images/user.png";
 import userIconBold from "assets/images/userBold.png";
-import { FC, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import {FC, useContext, useState} from "react";
+import {useNavigate, useParams} from "react-router-dom";
 import CreateModal from "components/CreateModal";
 import NotificationSideBar from "../NotificationSideBar";
 import SearchSideBar from "../SearchSideBar";
 import MinBar from "../MinBar";
 import AppBar from "../AppBar";
+import {context} from "../../AppContainer/App";
 
-type Props = {
-  routeInfo: string;
-};
-
-const MenuBar: FC<Props> = ({ routeInfo }) => {
+const MenuBar = () => {
   const categoryParts = [
     {
       img: homeIcon,
@@ -81,7 +78,7 @@ const MenuBar: FC<Props> = ({ routeInfo }) => {
     },
   ];
   switch (true) {
-    case routeInfo === "Home": {
+    case window.location.pathname === '/' : {
       categoryParts.forEach((elem) => {
         if (elem.text === "Home") {
           elem.isActive = true;
@@ -89,7 +86,7 @@ const MenuBar: FC<Props> = ({ routeInfo }) => {
       });
       break;
     }
-    case routeInfo === "Messages" || routeInfo === "": {
+    case window.location.pathname === '/messages': {
       categoryParts.forEach((elem) => {
         if (elem.text === "Messages") {
           elem.isActive = true;
@@ -97,7 +94,7 @@ const MenuBar: FC<Props> = ({ routeInfo }) => {
       });
       break;
     }
-    case routeInfo === "Profile": {
+    case window.location.pathname === "/profile": {
       categoryParts.forEach((elem) => {
         if (elem.text === "Profile") {
           elem.isActive = true;
@@ -109,10 +106,10 @@ const MenuBar: FC<Props> = ({ routeInfo }) => {
   const [not, setNot] = useState<boolean>(false);
   const [search, setSearch] = useState<boolean>(false);
   const [category, setCategory] = useState(categoryParts);
-  const [isCreateModalOpened, setIsCreateModalOpened] = useState(false);
   const navigate = useNavigate();
+  const createPopUpContext = useContext(context)
   const handleCloseModal = () => {
-    setIsCreateModalOpened(false);
+    createPopUpContext?.setIsCreateModalOpened(false);
   };
 
   const handleActiveClick = (id: number, text: string) => {
@@ -123,8 +120,7 @@ const MenuBar: FC<Props> = ({ routeInfo }) => {
       setSearch(true);
       setNot(false);
     } else if (text === "Create") {
-      console.log("text", text);
-      setIsCreateModalOpened(true);
+      createPopUpContext?.setIsCreateModalOpened(true);
       setSearch(false);
       setNot(false);
     } else {
@@ -152,6 +148,13 @@ const MenuBar: FC<Props> = ({ routeInfo }) => {
 
   return (
     <>
+      {not || search ?
+      <div className='close_search_notification' onClick={() => {
+        setNot(false)
+        setSearch(false)
+      }}>
+      </div>
+          : null}
       {not || search ? (
         <MinBar
           handleActiveClick={handleActiveClick}
@@ -172,7 +175,7 @@ const MenuBar: FC<Props> = ({ routeInfo }) => {
         category={category}
       />
       {not && <NotificationSideBar />}
-      {isCreateModalOpened && (
+      {createPopUpContext?.isCreateModalOpened && (
         <CreateModal handleCloseModal={handleCloseModal} />
       )}
       {search && <SearchSideBar />}

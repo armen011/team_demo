@@ -3,7 +3,7 @@ import { useAppDispatch, useAppSelector } from "app/store";
 import { ChangeEventHandler, FC, useCallback, useState } from "react";
 import { ReactComponent as SizeImg } from "assets/images/sizeImg.svg";
 import ImageSlider from "../Components/ImageSlider";
-import { resetPostState, updateStyles } from "features/post";
+import {  updateStyles } from "features/post";
 import { ChangeStepFunctionType } from "../CreateModal";
 import "./resize.css" 
 
@@ -28,7 +28,7 @@ const Resize: FC<ResizeType> = ({ changeStep }) => {
     ({ target: { value } }) => {
       setClonedStyles((prev) =>
         prev.map((style, index) =>
-          index == activeIndex ? { ...style, scale: value } : style
+          index === activeIndex ? { ...style, scale: value } : style
         )
       );
     },
@@ -40,7 +40,6 @@ const Resize: FC<ResizeType> = ({ changeStep }) => {
   };
 
   const handleGoBack = () => {
-    dispatch(resetPostState());
     changeStep("upload");
   };
   const handleGoNext = () => {

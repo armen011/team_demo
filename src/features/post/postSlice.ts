@@ -17,14 +17,14 @@ const initialState: PostStateType = {
 
 export const createPost = createAsyncThunk(
   "async/post",
-  async (post: PostStateType, thunkAPI) => {
+  async (data: { post: PostStateType; userId: string }, thunkAPI) => {
     const baseUrl = process.env.REACT_APP_PUBLIC_URL;
 
     try {
       return await fetch(`${baseUrl}api/posts`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(post),
+        body: JSON.stringify({ ...data.post, userId: data.userId }),
       })
         .then((res) => res.json())
         .then((res) => res);
@@ -35,11 +35,11 @@ export const createPost = createAsyncThunk(
 );
 
 export const postSlice = createSlice({
-  name: "registration",
+  name: "post",
   initialState,
   reducers: {
     addImages: (state, action: PayloadAction<PostImageType[]>) => {
-      state.images = [...state.images, ...action.payload];
+      state.images = [...action.payload];
     },
     updateStyles: (state, action: PayloadAction<CSSProperties[]>) => {
       const changedImages = state.images.map(({ file }, index) => ({
@@ -48,23 +48,16 @@ export const postSlice = createSlice({
       }));
       state.images = changedImages;
     },
-    resetPostState: (state) => {
-      state = initialState;
-      console.log("state", state);
-    },
   },
-  extraReducers: (builder) =>  {
-    builder.addCase(createPost.fulfilled, (state ) => {
+  extraReducers: (builder) => {
+    builder.addCase(createPost.fulfilled, (state) => {
       console.log("fulfiled");
-    } ) 
-     
-      
-    
+    });
   },
 });
 
-const { addImages, updateStyles, resetPostState } = postSlice.actions;
+const { addImages, updateStyles } = postSlice.actions;
 
-export { addImages, updateStyles, resetPostState };
+export { addImages, updateStyles };
 
 export default postSlice.reducer;

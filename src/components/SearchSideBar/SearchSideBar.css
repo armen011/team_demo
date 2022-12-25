@@ -1,6 +1,6 @@
 .search-part{
     z-index: 6;
-    position: absolute;
+    position: fixed;
     background-color: white;
     width: 400px;
     height: 100vh;
@@ -8,8 +8,7 @@
     margin-left: 70px;
     border-top-right-radius: 15px;
     border-bottom-right-radius: 15px;
-    border-right: 1px solid rgb(202, 202, 202);
-    box-shadow: 0 0 4px black;
+    border-right: 1px solid lightgrey;
 }
 
 .search-upper-part{
@@ -114,7 +113,7 @@
 .clear_search{
     width: 10px;
     position: absolute;
-    left: 425px;
+    left: 355px;
     top: 98px;
     cursor: pointer;
 }
