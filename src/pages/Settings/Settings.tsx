@@ -88,13 +88,15 @@ const Settings = () => {
 
             {deletePopUp && <div className='delete_popup'>
                 <div className='delete_popup_container'>
-                    <p style={{textAlign: "center", marginTop: "10px"}}>To continue deleting account you should confirm
-                        your username</p>
-                    <input style={{fontSize: '16px'}} className='delete_input' type="text"
-                           placeholder='Input username'/>
+                    <p style={{textAlign: "center", marginTop: "10px"}}>Are you sure that you want to delete your account</p>
                     <div className='confirm_deleting_buttons_div'>
                         <button style={{marginTop: "10px"}} className='reset_password_submit'
-                                onClick={() => setDeletePopUp(false)}>Cancel
+                                onClick={() =>{
+                                    setDeletePopUp(false)
+                                    deleteUserFunc()
+                                    localStorage.clear()
+                                }
+                                }>Cancel
                         </button>
                         <button className='reset_password_submit_deleting'>Submit</button>
                     </div>
@@ -149,7 +151,6 @@ const Settings = () => {
                     <div className='delete_account'>
                         <button onClick={() => {
                             setDeletePopUp(true)
-                            deleteUserFunc()
                         }} className='delete_account_button'>Delete Account
                         </button>
                     </div>

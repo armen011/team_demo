@@ -11,6 +11,7 @@ import {useNavigate} from "react-router";
 import {Tpost} from "../Main/PostComponent/PostComponent";
 import Neccessary from "../Profile/Components/Neccessary";
 import CameraIcon from "../../images/camera.png";
+import user from "../../features/user";
 
 export type TUserState = {
     coverPicture: string,
@@ -32,9 +33,9 @@ const EachUserProfile = () => {
     const [data, setData] = useState<TUserState>()
     const {userId} = useParams()
     const creatorId = useAppSelector(state => state.user._id)
+    const allPosts = useAppSelector(state => state.getPosts)
     const [follow, setFollow] = useState<boolean>(false)
     const [followersCount, setFollowersCount] = useState<number>(0)
-    const allPosts = useAppSelector(state => state.getPosts)
 
     useEffect(() => {
         fetch(
@@ -43,16 +44,10 @@ const EachUserProfile = () => {
                 method: "GET",
                 headers: { "Content-Type": "application/json" }})
             .then((res) => res.json()).then(res=> {
-                const condition = res.followings.some((value: string) => value === creatorId);
+                const condition = res.followers.some((value: string) => value === creatorId);
                 setFollow(condition)
-                setFollowersCount(res.followings.length)
+                setFollowersCount(res.followers.length)
                 setData(res)
-                if (res){
-                    const condition = res.followings.some((value: string) => value === creatorId)
-                    setFollow(condition)
-                    setFollowersCount(res.followings.length)
-                    setData(res)
-                }
             })
     }, [])
 
@@ -105,11 +100,11 @@ const EachUserProfile = () => {
         if (!follow){
             setFollowersCount(followersCount + 1)
         }
-        fetch(`${baseUrl}api/users/${creatorId}/${follow ? 'unfollow' : 'follow'}`, {
+        fetch(`${baseUrl}api/users/${userId}/${follow ? 'unfollow' : 'follow'}`, {
               method: "PUT",
               headers: { "Content-Type": "application/json" },
               body: JSON.stringify({
-                userId
+                userId: creatorId
               })
         }).then(res=> res.json()).then(res=>res).catch(error=> console.log(error))
     }
@@ -145,7 +140,7 @@ const EachUserProfile = () => {
                         <div className={'my_profile_counts_part'}>
                             <div style={{cursor: "pointer"}}><span>{eachUserPost?.length}</span> post</div>
                             <div className={'followers_count'}><span>{followersCount}</span> followers</div>
-                            <div className={'following_count'}><span>{data?.followers.length}</span> following </div>
+                            <div className={'following_count'}><span>{data?.followings.length}</span> following </div>
                         </div>
 
                         <p style={{fontSize: '17px', fontWeight: 'bold'}}>{data?.fullName}</p>

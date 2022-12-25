@@ -40,7 +40,6 @@ const PostComponent: FC<{ post: onePost, postId: string }> = ({post, postId}) =>
         redHeartB ? setLikesCount(-1) : setLikesCount(+1)
     }
 
-
     const handleDoubleClick = () => {
         if (!redHeartB) {
             setRedHeartB(true)
