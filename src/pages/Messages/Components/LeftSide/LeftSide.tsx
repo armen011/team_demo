@@ -1,5 +1,5 @@
 import "./leftSide.css";
-import down_icon from "images/down_icon/down-chevron-svgrepo-com.svg";
+import {ReactComponent as Icon} from "images/down_icon/arrow.svg";
 import EachMessage from "./Components/EachMessage";
 import {FC, useEffect, useState} from "react";
 import {useAppDispatch, useAppSelector} from "app";
@@ -37,7 +37,7 @@ const LeftSide: FC<{popUpShow:()=>void}> = ({popUpShow}) => {
                             <div className="user_name_field">{user.username}</div>
                         </div>
                         <div>
-                            <img src={down_icon} alt="down_icon" />
+                            <Icon/>
                         </div>
                     </div>
                     <div>

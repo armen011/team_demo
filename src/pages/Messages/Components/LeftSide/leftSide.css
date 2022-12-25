@@ -42,6 +42,7 @@
 .left_side_header > div > :nth-child(3) > img {
     display: flex;
     width: 23px;
+    height: 23px;
 }
 .left_side_header > div > :nth-child(2) > :nth-child(2) {
     display: flex;
