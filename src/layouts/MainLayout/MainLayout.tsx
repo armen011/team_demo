@@ -10,9 +10,6 @@ export type MainLayoutProps={
 
 
 const MainLayout:FC<MainLayoutProps>=({children})=>{
-    const st = useAppSelector(s=>s.getPosts)
-
-
      return (
          <div>
             <MenuBar/>
