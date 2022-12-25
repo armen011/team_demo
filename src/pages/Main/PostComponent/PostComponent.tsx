@@ -69,9 +69,6 @@ const PostComponent: FC<{ post: onePost, postId: string }> = ({post, postId}) =>
         setRedHeartB(!redHeartB)
     }
 
-    const handleDoubleClick = ():void => {
-        handleChangeHeart();
-    }
 
 
     useEffect(() => {
@@ -81,7 +78,8 @@ const PostComponent: FC<{ post: onePost, postId: string }> = ({post, postId}) =>
                 'Content-Type': 'application/json'
             }
         }).then(res => res.json()).then(res => {
-            localStorage.setItem('likeCount', res.likes.length)
+            localStorage.setItem('likeCount', res.likes.length);
+            setLikesCount(res.likes.length);
         })
         const likeArr = post?._doc.likes.some(elem => elem === userId)
         likeArr && setRedHeartB(likeArr);
@@ -95,7 +93,7 @@ const PostComponent: FC<{ post: onePost, postId: string }> = ({post, postId}) =>
     return (
         <div className="post_component_wrapper">
             <HeaderPostComponent userId={post._doc.userId} postId={postId}/>
-            <PostImages handleDoubleClick={handleDoubleClick} images={post.images}/>
+            <PostImages handleChangeHeart={handleChangeHeart} images={post.images}/>
             <ReactionBar redHeartB={redHeartB} handleChangeHeart={handleChangeHeart}/>
             <ContentBox likesLength={likesCount} doc={post._doc}/>
         </div>
