@@ -37,7 +37,7 @@ const HeaderPostComponent: FC<{userId:string,postId:string}> = ({userId,postId})
       body: JSON.stringify({
         userId:ownId
       })
-    }).then(r => r.json()).then((r) => {
+    }).then(r => r.json()).then(() => {
       handleClosePopup();
       window.location.reload();
     }).catch((e) => console.log(e));

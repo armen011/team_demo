@@ -20,12 +20,12 @@ const DateForm = () => {
   });
   const { t } = useTranslation();
 
-  const handleClosePopup = (e: React.MouseEvent<HTMLDivElement>): void => {
+  const handleClosePopup = (): void => {
     document.body.classList.remove("no_scroll")
     setIsClicked(false);
   };
 
-  const handleOpenPopup = (e: React.MouseEvent<HTMLDivElement>): void => {
+  const handleOpenPopup = (): void => {
     document.body.classList.add("no_scroll")
     setIsClicked(true);
   };

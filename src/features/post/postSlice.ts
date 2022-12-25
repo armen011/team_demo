@@ -50,7 +50,7 @@ export const postSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder.addCase(createPost.fulfilled, (state) => {
+    builder.addCase(createPost.fulfilled, () => {
       console.log("fulfiled");
     });
   },

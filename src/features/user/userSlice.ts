@@ -58,7 +58,7 @@ export const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
-    tryToLogin: (state) => {
+    tryToLogin: () => {
       const json = localStorage.getItem("user");
       if (json) {
         const user = JSON.parse(json) as UserStateType;
@@ -90,7 +90,7 @@ export const userSlice = createSlice({
       }
       return { ...initialState, errorMessage: payload };
     });
-    builder.addCase(login.rejected, (state, action) => {
+    builder.addCase(login.rejected, () => {
       console.error("Something was wrong");
     });
   },

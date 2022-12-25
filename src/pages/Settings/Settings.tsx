@@ -50,8 +50,7 @@ const Settings = () => {
                 headers: {"Content-Type": "application/json"}
             },
         )
-            .then((res) => res.json()).then(res => {
-        })
+            .then((res) => res.json())
         dispatch(refreshPage())
     }
 
@@ -165,7 +164,7 @@ const Settings = () => {
                         </button>
                     </div>
                     {
-                        isClicked && (!!updateMessage ? <div className='delete_account'>
+                        isClicked && (updateMessage ? <div className='delete_account'>
                             <p>{updateMessage}</p>
                         </div> : <div className='delete_account'>
                             <p style={{textAlign: "center"}}>

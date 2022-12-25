@@ -54,7 +54,7 @@ const MinBar:FC<TMinBar> = ({handleActiveClick, handleRouteClick, category}) =>{
                     text={'More'}
                     imgSrc={menuIcon} isItRoutable={false}  pathRoute='/'
                     imgSrcBold={messageIconBold} id={71}
-                    handleActiveClick={() => {}} isActive={false} onClick={() => {}}/>
+                    isActive={false} />
             </div>
         </div>
     );

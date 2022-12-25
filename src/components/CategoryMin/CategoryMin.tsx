@@ -16,9 +16,9 @@ type TProps = {
     imgSrc: string;
     imgSrcBold: string
     isActive: boolean;
-    onClick: (route: string, text: string) => void;
+    onClick?: (route: string, text: string) => void;
     id: number;
-    handleActiveClick: (id: number, text: string) => void
+    handleActiveClick?: (id: number, text: string) => void
 }
 
 
@@ -36,8 +36,8 @@ const CategoryMin: FC<TProps> = ({text,imgSrc, onClick, isActive, isItRoutable, 
             if (text === 'More'){
                 setMenuDropdown(!menuDropdown)
             }
-            handleActiveClick(id, text)
-            isItRoutable && onClick(pathRoute, text)
+            handleActiveClick && handleActiveClick(id, text)
+            isItRoutable && onClick && onClick(pathRoute, text)
         }}>
             <img src={!isActive ? imgSrc : imgSrcBold} className={'min-icon'} alt="Menu Bar icon"/>
         </div> : <div className='dropdown_wrapper'>
@@ -71,8 +71,8 @@ const CategoryMin: FC<TProps> = ({text,imgSrc, onClick, isActive, isItRoutable, 
 
                     <div className={ 'min-single-category'} onClick={() => {
                         setMenuDropdown(!menuDropdown)
-                        handleActiveClick(id, text)
-                        isItRoutable && onClick(pathRoute, text)
+                        handleActiveClick && handleActiveClick(id, text)
+                        isItRoutable && onClick && onClick(pathRoute, text)
                     }}>
                         <img src={!isActive ? imgSrc : imgSrcBold} className={'min-icon'} alt="Menu Bar icon"/>
                     </div>

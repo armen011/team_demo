@@ -51,7 +51,7 @@ export const sendResponse = createAsyncThunk(
         }
       )
         .then((res) => res.json())
-        .then((r) => {
+        .then(() => {
           nav && nav();
         });
     } catch (e) {
@@ -116,10 +116,10 @@ export const registrationSlice = createSlice({
       .addCase(getResponse.fulfilled, (state, { payload }) => {
         return payload;
       })
-      .addCase(getResponse.rejected, (state, action) => {
+      .addCase(getResponse.rejected, () => {
         console.error("Something was wrong");
       });
-    builder.addCase(sendResponse.rejected, (state, action) => {
+    builder.addCase(sendResponse.rejected, () => {
       console.error("Something was wrong");
     });
   },

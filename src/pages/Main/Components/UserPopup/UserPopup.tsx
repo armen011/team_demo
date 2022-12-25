@@ -31,17 +31,14 @@ const UserPopup: FC<TPopup> = ({style, handleClosePopup, userId, deletePost, own
             body: JSON.stringify({
                 userId: creatorId
             })
-        }).then(res=> res.json()).then(res=> {
+        }).then(res=> res.json()).then(()=> {
             window.location.reload()
         }).catch(error=> console.log(error))
     }
 
 
     return (
-        <div onClick={(e: React.MouseEvent<HTMLDivElement>) => {
-
-
-        }} className={`popup_container ${style}`}>
+        <div className={`popup_container ${style}`}>
             <div className="red_text popup_button">
                 <button onClick={unfollowFromPost}>{t("Unfollow")}</button>
             </div>

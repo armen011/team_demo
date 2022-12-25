@@ -15,11 +15,10 @@ const initialState: ChatType[] = [];
 
 export const getMessage = createAsyncThunk(
     "async/chats",
-    async ({userId,isLoading,setLoading}: TArgs, thunkAPI) => {
+    async ({userId,setLoading}: TArgs, thunkAPI) => {
         const baseUrl = process.env.REACT_APP_PUBLIC_URL;
         try {
-            if (userId) {
-            }
+
             return await fetch(`${baseUrl}api/chat?user_id=${userId}`, {
                 method: "GET",
                 headers: {"Content-Type": "application/json"},

@@ -1,6 +1,5 @@
 import React, {FC, useState} from "react";
 import { useTranslation } from "react-i18next";
-import {NavLink} from "react-router-dom";
 import savedIcon from "../../assets/images/saved.png";
 import settingIcon from "../../images/settings.png";
 import {refreshPage} from "../../features/user";
@@ -14,10 +13,10 @@ type TProps = {
   imgSrcBold: string;
   isActive: boolean;
   isItRoutable: boolean;
-  onClick: (route: string, text: string) => void;
+  onClick?: (route: string, text: string) => void;
   pathRoute: string;
   id: number;
-  handleActiveClick: (id: number, text: string) => void;
+  handleActiveClick?: (id: number, text: string) => void;
 };
 
 const Category: FC<TProps> = ({
@@ -45,8 +44,8 @@ const Category: FC<TProps> = ({
                   if (text === 'More'){
                   setMenuDropdown(!menuDropdown)
                   }
-                  handleActiveClick(id, text);
-                  isItRoutable && onClick(pathRoute, text);
+                  handleActiveClick && handleActiveClick(id, text);
+                  isItRoutable && onClick && onClick(pathRoute, text);
                 }}
             >
               <div className={"category-icon"}>
@@ -95,8 +94,8 @@ const Category: FC<TProps> = ({
                   className={"single-category"}
                   onClick={() => {
                     setMenuDropdown(!menuDropdown)
-                    handleActiveClick(id, text);
-                    isItRoutable && onClick(pathRoute, text);
+                    handleActiveClick && handleActiveClick(id, text);
+                    isItRoutable && onClick && onClick(pathRoute, text);
                   }}
               >
                 <div className={"category-icon"}>

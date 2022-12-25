@@ -1,5 +1,4 @@
 import {FC, ReactElement, ReactNode} from "react"
-import { useAppSelector } from "app"
 import "./MainLayout.css"
 import MenuBar from 'components/MenuBar'
 

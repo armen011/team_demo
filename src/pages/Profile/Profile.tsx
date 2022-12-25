@@ -71,7 +71,7 @@ const Profile = () => {
 
     function getImageHandler(e: ChangeEvent<HTMLInputElement>) {
         if (e.target.files) {
-            let file = e.target.files[0];
+            const file = e.target.files[0];
 
             if (['image/png', 'image/jpeg'].includes(file.type)) {
                 UTILS.encodeImageFileAsURL(file).then(response => {
@@ -101,7 +101,7 @@ const Profile = () => {
         e.preventDefault()
 
 
-        let file = e.dataTransfer.files[0];
+        const file = e.dataTransfer.files[0];
 
         if (['image/png', 'image/jpeg'].includes(file.type)) {
             UTILS.encodeImageFileAsURL(file).then(r => setImageSrc(r))

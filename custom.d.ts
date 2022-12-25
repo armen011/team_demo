@@ -1,5 +1,5 @@
 declare module '*.png' {
-    const content: any
+    const content
     export default content
 }
 

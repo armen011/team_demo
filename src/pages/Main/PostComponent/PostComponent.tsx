@@ -63,8 +63,8 @@ const PostComponent: FC<{ post: onePost, postId: string }> = ({post, postId}) =>
 
     const handleChangeHeart = ():void => {
         handleLikeToggle()
-        let copyCount = !!localStorage.getItem('likeCount') ? localStorage.getItem('likeCount') : 0;
-        let count = copyCount ? +copyCount : 0;
+        const copyCount = localStorage.getItem('likeCount') ? localStorage.getItem('likeCount') : 0;
+        const count = copyCount ? +copyCount : 0;
         setLikesCount(count);
         setRedHeartB(!redHeartB)
     }
@@ -84,8 +84,8 @@ const PostComponent: FC<{ post: onePost, postId: string }> = ({post, postId}) =>
         const likeArr = post?._doc.likes.some(elem => elem === userId)
         likeArr && setRedHeartB(likeArr);
 
-        let copyCount = !!localStorage.getItem('likeCount') ? localStorage.getItem('likeCount') : 0;
-        let count = copyCount ? +copyCount : 0;
+        const copyCount = localStorage.getItem('likeCount') ? localStorage.getItem('likeCount') : 0;
+        const count = copyCount ? +copyCount : 0;
         setLikesCount(count);
     }, [])
 

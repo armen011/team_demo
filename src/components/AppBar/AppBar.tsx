@@ -1,4 +1,4 @@
-import React, {FC, useState} from 'react';
+import React, {FC} from 'react';
 import logo from "assets/images/logo.png";
 import Category from "../Category";
 import menuIconBold from "assets/images/menuBold.png";
@@ -53,8 +53,8 @@ const AppBar:FC<TAppBar> = ({handleActiveClick, handleRouteClick, category}) =>{
             </div>
             <Category
                 text={'More'} id={7} imgSrcBold={menuIconBold} pathRoute={'/'}
-                handleActiveClick={() => {}} imgSrc={menuIcon}
-                isItRoutable={false} isActive={false} onClick={() => {}}/>
+                imgSrc={menuIcon}
+                isItRoutable={false} isActive={false}/>
             <div>
             </div>
         </div>

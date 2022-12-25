@@ -1,6 +1,5 @@
 import React, {FC, useState} from "react";
 import {useAppSelector} from "../../app";
-import {useParams} from "react-router-dom";
 import {useTranslation} from "react-i18next";
 
 type TFollow = {

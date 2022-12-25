@@ -1,11 +1,9 @@
-import React, { FC , useState } from "react";
+import React, { FC  } from "react";
 import "./ReactionBar.css";
 import heart from "./icons/heart-icon.svg";
 import comment from "./icons/comment-icon.svg";
 import group from "./icons/Group.svg";
-import save from "./icons/save-icon.svg";
 import redHeart from "./icons/red-heart-icon.svg"
-import blackSave from "./icons/black-save.svg"
 
 const ReactionBar: FC<{handleChangeHeart:()=>void , redHeartB:boolean}> = ({handleChangeHeart , redHeartB }) => {
 

@@ -34,7 +34,7 @@ const TextInput: FC<TextInputProps> = ({
   }) => {
     onChange(value);
   };
-  let errorCondition: boolean = false;
+  let errorCondition = false;
   if (inputError){
     errorCondition = inputError[name as keyof typeof inputError]
   }
