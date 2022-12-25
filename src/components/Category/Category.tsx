@@ -65,15 +65,15 @@ const Category: FC<TProps> = ({
               </div>
               <div className='dropdown_app_bar_wrapper'>
                 <div className='dropdown_app_bar'>
-                  <div className='dropdown_child' onClick={() => navigate('/profile/saved')}>
+                  <div className='dropdown_child' onClick={() => navigate('/profile/')}>
                     <div style={{fontWeight: 'lighter'}}>
-                      Saved
+                      {t('POSTS')}
                     </div>
                     <img className='saved_icon' src={savedIcon} alt=""/>
                   </div>
                   <div className='dropdown_settings' onClick={() => navigate('/settings')}>
                     <div style={{fontWeight: 'lighter'}}>
-                      Settings
+                      {t("Settings")}
                     </div>
                     <img className='saved_icon' src={settingIcon} alt=""/>
                   </div>
@@ -82,7 +82,7 @@ const Category: FC<TProps> = ({
                     dispatch(refreshPage())
                   }}>
                     <div style={{fontWeight: 'lighter'}}>
-                      Log Out
+                      {t('Log Out')}
                     </div>
                     <img className='saved_icon' src={logoutIcon} alt=""/>
                   </div>

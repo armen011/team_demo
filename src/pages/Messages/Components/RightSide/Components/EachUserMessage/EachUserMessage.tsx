@@ -1,7 +1,7 @@
 import "./EachUserMessage.css";
 import Message, {MessageType} from "../Message";
 import smile from "images/smile/smile.png";
-import { FC, useCallback, useEffect, useState} from "react";
+import {FC, FormEvent, useCallback, useEffect, useState} from "react";
 import i_icon from "images/i_icon/information.png";
 import user from "images/user_icon/man 1 (Traced).svg";
 import picture_icon from "images/picture_icon/image.png";
@@ -56,19 +56,12 @@ const EachUserMessage: FC<EachUserMessageProps> = ({chatId, memberId}) => {
     }, [inputVal, memberId, userId, chatId, send]);
 
 
-    const handleFormMessage = (e: React.FormEvent<HTMLFormElement>) => {
+    const handleFormMessage = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         if (inputVal.trim()) {
             handleSendMessage();
         }
     }
-
-    // const [chosenEmoji, setChosenEmoji] = useState<PointerEvent>();
-    //
-    // const onEmojiClick = (event:any, emojiObject:any) => {
-    //     setChosenEmoji(emojiObject);
-    // };
-
 
 
     return (
@@ -130,8 +123,6 @@ const EachUserMessage: FC<EachUserMessageProps> = ({chatId, memberId}) => {
                     </div>
                 </form>
             </div>
-
-            {/*<Picker onEmojiClick={onEmojiClick} />*/}
         </section>
     );
 };

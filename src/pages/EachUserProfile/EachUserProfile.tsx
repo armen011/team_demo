@@ -12,6 +12,7 @@ import {Tpost} from "../Main/PostComponent/PostComponent";
 import Neccessary from "../Profile/Components/Neccessary";
 import CameraIcon from "../../images/camera.png";
 import user from "../../features/user";
+import {useTranslation} from "react-i18next";
 
 export type TUserState = {
     coverPicture: string,
@@ -109,6 +110,8 @@ const EachUserProfile = () => {
         }).then(res=> res.json()).then(res=>res).catch(error=> console.log(error))
     }
 
+    const {t} = useTranslation()
+
     return (
         <MainLayout>
 
@@ -125,11 +128,11 @@ const EachUserProfile = () => {
                             <div className={'my_profile_name_text'}><span>{data?.username}</span></div>
 
                             <div className={'my_profile_edit_part'}>
-                                {!follow ? <div onClick={handleFollowToggle} className='follow_not_active'>Follow</div>
+                                {!follow ? <div onClick={handleFollowToggle} className='follow_not_active'>{t('Follow')}</div>
                                     :
-                                    <div onClick={handleFollowToggle} className='my_profile_edit_button'>Following</div>
+                                    <div onClick={handleFollowToggle} className='my_profile_edit_button'>{t('Following')}</div>
                                 }
-                                <div onClick={handleMessageClick} className={'my_profile_edit_button'}>Message</div>
+                                <div onClick={handleMessageClick} className={'my_profile_edit_button'}>{t('Message')}</div>
                             </div>
 
                             <div className={'my_profile_setting_part'}>
@@ -138,9 +141,9 @@ const EachUserProfile = () => {
                         </div>
 
                         <div className={'my_profile_counts_part'}>
-                            <div style={{cursor: "pointer"}}><span>{eachUserPost?.length}</span> post</div>
-                            <div className={'followers_count'}><span>{followersCount}</span> followers</div>
-                            <div className={'following_count'}><span>{data?.followings.length}</span> following </div>
+                            <div style={{cursor: "pointer"}}><span>{eachUserPost?.length}</span> {t('Post')}</div>
+                            <div className={'followers_count'}><span>{followersCount}</span> {t('followers')}</div>
+                            <div className={'following_count'}><span>{data?.followings.length}</span> {t('following')} </div>
                         </div>
 
                         <p style={{fontSize: '17px', fontWeight: 'bold'}}>{data?.fullName}</p>
@@ -166,7 +169,7 @@ const EachUserProfile = () => {
                                             <img src={CameraIcon} alt="camera icon"/>
                                         </div>
 
-                                        <h4>No Posts Yet</h4>
+                                        <h4>{t('No Posts Yet')}</h4>
 
 
                                     </div>
@@ -184,11 +187,11 @@ const EachUserProfile = () => {
                      : <div className='not_followed'>
                             <div className='not_followed_text'>
                                 <p>
-                                    This Account is Private
+                                    {t('This Account is Private')}
 
                                 </p>
                                 <p style={{maxWidth: '200px', textAlign: 'center', lineHeight: '30px', marginTop: '10px'}}>
-                                    Follow to see their photos and videos.
+                                    {t('Follow to see their photos and videos.')}
                                 </p>
                             </div>
                         </div>}

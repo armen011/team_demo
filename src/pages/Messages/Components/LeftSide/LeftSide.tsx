@@ -6,6 +6,7 @@ import {useAppDispatch, useAppSelector} from "app";
 import {getChats} from "features/messages";
 import LoadingComponent from "./Components/LoadingComponent";
 import {useNavigate} from "react-router";
+import {useTranslation} from "react-i18next";
 
 export type ChatType = {
     id: string;
@@ -24,6 +25,7 @@ const LeftSide: FC<{popUpShow:()=>void}> = ({popUpShow}) => {
         dispatch(getChats({userId: user._id, isLoading, setLoading}));
     }, [user._id]);
     const navigate = useNavigate();
+    const {t} = useTranslation()
 
     return (
         <div className="left_side">
@@ -51,10 +53,10 @@ const LeftSide: FC<{popUpShow:()=>void}> = ({popUpShow}) => {
             <div className="left_side_nav">
                 <nav>
                     <div className="nav_primary">
-                        <p>Primary</p>
+                        <p>{t('Primary')}</p>
                     </div>
                     <div className="nav_general">
-                        <p>General</p>
+                        <p>{t('General')}</p>
                     </div>
                 </nav>
                 <div></div>

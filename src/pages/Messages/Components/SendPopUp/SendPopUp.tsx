@@ -3,6 +3,7 @@ import React, {Dispatch, FC, SetStateAction, useState} from "react";
 import {useNavigate} from "react-router";
 import {ChatType} from "../LeftSide";
 import "./SendPopUp.css"
+import {useTranslation} from "react-i18next";
 
 
 type TSendPopUpProps = {
@@ -26,6 +27,8 @@ const SendPopUp: FC<TSendPopUpProps> = ({isPopUp, popUpHide, chats, setChats, me
         setChats(updatedList);
     }
 
+    const {t} = useTranslation()
+
 
     return isPopUp ? <div className="pop_up_wrapper" onClick={popUpHide}>
         <div className="message_pop_up"
@@ -38,14 +41,14 @@ const SendPopUp: FC<TSendPopUpProps> = ({isPopUp, popUpHide, chats, setChats, me
                     <button>X</button>
                 </div>
                 <div className="new_message">
-                    <h3>New message</h3>
+                    <h3>{t('New message')}</h3>
                 </div>
                 <div className="next_message">
                 </div>
             </div>
             <div className="search_to_message">
                 <div className="To">
-                    <h4>To: </h4>
+                    <h4>{t('To')}: </h4>
                 </div>
                 <div className="search_chat">
                     <input type="text"
@@ -57,7 +60,7 @@ const SendPopUp: FC<TSendPopUpProps> = ({isPopUp, popUpHide, chats, setChats, me
             </div>
             <div className="suggested_wrapper">
                 <div className="suggested">
-                    <h4>Suggested</h4>
+                    <h4>{t('Suggested')}</h4>
                 </div>
                 <div className="chats">
                     {chats.map(({title, picture, id, userId}, index) => {

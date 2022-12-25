@@ -4,6 +4,7 @@ import {useAppDispatch, useAppSelector} from "app";
 import {refreshPage} from "features/user";
 import {useState} from "react";
 import {useNavigate} from "react-router";
+import {useTranslation} from "react-i18next";
 
 type TpasswordValues = {
     newPassword: string;
@@ -81,6 +82,8 @@ const Settings = () => {
         }
     }
 
+    const {t} = useTranslation()
+
 
     return (
         <div className='settings_wrapper'>
@@ -88,26 +91,26 @@ const Settings = () => {
 
             {deletePopUp && <div className='delete_popup'>
                 <div className='delete_popup_container'>
-                    <p style={{textAlign: "center", marginTop: "10px"}}>Are you sure that you want to delete your account</p>
+                    <p style={{textAlign: "center", marginTop: "10px"}}>{t('Are you sure that you want to delete your account')}</p>
                     <div className='confirm_deleting_buttons_div'>
                         <button style={{marginTop: "10px"}} className='reset_password_submit'
                                 onClick={() =>{
                                     setDeletePopUp(false)
                                 }
-                                }>Cancel
+                                }>{t('Cancel')}
                         </button>
                         <button className='reset_password_submit_deleting' onClick={() => {
                             localStorage.clear()
                             deleteUserFunc()
                         }
-                        }>Delete</button>
+                        }>{t('Delete')}</button>
                     </div>
                 </div>
             </div>}
             <div className='settings_container'>
                 <div className='settings'>
                     <div className='reset_password'>
-                        <p style={{textAlign: "center", marginTop: "10px"}}>Reset Password</p>
+                        <p style={{textAlign: "center", marginTop: "10px"}}>{t('Reset Password')}</p>
                         <input
                             value={passwordValues.newPassword}
                             placeholder='Input New Password'
@@ -136,16 +139,16 @@ const Settings = () => {
                                    ...p,
                                    resetNewPasswordShow: !passwordValues.resetNewPasswordShow
                                }))}
-                            >{passwordValues.resetNewPasswordShow ? 'Hide' : 'Show'}</p>}
+                            >{passwordValues.resetNewPasswordShow ? t('Hide') : t('Show')}</p>}
 
                         <div className='reset_password_buttons'>
                             <button
                                 className='reset_password_cancel'
-                                onClick={() => navigate(-1)}>Cancel
+                                onClick={() => navigate(-1)}>{t('Cancel')}
                             </button>
                             <button
                                 className='reset_password_submit'
-                                onClick={updateUser}>Submit
+                                onClick={updateUser}>{t('Submit')}
                             </button>
                         </div>
                     </div>
@@ -153,12 +156,12 @@ const Settings = () => {
                     <div className='delete_account'>
                         <button onClick={() => {
                             setDeletePopUp(true)
-                        }} className='delete_account_button'>Delete Account
+                        }} className='delete_account_button'>{t('Delete Account')}
                         </button>
                     </div>
 
                     <div className='delete_account'>
-                        <button onClick={() => dispatch(refreshPage())} className='logout_account_button'>Log out
+                        <button onClick={() => dispatch(refreshPage())} className='logout_account_button'>{t('Log Out')}
                         </button>
                     </div>
                     {
@@ -166,7 +169,7 @@ const Settings = () => {
                             <p>{updateMessage}</p>
                         </div> : <div className='delete_account'>
                             <p>
-                                New and confirmation passwords should be same
+                                {t('New and confirmation passwords should be same')}
                             </p>
                         </div>)
                     }

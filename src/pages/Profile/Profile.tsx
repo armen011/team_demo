@@ -12,6 +12,7 @@ import {TUserState} from "../EachUserProfile/EachUserProfile";
 import Neccessary from "./Components/Neccessary";
 import {Tpost} from "../Main/PostComponent/PostComponent";
 import {useNavigate} from "react-router";
+import {useTranslation} from "react-i18next";
 
 
 const Profile = () => {
@@ -110,6 +111,7 @@ const Profile = () => {
     }
 
     const navigate = useNavigate()
+    const {t} = useTranslation()
 
 
     return (
@@ -135,9 +137,6 @@ const Profile = () => {
                             <div className={'my_profile_name_part'}>
                                 <div className={'my_profile_name_text'}><span>{user.username}</span></div>
 
-                                <div className={'my_profile_edit_part'}>
-                                    <div className={'my_profile_edit_button'}>Edit profile</div>
-                                </div>
 
                         <div className={'my_profile_setting_part'}>
                             <img src={settingIcon} style={{cursor: 'pointer'}} alt="Settings" onClick={() => navigate('/settings')}/>
@@ -145,10 +144,10 @@ const Profile = () => {
                     </div>
 
                             <div className={'my_profile_counts_part'}>
-                                <div><span>{myPosts?.length}</span> post</div>
-                                <div className={'following_count'}><span>{ownInfo?.followers.length}</span> followers
+                                <div><span>{myPosts?.length}</span> {t('Post')}</div>
+                                <div className={'following_count'}><span>{ownInfo?.followers.length}</span> {t('followers')}
                                 </div>
-                                <div className={'followers_count'}><span>{ownInfo?.followings.length}</span> following
+                                <div className={'followers_count'}><span>{ownInfo?.followings.length}</span> {t('following')}
                                 </div>
                             </div>
 

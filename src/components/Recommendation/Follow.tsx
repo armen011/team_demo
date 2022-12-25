@@ -1,6 +1,7 @@
 import React, {FC, useState} from "react";
 import {useAppSelector} from "../../app";
 import {useParams} from "react-router-dom";
+import {useTranslation} from "react-i18next";
 
 type TFollow = {
     id: string | undefined
@@ -20,12 +21,13 @@ const Follow:FC<TFollow> = ({id}) => {
             })
         }).then(res=> res.json()).then(res=> console.log(res, 'FOLLOW RES'))
     }
+    const {t} = useTranslation()
 
     return (
         <>
-            {!follow ? <button className='follow_from_recommendation' onClick={handleFollowToggle}> Follow </button>
+            {!follow ? <button className='follow_from_recommendation' onClick={handleFollowToggle}> {t('Follow')} </button>
                 :
-                <button className='following_from_recommendation' onClick={handleFollowToggle}> Following </button>
+                <button className='following_from_recommendation' onClick={handleFollowToggle}> {t('Unfollow')} </button>
             }
         </>
     )

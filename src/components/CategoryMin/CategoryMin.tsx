@@ -5,6 +5,7 @@ import savedIcon from 'assets/images/saved.png'
 import settingIcon from 'images/settings.png'
 import logoutIcon from 'assets/images/logout.png'
 import {useNavigate} from "react-router";
+import {useTranslation} from "react-i18next";
 
 
 
@@ -26,6 +27,7 @@ const CategoryMin: FC<TProps> = ({text,imgSrc, onClick, isActive, isItRoutable, 
     const [menuDropdown, setMenuDropdown]= useState<boolean>(false)
     const dispatch = useAppDispatch()
     const navigate = useNavigate()
+    const {t} = useTranslation()
 
     return (
         <>
@@ -45,13 +47,13 @@ const CategoryMin: FC<TProps> = ({text,imgSrc, onClick, isActive, isItRoutable, 
                     <div className='dropdown'>
                         <div className='dropdown_child' onClick={() => navigate('/profile/saved')}>
                             <div>
-                                Saved
+                                {t('POSTS')}
                             </div>
                             <img className='saved_icon' src={savedIcon} alt=""/>
                         </div>
                         <div className='dropdown_settings' onClick={() => navigate('/settings')}>
                             <div>
-                                Settings
+                                {t('Settings')}
                             </div>
                             <img className='saved_icon' src={settingIcon} alt=""/>
                         </div>
@@ -60,7 +62,7 @@ const CategoryMin: FC<TProps> = ({text,imgSrc, onClick, isActive, isItRoutable, 
                             dispatch(refreshPage())
                         }}>
                             <div>
-                                Log Out
+                                {t('Log Out')}
                             </div>
                             <img className='saved_icon' src={logoutIcon} alt=""/>
                         </div>

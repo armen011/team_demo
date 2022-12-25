@@ -22,13 +22,28 @@ const UserPopup: FC<TPopup> = ({style, handleClosePopup, userId, deletePost, own
     const creatorId = useAppSelector(state => state.user._id)
     const navigate = useNavigate()
     const location = useLocation()
+    const baseUrl = process.env.REACT_APP_PUBLIC_URL;
+
+    const unfollowFromPost = () => {
+        fetch(`${baseUrl}api/users/${userId}/unfollow`, {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                userId: creatorId
+            })
+        }).then(res=> res.json()).then(res=> {
+            window.location.reload()
+        }).catch(error=> console.log(error))
+    }
+
+
     return (
         <div onClick={(e: React.MouseEvent<HTMLDivElement>) => {
 
 
         }} className={`popup_container ${style}`}>
             <div className="red_text popup_button">
-                <button>{t("Unfollow")}</button>
+                <button onClick={unfollowFromPost}>{t("Unfollow")}</button>
             </div>
             <div className="popup_button">
                 <button>{t("Add to favorites")}</button>
