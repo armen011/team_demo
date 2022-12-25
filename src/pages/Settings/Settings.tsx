@@ -113,7 +113,7 @@ const Settings = () => {
                         <p style={{textAlign: "center", marginTop: "10px"}}>{t('Reset Password')}</p>
                         <input
                             value={passwordValues.newPassword}
-                            placeholder='Input New Password'
+                            placeholder={`${t('Input New Password')}`}
                             className='reset_password_input'
                             onChange={handleNewPassword}
                             type={passwordValues.newPasswordShow ? 'text' : "password"}
@@ -129,7 +129,7 @@ const Settings = () => {
                         <input
                             type={passwordValues.resetNewPasswordShow ? 'text' : "password"}
                             value={passwordValues.resetNewPassword}
-                            placeholder='Confirm New Password'
+                            placeholder={`${t('Confirm New Password')}`}
                             onChange={handleResetNewPassword}
                             className='reset_password_input'
                         />
@@ -168,7 +168,7 @@ const Settings = () => {
                         isClicked && (!!updateMessage ? <div className='delete_account'>
                             <p>{updateMessage}</p>
                         </div> : <div className='delete_account'>
-                            <p>
+                            <p style={{textAlign: "center"}}>
                                 {t('New and confirmation passwords should be same')}
                             </p>
                         </div>)

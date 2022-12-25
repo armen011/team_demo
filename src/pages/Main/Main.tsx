@@ -6,7 +6,7 @@ import { onePost } from "./PostComponent/PostComponent";
 import React, {useEffect} from "react";
 import { getPosts } from "features/getPost";
 import informationIcon from "./Components/ReactionBar/icons/more.png"
-import Neccessary from "../Profile/Components/Neccessary";
+import Necessary from "../Profile/Components/Neccessary";
 
 
 
@@ -42,7 +42,7 @@ const Main=()=>{
                     <img style={{width: "15px", marginRight: '10px'}} src={informationIcon} alt=""/>
                 </div>
                 <div className='necessary_wrapper'>
-                    <Neccessary/>
+                    <Necessary/>
                 </div>
 
             </div>}

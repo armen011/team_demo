@@ -7,7 +7,7 @@ import "./PostComponent.css";
 import {useAppSelector} from "app";
 
 
-export type Timages = { file: string, style: { filter?: string, scale?: string } }[]
+export type TImages = { file: string, style: { filter?: string, scale?: string } }[]
 export type T_doc = {
     createdAt: string,
     desc: string,
@@ -21,12 +21,12 @@ export type T_doc = {
 }
 
 export type Tpost = Array<{
-    images: Timages,
+    images: TImages,
     _doc: T_doc
 }>
 
 export type onePost = {
-    images: Timages,
+    images: TImages,
     _doc: T_doc
 }
 

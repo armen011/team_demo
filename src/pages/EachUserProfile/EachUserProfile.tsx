@@ -9,9 +9,7 @@ import {useParams} from "react-router-dom";
 import {useAppSelector} from "../../app";
 import {useNavigate} from "react-router";
 import {Tpost} from "../Main/PostComponent/PostComponent";
-import Neccessary from "../Profile/Components/Neccessary";
 import CameraIcon from "../../images/camera.png";
-import user from "../../features/user";
 import {useTranslation} from "react-i18next";
 
 export type TUserState = {
@@ -175,13 +173,13 @@ const EachUserProfile = () => {
                                     </div>
                                 </div>
                                 :
-                                eachUserPost.map(elem => {
-                                    return <div key={Math.random()} className='post_wrapper'>
-                                        {elem.images.map(val => {
-                                            return <img key={Math.random()} className='post_img' style={val.style} src={val.file} alt=""/>
-                                        })}
+                                eachUserPost.map(elem =>
+                                    <div key={Math.random()} className='post_wrapper'>
+                                        {elem.images.map(val =>
+                                             <img key={Math.random()} className='post_img' style={val.style} src={val.file} alt=""/>
+                                        )}
                                     </div>
-                                })
+                                )
                             }
                         </div>
                      : <div className='not_followed'>

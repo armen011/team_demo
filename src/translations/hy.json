@@ -84,7 +84,7 @@
   "Crop": "Բազմություն",
   "Edit": "Փոփոխել",
   "Share": "Կիսվել",
-  "Write_a_caption...": "Գրել վեռնագիր...",
+  "Write_a_caption...": "Գրել վերնագիր...",
   "Share Your first Photo": "Կիսվեք ձեր առաջին լուսանկարով",
   "When you share photos, they will appear on your profile.": "Երբ դուք կիսվում եք լուսանկարներով, դրանք կհայտնվեն ձեր պրոֆիլում:",
   "Share Photos": "Կիսվեք լուսանկարներով",
@@ -110,6 +110,14 @@
   "Your Messages": "Ձեր Նամակները",
   "Suggested": "Առաջարկվում է",
   "To": "Դեպի",
-  "New message": "Նոր Նամակ"
-
+  "New message": "Նոր Նամակ",
+  "Input New Password": "Մուտքագրեք նոր գաղտնաբառ",
+  "Confirm New Password": "Հաստատեք նոր գաղտնաբառը",
+  "Blog": "Բլոգ",
+  "Top Accounts" : "Լավագույն էջերը",
+  "Hashtags": "Հաշթեգներ",
+  "Locations": "Վայրեր",
+  "Honey Lite": "Մեղր Lite",
+  "Contact Uploading & Non-Users": "Կապվեք վերբեռնողների և ոչ օգտվողների հետ",
+  "2022 Honey from Us": "2022 Մեղր մեզանից"
 }

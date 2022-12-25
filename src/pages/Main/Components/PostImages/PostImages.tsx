@@ -1,5 +1,5 @@
 import ImageSlider from "components/CreateModal/Components/ImageSlider";
-import { Timages } from "pages/Main/PostComponent/PostComponent";
+import { TImages } from "pages/Main/PostComponent/PostComponent";
 import React, { FC } from "react";
 
 import "./PostImages.css";
@@ -10,7 +10,7 @@ import "./PostImages.css";
 
 type Tprops = {
   handleChangeHeart:() => void,
-  images:Timages
+  images:TImages
 }
 
 

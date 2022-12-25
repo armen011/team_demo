@@ -5,7 +5,7 @@ import {context} from "../../../../AppContainer/App";
 import {useTranslation} from "react-i18next";
 
 
-const Neccessary = () =>{
+const Necessary = () =>{
 
     const createContext = useContext(context)
     const {t} = useTranslation()
@@ -28,4 +28,4 @@ const Neccessary = () =>{
     )
 }
 
-export default Neccessary
+export default Necessary

@@ -5,10 +5,10 @@ import { Navigation } from "swiper";
 import "swiper/css";
 import "swiper/css/navigation";
 import "./imageSlider.css";
-import { Timages } from "pages/Main/PostComponent/PostComponent";
+import { TImages } from "pages/Main/PostComponent/PostComponent";
 
 export type ImageSliderProps = {
-  images: PostImageType[] | Timages;
+  images: PostImageType[] | TImages;
   changeActiveIndex?: (index: number) => void;
   externalStyle?: CSSProperties;
 };

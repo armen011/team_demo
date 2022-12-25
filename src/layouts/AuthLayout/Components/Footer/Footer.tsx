@@ -5,30 +5,28 @@ import {useState} from "react";
 const Footer = () => {
   const [language,setLanguage] = useState<boolean>(false);
 
-  const {i18n} = useTranslation();
+  const {t,i18n} = useTranslation();
   return (
     <footer>
       <div className="footer_div">
         <span>Meta</span>
-        <span>About</span>
-        <span>Blog</span>
-        <span>Jobs</span>
-        <span>Help</span>
+        <span>{t('About')}</span>
+        <span>{t('Blog')}</span>
+        <span>{t('Jobs')}</span>
+        <span>{t('Help')}</span>
         <span>API</span>
-        <span>Privacy</span>
-        <span>Terms</span>
-        <span>Top Accounts</span>
-        <span>Hashtags</span>
-        <span>Locations</span>
-        <span>Instagram Lite</span>
-        <span>Contact Uploading & Non-Users</span>
-        <div className="footer_bottom_div">
+        <span>{t('Privacy')}</span>
+        <span>{t('Terms')}</span>
+        <span>{t('Top Accounts')}</span>
+        <span>{t('Hashtags')}</span>
+        <span>{t('Locations')}</span>
+        <span>{t('Honey Lite')}</span>
+        <span>{t('Contact Uploading & Non-Users')}</span>
           <span onClick={() => {
-            i18n.changeLanguage(!language ? "hy" : "en");
             setLanguage(!language);
+            return i18n.changeLanguage(!language ? "hy" : "en");
           }}>{ !language ? "Հայերեն" : "English"}</span>
-          <span>© 2022 Instagram from Meta</span>
-        </div>
+          <span>© 2022 Honey from Us</span>
       </div>
     </footer>
   );

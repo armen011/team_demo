@@ -2,14 +2,14 @@ import MainLayout from "layouts/MainLayout"
 import Footer from "layouts/AuthLayout/Components/Footer";
 import ProfileCategory from "./Components/ProfileCategory";
 import './Profile.css'
-import UTILS from "../../utils";
-import {userSlice} from "../../features/user";
-import {useAppDispatch, useAppSelector} from "../../app";
+import UTILS from "utils";
+import {userSlice} from "features/user";
+import {useAppDispatch, useAppSelector} from "app";
 import settingIcon from 'images/settings.png'
 import UserIcon from 'assets/images/user.png'
-import {useEffect, useMemo, useState} from "react";
+import React, {ChangeEvent, useEffect, useMemo, useState} from "react";
 import {TUserState} from "../EachUserProfile/EachUserProfile";
-import Neccessary from "./Components/Neccessary";
+import Necessary from "./Components/Neccessary";
 import {Tpost} from "../Main/PostComponent/PostComponent";
 import {useNavigate} from "react-router";
 import {useTranslation} from "react-i18next";
@@ -69,7 +69,7 @@ const Profile = () => {
     const dispatch = useAppDispatch()
 
 
-    function getImageHandler(e: React.ChangeEvent<HTMLInputElement>) {
+    function getImageHandler(e: ChangeEvent<HTMLInputElement>) {
         if (e.target.files) {
             let file = e.target.files[0];
 
@@ -165,16 +165,16 @@ const Profile = () => {
                     </div>
 
                     {!myPosts ?
-                        <Neccessary/>
+                        <Necessary/>
                         :
-                        myPosts.map(elem => {
-                            return <div key={Math.random()} className='post_wrapper'>
-                                {elem.images.map(val => {
-                                    return <img key={Math.random()} className='post_img' style={val.style}
+                        myPosts.map(elem =>
+                             <div key={Math.random()} className='post_wrapper'>
+                                {elem.images.map(val =>
+                                     <img key={Math.random()} className='post_img' style={val.style}
                                                 src={val.file} alt=""/>
-                                })}
+                                )}
                             </div>
-                        })
+                        )
                     }
 
 

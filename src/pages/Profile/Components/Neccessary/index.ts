@@ -1,3 +1,3 @@
-import Neccessary from "./Neccessary";
+import Necessary from "./Neccessary";
 
-export default Neccessary
+export default Necessary;

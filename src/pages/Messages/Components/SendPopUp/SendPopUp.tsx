@@ -38,7 +38,7 @@ const SendPopUp: FC<TSendPopUpProps> = ({isPopUp, popUpHide, chats, setChats, me
              }>
             <div className="pop_up_header">
                 <div className="X">
-                    <button>X</button>
+                    <button onClick={popUpHide}>X</button>
                 </div>
                 <div className="new_message">
                     <h3>{t('New message')}</h3>
@@ -54,7 +54,7 @@ const SendPopUp: FC<TSendPopUpProps> = ({isPopUp, popUpHide, chats, setChats, me
                     <input type="text"
                            value={input}
                            onChange={handleChange}
-                           placeholder="Search..."
+                           placeholder={`${t('Search')}...`}
                     />
                 </div>
             </div>
