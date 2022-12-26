@@ -7,7 +7,7 @@ import "./PostComponent.css";
 import {useAppSelector} from "app";
 
 
-export type TImages = { file: string, style: { filter?: string, scale?: string } }[]
+export type TImages = { file: string, style: { filter: string | undefined, scale: string | undefined } }[]
 export type T_doc = {
     createdAt: string,
     desc: string,

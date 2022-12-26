@@ -10,9 +10,10 @@ import UserIcon from 'assets/images/user.png'
 import React, {ChangeEvent, useEffect, useMemo, useState} from "react";
 import {TUserState} from "../EachUserProfile/EachUserProfile";
 import Necessary from "./Components/Neccessary";
-import {Tpost} from "../Main/PostComponent/PostComponent";
+import {onePost, Tpost} from "../Main/PostComponent/PostComponent";
 import {useNavigate} from "react-router";
 import {useTranslation} from "react-i18next";
+import ImageSlider from "../../components/CreateModal/Components/ImageSlider";
 
 
 const Profile = () => {
@@ -164,18 +165,19 @@ const Profile = () => {
                         })}
                     </div>
 
-                    {!myPosts ?
-                        <Necessary/>
-                        :
-                        myPosts.map(elem =>
-                             <div key={Math.random()} className='post_wrapper'>
-                                {elem.images.map(val =>
-                                     <img key={Math.random()} className='post_img' style={val.style}
-                                                src={val.file} alt=""/>
-                                )}
-                            </div>
-                        )
-                    }
+                    <div className='fixing_flex'>
+                        {!myPosts ?
+                            <Necessary/>
+                            :
+                            myPosts.map((elem: onePost) =>
+                                <div key={Math.random()} style={{width: '293px', height: '293px', margin: '10px' , position:"relative"}}>
+                                    <ImageSlider images={elem.images}/>
+
+                                </div>
+                            )
+                        }
+                    </div>
+
 
 
                 </div>
