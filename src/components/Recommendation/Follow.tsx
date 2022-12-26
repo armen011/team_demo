@@ -12,11 +12,11 @@ const Follow:FC<TFollow> = ({id}) => {
 
     const handleFollowToggle = () => {
         setFollow(!follow)
-        fetch(`${baseUrl}api/users/${creatorId}/${follow ? 'unfollow' : 'follow'}`, {
+        fetch(`${baseUrl}api/users/${id}/${follow ? 'unfollow' : 'follow'}`, {
             method: "PUT",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
-                userId: id
+                userId: creatorId
             })
         }).then(res=> res.json()).then(res=> console.log(res, 'FOLLOW RES'))
     }

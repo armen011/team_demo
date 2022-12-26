@@ -22,7 +22,7 @@ const Recommendation = () => {
                 method: "GET",
                 headers: {"Content-Type": "application/json"}
             })
-            .then((res) => res.json()).then(res => setFollowersArray(res.followers))
+            .then((res) => res.json()).then(res => setFollowersArray(res.followings))
     }, [])
 
     useEffect(() => {
