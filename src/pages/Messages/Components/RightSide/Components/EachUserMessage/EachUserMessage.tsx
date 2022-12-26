@@ -7,6 +7,7 @@ import user from "images/user_icon/man 1 (Traced).svg";
 import picture_icon from "images/picture_icon/image.png";
 import {useAppSelector} from "app";
 import Socket from "socket";
+import {useNavigate} from "react-router";
 
 export type EachUserMessageProps = {
     chatId: string;
@@ -62,13 +63,16 @@ const EachUserMessage: FC<EachUserMessageProps> = ({chatId, memberId}) => {
             handleSendMessage();
         }
     }
+    const navigate = useNavigate();
 
 
     return (
         <section className="each_user_message">
 
             <div>
-                <div>
+                <div style={{cursor: "pointer"}} onClick={()=>{
+                    navigate(`/users/${chats[index]?.userId}`)
+                }}>
                     <img
                         className="i_icon"
                         src={chats[index]?.picture || user}

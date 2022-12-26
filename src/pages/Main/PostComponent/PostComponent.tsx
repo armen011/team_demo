@@ -35,6 +35,7 @@ const PostComponent: FC<{ post: onePost, postId: string }> = ({post, postId}) =>
     const [redHeartB, setRedHeartB] = useState(false);
     const [likesCount, setLikesCount] = useState<number>();
     const userId = useAppSelector(s => s.user._id);
+    const [postOwner,setPostOwner] = useState<string>();
 
     const baseUrl = process.env.REACT_APP_PUBLIC_URL;
 
@@ -80,6 +81,7 @@ const PostComponent: FC<{ post: onePost, postId: string }> = ({post, postId}) =>
         }).then(res => res.json()).then(res => {
             localStorage.setItem('likeCount', res.likes.length);
             setLikesCount(res.likes.length);
+            setPostOwner(res.userId)
         })
         const likeArr = post?._doc.likes.some(elem => elem === userId)
         likeArr && setRedHeartB(likeArr);
@@ -94,7 +96,7 @@ const PostComponent: FC<{ post: onePost, postId: string }> = ({post, postId}) =>
         <div className="post_component_wrapper">
             <HeaderPostComponent userId={post._doc.userId} postId={postId}/>
             <PostImages handleChangeHeart={handleChangeHeart} images={post.images}/>
-            <ReactionBar redHeartB={redHeartB} handleChangeHeart={handleChangeHeart}/>
+            <ReactionBar redHeartB={redHeartB} handleChangeHeart={handleChangeHeart} postOwner={postOwner}/>
             <ContentBox likesLength={likesCount} doc={post._doc}/>
         </div>
     );
