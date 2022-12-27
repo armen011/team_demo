@@ -8,9 +8,10 @@ import '../Profile/Profile.css'
 import {useParams} from "react-router-dom";
 import {useAppSelector} from "../../app";
 import {useNavigate} from "react-router";
-import {Tpost} from "../Main/PostComponent/PostComponent";
+import {onePost, Tpost} from "../Main/PostComponent/PostComponent";
 import CameraIcon from "../../images/camera.png";
 import {useTranslation} from "react-i18next";
+import ImageSlider from "../../components/CreateModal/Components/ImageSlider";
 
 export type TUserState = {
     coverPicture: string,
@@ -158,8 +159,10 @@ const EachUserProfile = () => {
                 <div className={'my_profile_posting_part'}>
                 </div>
 
+
+
                     {follow ?
-                        <div>
+                        <div className='fixing_flex'>
                             {!eachUserPost ?
                                 <div className='no_posts'>
                                     <div className={'my_profile_post_dont_have'}>
@@ -173,13 +176,12 @@ const EachUserProfile = () => {
                                     </div>
                                 </div>
                                 :
-                                eachUserPost.map(elem =>
-                                    <div key={Math.random()} className='post_wrapper'>
-                                        {elem.images.map(val =>
-                                             <img key={Math.random()} className='post_img' style={val.style} src={val.file} alt=""/>
-                                        )}
+                                eachUserPost.map((elem: onePost) =>
+                                    <div key={Math.random()} style={{width: '293px', height: '293px', margin: '10px' , position:"relative"}}>
+                                        <ImageSlider images={elem.images}/>
                                     </div>
                                 )
+
                             }
                         </div>
                      : <div className='not_followed'>
