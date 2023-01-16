@@ -10,3 +10,4 @@ const encodeImageFileAsURL = (file: File): Promise<string> => {
 };
 
 export default encodeImageFileAsURL;
+

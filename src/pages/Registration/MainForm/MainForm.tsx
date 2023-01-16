@@ -27,7 +27,7 @@ const MainForm = () => {
                         </div>
                         <div className="route_to_login">
                             <p>{t("Have an account?")}
-                                <a href="" onClick={handleNavigate}> {t("login")}</a>
+                                <span onClick={() => navigate('/login')} style={{color: '#00b2f9', cursor: 'pointer'}}> {t("login")}</span>
                             </p>
                         </div>
                         <div className="get_the_app">

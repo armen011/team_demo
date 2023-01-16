@@ -15,6 +15,7 @@ import { login } from "features/user";
 import { useAppDispatch, useAppSelector } from "app/store";
 
 import { useTranslation } from "react-i18next";
+import {useNavigate} from "react-router";
 
 const LoginForm = () => {
   const [loginValues, setLoginValues] = useState({
@@ -47,6 +48,7 @@ const LoginForm = () => {
   const togglePasswordClick = () => {
     setToggle(!togglePassword);
   }
+  const navigate = useNavigate()
 
   return (
     <div className="login_form_wrapper">
@@ -85,7 +87,7 @@ const LoginForm = () => {
       <div className="sign_up_wrapper">
         <p>
           {t("Don't_have_an_account?")}{" "}
-          <a href="/registration">{t("Sign_up")}</a>
+          <span onClick={() => navigate('/registration')} style={{color: '#00b2f9', cursor: 'pointer'}}>{t("Sign_up")}</span>
         </p>
       </div>
       <div className="get_the_app_wrapper">
